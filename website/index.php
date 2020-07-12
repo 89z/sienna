@@ -1,20 +1,10 @@
 <?php
 declare(strict_types = 1);
 ?>
-<style>
-div {
-   background: burlywood;
-   margin: 1em;
-   padding: 1em;
-}
-main {
-   display: flex;
-   flex-wrap: wrap;
-}
-</style>
+<link rel="stylesheet" href="/sienna.css">
 <main>
 <?php
-$a_scan = scandir('D:/Git/umber/data');
+$a_scan = scandir('../json');
 foreach ($a_scan as $s_ent) {
    if ($s_ent == '.') {
       continue;
