@@ -805,45 +805,63 @@
        }
    },
    "Savath & Savalas": {
-      "Folk Songs for Trains, Trees and Honey": {
-         "Beginning": "short",
-         "Transportation Theme": "good",
-         "Binoculars": "good",
-         "Conditioning": "good",
-         "Aftergrude": "short",
-         "F Ride + Blues": "good",
-         "Journey’s Homes": "good",
-         "Paulo": "",
-         "Slabulas": "good"
-      }
+       "Apropa't": {
+           "@date": "2004-01-26",
+           "Introducción": "short",
+           "Te quiero pero por otro lado...": "bad",
+           "Colores sin nombre": "short",
+           "Balcón sin flores": "bad",
+           "A la nit": "",
+           "Último tren": "",
+           "Sol de media tarde": "",
+           "Um girassol da cor de seu cabelo": "",
+           "Ràdio llocs espacials": "short",
+           "Déjame": "",
+           "¿Por qué ella vino?": "",
+           "Víctima beleza": "",
+           "Interludio 44": "short",
+           "Sigue tu camino (No sabes amar...)": "short"
+       },
+       "Folk Songs for Trains, Trees and Honey": {
+           "@date": "2000-03-14",
+           "Beginning": "short",
+           "Transportation Theme": "good",
+           "Binoculars": "good",
+           "Conditioning": "good",
+           "Aftergrude": "short",
+           "F Ride + Blues": "good",
+           "Journey's Homes": "good",
+           "Paulo": "",
+           "Slabulas": "good"
+       }
    },
    "Seal": {
-      "Seal (II)": {
-         "@date": "1994",
-         "Bring It On": "",
-         "Prayer for the Dying": "",
-         "Dreaming in Metaphors": "",
-         "Don’t Cry": "",
-         "Fast Changes": "",
-         "Kiss From a Rose": "good",
-         "People Asking Why": "",
-         "Newborn Friend": "",
-         "If I Could": "",
-         "I’m Alive": "",
-         "Bring It On (reprise)": "short"
-      },
-      "Seal": {
-         "@date": "1991",
-         "The Beginning": "",
-         "Deep Water": "",
-         "Crazy": "good",
-         "Killer": "",
-         "Whirlpool": "",
-         "Future Love Paradise": "",
-         "Wild": "",
-         "Show Me": "",
-         "Violet": ""
-      }
+       "Seal": {
+           "@date": "1994-05-31",
+           "Bring It On": "",
+           "Prayer for the Dying": "",
+           "Dreaming in Metaphors": "",
+           "Don’t Cry": "",
+           "Fast Changes": "",
+           "Kiss From a Rose": "good",
+           "People Asking Why": "",
+           "Newborn Friend": "",
+           "If I Could": "",
+           "I’m Alive": "",
+           "Bring It On (reprise)": "short"
+       },
+       "Seal": {
+           "@date": "1991-05-20",
+           "The Beginning": "",
+           "Deep Water": "",
+           "Crazy": "good",
+           "Killer": "",
+           "Whirlpool": "",
+           "Future Love Paradise": "",
+           "Wild": "",
+           "Show Me": "",
+           "Violet": ""
+       }
    },
    "Secret Sun": {
        "Cold Coast": {
