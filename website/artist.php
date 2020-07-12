@@ -1,8 +1,18 @@
 <?php
 declare(strict_types = 1);
 ?>
-<link rel="stylesheet" href="/sienna.css">
-<main>
+<head>
+   <link rel="icon" href="/sienna.png">
+   <link rel="stylesheet" href="/sienna.css">
+   <title>Sienna</title>
+</head>
+<body>
+   <header>
+      <div>
+         <a href="..">Up</a>
+      </div>
+   </header>
+   <main>
 <?php
 $s_file = $_GET['f'];
 $s_artist = $_GET['a'];
@@ -17,4 +27,5 @@ echo <<<eof
 eof;
 }
 ?>
-</main>
+   </main>
+</body>
