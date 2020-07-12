@@ -17,12 +17,16 @@ foreach ($a_scan as $s_ent) {
    if ($s_ent == '..') {
       continue;
    }
-   echo <<<eof
+   $s_get = file_get_contents('../json/' . $s_ent);
+   $o_get = json_decode($s_get);
+   foreach ($o_get as $s_artist => $o_artist) {
+echo <<<eof
 <div>
-   <a href="/json.php?f=$s_ent">$s_ent</a>
+   <a href="/artist.php?f=$s_ent&a=$s_artist">$s_artist</a>
 </div>
 
 eof;
+   }
 }
 ?>
    </main>

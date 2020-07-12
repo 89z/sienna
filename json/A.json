@@ -1245,33 +1245,33 @@
          "Overand": "good",
          "Rsdio": ""
       },
-      "Amber": {
-         "@date": "1994",
-         "Foil": "bad",
-         "Montreal": "bad",
-         "Silverside": "bad",
-         "Slip": "bad",
-         "Glitch": "bad",
-         "Piezo": "bad",
-         "Nine": "bad",
-         "Further": "bad",
-         "Yulquen": "good",
-         "Nil": "good",
-         "Teartear": "bad"
-      },
-      "Incunabula": {
-         "@date": "1993",
-         "Kalpol Introl": "good",
-         "Bike": "good",
-         "Autriche": "good",
-         "Bronchus 2": "",
-         "Basscadet": "",
-         "Eggshell": "good",
-         "Doctrine": "",
-         "Maetl": "",
-         "Windwind": "good",
-         "Lowride": "",
-         "444": "good"
-      }
+       "Amber": {
+           "@date": "1994-11-07",
+           "Foil": "bad",
+           "Montreal": "bad",
+           "Silverside": "bad",
+           "Slip": "bad",
+           "Glitch": "bad",
+           "Piezo": "bad",
+           "Nine": "good",
+           "Further": "bad",
+           "Yulquen": "good",
+           "Nil": "good",
+           "Teartear": "bad"
+       },
+       "Incunabula": {
+           "@date": "1993-11-29",
+           "Kalpol Introl": "good",
+           "Bike": "good",
+           "Autriche": "good",
+           "Bronchus 2": "",
+           "Basscadet": "",
+           "Eggshell": "good",
+           "Doctrine": "",
+           "Maetl": "",
+           "Windwind": "good",
+           "Lowride": "",
+           "444": "good"
+       }
    }
 }

@@ -1,9 +1,24 @@
-div {
+header {
+   align-items: center;
+}
+a, div {
    background: burlywood;
-   margin: 1em;
-   padding: 1em;
+}
+td {
+   border: 1px solid black;
 }
 header, main {
    display: flex;
+}
+header, main {
    flex-wrap: wrap;
+}
+a, div {
+   margin: 1em;
+}
+a, div, td {
+   padding: 10px 20px;
+}
+a {
+   text-decoration: none;
 }

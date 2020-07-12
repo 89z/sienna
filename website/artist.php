@@ -1,10 +1,12 @@
 <?php
 declare(strict_types = 1);
+$s_file = $_GET['f'];
+$s_artist = $_GET['a'];
 ?>
 <head>
    <link rel="icon" href="/sienna.png">
    <link rel="stylesheet" href="/sienna.css">
-   <title>Sienna</title>
+   <?= '<title>' . $s_artist . ' - Sienna</title>' ?>
 </head>
 <body>
    <header>
@@ -14,8 +16,6 @@ declare(strict_types = 1);
    </header>
    <main>
 <?php
-$s_file = $_GET['f'];
-$s_artist = $_GET['a'];
 $s_get = file_get_contents('../json/' . $s_file);
 $o_get = json_decode($s_get);
 foreach ($o_get->$s_artist as $s_album => $o_album) {
