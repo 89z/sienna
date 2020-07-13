@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-$s_dir = 'C:/path/cove';
+$s_dir = 'C:/path/sienna';
 
 if (is_dir($s_dir)) {
    $o_dir = new RecursiveDirectoryIterator($s_dir);
