@@ -6,17 +6,27 @@ function si_color($o_artist) {
       if (strpos($s_album, '@') === 0) {
          continue;
       }
+      $b_good = false;
+      $b_done = true;
       foreach ($o_album as $s_track => $s_rate) {
          if ($s_rate == 'good') {
-            $m_local[$s_album] = 'green';
-            continue 2;
+            $b_good = true;
          }
          if ($s_rate == '') {
-            $m_local[$s_album] = 'yellow';
+            $b_done = false;
          }
       }
-      if (! array_key_exists($s_album, $m_local)) {
+      if ($b_good && $b_done) {
+         $m_local[$s_album] = 'green';
+      }
+      if ($b_good && ! $b_done) {
+         $m_local[$s_album] = 'lightgreen';
+      }
+      if (! $b_good && $b_done) {
          $m_local[$s_album] = 'red';
+      }
+      if (! $b_good && ! $b_done) {
+         $m_local[$s_album] = 'lightred';
       }
    }
    return $m_local;

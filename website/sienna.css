@@ -5,13 +5,16 @@ div, header a {
    background: burlywood;
 }
 .green {
-   background: green;
+   background: hsl(120, 100%, 50%);
+}
+.lightgreen {
+   background: hsl(120, 100%, 80%);
+}
+.lightred {
+   background: hsl(0, 100%, 80%);
 }
 .red {
-   background: red;
-}
-.yellow {
-   background: yellow;
+   background: hsl(0, 100%, 50%);
 }
 td {
    border: 1px solid black;

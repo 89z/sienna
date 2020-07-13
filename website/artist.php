@@ -27,9 +27,9 @@ $m_local = si_color($o_get->$s_artist);
 
 foreach ($o_get->$s_artist as $s_album => $o_album) {
    echo '<tr>';
-   if ($s_album == '@id') {
+   if ($s_album[0] == '@') {
       echo <<<eof
-<td>@id</td>
+<td>$s_album</td>
 <td>$o_album</td>
 eof;
    } else {
