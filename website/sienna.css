@@ -4,6 +4,15 @@ header {
 div, header a {
    background: burlywood;
 }
+.green {
+   background: green;
+}
+.red {
+   background: red;
+}
+.yellow {
+   background: yellow;
+}
 td {
    border: 1px solid black;
 }

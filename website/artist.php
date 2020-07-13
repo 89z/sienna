@@ -23,15 +23,22 @@ eof;
 $s_get = file_get_contents('../json/' . $s_file);
 $o_get = json_decode($s_get);
 foreach ($o_get->$s_artist as $s_album => $o_album) {
-   $s_date = $o_album->{'@date'};
-echo <<<eof
-<tr>
-   <td>$s_date</td>
-   <td>
-      <a href="/album.php?f=$s_file&a=$s_artist&r=$s_album">$s_album</a>
-   </td>
-</tr>
+   echo '<tr>';
+   if ($s_album == '@id') {
+      echo <<<eof
+<td>@id</td>
+<td>$o_album</td>
 eof;
+   } else {
+      $s_date = $o_album->{'@date'};
+      echo <<<eof
+<td>$s_date</td>
+<td>
+   <a href="/album.php?f=$s_file&a=$s_artist&r=$s_album">$s_album</a>
+</td>
+eof;
+   }
+   echo '</tr>';
 }
 ?>
    </table>

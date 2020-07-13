@@ -3,42 +3,32 @@ declare(strict_types = 1);
 extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
 $s_local = $_GET['f'];
-$s_end = "\e[m";
-$s_f_green = "\e[1;32m";
-$s_f_red = "\e[1;31m";
-$s_f_yellow = "\e[33m";
 $s_artist = $_GET['a'];
+
 # local albums
-$s_json = file_get_contents($s_local);
+$s_json = file_get_contents('../json/' . $s_local);
 $o_local = json_decode($s_json);
 $s_arid = $o_local->$s_artist->{'@id'};
-# FIXME from here down
+
 foreach ($o_local->$s_artist as $s_album => $o_album) {
-   if ($s_album == '@check') {
+   if (strpos($s_album, '@') === 0) {
       continue;
    }
    foreach ($o_album as $s_track => $s_rate) {
       if ($s_rate == 'good') {
-         $m_local[$s_album] = $s_f_green;
+         $m_local[$s_album] = 'green';
          continue 2;
       }
       if ($s_rate == '') {
-         $m_local[$s_album] = $s_f_yellow;
+         $m_local[$s_album] = 'yellow';
       }
    }
    if (! array_key_exists($s_album, $m_local)) {
-      $m_local[$s_album] = $s_f_red;
+      $m_local[$s_album] = 'red';
    }
 }
+
 # remote albums
-$m_remote = mb_albums($s_arid);
-arsort($m_remote);
-foreach ($m_remote as $s_title => $s_date) {
-   if (array_key_exists($s_title, $m_local)) {
-      echo $m_local[$s_title];
-   }
-   printf("%-10s\t%s%s\n", $s_date, $s_title, $s_end);
-}
 function mb_albums($s_arid) {
    $m_q['artist'] = $s_arid;
    $m_q['fmt'] = 'json';
@@ -79,8 +69,28 @@ function mb_albums($s_arid) {
    }
    return $m_remote;
 }
+
+$m_remote = mb_albums($s_arid);
+arsort($m_remote);
 ?>
-<table>
+<head>
+   <link rel="stylesheet" href="/sienna.css">
+</head>
+<body>
+   <table>
 <?php
+foreach ($m_remote as $s_title => $s_date) {
+   echo '<tr><td>' . $s_date . '</td>';
+   if (array_key_exists($s_title, $m_local)) {
+      $s_class = $m_local[$s_title];
+      echo <<<eof
+<td class="$s_class">$s_title</td>
+eof;
+   } else {
+      echo '<td>' . $s_title . '</td>';
+   }
+   echo '</tr>';
+}
 ?>
-</table>
+   </table>
+</body>
