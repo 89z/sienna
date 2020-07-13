@@ -6,12 +6,17 @@ $s_artist = $_GET['a'];
 <head>
    <link rel="icon" href="/sienna.png">
    <link rel="stylesheet" href="/sienna.css">
-   <?= '<title>' . $s_artist . ' - Sienna</title>' ?>
+   <title><?= $s_artist ?> - Sienna</title>
 </head>
 <body>
    <header>
       <a href="..">Up</a>
-      <?= '<h1>' . $s_artist . '</h1>' ?>
+<?php
+echo <<<eof
+<a href="/remote.php?f=$s_file&a=$s_artist">Remote</a>
+eof;
+?>
+      <h1><?= $s_artist ?></h1>
    </header>
    <table>
 <?php
