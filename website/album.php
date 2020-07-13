@@ -20,20 +20,24 @@ eof;
    </header>
    <table>
 <?php
-$s_get = file_get_contents('../json/' . $s_file);
+$s_get = file_get_contents('../json/' . $s_file . '.json');
 $o_get = json_decode($s_get);
 foreach ($o_get->$s_artist->$s_rel as $s_key => $s_val) {
-   echo '<tr><td>' . $s_key . '</td>';
-   if ($s_key == '@date') {
-      echo '<td>' . $s_val . '</td>';
-   } else {
-   echo <<<eof
-<td>
-   <a href="/rate.php?f=$s_file&a=$s_artist&r=$s_rel&t=$s_key">$s_val</a>
-</td>
+   echo '<tr><td>' . $s_key . '</td><td>';
+   if ($s_val == '') {
+      $_GET['t'] = $s_key;
+      $_GET['s'] = 'good';
+      $s_good = http_build_query($_GET);
+      $_GET['s'] = 'bad';
+      $s_bad = http_build_query($_GET);
+      echo <<<eof
+<a href="/rate.php?$s_good">good</a>
+<a href="/rate.php?$s_bad">bad</a>
 eof;
+   } else {
+      echo $s_val;
    }
-   echo '</tr>';
+   echo '</td></tr>';
 }
 ?>
    </table>

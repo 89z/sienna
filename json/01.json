@@ -219,11 +219,7 @@
    "Beck": {
       "Colors": {
          "@date": "2017",
-         "Colors": {
-            "rate": "bad",
-            "VPY": "4,179,410",
-            "URL": "https://youtu.be/WRCA_Fo0rWA"
-         },
+         "Colors": "bad",
          "Seventh Heaven": "bad",
          "I’m So Free": "bad",
          "Dear Life": "bad",
@@ -274,7 +270,7 @@
          "@date": "1994",
          "Loser": {
             "VPY": "10,576,977",
-            "URL": "https://youtu.be/YgSPaXgAdzE"
+            "URL": "YgSPaXgAdzE"
          }
       }
    },
@@ -304,10 +300,7 @@
          "Let Me Know Something?!": "",
          "Do Me!": "",
          "Ronnie, Bobby, Ricky, Mike, Ralph and Johnny (Word to the Mutha)!": "",
-         "Poison": {
-            "VPY": "1,351,460",
-            "URL": "https://youtu.be/sb2np1HGqxg"
-         },
+         "Poison": "",
          "Ain’t Nut’in’ Changed!": "",
          "When Will I See You Smile Again?": "",
          "I Do Need You.": ""
@@ -325,11 +318,7 @@
          "Keep Your Head Up": "",
          "Black Flies": "",
          "Gracious": "",
-         "Promise": {
-            "rate": "good",
-            "VPY": "5,103,551",
-            "URL": "https://youtu.be/CVUOTzoVeZA"
-         }
+         "Promise": "good"
       }
    },
    "Berlin": {
@@ -460,7 +449,7 @@
          "@date": "2017",
          "All Night": {
             "VPY": "11,499,682",
-            "URL": "https://youtu.be/QxTgr11ncJo"
+            "URL": "QxTgr11ncJo"
          },
          "Kill Jill": ""
       },
@@ -470,11 +459,7 @@
          "Daddy Fat Sax": "short",
          "Turns Me On": "",
          "Follow Us": "",
-         "Shutterbugg": {
-            "rate": "good",
-            "VPY": "1,237,121",
-            "URL": "https://youtu.be/rWsvkW6rKkQ"
-         },
+         "Shutterbugg": "good",
          "General Patton": "",
          "Tangerine": "",
          "You Ain’t No DJ": "",
@@ -1087,11 +1072,7 @@
          "Every Little Kiss": "",
          "Mandolin Rain": "",
          "The Long Race": "",
-         "The Way It Is": {
-            "rate": "good",
-            "VPY": "3,449,438",
-            "URL": "https://youtu.be/cOeKidp-iWo"
-         },
+         "The Way It Is": "good",
          "Down the Road Tonight": "good",
          "The Wild Frontier": "",
          "The River Runs Low": "",

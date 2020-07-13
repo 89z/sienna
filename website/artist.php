@@ -21,7 +21,7 @@ eof;
    </header>
    <table>
 <?php
-$s_get = file_get_contents('../json/' . $s_file);
+$s_get = file_get_contents('../json/' . $s_file . '.json');
 $o_get = json_decode($s_get);
 $m_local = si_color($o_get->$s_artist);
 
