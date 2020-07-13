@@ -8,8 +8,9 @@ $s_rate = $_GET['s'];
 $s_get = file_get_contents('../json/' . $s_file . '.json');
 $o_get = json_decode($s_get);
 $o_get->$s_artist->$s_rel->$s_track = $s_rate;
-$s_json = json_encode($o_get, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-file_put_contents($s_file . '.json', $s_json);
+$n_json = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+$s_json = json_encode($o_get, $n_json);
+file_put_contents('../json/' . $s_file . '.json', $s_json . "\n");
 ?>
 <head>
    <link rel="icon" href="/sienna.png">
