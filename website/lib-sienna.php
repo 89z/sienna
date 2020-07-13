@@ -3,12 +3,16 @@ declare(strict_types = 1);
 
 function si_color($o_artist) {
    foreach ($o_artist as $s_album => $o_album) {
-      if (strpos($s_album, '@') === 0) {
+      if ($s_album[0] == '@') {
          continue;
       }
       $b_good = false;
       $b_done = true;
       foreach ($o_album as $s_track => $s_rate) {
+         if ($s_track == '@id') {
+            $m_local[$s_album] = 'black';
+            continue 2;
+         }
          if ($s_rate == 'good') {
             $b_good = true;
          }

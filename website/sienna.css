@@ -4,6 +4,9 @@ header {
 div, header a {
    background: burlywood;
 }
+.black {
+   background: black;
+}
 .green {
    background: hsl(120, 100%, 50%);
 }
@@ -18,6 +21,9 @@ div, header a {
 }
 td {
    border: 1px solid black;
+}
+.black a {
+   color: white;
 }
 header, main {
    display: flex;
