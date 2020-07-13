@@ -22,10 +22,10 @@ header, main {
 header, main {
    flex-wrap: wrap;
 }
-a, div {
+header a, div {
    margin: 1em;
 }
-a, div, td {
+header a, div, td {
    padding: 10px 20px;
 }
 a {
