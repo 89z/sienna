@@ -2,12 +2,8 @@
    "U2": {
        "All That You Can’t Leave Behind": {
            "@date": "2000-10-30",
-           "Beautiful Day": {
-             "id": "co6WMzDOh1o",
-             "views": "140,950,507",
-             "published": "2009-12-23",
-             "views per year": "13,484,068"
-         },
+             "@id": "co6WMzDOh1o",
+           "Beautiful Day": "",
            "Stuck in a Moment You Can’t Get Out Of": "",
            "Elevation": "",
            "Walk On": "",
@@ -36,14 +32,10 @@
        },
        "Achtung Baby": {
            "@date": "1991-11-18",
+             "@id": "ftjEcrrf7r0",
            "Zoo Station": "",
            "Even Better Than the Real Thing": "",
-           "One": {
-             "id": "ftjEcrrf7r0",
-             "views": "93,091,383",
-             "published": "2009-12-14",
-             "views per year": "8,884,669"
-         },
+           "One": "",
            "Until the End of the World": "",
            "Who's Gonna Ride Your Wild Horses": "",
            "So Cruel": "",
@@ -76,13 +68,9 @@
        },
        "The Joshua Tree": {
            "@date": "1987-03-09",
+             "@id": "e3-5YC_oHjE",
            "Where the Streets Have No Name": "",
-           "I Still Haven’t Found What I’m Looking For": {
-             "id": "e3-5YC_oHjE",
-             "views": "56,109,519",
-             "published": "2016-10-17",
-             "views per year": "15,432,230"
-         },
+           "I Still Haven’t Found What I’m Looking For": "",
            "With or Without You": "",
            "Bullet the Blue Sky": "",
            "Running to Stand Still": "",
@@ -95,13 +83,9 @@
        },
        "The Unforgettable Fire": {
            "@date": "1984-10-01",
+             "@id": "LHcP4MWABGY",
            "A Sort of Homecoming": "",
-           "Pride (In the Name of Love)": {
-             "id": "LHcP4MWABGY",
-             "views": "77,390,706",
-             "published": "2009-12-14",
-             "views per year": "7,386,192"
-         },
+           "Pride (In the Name of Love)": "",
            "Wire": "",
            "The Unforgettable Fire": "",
            "Promenade": "short",
@@ -111,47 +95,47 @@
            "Elvis Presley and America": "",
            "MLK": "short"
        },
-      "War": {
-         "@date": "1983",
-         "Sunday Bloody Sunday": "",
-         "Seconds": "",
-         "New Year’s Day": "good",
-         "Like a Song": "",
-         "Drowning Man": "",
-         "The Refugee": "",
-         "Two Hearts Beat as One": "",
-         "Red Light": "",
-         "Surrender": "",
-         "40": "short"
-      },
-      "October": {
-         "@date": "1981",
-         "Gloria": "",
-         "I Fall Down": "",
-         "I Threw a Brick Through a Window": "",
-         "Rejoice": "good",
-         "Fire": "",
-         "Tomorrow": "",
-         "October": "short",
-         "With a Shout (Jerusalem)": "",
-         "Stranger in a Strange Land": "",
-         "Scarlet": "short",
-         "Is That All?": "short"
-      },
-      "Boy": {
-         "@date": "1980",
-         "I Will Follow": "good",
-         "Twilight": "",
-         "An Cat Dubh": "",
-         "Into the Heart": "",
-         "Out of Control": "",
-         "Stories for Boys": "",
-         "The Ocean": "short",
-         "A Day Without Me": "",
-         "Another Time, Another Place": "",
-         "The Electric Co.": "",
-         "Shadows and Tall Trees": ""
-      }
+       "War": {
+           "@date": "1983-02-28",
+           "Sunday Bloody Sunday": "",
+           "Seconds": "",
+           "New Year’s Day": "good",
+           "Like a Song…": "",
+           "Drowning Man": "",
+           "The Refugee": "",
+           "Two Hearts Beat as One": "",
+           "Red Light": "",
+           "Surrender": "",
+           "“40”": "short"
+       },
+       "October": {
+           "@date": "1981-10-12",
+           "Gloria": "",
+           "I Fall Down": "",
+           "I Threw a Brick Through a Window": "",
+           "Rejoice": "good",
+           "Fire": "",
+           "Tomorrow": "",
+           "October": "short",
+           "With a Shout (Jerusalem)": "",
+           "Stranger in a Strange Land": "",
+           "Scarlet": "short",
+           "Is That All?": "short"
+       },
+       "Boy": {
+           "@date": "1980-10-20",
+           "I Will Follow": "good",
+           "Twilight": "",
+           "An Cat Dubh": "",
+           "Into the Heart": "",
+           "Out of Control": "",
+           "Stories for Boys": "",
+           "The Ocean": "short",
+           "A Day Without Me": "",
+           "Another Time, Another Place": "",
+           "The Electric Co.": "",
+           "Shadows and Tall Trees / [untitled]": ""
+       }
    },
    "Ulrich Schnauss": {
       "Synthwaves": {
