@@ -23,7 +23,7 @@ foreach ($a_scan as $s_ent) {
    foreach ($o_get as $s_artist => $o_artist) {
 echo <<<eof
 <div>
-   <a href="/artist.php?f=$s_file&a=$s_artist">$s_artist</a>
+   <a href="/artist?f=$s_file&a=$s_artist">$s_artist</a>
 </div>
 eof;
    }

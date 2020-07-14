@@ -3,13 +3,13 @@ declare(strict_types = 1);
 
 extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
-require 'lib-sienna.php';
+require 'sienna.php';
 
-$s_local = $_GET['f'];
+$s_file = $_GET['f'];
 $s_artist = $_GET['a'];
 
 # local albums
-$s_json = file_get_contents('../json/' . $s_local . '.json');
+$s_json = file_get_contents('../json/' . $s_file . '.json');
 $o_local = json_decode($s_json);
 $s_arid = $o_local->$s_artist->{'@id'};
 $m_local = si_color($o_local->$s_artist);
@@ -66,8 +66,9 @@ arsort($m_remote);
    <header>
       <a href="..">Up</a>
 <?php
+$s_q = http_build_query($_GET);
 echo <<<eof
-<a href="/artist.php?f=$s_local&a=$s_artist">Local</a>
+<a href="/artist?$s_q">Local</a>
 eof;
 ?>
       <h1><?= $s_artist ?></h1>
@@ -75,18 +76,18 @@ eof;
    <table>
 <?php
 foreach ($m_remote as $s_title => $s_date) {
+   $_GET['r'] = $s_title;
+   $s_q = http_build_query($_GET);
    echo '<tr><td>' . $s_date . '</td>';
    if (array_key_exists($s_title, $m_local)) {
       $s_class = $m_local[$s_title];
       echo <<<eof
 <td class="$s_class">
-   <a href="/album.php?f=$s_local&a=$s_artist&r=$s_title">$s_title</a>
+   <a href="/release?$s_q">$s_title</a>
 </td>
 eof;
    } else {
-      echo <<<eof
-<td>$s_title</td>
-eof;
+      echo '<td>' . $s_title . '</td>';
    }
    echo '</tr>';
 }

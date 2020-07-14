@@ -1,7 +1,7 @@
 header {
    align-items: center;
 }
-div, header a {
+div, footer a, header a {
    background: burlywood;
 }
 .black {
@@ -31,10 +31,13 @@ header, main {
 header, main {
    flex-wrap: wrap;
 }
-header a, div {
+div, header a {
    margin: 1em;
 }
-header a, div, td {
+footer {
+   margin: 2em 1em;
+}
+footer a, header a, div, td {
    padding: 10px 20px;
 }
 a {

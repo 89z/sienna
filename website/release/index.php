@@ -13,7 +13,7 @@ $s_rel = $_GET['r'];
    <header>
 <?php
 echo <<<eof
-<a href="/artist.php?f=$s_file&a=$s_artist">Up</a>
+<a href="/artist?f=$s_file&a=$s_artist">Up</a>
 <h1>$s_artist - $s_rel</h1>
 eof;
 ?>
@@ -31,8 +31,8 @@ foreach ($o_get->$s_artist->$s_rel as $s_key => $s_val) {
       $_GET['s'] = 'bad';
       $s_bad = http_build_query($_GET);
       echo <<<eof
-<a href="/rate.php?$s_good">good</a>
-<a href="/rate.php?$s_bad">bad</a>
+<a href="/rating?$s_good">good</a>
+<a href="/rating?$s_bad">bad</a>
 eof;
    } else {
       echo $s_val;
