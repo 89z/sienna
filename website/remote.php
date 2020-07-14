@@ -9,7 +9,7 @@ $s_local = $_GET['f'];
 $s_artist = $_GET['a'];
 
 # local albums
-$s_json = file_get_contents('../json/' . $s_local);
+$s_json = file_get_contents('../json/' . $s_local . '.json');
 $o_local = json_decode($s_json);
 $s_arid = $o_local->$s_artist->{'@id'};
 $m_local = si_color($o_local->$s_artist);
