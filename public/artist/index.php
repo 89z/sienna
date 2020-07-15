@@ -1,14 +1,8 @@
 <?php
 declare(strict_types = 1);
-require '/sienna.php';
+require '../sienna.php';
 $s_artist = $_GET['a'];
-
-
-$s_file = '../../json/' . $_GET[] . ''
-
-
 $s_file = $_GET['f'];
-
 ?>
 <head>
    <link rel="icon" href="/sienna.png">
@@ -22,28 +16,33 @@ $s_file = $_GET['f'];
    </header>
    <table>
 <?php
-$s_get = file_get_contents('../../json/' . $s_file . '.json');
+$s_json = '../data/' . $s_file . '.json';
+$s_get = file_get_contents($s_json);
 $o_get = json_decode($s_get);
 $m_local = si_color($o_get->$s_artist);
 
 # MusicBrainz Artist ID
 print '<tr><td>@id</td><td>';
-if (array_key_exists('q', $_GET)) {
-   # write key to file and display
-   $o_get->$s_artist->{'@id'} = $_GET['q'];
-   $s_json = si_encode($o_get);
-} else {
-   # prompt for key
-}
-
-
 
 if (property_exists($o_get->$s_artist, '@id')) {
+   printf('<a href="/add-release?%s">', http_build_query($_GET));
    print $o_get->$s_artist->{'@id'};
+   print '</a>';
+} else if (array_key_exists('id', $_GET)) {
+   print $_GET['id'];
+   $o_get->$s_artist->{'@id'} = $_GET['id'];
+   $s_enc = si_encode($o_get);
+   file_put_contents($s_json, $s_enc . "\n");
 } else {
-   print '<form><input name="q"></form>';
+   print '<form>';
+   printf('<input type="hidden" name="f" value="%s">', $s_file);
+   printf('<input type="hidden" name="a" value="%s">', $s_artist);
+   print '<input name="id">';
+   print '</form>';
 }
+
 print '</td></tr>';
+
 foreach ($o_get->$s_artist as $s_album => $o_album) {
    if ($s_album == '@id') {
       continue;
@@ -63,7 +62,4 @@ foreach ($o_get->$s_artist as $s_album => $o_album) {
 }
 ?>
    </table>
-   <footer>
-      <a href="/add-release?<?= http_build_query($_GET) ?>">Add release</a>
-   </footer
 </body>

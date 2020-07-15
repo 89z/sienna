@@ -9,7 +9,8 @@ declare(strict_types = 1);
 <body>
    <main>
 <?php
-$a_scan = scandir('../json');
+$a_scan = scandir('data');
+
 foreach ($a_scan as $s_ent) {
    if ($s_ent == '.') {
       continue;
@@ -17,15 +18,13 @@ foreach ($a_scan as $s_ent) {
    if ($s_ent == '..') {
       continue;
    }
-   $s_get = file_get_contents('../json/' . $s_ent);
+   $s_get = file_get_contents('data/' . $s_ent);
    $o_get = json_decode($s_get);
-   $s_file = pathinfo($s_ent, PATHINFO_FILENAME);
+   $m_q['f'] = pathinfo($s_ent, PATHINFO_FILENAME);
    foreach ($o_get as $s_artist => $o_artist) {
-echo <<<eof
-<div>
-   <a href="/artist?f=$s_file&a=$s_artist">$s_artist</a>
-</div>
-eof;
+      $m_q['a'] = $s_artist;
+      $s_q = http_build_query($m_q);
+      printf('<div><a href="/artist?%s">%s</a></div>', $s_q, $s_artist);
    }
 }
 ?>

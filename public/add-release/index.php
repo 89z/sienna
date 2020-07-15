@@ -3,13 +3,13 @@ declare(strict_types = 1);
 
 extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
-require 'sienna.php';
+require '../sienna.php';
 
 $s_file = $_GET['f'];
 $s_artist = $_GET['a'];
 
 # local albums
-$s_json = file_get_contents('../json/' . $s_file . '.json');
+$s_json = file_get_contents('../data/' . $s_file . '.json');
 $o_local = json_decode($s_json);
 $s_arid = $o_local->$s_artist->{'@id'};
 $m_local = si_color($o_local->$s_artist);
@@ -65,7 +65,6 @@ arsort($m_remote);
 <body>
    <header>
       <a href="..">Up</a>
-      <a href="/artist?<?= http_build_query($_GET) ?>">Local</a>
       <h1><?= $s_artist ?></h1>
    </header>
    <table>
