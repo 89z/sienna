@@ -56,7 +56,7 @@ foreach ($o_get->$s_artist as $s_album => $o_album) {
       $_GET['r'] = $s_album;
       $s_q = http_build_query($_GET);
       printf('<td>%s</td><td class="%s">', $s_date, $s_class);
-      printf('<a href="%s">%s</a>', $s_q, $s_album);
+      printf('<a href="/release?%s">%s</a>', $s_q, $s_album);
    }
    print '</td></tr>';
 }
