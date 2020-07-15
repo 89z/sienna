@@ -32,7 +32,7 @@ function mb_albums($s_arid) {
       $s_q = http_build_query($m_q);
       $s_url = 'https://musicbrainz.org/ws/2/release?' . $s_q;
       curl_setopt($r_c, CURLOPT_URL, $s_url);
-      echo $s_url, "\n";
+      print $s_url . "\n";
       # part 2
       $s_json = curl_exec($r_c);
       # part 3
@@ -65,12 +65,7 @@ arsort($m_remote);
 <body>
    <header>
       <a href="..">Up</a>
-<?php
-$s_q = http_build_query($_GET);
-echo <<<eof
-<a href="/artist?$s_q">Local</a>
-eof;
-?>
+      <a href="/artist?<?= http_build_query($_GET) ?>">Local</a>
       <h1><?= $s_artist ?></h1>
    </header>
    <table>
@@ -78,18 +73,14 @@ eof;
 foreach ($m_remote as $s_title => $s_date) {
    $_GET['r'] = $s_title;
    $s_q = http_build_query($_GET);
-   echo '<tr><td>' . $s_date . '</td>';
+   printf('<tr><td>%s</td>', $s_date);
    if (array_key_exists($s_title, $m_local)) {
       $s_class = $m_local[$s_title];
-      echo <<<eof
-<td class="$s_class">
-   <a href="/release?$s_q">$s_title</a>
-</td>
-eof;
+      printf('<td class="%s"><a href="%s">%s</a>', $s_class, $s_q, $s_title);
    } else {
-      echo '<td>' . $s_title . '</td>';
+      printf('<td>%s', $s_title);
    }
-   echo '</tr>';
+   print '</td></tr>';
 }
 ?>
    </table>

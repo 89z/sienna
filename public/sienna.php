@@ -1,6 +1,13 @@
 <?php
 declare(strict_types = 1);
 
+function si_encode($o_json) {
+   $n_json = JSON_PRETTY_PRINT;
+   $n_json |= JSON_UNESCAPED_SLASHES;
+   $n_json |= JSON_UNESCAPED_UNICODE;
+   return json_encode($o_json, $n_json);
+}
+
 function si_color($o_artist) {
    foreach ($o_artist as $s_album => $o_album) {
       if ($s_album[0] == '@') {

@@ -23,11 +23,7 @@ file_put_contents('../json/' . $s_file . '.json', $s_json . "\n");
 </head>
 <body>
    <header>
-<?php
-echo <<<eof
-<a href="/release?f=$s_file&a=$s_artist&f=$s_rel">Back</a>
-eof;
-?>
-   <h1>Complete</h1>
+      <a href="/release?<?= http_build_query($_GET) ?>">Back</a>
+      <h1>Complete</h1>
    </header>
 </body>
