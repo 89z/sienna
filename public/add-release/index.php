@@ -64,18 +64,16 @@ arsort($m_remote);
 </head>
 <body>
    <header>
-      <a href="..">Up</a>
+      <a href="/artist?<?= http_build_query($_GET) ?>">Up</a>
       <h1><?= $s_artist ?></h1>
    </header>
    <table>
 <?php
 foreach ($m_remote as $s_title => $s_date) {
-   $_GET['r'] = $s_title;
-   $s_q = http_build_query($_GET);
    printf('<tr><td>%s</td>', $s_date);
    if (array_key_exists($s_title, $m_local)) {
       $s_class = $m_local[$s_title];
-      printf('<td class="%s"><a href="%s">%s</a>', $s_class, $s_q, $s_title);
+      printf('<td class="%s">%s', $s_class, $s_title);
    } else {
       printf('<td>%s', $s_title);
    }
