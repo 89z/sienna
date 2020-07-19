@@ -92,12 +92,8 @@
     "AC/DC": {
         "The Razors Edge": {
             "@date": "1990-09-21",
-            "Thunderstruck": {
-                "id": "v2AC41dglnM",
-                "views": "735,245,788",
-                "published": "2012-11-07",
-                "views per year": "97,406,066"
-            },
+            "@id": "v2AC41dglnM",
+            "Thunderstruck": "",
             "Fire Your Guns": "short",
             "Moneytalks": "",
             "The Razors Edge": "",
