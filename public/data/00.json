@@ -122,12 +122,8 @@
         },
         "Highway to Hell": {
             "@date": "1979-07-27",
-            "Highway to Hell": {
-                "id": "l482T0yNkeo",
-                "views": "138,510,948",
-                "published": "2012-11-10",
-                "views per year": "18,370,052"
-            },
+            "@id": "l482T0yNkeo",
+            "Highway to Hell": "",
             "Girls Got Rhythm": "",
             "Walk All Over You": "",
             "Touch Too Much": "",
