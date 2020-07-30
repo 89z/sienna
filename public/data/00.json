@@ -155,6 +155,7 @@
         },
         "Get a Grip": {
             "@date": "1993-04-20",
+            "@id": "NMNgbISmF4I",
             "Intro": "short",
             "Eat the Rich": "",
             "Get a Grip": "",
@@ -165,12 +166,7 @@
             "Shut Up and Dance": "",
             "Cryin’": "",
             "Gotta Love It": "",
-            "Crazy": {
-                "id": "NMNgbISmF4I",
-                "views": "526,248,260",
-                "published": "2009-12-25",
-                "views per year": "50,449,390"
-            },
+            "Crazy": "",
             "Line Up": "",
             "Amazing": "",
             "Boogie Man": "short"
