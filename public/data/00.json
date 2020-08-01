@@ -173,6 +173,7 @@
         },
         "Permanent Vacation": {
             "@date": "1987-03-25",
+            "@id": "CBTOGVb_cQg",
             "Heart’s Done Time": "",
             "Magic Touch": "",
             "Rag Doll": "",
@@ -181,12 +182,7 @@
             "St. John": "",
             "Hangman Jury": "",
             "Girl Keeps Coming Apart": "",
-            "Angel": {
-                "id": "CBTOGVb_cQg",
-                "views": "115,141,847",
-                "published": "2009-06-16",
-                "views per year": "10,508,636"
-            },
+            "Angel": "",
             "Permanent Vacation": "",
             "I’m Down": "short",
             "The Movie": ""
