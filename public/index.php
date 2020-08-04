@@ -9,15 +9,10 @@ declare(strict_types = 1);
 <body>
    <main>
 <?php
-$a_scan = scandir('data');
+$o_dir = new FilesystemIterator('data');
 
-foreach ($a_scan as $s_ent) {
-   if ($s_ent == '.') {
-      continue;
-   }
-   if ($s_ent == '..') {
-      continue;
-   }
+foreach ($o_dir as $o_ent) {
+   $s_ent = $o_ent->getFilename();
    $s_get = file_get_contents('data/' . $s_ent);
    $o_get = json_decode($s_get);
    $m_q['f'] = pathinfo($s_ent, PATHINFO_FILENAME);
