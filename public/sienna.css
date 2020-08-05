@@ -1,7 +1,9 @@
 header {
    align-items: center;
 }
-div, footer a, header a {
+div,
+footer a,
+header a {
    background: burlywood;
 }
 .black {
@@ -20,25 +22,72 @@ div, footer a, header a {
    background: hsl(0, 100%, 50%);
 }
 td {
-   border: 1px solid black;
+   border-color: black;
+}
+td {
+   border-style: solid;
+}
+td {
+   border-width: 1px;
 }
 .black a {
    color: white;
 }
-header, main {
+header,
+main {
    display: flex;
 }
-header, main {
+header,
+main {
    flex-wrap: wrap;
 }
-div, header a {
-   margin: 1em;
+div,
+header a {
+   margin-bottom: 1rem;
 }
 footer {
-   margin: 2em 1em;
+   margin-bottom: 2rem;
 }
-footer a, header a, div, td {
-   padding: 10px 20px;
+div,
+footer,
+header a {
+   margin-left: 1rem;
+}
+div,
+footer,
+header a {
+   margin-right: 1rem;
+}
+div,
+header a {
+   margin-top: 1rem;
+}
+footer {
+   margin-top: 2rem;
+}
+div,
+footer a,
+header a,
+td {
+   padding-bottom: 10px;
+}
+div,
+footer a,
+header a,
+td {
+   padding-left: 20px;
+}
+div,
+footer a,
+header a,
+td {
+   padding-right: 20px;
+}
+div,
+footer a,
+header a,
+td {
+   padding-top: 10px;
 }
 a {
    text-decoration: none;
