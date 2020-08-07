@@ -502,6 +502,7 @@
         },
         "Dirt": {
             "@date": "1992-09-29",
+            "@id": "Nco_kh8xJDs",
             "Them Bones": "short",
             "Dam That River": "",
             "Rain When I Die": "",
@@ -514,10 +515,7 @@
             "Iron Gland": "short",
             "Hate to Feel": "",
             "Angry Chair": "",
-            "Would?": {
-                "id": "Nco_kh8xJDs",
-                "views per year": "8,344,022"
-            }
+            "Would?": ""
         },
         "Facelift": {
             "@date": "1990-08-28",
