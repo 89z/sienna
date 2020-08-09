@@ -799,6 +799,7 @@
     "The Doors": {
         "L.A. Woman": {
             "@date": "1971-04",
+            "@id": "iv8GW1GaoIc",
             "The Changeling": "",
             "Love Her Madly": "",
             "Been Down So Long": "",
@@ -808,10 +809,7 @@
             "Hyacinth House": "",
             "Crawling King Snake": "",
             "The WASP (Texas Radio and the Big Beat)": "",
-            "Riders on the Storm": {
-                "id": "iv8GW1GaoIc",
-                "views per year": "10,113,178"
-            }
+            "Riders on the Storm": ""
         },
         "Morrison Hotel": {
             "@date": "1970-02",
