@@ -5,7 +5,7 @@ extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
 
 # return release array from group string
-function mb_decode_group($s_mbid) {
+function mb_decode_group(string $s_mbid): array {
    $m_q['fmt'] = 'json';
    $m_q['inc'] = 'artist-credits recordings';
    $m_q['release-group'] = $s_mbid;
@@ -20,7 +20,7 @@ function mb_decode_group($s_mbid) {
 }
 
 # return release object from release string
-function mb_decode_release($s_mbid) {
+function mb_decode_release(string $s_mbid): object {
    $m_q['fmt'] = 'json';
    $m_q['inc'] = 'artist-credits recordings';
    $s_q = '?' . http_build_query($m_q);
@@ -34,7 +34,7 @@ function mb_decode_release($s_mbid) {
 }
 
 # return release object from release array
-function mb_reduce_group($o_ca, $o_it) {
+function mb_reduce_group(object $o_ca, object $o_it): object {
    if ($o_it->date == '') {
       return $o_ca;
    }

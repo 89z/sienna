@@ -25,7 +25,8 @@ $a_reg = [
    '/℗ (\d{4})/'
 ];
 
-$f_reg = function ($s_ca, $s_it) use ($s_desc) {
+function f_reg(string $s_ca, string $s_it): string {
+   global $s_desc;
    $n_mat = preg_match($s_it, $s_desc, $a_mat);
    if ($n_mat === 0) {
       return $s_ca;
@@ -35,10 +36,10 @@ $f_reg = function ($s_ca, $s_it) use ($s_desc) {
       return $s_ca;
    }
    return $s_mat;
-};
+}
 
 $s_init = substr($o_play->date, 0, 4);
-$s_year = array_reduce($a_reg, $f_reg, $s_init);
+$s_year = array_reduce($a_reg, 'f_reg', $s_init);
 $n_year = (int)($s_year);
 
 # song, artist

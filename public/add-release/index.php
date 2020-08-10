@@ -15,7 +15,7 @@ $s_arid = $o_local->$s_artist->{'@id'};
 $m_local = si_color($o_local->$s_artist);
 
 # remote albums
-function mb_albums($s_arid) {
+function mb_albums(string $s_arid): array {
    $m_q['artist'] = $s_arid;
    $m_q['fmt'] = 'json';
    $m_q['inc'] = 'release-groups';

@@ -2,13 +2,13 @@
 declare(strict_types = 1);
 
 # return video_id from URL
-function yt_video_id($s_url) {
+function yt_video_id(string $s_url): string {
    $s_q = parse_url($s_url, PHP_URL_QUERY);
    parse_str($s_q, $m_q);
    return $m_q['v'];
 }
 
-function f_head($s_url) {
+function f_head(string $s_url): bool {
    $a_head = get_headers($s_url);
    $s_code = $a_head[0];
    if (strpos($s_code, '200 OK') !== false) {
@@ -18,7 +18,7 @@ function f_head($s_url) {
 }
 
 # return info object from video id
-function yt_info_object($s_id) {
+function yt_info_object(string $s_id): object {
    # part 1
    $s_url = 'https://www.youtube.com/get_video_info?video_id=' . $s_id;
    # part 2

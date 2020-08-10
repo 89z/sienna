@@ -5,7 +5,7 @@ require 'lib-mb.php';
 require 'lib-yt.php';
 
 # return artists string from release object
-function yt_encode_artists($o_in) {
+function yt_encode_artists(object $o_in): string {
    foreach ($o_in->{'artist-credit'} as $o_artist) {
       $a_out[] = $o_artist->name;
    }
@@ -13,7 +13,7 @@ function yt_encode_artists($o_in) {
 }
 
 # return video_id from search string
-function yt_result($s_search) {
+function yt_result(string $s_search): string {
    $m_q['search_query'] = $s_search;
    $s_url = 'https://www.youtube.com/results?' . http_build_query($m_q);
    echo $s_url, "\n";
@@ -23,7 +23,7 @@ function yt_result($s_search) {
 }
 
 # return views map from video_id string
-function yt_views($s_ytid) {
+function yt_views(string $s_ytid): string {
    # part 1
    $o_play = yt_info_object($s_ytid);
    # part 2

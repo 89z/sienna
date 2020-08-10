@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-function r64_encode($n_in) {
+function r64_encode(int $n_in): string {
    $s_dig = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
    $s_out = '';
    do {
