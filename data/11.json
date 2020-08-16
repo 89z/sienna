@@ -2,12 +2,8 @@
     "Tiësto": {
         "The London Sessions": {
             "@date": "2020-05-15",
-            "God Is a Dancer": {
-                "id": "jnwDkVo6DxA",
-                "views": "50,964,380",
-                "published": "2019-09-20",
-                "views per year": "68,451,760"
-            },
+            "@id": "jnwDkVo6DxA",
+            "God Is a Dancer": "",
             "Nothing Really Matters": "short",
             "Ride": "",
             "Ritual": "",
@@ -23,12 +19,8 @@
         },
         "A Town Called Paradise": {
             "@date": "2014-06-13",
-            "Red Lights": {
-                "id": "CFF0mV24WCY",
-                "views": "161,182,613",
-                "published": "2014-02-10",
-                "views per year": "25,361,167"
-            },
+            "@id": "CFF0mV24WCY",
+            "Red Lights": "",
             "Footprints": "",
             "Light Years Away": "",
             "A Town Called Paradise": "",
@@ -60,6 +52,7 @@
         },
         "Just Be": {
             "@date": "2004-05-03",
+            "@id": "8tIgN7eICn4",
             "Forever Today": "",
             "Love Comes Again": "",
             "Traffic": "",
@@ -69,12 +62,7 @@
             "Walking on Clouds": "",
             "A Tear in the Open": "",
             "Just Be": "",
-            "Adagio for Strings": {
-                "id": "8tIgN7eICn4",
-                "views": "98,324,276",
-                "published": "2008-03-25",
-                "views per year": "8,032,730"
-            }
+            "Adagio for Strings": ""
         }
     },
     "Tipper": {
@@ -96,14 +84,12 @@
     "TLC": {
         "FanMail": {
             "@date": "1999-02-22",
+            "@id": "FrLequ6dUdM",
             "FanMail": "",
             "The Vic-E Interpretation (interlude)": "short",
             "Silly Ho": "",
             "Whispering Playa (interlude)": "short",
-            "No Scrubs": {
-                "id": "FrLequ6dUdM",
-                "views per year": "34,062,520"
-            },
+            "No Scrubs": "",
             "I'm Good at Being Bad": "",
             "If They Knew": "",
             "I Miss You So Much": "",
@@ -119,11 +105,9 @@
         },
         "CrazySexyCool": {
             "@date": "1994-11-15",
+            "@id": "LlZydtG3xqI",
             "Intro-lude": "short",
-            "Creep": {
-                "id": "LlZydtG3xqI",
-                "views per year": "7,998,099"
-            },
+            "Creep": "",
             "Kick Your Game": "",
             "Diggin’ on You": "",
             "Case of the Fake People": "",
@@ -309,14 +293,10 @@
     "Toni Braxton": {
         "Sex & Cigarettes": {
             "@date": "2018-03-23",
+            "@id": "EjW7WzozgI0",
             "Deadwood": "",
             "Sex & Cigarettes": "",
-            "Long as I Live": {
-                "id": "EjW7WzozgI0",
-                "views": "58,626,464",
-                "published": "2018-03-23",
-                "views per year": "27,105,463"
-            },
+            "Long as I Live": "",
             "Foh": "short",
             "Sorry": "",
             "My Heart": "",
@@ -325,15 +305,11 @@
         },
         "The Heat": {
             "@date": "2000-04-25",
+            "@id": "wpaR3wzTlvo",
             "He Wasn't Man Enough": "",
             "The Heat": "",
             "Spanish Guitar": "",
-            "Just Be a Man About It": {
-                "id": "wpaR3wzTlvo",
-                "views": "102,216,438",
-                "published": "2009-10-25",
-                "views per year": "9,669,659"
-            },
+            "Just Be a Man About It": "",
             "Gimme Some": "",
             "I'm Still Breathing": "",
             "Fairy Tale": "",
@@ -345,15 +321,11 @@
         },
         "Secrets": {
             "@date": "1996-06-18",
+            "@id": "p2Rch6WvPJE",
             "Come on Over Here": "",
             "You're Makin Me High": "",
             "There's No Me Without You": "",
-            "Un-Break My Heart": {
-                "id": "p2Rch6WvPJE",
-                "views": "492,686,181",
-                "published": "2009-10-25",
-                "views per year": "46,608,036"
-            },
+            "Un-Break My Heart": "",
             "Talking in His Sleep": "",
             "How Could an Angel Break My Heart": "",
             "Find Me a Man": "",
@@ -367,13 +339,9 @@
     "Tool": {
         "Fear Inoculum": {
             "@date": "2019-08-30",
+            "@id": "5ClCaPmAA7s",
             "Fear Inoculum": "",
-            "Pneuma": {
-                "id": "5ClCaPmAA7s",
-                "views": "13,932,379",
-                "published": "2019-08-29",
-                "views per year": "19,349,055"
-            },
+            "Pneuma": "",
             "Litanie contre la Peur": "short",
             "Invincible": "",
             "Legion Inoculant": "",

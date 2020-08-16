@@ -514,16 +514,14 @@
         },
         "Weezer": {
             "@date": "1994-05-10",
+            "@id": "ENXvZ9YRjbo",
             "My Name Is Jonas": "",
             "No One Else": "",
             "The World Has Turned and Left Me Here": "",
             "Buddy Holly": "short",
             "Undone – The Sweater Song": "",
             "Surf Wax America": "",
-            "Say It Ain’t So": {
-                "id": "ENXvZ9YRjbo",
-                "views per year": "8,910,782"
-            },
+            "Say It Ain’t So": "",
             "In the Garage": "",
             "Holiday": "",
             "Only in Dreams": ""
@@ -548,12 +546,10 @@
     "Will Smith": {
         "Big Willie Style": {
             "@date": "1997-11-25",
+            "@id": "3JcmQONgXJM",
             "Intro": "short",
             "Y’all Know": "",
-            "Gettin’ Jiggy Wit It": {
-                "id": "3JcmQONgXJM",
-                "views per year": "7,828,650"
-            },
+            "Gettin’ Jiggy Wit It": "",
             "Candy": "",
             "Chasing Forever": "",
             "Keith B‐Real I (interlude)": "short",

@@ -1080,6 +1080,7 @@
     "Bryan Adams": {
         "18 Til I Die": {
             "@date": "1996-06-03",
+            "@id": "hq2KgzKETBw",
             "The Only Thing That Looks Good on Me Is You": "",
             "Do to You": "",
             "Let’s Make a Night to Remember": "",
@@ -1092,12 +1093,7 @@
             "It Ain’t a Party…If You Can’t Come ’round": "",
             "Black Pearl": "",
             "You’re Still Beautiful to Me": "",
-            "Have You Ever Really Loved a Woman?": {
-                "id": "hq2KgzKETBw",
-                "views": "86,829,179",
-                "published": "2008-10-31",
-                "views per year": "7,513,470"
-            }
+            "Have You Ever Really Loved a Woman?": ""
         }
     },
     "Burial": {
