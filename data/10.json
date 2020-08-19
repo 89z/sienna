@@ -1055,6 +1055,7 @@
     "The Prodigy": {
         "The Fat of the Land": {
             "@date": "1997-06-30",
+            "@id": "wmin5WkOuPw",
             "Smack My Bitch Up": "",
             "Breathe": "",
             "Diesel Power": "",
@@ -1062,10 +1063,7 @@
             "Serial Thrilla": "",
             "Mindfields": "",
             "Narayan": "",
-            "Firestarter": {
-                "id": "wmin5WkOuPw",
-                "views per year": "10,431,914"
-            },
+            "Firestarter": "",
             "Climbatize": "",
             "Fuel My Fire": ""
         },
@@ -1105,16 +1103,14 @@
     "The Rolling Stones": {
         "Blue & Lonesome": {
             "@date": "2016-12-01",
+            "@id": "qEuV82GqQnE",
             "Just Your Fool": "short",
             "Commit a Crime": "",
             "Blue and Lonesome": "",
             "All of Your Love": "",
             "I Gotta Go": "",
             "Everybody Knows About My Good Thing": "",
-            "Ride ’Em On Down": {
-                "id": "qEuV82GqQnE",
-                "views per year": "8,513,012"
-            },
+            "Ride ’Em On Down": "",
             "Hate to See You Go": "",
             "Hoo Doo Blues": "short",
             "Little Rain": "",
@@ -1170,14 +1166,12 @@
         },
         "Goats Head Soup": {
             "@date": "1973-08-31",
+            "@id": "K5_EBAzIPJM",
             "Dancing With Mr. D.": "",
             "100 Years Ago": "",
             "Coming Down Again": "",
             "Doo Doo Doo Doo Doo (Heartbreaker)": "",
-            "Angie": {
-                "id": "K5_EBAzIPJM",
-                "views per year": "9,908,059"
-            },
+            "Angie": "",
             "Silver Train": "",
             "Hide Your Love": "",
             "Winter": "",
@@ -1199,10 +1193,8 @@
         },
         "Let It Bleed": {
             "@date": "1969-11-29",
-            "Gimme Shelter": {
-                "id": "RbmS3tQJ7Os",
-                "views per year": "14,494,170"
-            },
+            "@id": "RbmS3tQJ7Os",
+            "Gimme Shelter": "",
             "Love in Vain": "",
             "Country Honk": "",
             "Live With Me": "",
@@ -1214,10 +1206,8 @@
         },
         "Aftermath": {
             "@date": "1966-06-20",
-            "Paint It, Black": {
-                "id": "O4irXQhgMqg",
-                "views per year": "61,303,161"
-            },
+            "@id": "O4irXQhgMqg",
+            "Paint It, Black": "",
             "Stupid Girl": "short",
             "Lady Jane": "",
             "Under My Thumb": "",
@@ -1231,16 +1221,14 @@
         },
         "Out of Our Heads": {
             "@date": "1965-07-30",
+            "@id": "nrIPxlFzDi0",
             "Mercy Mercy": "short",
             "Hitch Hike": "short",
             "The Last Time": "",
             "That’s How Strong My Love Is": "short",
             "Good Times": "short",
             "I’m All Right": "short",
-            "Satisfaction": {
-                "id": "nrIPxlFzDi0",
-                "views per year": "19,306,124"
-            },
+            "Satisfaction": "",
             "Cry to Me": "",
             "The Under Assistant West Coast Promotion Man": "",
             "Play With Fire": "short",
@@ -1251,6 +1239,7 @@
     "The Smashing Pumpkins": {
         "Mellon Collie and the Infinite Sadness": {
             "@date": "1995-10-23",
+            "@id": "4aeETEoNfOg",
             "Mellon Collie and the Infinite Sadness": "short",
             "Tonight, Tonight": "",
             "Jellybelly": "",
@@ -1269,12 +1258,7 @@
             "Bodies": "",
             "Thirty‐Three": "",
             "In the Arms of Sleep": "",
-            "1979": {
-                "id": "4aeETEoNfOg",
-                "views": "119,068,312",
-                "published": "2011-08-02",
-                "views per year": "13,415,442"
-            },
+            "1979": "",
             "Tales of a Scorched Earth": "",
             "Thru the Eyes of Ruby": "",
             "Stumbleine": "short",
@@ -1319,6 +1303,7 @@
         },
         "The Queen Is Dead": {
             "@date": "1986-06-16",
+            "@id": "siO6dkqidc4",
             "The Queen Is Dead": "@",
             "Frankly, Mr. Shankly": "short",
             "I Know It’s Over": "@",
@@ -1327,10 +1312,7 @@
             "Bigmouth Strikes Again": "@",
             "The Boy With the Thorn in His Side": "@",
             "Vicar in a Tutu": "short",
-            "There Is a Light That Never Goes Out": {
-                "id": "siO6dkqidc4",
-                "views per year": "8,076,612"
-            },
+            "There Is a Light That Never Goes Out": "",
             "Some Girls Are Bigger Than Others": "@"
         },
         "Meat Is Murder": {
@@ -1348,15 +1330,13 @@
         },
         "The Smiths": {
             "@date": "1984-02-20",
+            "@id": "cJRP3LRcUFg",
             "Reel Around the Fountain": "@",
             "You’ve Got Everything Now": "@",
             "Miserable Lie": "@",
             "Pretty Girls Make Graves": "@",
             "The Hand That Rocks the Cradle": "@",
-            "This Charming Man": {
-                "id": "cJRP3LRcUFg",
-                "views per year": "8,451,350"
-            },
+            "This Charming Man": "",
             "Still Ill": "@",
             "Hand in Glove": "@",
             "What Difference Does It Make?": "@",
@@ -1504,6 +1484,7 @@
     "The xx": {
         "I See You": {
             "@date": "2017-01-13",
+            "@id": "qqflFMhkqHM",
             "Dangerous": "",
             "Say Something Loving": "",
             "Lips": "",
@@ -1512,22 +1493,13 @@
             "Replica": "",
             "Brave for You": "",
             "On Hold": "",
-            "I Dare You": {
-                "id": "qqflFMhkqHM",
-                "views": "40,801,451",
-                "published": "2017-06-29",
-                "views per year": "13,806,341"
-            },
+            "I Dare You": "",
             "Test Me": ""
         },
         "Coexist": {
             "@date": "2012-09-07",
-            "Angels": {
-                "id": "_nW5AF0m9Zw",
-                "views": "68,649,421",
-                "published": "2012-07-16",
-                "views per year": "8,677,238"
-            },
+            "@id": "_nW5AF0m9Zw",
+            "Angels": "",
             "Chained": "short",
             "Fiction": "short",
             "Try": "",

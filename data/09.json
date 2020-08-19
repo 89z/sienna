@@ -158,11 +158,9 @@
         },
         "Rage Against the Machine": {
             "@date": "1992-11-06",
+            "@id": "bWXazVhlyxQ",
             "Bombtrack": "@",
-            "Killing in the Name": {
-                "id": "bWXazVhlyxQ",
-                "views per year": "13,900,986"
-            },
+            "Killing in the Name": "",
             "Take the Power Back": "@",
             "Settle for Nothing": "@",
             "Bullet in the Head": "@",
@@ -207,13 +205,9 @@
     "Red Hot Chili Peppers": {
         "The Getaway": {
             "@date": "2016-06-17",
+            "@id": "Q0oIoR9mLwc",
             "The Getaway": "",
-            "Dark Necessities": {
-                "id": "Q0oIoR9mLwc",
-                "views": "264,698,913",
-                "published": "2016-06-17",
-                "views per year": "66,105,381"
-            },
+            "Dark Necessities": "",
             "We Turn Red": "",
             "The Longest Wave": "",
             "Goodbye Angels": "",
@@ -228,18 +222,14 @@
         },
         "I’m With You": {
             "@date": "2011-08-26",
+            "@id": "RtBbinpK5XI",
             "Monarchy of Roses": "",
             "Factory of Faith": "",
             "Brendan’s Death Song": "",
             "Ethiopia": "",
             "Annie Wants a Baby": "",
             "Look Around": "",
-            "The Adventures of Rain Dance Maggie": {
-                "id": "RtBbinpK5XI",
-                "views": "150,182,196",
-                "published": "2011-08-17",
-                "views per year": "16,984,031"
-            },
+            "The Adventures of Rain Dance Maggie": "",
             "Did I Let You Know": "",
             "Goodbye Hooray": "",
             "Happiness Loves Company": "",
