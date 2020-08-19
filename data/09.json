@@ -272,18 +272,14 @@
         },
         "By the Way": {
             "@date": "2002-07-09",
+            "@id": "8DyziWtkfBw",
             "By the Way": "",
             "Universally Speaking": "",
             "This Is the Place": "",
             "Dosed": "",
             "Don’t Forget Me": "",
             "The Zephyr Song": "",
-            "Can’t Stop": {
-                "id": "8DyziWtkfBw",
-                "views": "223,101,251",
-                "published": "2009-10-26",
-                "views per year": "20,946,957"
-            },
+            "Can’t Stop": "",
             "I Could Die for You": "",
             "Midnight": "",
             "Throw Away Your Television": "",
@@ -296,17 +292,13 @@
         },
         "Californication": {
             "@date": "1999-06-07",
+            "@id": "YlUKcNNmywk",
             "Around the World": "",
             "Parallel Universe": "",
             "Scar Tissue": "",
             "Otherside": "",
             "Get on Top": "",
-            "Californication": {
-                "id": "YlUKcNNmywk",
-                "views": "704,907,174",
-                "published": "2009-10-26",
-                "views per year": "66,210,198"
-            },
+            "Californication": "",
             "Easily": "",
             "Porcelain": "short",
             "Emit Remmus": "",
@@ -335,6 +327,7 @@
         },
         "Blood Sugar Sex Magik": {
             "@date": "1991-09-24",
+            "@id": "GLvohMXgcBo",
             "The Power of Equality": "",
             "If You Have to Ask": "",
             "Breaking the Girl": "",
@@ -345,12 +338,7 @@
             "The Righteous & The Wicked": "",
             "Give It Away": "",
             "Blood Sugar Sex Magik": "",
-            "Under the Bridge": {
-                "id": "GLvohMXgcBo",
-                "views": "181,387,732",
-                "published": "2009-10-26",
-                "views per year": "17,030,478"
-            },
+            "Under the Bridge": "",
             "Naked in the Rain": "",
             "Apache Rose Peacock": "",
             "The Greeting Song": "",
@@ -578,10 +566,8 @@
         },
         "Lovers Rock": {
             "@date": "1999-11-30",
-            "By Your Side": {
-                "id": "C8QJmI_V3j4",
-                "views per year": "7,418,773"
-            },
+            "@id": "C8QJmI_V3j4",
+            "By Your Side": "",
             "Flow": "",
             "King of Sorrow": "",
             "Somebody Already Broke My Heart": "",
@@ -595,10 +581,8 @@
         },
         "Love Deluxe": {
             "@date": "1992-10-23",
-            "No Ordinary Love": {
-                "id": "_WcWHZc8s2I",
-                "views per year": "9,867,013"
-            },
+            "@id": "_WcWHZc8s2I",
+            "No Ordinary Love": "",
             "Feel No Pain": "",
             "I Couldn’t Love You More": "",
             "Like a Tattoo": "",
@@ -759,18 +743,14 @@
     "Sarah McLachLan": {
         "Surfacing": {
             "@date": "1997-07-15",
+            "@id": "1SiylvmFI_8",
             "Building A Mystery": "",
             "I Love You": "",
             "Sweet Surrender": "",
             "Adia": "",
             "Do What You Have To Do": "",
             "Witness": "",
-            "Angel": {
-                "id": "1SiylvmFI_8",
-                "views": "108,022,737",
-                "published": "2011-05-22",
-                "views per year": "11,895,479"
-            },
+            "Angel": "",
             "Black & White": "",
             "Full Of Grace": "",
             "Last Dance": "short"
@@ -941,6 +921,7 @@
     "Simon & Garfunkel": {
         "Bookends": {
             "@date": "1968-04-03",
+            "@id": "9C1BCAgu2I8",
             "Bookends Theme (instrumental)": "short",
             "Save the Life of My Child": "short",
             "America": "",
@@ -950,19 +931,14 @@
             "Bookends Theme": "short",
             "Fakin’ It": "",
             "Punky’s Dilemma": "short",
-            "Mrs. Robinson": {
-                "id": "9C1BCAgu2I8",
-                "views per year": "9,581,371"
-            },
+            "Mrs. Robinson": "",
             "A Hazy Shade of Winter": "short",
             "At the Zoo": "short"
         },
         "Sounds of Silence": {
             "@date": "1966-01-17",
-            "The Sounds of Silence": {
-                "id": "NAEppFUWLfc",
-                "views per year": "11,529,443"
-            },
+            "@id": "NAEppFUWLfc",
+            "The Sounds of Silence": "",
             "Leaves That Are Green": "short",
             "Blessed": "",
             "Kathy’s Song": "",
@@ -976,15 +952,13 @@
         },
         "Wednesday Morning, 3 A.M.": {
             "@date": "1964-10-19",
+            "@id": "NAEppFUWLfc",
             "You Can Tell the World": "short",
             "Last Night I Had the Strangest Dream": "short",
             "Bleecker Street": "short",
             "Sparrow": "short",
             "Benedictus": "short",
-            "The Sounds of Silence": {
-                "id": "NAEppFUWLfc",
-                "views per year": "11,529,443"
-            },
+            "The Sounds of Silence": "",
             "He Was My Brother": "short",
             "Peggy‐O": "short",
             "Go Tell It on the Mountain": "short",
@@ -1009,10 +983,8 @@
         },
         "Don’t You (Forget About Me)": {
             "@date": "1985-03-19",
-            "Don’t You (Forget About Me)": {
-                "id": "CdqoNKCCt7A",
-                "views per year": "17,862,794"
-            },
+            "@id": "CdqoNKCCt7A",
+            "Don’t You (Forget About Me)": "",
             "A Brass Band in African Chimes": ""
         }
     },
@@ -1126,16 +1098,14 @@
     "Soundgarden": {
         "Superunknown": {
             "@date": "1994-03-08",
+            "@id": "3mbBbFH9fAg",
             "Let Me Drown": "",
             "My Wave": "",
             "Fell on Black Days": "",
             "Mailman": "",
             "Superunknown": "",
             "Head Down": "",
-            "Black Hole Sun": {
-                "id": "3mbBbFH9fAg",
-                "views per year": "16,022,919"
-            },
+            "Black Hole Sun": "",
             "Spoonman": "",
             "Limo Wreck": "",
             "The Day I Tried to Live": "",
@@ -1161,6 +1131,7 @@
         },
         "True": {
             "@date": "1983",
+            "@id": "AR8D2yqgQ1U",
             "Pleasure": "",
             "Communication": "",
             "Code of Love": "",
@@ -1168,10 +1139,7 @@
             "Lifeline": "",
             "Heaven Is a Secret": "",
             "Foundation": "",
-            "True": {
-                "id": "AR8D2yqgQ1U",
-                "views per year": "12,165,911"
-            }
+            "True": ""
         }
     },
     "Squarepusher": {
@@ -1432,11 +1400,9 @@
     "Sting": {
         "Brand New Day": {
             "@date": "1999-09-27",
+            "@id": "C3lWwBslWqg",
             "A Thousand Years": "",
-            "Desert Rose": {
-                "id": "C3lWwBslWqg",
-                "views per year": "15,536,018"
-            },
+            "Desert Rose": "",
             "Big Lie Small World": "",
             "After the Rain Has Fallen": "",
             "Perfect Love... Gone Wrong": "",
@@ -1448,6 +1414,7 @@
         },
         "Ten Summoner’s Tales": {
             "@date": "1993-03-09",
+            "@id": "QK-Z1K67uaA",
             "If I Ever Lose My Faith in You": "",
             "Love Is Stronger Than Justice (The Munificent Seven)": "",
             "Fields of Gold": "",
@@ -1456,10 +1423,7 @@
             "Seven Days": "",
             "Saint Augustine in Hell": "",
             "It’s Probably Me": "",
-            "Shape of My Heart": {
-                "id": "QK-Z1K67uaA",
-                "views per year": "70,230,260"
-            },
+            "Shape of My Heart": "",
             "Something the Boy Said": "",
             "Epilogue (Nothing ’Bout Me)": ""
         },
