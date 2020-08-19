@@ -368,16 +368,12 @@
         },
         "Lateralus": {
             "@date": "2001",
+            "@id": "MM62wjLrgmA",
             "The Grudge": "",
             "Eon Blue Apocalypse": "short",
             "The Patient": "good",
             "Mantra": "short",
-            "Schism": {
-                "id": "MM62wjLrgmA",
-                "views": "8,187,021",
-                "published": "2019-08-29",
-                "views per year": "11,369,998"
-            },
+            "Schism": "",
             "Parabol": "",
             "Parabola": "",
             "Ticks & Leeches": "",
@@ -389,16 +385,12 @@
         },
         "Ænima": {
             "@date": "1996-09-17",
+            "@id": "GIuZUCpm9hc",
             "Stinkfist": "good",
             "Eulogy": "",
             "H.": "",
             "Useful Idiot": "short",
-            "Forty Six & 2": {
-                "id": "GIuZUCpm9hc",
-                "views": "6,557,656",
-                "published": "2019-08-01",
-                "views per year": "8,230,872"
-            },
+            "Forty Six & 2": "",
             "Message to Harry Manback": "short",
             "Hooker With a Penis": "",
             "Intermission": "short",
@@ -412,14 +404,10 @@
         },
         "Undertow": {
             "@date": "1993-04-06",
+            "@id": "nspxAG12Cpc",
             "Intolerance": "",
             "Prison Sex": "good",
-            "Sober": {
-                "id": "nspxAG12Cpc",
-                "views": "9,060,531",
-                "published": "2019-08-29",
-                "views per year": "12,583,114"
-            },
+            "Sober": "",
             "Bottom": "",
             "Crawl Away": "",
             "Swamp Song": "",

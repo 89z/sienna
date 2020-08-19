@@ -103,12 +103,10 @@
         },
         "Songs From the Big Chair": {
             "@date": "1985-02-17",
+            "@id": "aGCdLKXNF3w",
             "Shout": "",
             "The Working Hour": "",
-            "Everybody Wants to Rule the World": {
-                "id": "aGCdLKXNF3w",
-                "views per year": "12,235,956"
-            },
+            "Everybody Wants to Rule the World": "",
             "Mothers Talk": "",
             "I Believe": "",
             "Broken": "short",
@@ -346,26 +344,21 @@
             "Hanging Around": "",
             "Higher": "",
             "Marvel Hill": "",
-            "My Favourite Game": {
-                "VPY": "4,707,718",
-                "URL": "https://youtu.be/6Ll5y2hZdCI"
-            },
+            "My Favourite Game": "",
             "Do You Believe": "",
             "Junk of the Hearts": "",
             "Nil": "short"
         },
         "First Band on the Moon": {
             "@date": "1996-08-12",
+            "@id": "NI6aOFI7hms",
             "Your New Cuckoo": "",
             "Been It": "",
             "Heartbreaker": "",
             "Happy Meal II": "short",
             "Never Recover": "",
             "Step on Me": "",
-            "Lovefool": {
-                "id": "NI6aOFI7hms",
-                "views per year": "9,298,212"
-            },
+            "Lovefool": "",
             "Losers": "",
             "Iron Man": "",
             "Great Divide": "",
@@ -375,13 +368,11 @@
     "The Cars": {
         "Heartbeat City": {
             "@date": "1984-03-13",
+            "@id": "xuZA6qiJVfU",
             "Hello Again": "",
             "Looking for Love": "",
             "Magic": "",
-            "Drive": {
-                "id": "xuZA6qiJVfU",
-                "views per year": "10,014,599"
-            },
+            "Drive": "",
             "Stranger Eyes": "",
             "You Might Think": "",
             "It's Not the Night": "",
@@ -541,14 +532,10 @@
         },
         "Combat Rock": {
             "@date": "1982-05-14",
+            "@id": "BN1WwnEDWAM",
             "Know Your Rights": "",
             "Car Jamming": "",
-            "Should I Stay or Should I Go": {
-                "id": "BN1WwnEDWAM",
-                "views": "75,912,870",
-                "published": "2016-08-08",
-                "views per year": "19,734,282"
-            },
+            "Should I Stay or Should I Go": "",
             "Rock the Casbah": "",
             "Red Angel Dragnet": "",
             "Straight to Hell": "",
@@ -624,14 +611,10 @@
     "The Cranberries": {
         "To the Faithful Departed": {
             "@date": "1996-04-29",
+            "@id": "RUmdWdEgHgk",
             "Hollywood": "",
             "Salvation": "short",
-            "When You’re Gone": {
-                "id": "RUmdWdEgHgk",
-                "views": "87,133,780",
-                "published": "2009-06-16",
-                "views per year": "7,972,348"
-            },
+            "When You’re Gone": "",
             "Free to Decide": "",
             "War Child": "",
             "Forever Yellow Skies": "",
@@ -645,15 +628,11 @@
         },
         "No Need to Argue": {
             "@date": "1994-10-03",
+            "@id": "6Ejga4kJUts",
             "Ode to My Family": "",
             "I Can’t Be With You": "",
             "Twenty One": "",
-            "Zombie": {
-                "id": "6Ejga4kJUts",
-                "views": "1,010,434,597",
-                "published": "2009-06-16",
-                "views per year": "92,450,210"
-            },
+            "Zombie": "",
             "Empty": "",
             "Everything I Said": "",
             "The Icicle Melts": "short",
@@ -666,18 +645,14 @@
         },
         "Everybody Else Is Doing It, So Why Can’t We?": {
             "@date": "1993-03-01",
+            "@id": "G6Kspj3OO0s",
             "I Still Do": "",
             "Dreams": "",
             "Sunday": "",
             "Pretty": "short",
             "Waltzing Back": "",
             "Not Sorry": "",
-            "Linger": {
-                "id": "G6Kspj3OO0s",
-                "views": "238,439,529",
-                "published": "2009-06-16",
-                "views per year": "21,821,608"
-            },
+            "Linger": "",
             "Wanted": "short",
             "Still Can’t…": "",
             "I Will Always": "short",
@@ -1022,16 +997,14 @@
     "The Police": {
         "Synchronicity": {
             "@date": "1983",
+            "@id": "OMOGaugKpzs",
             "Synchronicity I": "",
             "Walking in Your Footsteps": "",
             "O My God": "",
             "Mother": "",
             "Miss Gradenko": "short",
             "Synchronicity II": "",
-            "Every Breath You Take": {
-                "id": "OMOGaugKpzs",
-                "views per year": "74,122,505"
-            },
+            "Every Breath You Take": "",
             "King of Pain": "",
             "Wrapped Around Your Finger": "",
             "Tea in the Sahara": ""
@@ -1066,12 +1039,10 @@
         },
         "Outlandos d'Amour": {
             "@date": "1978",
+            "@id": "3T1c7GkzRQQ",
             "Next to You": "short",
             "So Lonely": "",
-            "Roxanne": {
-                "id": "3T1c7GkzRQQ",
-                "views per year": "9,626,846"
-            },
+            "Roxanne": "",
             "Hole in My Life": "",
             "Peanuts": "",
             "Can't Stand Losing You": "",
