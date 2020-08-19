@@ -240,12 +240,8 @@
         },
         "Stadium Arcadium": {
             "@date": "2006-05-05",
-            "Dani California": {
-                "id": "Sb5aq5HcS1A",
-                "views": "237,625,124",
-                "published": "2009-10-26",
-                "views per year": "22,310,602"
-            },
+            "@id": "Sb5aq5HcS1A",
+            "Dani California": "",
             "Snow ((Hey Oh))": "",
             "Charlie": "",
             "Stadium Arcadium": "",
