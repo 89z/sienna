@@ -1593,6 +1593,7 @@
     "System of a Down": {
         "Hypnotize": {
             "@date": "2005-11-18",
+            "@id": "DnGdoEa1tPg",
             "Attack": "",
             "Dreaming": "",
             "Kill Rock ’n Roll": "short",
@@ -1603,16 +1604,12 @@
             "Holy Mountains": "",
             "Vicinity of Obscenity": "short",
             "She’s Like Heroin": "short",
-            "Lonely Day": {
-                "id": "DnGdoEa1tPg",
-                "views": "245,817,433",
-                "published": "2009-10-03",
-                "views per year": "23,033,560"
-            },
+            "Lonely Day": "",
             "Soldier Side": ""
         },
         "Mezmerize": {
             "@date": "2005-05-16",
+            "@id": "ENBv2i88g6Y",
             "Soldier Side (intro)": "short",
             "B.Y.O.B.": "",
             "Revenga": "",
@@ -1620,29 +1617,20 @@
             "Radio/Video": "",
             "This Cocaine Makes Me Feel Like I’m on This Song": "short",
             "Violent Pornography": "",
-            "Question!": {
-                "id": "ENBv2i88g6Y",
-                "views": "77,176,739",
-                "published": "2009-10-02",
-                "views per year": "7,229,752"
-            },
+            "Question!": "",
             "Sad Statue": "",
             "Old School Hollywood": "short",
             "Lost in Hollywood": ""
         },
         "Toxicity": {
             "@date": "2001-08-27",
+            "@id": "CSvFpBOe8eY",
             "Prison Song": "",
             "Needles": "",
             "Deer Dance": "short",
             "Jet Pilot": "short",
             "X": "short",
-            "Chop Suey!": {
-                "id": "CSvFpBOe8eY",
-                "views": "958,857,735",
-                "published": "2009-10-02",
-                "views per year": "89,823,747"
-            },
+            "Chop Suey!": "",
             "Bounce": "short",
             "Forest": "",
             "ATWA": "short",
@@ -1654,14 +1642,10 @@
         },
         "System of a Down": {
             "@date": "1998-06-30",
+            "@id": "5vBGOrI6yBk",
             "Suite-Pee": "short",
             "Know": "",
-            "Sugar": {
-                "id": "5vBGOrI6yBk",
-                "views": "109,683,890",
-                "published": "2009-10-02",
-                "views per year": "10,274,953"
-            },
+            "Sugar": "",
             "Suggestions": "short",
             "Spiders": "",
             "DDevil": "short",

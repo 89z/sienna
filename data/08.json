@@ -47,14 +47,12 @@
         },
         "Boots": {
             "@date": "1966",
+            "@id": "SbyAZQ45uww",
             "As Tears Go By": "short",
             "Day Tripper": "",
             "I Move Around": "short",
             "It Ain’t Me Babe": "short",
-            "These Boots Are Made for Walkin’": {
-                "id": "SbyAZQ45uww",
-                "views per year": "14,027,379"
-            },
+            "These Boots Are Made for Walkin’": "",
             "In My Room": "short",
             "Lies": "short",
             "So Long, Babe": "",
@@ -173,6 +171,7 @@
     "Nelly Furtado": {
         "Loose": {
             "@date": "2006-06-09",
+            "@id": "6JnGBs88sL0",
             "Afraid": "",
             "Maneater": "",
             "Promiscuous": "",
@@ -180,12 +179,7 @@
             "Showtime": "",
             "No hay igual": "",
             "Te busqué": "",
-            "Say It Right": {
-                "id": "6JnGBs88sL0",
-                "views": "491,929,746",
-                "published": "2009-06-16",
-                "views per year": "44,930,568"
-            },
+            "Say It Right": "",
             "Do It": "",
             "In God’s Hands": "",
             "Wait for You": "",
@@ -194,16 +188,12 @@
         },
         "Whoa, Nelly!": {
             "@date": "2000-10-24",
+            "@id": "roPQ_M3yJTA",
             "Hey, Man!": "",
             "Shit on the Radio (Remember the Days)": "",
             "Baby Girl": "",
             "Legend": "",
-            "I’m Like a Bird": {
-                "id": "roPQ_M3yJTA",
-                "views": "87,445,723",
-                "published": "2009-06-16",
-                "views per year": "7,986,884"
-            },
+            "I’m Like a Bird": "",
             "Turn Off the Light": "",
             "Trynna Finda Way": "",
             "Party": "",
@@ -261,11 +251,9 @@
     "New Radicals": {
         "Maybe You’ve Been Brainwashed Too.": {
             "@date": "1998-10-20",
+            "@id": "DL7-CKirWZE",
             "Mother We Just Can’t Get Enough": "",
-            "You Get What You Give": {
-                "id": "DL7-CKirWZE",
-                "views per year": "8,594,569"
-            },
+            "You Get What You Give": "",
             "I Hope I Didn’t Just Give Away the Ending": "",
             "I Don’t Wanna Die Anymore": "",
             "Jehovah Made This Whole Joint for You": "",
@@ -499,13 +487,11 @@
     "Nirvana": {
         "MTV Unplugged in New York": {
             "@date": "1994-11-01",
+            "@id": "fregObNcHC8",
             "About a Girl": "",
             "Come as You Are": "",
             "Jesus Doesn’t Want Me for a Sunbeam": "",
-            "The Man Who Sold the World": {
-                "id": "fregObNcHC8",
-                "views per year": "27,275,492"
-            },
+            "The Man Who Sold the World": "",
             "Pennyroyal Tea": "",
             "Dumb": "short",
             "Polly": "",
@@ -519,12 +505,10 @@
         },
         "In Utero": {
             "@date": "1993-09-21",
+            "@id": "n6P0SitRwy8",
             "Serve the Servants": "",
             "Scentless Apprentice": "",
-            "Heart-Shaped Box": {
-                "id": "n6P0SitRwy8",
-                "views per year": "16,652,069"
-            },
+            "Heart-Shaped Box": "",
             "Rape Me": "short",
             "Frances Farmer Will Have Her Revenge on Seattle": "",
             "Dumb": "short",
@@ -537,10 +521,8 @@
         },
         "Nevermind": {
             "@date": "1991-09-23",
-            "Smells Like Teen Spirit": {
-                "id": "hTWKbfoikeg",
-                "views per year": "98,114,804"
-            },
+            "@id": "hTWKbfoikeg",
+            "Smells Like Teen Spirit": "",
             "In Bloom": "",
             "Come as You Are": "",
             "Breed": "",
@@ -805,6 +787,7 @@
     "OutKast": {
         "Speakerboxxx / The Love Below": {
             "@date": "2003-09-23",
+            "@id": "PWgvGjAhvIw",
             "Intro": "short",
             "GhettoMusick": "",
             "Unhappy": "",
@@ -832,10 +815,7 @@
             "Where Are My Panties?": "short",
             "Prototype": "",
             "She Lives in My Lap": "",
-            "Hey Ya!": {
-                "id": "PWgvGjAhvIw",
-                "views per year": "43,181,863"
-            },
+            "Hey Ya!": "",
             "Roses": "",
             "Good Day, Good Sir": "short",
             "Behold a Lady": "",
@@ -850,14 +830,12 @@
         },
         "Stankonia": {
             "@date": "2000-10-23",
+            "@id": "YSwT1uaMvUY",
             "Intro": "short",
             "Gasoline Dreams": "",
             "I'm Cool (interlude)": "short",
             "So Fresh, So Clean": "",
-            "Ms. Jackson": {
-                "id": "YSwT1uaMvUY",
-                "views per year": "29,929,701"
-            },
+            "Ms. Jackson": "",
             "Snappin' & Trappin'": "",
             "D.F. (interlude)": "short",
             "Spaghetti Junction": "",
@@ -899,12 +877,10 @@
     "P. Diddy": {
         "We Invented the Remix": {
             "@date": "2002-05-14",
+            "@id": "zGUttrXgzLI",
             "Intro": "short",
             "Special Delivery (remix)": "",
-            "I Need a Girl, Part Two": {
-                "id": "zGUttrXgzLI",
-                "views per year": "14,088,657"
-            },
+            "I Need a Girl, Part Two": "",
             "Bad Boy for Life (remix)": "",
             "I Need a Girl, Part One": "",
             "The Remix Phenomenon (interlude)": "short",
