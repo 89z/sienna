@@ -59,11 +59,9 @@
         },
         "Hurry Up, We’re Dreaming": {
             "@date": "2011-10-14",
+            "@id": "dX3k_QDnzHE",
             "Intro": "",
-            "Midnight City": {
-                "id": "dX3k_QDnzHE",
-                "views per year": "33,918,647"
-            },
+            "Midnight City": "",
             "Reunion": "",
             "Where the Boats Go": "short",
             "Wait": "",
@@ -171,14 +169,10 @@
         "@check": "2020-07-07",
         "Madame X": {
             "@date": "2019-06-14",
+            "@id": "zv-sdTOw5cs",
             "Medellín": "",
             "Dark Ballet": "",
-            "God Control": {
-                "id": "zv-sdTOw5cs",
-                "views": "7,276,291",
-                "published": "2019-06-26",
-                "views per year": "7,681,114"
-            },
+            "God Control": "",
             "Future": "",
             "Batuka": "",
             "Killers Who Are Partying": "",
@@ -192,17 +186,13 @@
         },
         "Rebel Heart": {
             "@date": "2015-03-06",
+            "@id": "7hPMmzKs62w",
             "Living for Love": "",
             "Devil Pray": "",
             "Ghosttown": "",
             "Unapologetic Bitch": "",
             "Illuminati": "",
-            "Bitch I’m Madonna": {
-                "id": "7hPMmzKs62w",
-                "views": "319,155,061",
-                "published": "2015-06-18",
-                "views per year": "64,226,659"
-            },
+            "Bitch I’m Madonna": "",
             "Hold Tight": "",
             "Joan of Arc": "",
             "Iconic": "",
@@ -214,15 +204,11 @@
         },
         "MDNA": {
             "@date": "2012-03-12",
+            "@id": "cItHOl5LRWg",
             "Girl Gone Wild": "",
             "I'm Addicted": "",
             "Turn Up the Radio": "",
-            "Give Me All Your Luvin'": {
-                "id": "cItHOl5LRWg",
-                "views": "76,579,703",
-                "published": "2012-02-02",
-                "views per year": "9,179,763"
-            },
+            "Give Me All Your Luvin'": "",
             "Some Girls": "",
             "Superstar": "",
             "I Don't Give A": "",
@@ -233,13 +219,9 @@
         },
         "Hard Candy": {
             "@date": "2008-04-25",
+            "@id": "aAQZPBwz2CI",
             "Candy Shop": "",
-            "4 Minutes": {
-                "id": "aAQZPBwz2CI",
-                "views": "111,759,173",
-                "published": "2009-10-26",
-                "views per year": "10,531,486"
-            },
+            "4 Minutes": "",
             "Give It 2 Me": "",
             "Heartbeat": "",
             "Miles Away": "",
@@ -253,12 +235,8 @@
         },
         "Confessions on a Dance Floor": {
             "@date": "2005-11-11",
-            "Hung Up": {
-                "id": "EDwb9jOVRtU",
-                "views": "247,610,539",
-                "published": "2009-10-26",
-                "views per year": "23,333,269"
-            },
+            "@id": "EDwb9jOVRtU",
+            "Hung Up": "",
             "Get Together": "",
             "Sorry": "",
             "Future Lovers": "",
@@ -370,6 +348,7 @@
         },
         "I’m Breathless": {
             "@date": "1990-05-12",
+            "@id": "P4oD-RNoo5o",
             "He's a Man": "",
             "Sooner or Later": "",
             "Hanky Panky": "",
@@ -381,21 +360,12 @@
             "What Can You Lose?": "short",
             "Now I'm Following You, Part I": "short",
             "Now I'm Following You, Part II": "",
-            "Vogue": {
-                "id": "P4oD-RNoo5o",
-                "views": "331,349",
-                "published": "2020-05-20",
-                "views per year": "7,119,131"
-            }
+            "Vogue": ""
         },
         "Like a Prayer": {
             "@date": "1989-03-20",
-            "Like a Prayer": {
-                "id": "79fzeNUqQbQ",
-                "views": "117,911,411",
-                "published": "2009-10-26",
-                "views per year": "11,111,234"
-            },
+            "@id": "79fzeNUqQbQ",
+            "Like a Prayer": "",
             "Express Yourself": "",
             "Love Song": "",
             "Till Death Do Us Part": "",
@@ -409,12 +379,8 @@
         },
         "True Blue": {
             "@date": "1986-06-30",
-            "Papa Don't Preach": {
-                "id": "G333Is7VPOg",
-                "views": "106,181,782",
-                "published": "2011-06-30",
-                "views per year": "11,882,015"
-            },
+            "@id": "G333Is7VPOg",
+            "Papa Don't Preach": "",
             "Open Your Heart": "",
             "White Heat": "",
             "Live To Tell": "",
@@ -426,14 +392,10 @@
         },
         "Like a Virgin": {
             "@date": "1984-11-13",
+            "@id": "s__rX_WL100",
             "Material Girl": "",
             "Angel": "",
-            "Like a Virgin": {
-                "id": "s__rX_WL100",
-                "views": "76,676,889",
-                "published": "2009-10-26",
-                "views per year": "7,225,550"
-            },
+            "Like a Virgin": "",
             "Over and Over": "",
             "Love Don’t Live Here Anymore": "",
             "Dress You Up": "",
@@ -500,11 +462,9 @@
     "Mariah Carey": {
         "Memoirs of an Imperfect Angel": {
             "@date": "2009-10-05",
+            "@id": "H1Yt0xJKDY8",
             "Betcha Gon' Know (The Prologue)": "",
-            "Obsessed": {
-                "id": "H1Yt0xJKDY8",
-                "views per year": "13,182,572"
-            },
+            "Obsessed": "",
             "H.A.T.E.U.": "",
             "Candy Bling": "",
             "Ribbon": "",
@@ -523,11 +483,9 @@
         },
         "E=MC²": {
             "@date": "2008-04-11",
+            "@id": "9b8erWuBA44",
             "Migrate": "",
-            "Touch My Body": {
-                "id": "9b8erWuBA44",
-                "views per year": "17,355,992"
-            },
+            "Touch My Body": "",
             "Cruise Control": "",
             "I Stay in Love": "",
             "Side Effects": "",
