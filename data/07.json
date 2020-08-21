@@ -501,11 +501,9 @@
         },
         "The Emancipation of Mimi": {
             "@date": "2005-04-04",
+            "@id": "0habxsuXW4g",
             "It’s Like That": "",
-            "We Belong Together": {
-                "id": "0habxsuXW4g",
-                "views per year": "38,093,925"
-            },
+            "We Belong Together": "",
             "Shake It Off": "",
             "Mine Again": "",
             "Say Somethin’": "",
@@ -519,21 +517,28 @@
             "Joy Ride": "",
             "Fly Like a Bird": ""
         },
-        "Butterfly": {
-            "My All": {
-                "VPY": "13,670,261",
-                "URL": "https://youtu.be/mIhI23gBBPQ"
-            },
-            "@date": "1997"
-        },
+       "Butterfly": {
+           "@date": "1997-09-16",
+           "@id": "mIhI23gBBPQ",
+           "Honey": "",
+           "Butterfly": "",
+           "My All": "",
+           "The Roof": "",
+           "Fourth of July": "",
+           "Breakdown": "",
+           "Babydoll": "",
+           "Close My Eyes": "",
+           "Whenever You Call": "",
+           "Fly Away (Butterfly reprise)": "",
+           "The Beautiful Ones": "",
+           "Outside": ""
+       },
         "Daydream": {
             "@date": "1995-09-27",
+            "@id": "UXxRyNvTPr8",
             "Fantasy": "",
             "Underneath the Stars": "",
-            "One Sweet Day": {
-                "id": "UXxRyNvTPr8",
-                "views per year": "18,574,154"
-            },
+            "One Sweet Day": "",
             "Open Arms": "",
             "Always Be My Baby": "",
             "I Am Free": "",
@@ -553,11 +558,9 @@
         },
         "Music Box": {
             "@date": "1993-09-17",
+            "@id": "0IA3ZvCkRkQ",
             "Dreamlover": "",
-            "Hero": {
-                "id": "0IA3ZvCkRkQ",
-                "views per year": "23,839,457"
-            },
+            "Hero": "",
             "Anytime You Need a Friend": "",
             "Music Box": "",
             "Now That I Know": "",
@@ -584,16 +587,12 @@
     "Mark Morrison": {
         "Return of theMack": {
             "@date": "1996-04-22",
+            "@id": "uB1D9wWxd2w",
             "Crazy (D-Influence mix)": "",
             "Let's Get Down": "",
             "Get High With Me": "",
             "Moan and Groan": "",
-            "Return of the Mack (C&J Street mix)": {
-                "id": "uB1D9wWxd2w",
-                "views": "101,152,855",
-                "published": "2007-06-23",
-                "views per year": "7,791,103"
-            },
+            "Return of the Mack (C&J Street mix)": "",
             "I Like": "",
             "Trippin'": "",
             "Horny": "",
@@ -713,14 +712,10 @@
     "Matchbox Twenty": {
         "Yourself or Someone Like You": {
             "@date": "1996-10-01",
+            "@id": "C-Naa1HXeDQ",
             "Real World": "",
             "Long Day": "",
-            "3 A.M.": {
-                "id": "C-Naa1HXeDQ",
-                "views": "86,805,993",
-                "published": "2009-10-26",
-                "views per year": "8,155,693"
-            },
+            "3 A.M.": "",
             "Push": "",
             "Girl Like That": "",
             "Back 2 Good": "",
@@ -822,12 +817,8 @@
     "Metallica": {
         "Hardwired… to Self‐Destruct": {
             "@date": "2016-11-18",
-            "Hardwired": {
-                "id": "uhBHL3v4d3I",
-                "views": "47,981,798",
-                "published": "2016-08-18",
-                "views per year": "12,536,264"
-            },
+            "@id": "uhBHL3v4d3I",
+            "Hardwired": "",
             "Atlas, Rise!": "",
             "Now That We’re Dead": "",
             "Moth Into Flame": "",
@@ -842,6 +833,7 @@
         },
         "Garage Inc.": {
             "@date": "1998-11-24",
+            "@id": "boanuwUMNNQ",
             "Free Speech for the Dumb": "short",
             "It’s Electric": "",
             "Sabbra Cadabra": "",
@@ -850,12 +842,7 @@
             "Loverman": "",
             "Mercyful Fate": "",
             "Astronomy": "",
-            "Whiskey in the Jar": {
-                "id": "boanuwUMNNQ",
-                "views": "97,041,191",
-                "published": "2009-10-26",
-                "views per year": "9,117,088"
-            },
+            "Whiskey in the Jar": "",
             "Tuesday’s Gone": "",
             "The More I See": "",
             "Helpless": "",
@@ -893,12 +880,8 @@
         },
         "Metallica": {
             "@date": "1991-08-12",
-            "Enter Sandman": {
-                "id": "CD-E-LDc384",
-                "views": "401,240,319",
-                "published": "2012-03-19",
-                "views per year": "48,655,136"
-            },
+            "@id": "CD-E-LDc384",
+            "Enter Sandman": "",
             "Sad but True": "",
             "Holier Than Thou": "",
             "The Unforgiven": "",
@@ -913,15 +896,11 @@
         },
         "…and Justice for All": {
             "@date": "1988-08-25",
+            "@id": "WM8bTdBs-cw",
             "Blackened": "",
             "…and Justice for All": "",
             "Eye of the Beholder": "",
-            "One": {
-                "id": "WM8bTdBs-cw",
-                "views": "167,376,632",
-                "published": "2009-10-26",
-                "views per year": "15,725,155"
-            },
+            "One": "",
             "The Shortest Straw": "",
             "Harvester of Sorrow": "",
             "The Frayed Ends of Sanity": "",
@@ -930,13 +909,9 @@
         },
         "Master of Puppets": {
             "@date": "1986-02-21",
+            "@id": "xnKhsTXoKCI",
             "Battery": "",
-            "Master of Puppets": {
-                "id": "xnKhsTXoKCI",
-                "views": "140,997,856",
-                "published": "2010-07-12",
-                "views per year": "14,193,027"
-            },
+            "Master of Puppets": "",
             "The Thing That Should Not Be": "",
             "Welcome Home (Sanitarium)": "",
             "Disposable Heroes": "",
@@ -946,15 +921,11 @@
         },
         "Ride the Lightning": {
             "@date": "1984-07-30",
+            "@id": "WEQnzs8wl6E",
             "Fight Fire With Fire": "",
             "Ride the Lightning": "",
             "For Whom the Bell Tolls": "",
-            "Fade to Black": {
-                "id": "WEQnzs8wl6E",
-                "views": "126,433,814",
-                "published": "2007-03-28",
-                "views per year": "9,558,435"
-            },
+            "Fade to Black": "",
             "Trapped Under Ice": "",
             "Escape": "",
             "Creeping Death": "",
