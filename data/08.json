@@ -948,6 +948,7 @@
     "Pearl Jam": {
         "Gigaton": {
             "@date": "2020-03-27",
+            "@id": "n9xaDlY2hPE",
             "Who Ever Said": "",
             "Superblood Wolfmoon": "",
             "Dance of the Clairvoyants": "",
@@ -958,12 +959,7 @@
             "Take the Long Way": "",
             "Buckle Up": "",
             "Comes Then Goes": "",
-            "Retrograde": {
-                "id": "n9xaDlY2hPE",
-                "views": "888,639",
-                "published": "2020-05-14",
-                "views per year": "40,571,924"
-            },
+            "Retrograde": "",
             "River Cross": ""
         },
         "Vitalogy": {
@@ -1000,28 +996,20 @@
         },
         "Jeremy": {
             "@date": "1992",
+            "@id": "hs8y3kneqrs",
             "Jeremy": "",
             "Footsteps": "",
-            "Yellow Ledbetter": {
-                "id": "hs8y3kneqrs",
-                "views": "99,298,705",
-                "published": "2007-11-25",
-                "views per year": "7,950,209"
-            }
+            "Yellow Ledbetter": ""
         },
         "Ten": {
             "@date": "1991-08-27",
+            "@id": "MS91knuzoOA",
             "Once": "",
             "Even Flow": "",
             "Alive": "",
             "Why Go": "",
             "Black": "",
-            "Jeremy": {
-                "id": "MS91knuzoOA",
-                "views": "117,447,471",
-                "published": "2009-10-25",
-                "views per year": "11,107,636"
-            },
+            "Jeremy": "",
             "Oceans": "short",
             "Porch": "",
             "Garden": "",
@@ -1086,31 +1074,23 @@
         },
         "Actually": {
             "@date": "1987-09-07",
+            "@id": "dRHetRTOD1Q",
             "One More Chance": "",
             "What Have I Done to Deserve This?": "",
             "Shopping": "",
             "Rent": "",
             "Hit Music": "",
             "It Couldn’t Happen Here": "",
-            "It’s a Sin": {
-                "id": "dRHetRTOD1Q",
-                "views": "79,078,351",
-                "published": "2009-03-02",
-                "views per year": "7,043,006"
-            },
+            "It’s a Sin": "",
             "I Want to Wake Up": "",
             "Heart": "",
             "King’s Cross": ""
         },
         "Please": {
             "@date": "1986-03-24",
+            "@id": "p3j2NYZ8FKs",
             "Two Divided by Zero": "",
-            "West End Girls": {
-                "id": "p3j2NYZ8FKs",
-                "views": "81,576,401",
-                "published": "2009-04-22",
-                "views per year": "7,356,983"
-            },
+            "West End Girls": "",
             "Opportunities (Let’s Make Lots of Money)": "",
             "Love Comes Quickly": "",
             "Suburbia": "",
@@ -1171,18 +1151,14 @@
     "Phil Collins": {
         "…But Seriously": {
             "@date": "1989-11-07",
+            "@id": "Qt2mbGP6vFI",
             "Hang In Long Enough": "",
             "That’s Just the Way It Is": "",
             "Do You Remember?": "",
             "Something Happened on the Way to Heaven": "",
             "Colours": "",
             "I Wish It Would Rain Down": "",
-            "Another Day in Paradise": {
-                "id": "Qt2mbGP6vFI",
-                "views": "330,812,757",
-                "published": "2010-05-10",
-                "views per year": "32,950,466"
-            },
+            "Another Day in Paradise": "",
             "Heat on the Street": "",
             "All of My Life": "",
             "Saturday Night and Sunday Morning": "short",
@@ -1218,12 +1194,8 @@
         },
         "Face Value": {
             "@date": "1981-02-06",
-            "In the Air Tonight": {
-                "id": "MN3x-kAbgFU",
-                "views": "104,024,588",
-                "published": "2010-05-31",
-                "views per year": "10,421,004"
-            },
+            "@id": "MN3x-kAbgFU",
+            "In the Air Tonight": "",
             "This Must Be Love": "",
             "Behind the Lines": "",
             "The Roof Is Leaking": "",
