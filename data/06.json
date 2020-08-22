@@ -586,15 +586,11 @@
         },
         "[Led Zeppelin IV]": {
             "@date": "1971-11-08",
+            "@id": "xbhCPt6PZIU",
             "Black Dog": "",
             "Rock and Roll": "",
             "The Battle of Evermore": "",
-            "Stairway to Heaven": {
-                "id": "xbhCPt6PZIU",
-                "views": "52,243,064",
-                "published": "2018-01-26",
-                "views per year": "22,265,787"
-            },
+            "Stairway to Heaven": "",
             "Misty Mountain Hop": "",
             "Four Sticks": "",
             "Going to California": "",
@@ -602,12 +598,8 @@
         },
         "Led Zeppelin III": {
             "@date": "1970-10-05",
-            "Immigrant Song": {
-                "id": "RlNhD0oS5pk",
-                "views": "79,024,251",
-                "published": "2009-10-26",
-                "views per year": "7,456,370"
-            },
+            "@id": "RlNhD0oS5pk",
+            "Immigrant Song": "",
             "Friends": "",
             "Celebration Day": "",
             "Since I’ve Been Loving You": "",
@@ -620,12 +612,8 @@
         },
         "Led Zeppelin II": {
             "@date": "1969-10-22",
-            "Whole Lotta Love": {
-                "id": "HQmmM_qwG4k",
-                "views": "114,841,990",
-                "published": "2008-04-20",
-                "views per year": "9,479,330"
-            },
+            "@id": "HQmmM_qwG4k",
+            "Whole Lotta Love": "",
             "What Is and What Should Never Be": "",
             "The Lemon Song": "",
             "Thank You": "",
@@ -651,11 +639,9 @@
     "Lenny Kravitz": {
         "Raise Vibration": {
             "@date": "2018-09-07",
+            "@id": "BilaShsQphM",
             "We Can Get It All Together": "",
-            "Low": {
-                "id": "BilaShsQphM",
-                "views per year": "30,661,907"
-            },
+            "Low": "",
             "Who Really Are the Monsters?": "",
             "Raise Vibration": "",
             "Johnny Cash": "",
@@ -1028,11 +1014,9 @@
         },
         "Wounded Rhymes": {
             "@date": "2010-02-28",
+            "@id": "vZYbEL06lEU",
             "Youth Knows No Pain": "short",
-            "I Follow Rivers": {
-                "id": "vZYbEL06lEU",
-                "views per year": "7,527,626"
-            },
+            "I Follow Rivers": "",
             "Love Out of Lust": "@",
             "Unrequited Love": "@",
             "Get Some": "@",

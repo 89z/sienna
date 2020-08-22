@@ -239,11 +239,9 @@
     "Heart": {
         "Bad Animals": {
             "@date": "1987-06-05",
+            "@id": "1Cw1ng75KP0",
             "Who Will You Run To": "",
-            "Alone": {
-                "id": "1Cw1ng75KP0",
-                "views per year": "19,474,146"
-            },
+            "Alone": "",
             "There’s the Girl": "",
             "I Want You So Bad": "",
             "Wait for an Answer": "",
@@ -543,6 +541,7 @@
         },
         "Make Yourself": {
             "@date": "1999-10-26",
+            "@id": "fgT9zGkiLig",
             "Privilege": "@",
             "Nowhere Fast": "@",
             "Consequence": "@",
@@ -550,10 +549,7 @@
             "When It Comes": "@",
             "Stellar": "@",
             "Make Yourself": "@",
-            "Drive": {
-                "id": "fgT9zGkiLig",
-                "views per year": "11,533,580"
-            },
+            "Drive": "",
             "Clean": "@",
             "Battlestar Scralatchtica": "@",
             "I Miss You": "short",
@@ -1211,17 +1207,13 @@
     "Jeff Buckley": {
         "Grace": {
             "@date": "1994-08-15",
+            "@id": "y8AWFf7EAc4",
             "Mojo Pin": "",
             "Grace": "",
             "Last Goodbye": "",
             "Lilac Wine": "",
             "So Real": "",
-            "Hallelujah": {
-                "id": "y8AWFf7EAc4",
-                "views": "161,711,145",
-                "published": "2009-10-25",
-                "views per year": "15,254,389"
-            },
+            "Hallelujah": "",
             "Lover, You Should’ve Come Over": "",
             "Corpus Christi Carol": "short",
             "Eternal Life": "",
