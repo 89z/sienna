@@ -443,14 +443,10 @@
         },
         "There Is Nothing Left to Lose": {
             "@date": "1999-11-01",
+            "@id": "1VQ_3sBZEm0",
             "Stacked Actors": "",
             "Breakout": "",
-            "Learn to Fly": {
-                "id": "1VQ_3sBZEm0",
-                "views": "126,494,876",
-                "published": "2009-10-02",
-                "views per year": "11,901,662"
-            },
+            "Learn to Fly": "",
             "Gimme Stitches": "",
             "Generator": "",
             "Aurora": "",
@@ -462,6 +458,7 @@
         },
         "The Colour and the Shape": {
             "@date": "1997-05-12",
+            "@id": "eBG7P-K-r1Y",
             "Doll": "short",
             "Monkey Wrench": "",
             "Hey, Johnny Park!": "",
@@ -472,12 +469,7 @@
             "See You": "short",
             "Enough Space": "short",
             "February Stars": "",
-            "Everlong": {
-                "id": "eBG7P-K-r1Y",
-                "views": "172,540,940",
-                "published": "2009-10-02",
-                "views per year": "16,234,049"
-            },
+            "Everlong": "",
             "Walking After You": "",
             "New Way Home": ""
         }
@@ -485,12 +477,10 @@
     "Foreigner": {
         "Agent Provocateur": {
             "@date": "1984",
+            "@id": "r3Pr1_v7hsw",
             "Tooth and Nail": "",
             "That Was Yesterday": "",
-            "I Want to Know What Love Is": {
-                "id": "r3Pr1_v7hsw",
-                "views per year": "73,703,307"
-            },
+            "I Want to Know What Love Is": "",
             "Growing Up the Hard Way": "",
             "Reaction to Action": "",
             "Stranger in My Own House": "",
@@ -915,11 +905,9 @@
     "Gnarls Barkley": {
         "St. Elsewhere": {
             "@date": "2006-04-24",
+            "@id": "bd2B6SjMh_w",
             "Go‐Go Gadget Gospel": "short",
-            "Crazy": {
-                "id": "bd2B6SjMh_w",
-                "views per year": "10,164,838"
-            },
+            "Crazy": "",
             "St. Elsewhere": "short",
             "Gone Daddy Gone": "short",
             "Smiley Faces": "",
@@ -1056,6 +1044,7 @@
     "Goo Goo Dolls": {
         "Dizzy Up the Girl": {
             "@date": "1998-09-22",
+            "@id": "NdYWuo9OFAw",
             "Dizzy": "short",
             "Slide": "",
             "Broadway": "",
@@ -1066,10 +1055,7 @@
             "All Eyes on Me": "",
             "Full Forever": "short",
             "Acoustic #3": "short",
-            "Iris": {
-                "id": "NdYWuo9OFAw",
-                "views per year": "22,787,268"
-            },
+            "Iris": "",
             "Extra Pale": "short",
             "Hate This Place": ""
         },
@@ -1093,10 +1079,8 @@
     "Gorillaz": {
         "The Now Now": {
             "@date": "2018-06-29",
-            "Humility": {
-                "id": "E5yFcdPAGv0",
-                "views per year": "38,925,678"
-            },
+            "@id": "E5yFcdPAGv0",
+            "Humility": "",
             "Tranz": "short",
             "Hollywood": "",
             "Kansas": "",
@@ -1110,11 +1094,9 @@
         },
         "Humanz": {
             "@date": "2017-04-28",
+            "@id": "hBA0PUQCvIA",
             "Intro: I Switched My Robot Off": "short",
-            "Ascension": {
-                "id": "hBA0PUQCvIA",
-                "views per year": "7,009,876"
-            },
+            "Ascension": "",
             "Strobelite": "",
             "Saturnz Barz": "",
             "Momentz": "",
@@ -1136,14 +1118,12 @@
         },
         "Plastic Beach": {
             "@date": "2010-03-05",
+            "@id": "nhPaWIeULKk",
             "Orchestral Intro": "short",
             "Welcome to the World of the Plastic Beach": "",
             "White Flag": "",
             "Rhinestone Eyes": "",
-            "Stylo": {
-                "id": "nhPaWIeULKk",
-                "views per year": "10,332,777"
-            },
+            "Stylo": "",
             "Superfast Jellyfish": "short",
             "Empire Ants": "",
             "Glitter Freeze": "",
@@ -1158,14 +1138,12 @@
         },
         "Demon Days": {
             "@date": "2005-05-20",
+            "@id": "cLnkQAeMbIM",
             "Intro": "short",
             "Last Living Souls": "",
             "Kids With Guns": "",
             "O Green World": "",
-            "Dirty Harry": {
-                "id": "cLnkQAeMbIM",
-                "views per year": "10,410,719"
-            },
+            "Dirty Harry": "",
             "Feel Good Inc.": "",
             "El mañana": "",
             "Every Planet We Reach Is Dead": "",
@@ -1179,14 +1157,12 @@
         },
         "Gorillaz": {
             "@date": "2001-03-26",
+            "@id": "1V_xRb0x9aw",
             "Re-Hash": "",
             "5/4": "short",
             "Tomorrow Comes Today": "",
             "New Genious (Brother)": "",
-            "Clint Eastwood": {
-                "id": "1V_xRb0x9aw",
-                "views per year": "83,426,786"
-            },
+            "Clint Eastwood": "",
             "Man Research (Clapper)": "",
             "Punk": "short",
             "Sound Check (Gravity)": "",
@@ -1251,14 +1227,10 @@
     "Green Day": {
         "Father of All Motherfuckers": {
             "@date": "2020-02-07",
+            "@id": "U3cpdkhtGx0",
             "Father of All…": "short",
             "Fire, Ready, Aim": "short",
-            "Oh Yeah!": {
-                "id": "U3cpdkhtGx0",
-                "views": "4,869,422",
-                "published": "2020-01-16",
-                "views per year": "13,787,259"
-            },
+            "Oh Yeah!": "",
             "Meet Me on the Roof": "short",
             "I Was a Teenage Teenager": "",
             "Stab You in the Heart": "short",
@@ -1269,6 +1241,7 @@
         },
         "21st Century Breakdown": {
             "@date": "2009-05-12",
+            "@id": "r00ikilDxW4",
             "Song of the Century": "short",
             "21st Century Breakdown": "",
             "Know Your Enemy": "",
@@ -1284,25 +1257,16 @@
             "Restless Heart Syndrome": "",
             "Horseshoes and Handgrenades": "",
             "The Static Age": "",
-            "21 Guns": {
-                "id": "r00ikilDxW4",
-                "views": "272,922,285",
-                "published": "2009-10-07",
-                "views per year": "25,678,739"
-            },
+            "21 Guns": "",
             "American Eulogy: Mass Hysteria / Modern World": "",
             "See the Light": ""
         },
         "American Idiot": {
             "@date": "2004-09-21",
+            "@id": "Soa3gO7tL-c",
             "American Idiot": "short",
             "Jesus of Suburbia: I. Jesus of Suburbia / II. City of the D": "",
-            "Holiday / Boulevard of Broken Dreams": {
-                "id": "Soa3gO7tL-c",
-                "views": "413,268,769",
-                "published": "2013-01-08",
-                "views per year": "56,051,399"
-            },
+            "Holiday / Boulevard of Broken Dreams": "",
             "Are We the Waiting / St. Jimmy": "",
             "Give Me Novacaine / She’s a Rebel": "",
             "Extraordinary Girl / Letterbomb": "",
@@ -1312,18 +1276,14 @@
         },
         "Dookie": {
             "@date": "1994-01-28",
+            "@id": "NUTGr5t3MoY",
             "Burnout": "short",
             "Having a Blast": "short",
             "Chump": "short",
             "Longview": "",
             "Welcome to Paradise": "",
             "Pulling Teeth": "short",
-            "Basket Case": {
-                "id": "NUTGr5t3MoY",
-                "views": "223,591,203",
-                "published": "2009-10-26",
-                "views per year": "21,140,742"
-            },
+            "Basket Case": "",
             "She": "short",
             "Sassafras Roots": "short",
             "When I Come Around": "short",
