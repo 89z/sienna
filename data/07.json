@@ -935,12 +935,8 @@
     "MEUTE": {
         "You & Me": {
             "@date": "2018-05-30",
-            "You & Me": {
-                "id": "fKFbnhcNnjE",
-                "views": "33,533,816",
-                "published": "2018-05-30",
-                "views per year": "16,364,092"
-            }
+            "@id": "fKFbnhcNnjE",
+            "You & Me": ""
         },
         "Tumult": {
             "@date": "2017-10-13",
