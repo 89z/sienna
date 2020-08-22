@@ -77,13 +77,9 @@
     "Fiona Apple": {
         "Fetch the Bolt Cutters": {
             "@date": "2020-04-17",
+            "@id": "MbkugCPqxQY",
             "I Want You to Love Me": "",
-            "Shameika": {
-                "id": "MbkugCPqxQY",
-                "views": "671,106",
-                "published": "2020-04-16",
-                "views per year": "7,427,923"
-            },
+            "Shameika": "",
             "Fetch the Bolt Cutters": "",
             "Under the Table": "",
             "Relay": "",
@@ -257,14 +253,12 @@
         },
         "Mirage": {
             "@date": "1982-06-18",
+            "@id": "mwgg1Pu6cNg",
             "Love in Store": "",
             "Can’t Go Back": "short",
             "That’s Alright": "",
             "Book of Love": "",
-            "Gypsy": {
-                "id": "mwgg1Pu6cNg",
-                "views per year": "15,086,631"
-            },
+            "Gypsy": "",
             "Only Over You": "",
             "Empire State": "short",
             "Straight Back": "",
@@ -275,14 +269,12 @@
         },
         "Rumours": {
             "@date": "1977-02-04",
+            "@id": "6ul-cZyuYq4",
             "Second Hand News": "short",
             "Dreams": "",
             "Never Going Back Again": "short",
             "Don’t Stop": "",
-            "Go Your Own Way": {
-                "id": "6ul-cZyuYq4",
-                "views per year": "12,825,630"
-            },
+            "Go Your Own Way": "",
             "Songbird": "",
             "The Chain": "",
             "You Make Loving Fun": "",
@@ -366,15 +358,11 @@
     "Foo Fighters": {
         "Concrete and Gold": {
             "@date": "2017-09-15",
+            "@id": "TRqiFPpw2fY",
             "T‐Shirt": "short",
             "Run": "",
             "Make It Right": "",
-            "The Sky Is a Neighborhood": {
-                "id": "TRqiFPpw2fY",
-                "views": "57,948,105",
-                "published": "2017-08-23",
-                "views per year": "21,165,545"
-            },
+            "The Sky Is a Neighborhood": "",
             "La Dee Da": "",
             "Dirty Water": "",
             "Arrows": "",
@@ -385,6 +373,7 @@
         },
         "Wasting Light": {
             "@date": "2011-04-08",
+            "@id": "4PkcfQtibmU",
             "Bridge Burning": "",
             "Rope": "",
             "Dear Rosemary": "",
@@ -395,21 +384,12 @@
             "A Matter of Time": "",
             "Miss the Misery": "",
             "I Should Have Known": "",
-            "Walk": {
-                "id": "4PkcfQtibmU",
-                "views": "97,158,170",
-                "published": "2011-06-02",
-                "views per year": "10,839,041"
-            }
+            "Walk": ""
         },
         "Echoes, Silence, Patience & Grace": {
             "@date": "2007-09-21",
-            "The Pretender": {
-                "id": "SBjQ9tuuTJQ",
-                "views": "420,720,467",
-                "published": "2009-10-02",
-                "views per year": "39,584,789"
-            },
+            "@id": "SBjQ9tuuTJQ",
+            "The Pretender": "",
             "Let It Die": "",
             "Erase/Replace": "",
             "Long Road to Ruin": "",
@@ -424,14 +404,10 @@
         },
         "In Your Honor": {
             "@date": "2005-05-13",
+            "@id": "h_L4Rixya64",
             "In Your Honor": "",
             "No Way Back": "",
-            "Best of You": {
-                "id": "h_L4Rixya64",
-                "views": "179,420,433",
-                "published": "2009-10-03",
-                "views per year": "16,885,677"
-            },
+            "Best of You": "",
             "DOA": "",
             "Hell": "short",
             "The Last Song": "",
@@ -452,12 +428,8 @@
         },
         "One by One": {
             "@date": "2002-10-21",
-            "All My Life": {
-                "id": "xQ04WbgI9rg",
-                "views": "77,170,450",
-                "published": "2009-10-02",
-                "views per year": "7,260,821"
-            },
+            "@id": "xQ04WbgI9rg",
+            "All My Life": "",
             "Low": "",
             "Have It All": "",
             "Times Like These": "",

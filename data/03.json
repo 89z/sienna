@@ -249,12 +249,8 @@
         },
         "David Bowie": {
             "@date": "1969-11-04",
-            "Space Oddity": {
-                "id": "iYYRH4apXDo",
-                "views": "57,894,465",
-                "published": "2015-07-09",
-                "views per year": "11,913,213"
-            },
+            "@id": "iYYRH4apXDo",
+            "Space Oddity": "",
             "Unwashed and Somewhat Slightly Dazed": "",
             "(Don’t Sit Down)": "short",
             "Letter to Hermione": "short",
@@ -406,15 +402,11 @@
         },
         "The Sickness": {
             "@date": "2000-03-07",
+            "@id": "09LTT0xwdfw",
             "Voices": "",
             "The Game": "",
             "Stupify": "",
-            "Down With the Sickness": {
-                "id": "09LTT0xwdfw",
-                "views": "113,840,751",
-                "published": "2009-10-26",
-                "views per year": "10,769,317"
-            },
+            "Down With the Sickness": "",
             "Violence Fetish": "",
             "Fear": "",
             "Numb": "",
@@ -586,10 +578,8 @@
         },
         "Illusions": {
             "@date": "2013-07-22",
-            "You're so High": {
-                "id": "3GEqdbh8sFI",
-                "views per year": "12,114,614"
-            },
+            "@id": "3GEqdbh8sFI",
+            "You're so High": "",
             "The Game": "",
             "Free Your Mind": "",
             "Like the Way": ""
@@ -598,10 +588,8 @@
     "Elton John": {
         "Madman Across the Water": {
             "@date": "1971-11-05",
-            "Tiny Dancer": {
-                "id": "yYcyacLRPNs",
-                "views per year": "10,516,598"
-            },
+            "@id": "yYcyacLRPNs",
+            "Tiny Dancer": "",
             "Levon": "",
             "Razor Face": "",
             "Madman Across the Water": "",
@@ -752,12 +740,10 @@
     "Enya": {
         "A Day Without Rain": {
             "@date": "2000-11-20",
+            "@id": "7wfYIMyS_dI",
             "A Day Without Rain": "short",
             "Wild Child": "",
-            "Only Time": {
-                "id": "7wfYIMyS_dI",
-                "views per year": "13,719,882"
-            },
+            "Only Time": "",
             "Tempus Vernum": "short",
             "Deora Ar Mo Chroí": "short",
             "Flora's Secret": "",
