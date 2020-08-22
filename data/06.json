@@ -475,11 +475,9 @@
     "Korn": {
         "The Serenity of Suffering": {
             "@date": "2016-10-21",
+            "@id": "nq9j1qkj2Vc",
             "Insane": "",
-            "Rotting in Vain": {
-                "id": "nq9j1qkj2Vc",
-                "views per year": "7,129,271"
-            },
+            "Rotting in Vain": "",
             "Black Is the Soul": "",
             "The Hating": "",
             "A Different World": "",
@@ -492,11 +490,9 @@
         },
         "Issues": {
             "@date": "1999-11-15",
+            "@id": "2s3iGpDqQpQ",
             "Dead": "short",
-            "Falling Away From Me": {
-                "id": "2s3iGpDqQpQ",
-                "views per year": "8,940,419"
-            },
+            "Falling Away From Me": "",
             "Trash": "",
             "4 U": "short",
             "Beg for Me": "",
@@ -514,11 +510,9 @@
         },
         "Follow the Leader": {
             "@date": "1998-08-17",
+            "@id": "jRGrNDV2mKc",
             "It’s On!": "",
-            "Freak on a Leash": {
-                "id": "jRGrNDV2mKc",
-                "views per year": "17,255,753"
-            },
+            "Freak on a Leash": "",
             "Got the Life": "",
             "Dead Bodies Everywhere": "",
             "Children of the Korn": "",
@@ -562,17 +556,13 @@
         },
         "Physical Graffiti": {
             "@date": "1975-02-24",
+            "@id": "PD-MdiUm1_Y",
             "Custard Pie": "",
             "The Rover": "",
             "In My Time of Dying": "",
             "Houses of the Holy": "",
             "Trampled Under Foot": "",
-            "Kashmir": {
-                "id": "PD-MdiUm1_Y",
-                "views": "67,110,740",
-                "published": "2012-11-02",
-                "views per year": "8,855,563"
-            },
+            "Kashmir": "",
             "In the Light": "",
             "Bron-Yr-Aur": "short",
             "Down by the Seaside": "",

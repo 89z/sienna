@@ -955,10 +955,8 @@
     "Michael Jackson": {
         "XSCAPE": {
             "@date": "2014-05-09",
-            "Love Never Felt So Good": {
-                "id": "oG08ukJPtR8",
-                "views per year": "45,469,162"
-            },
+            "@id": "oG08ukJPtR8",
+            "Love Never Felt So Good": "",
             "Chicago": "",
             "Loving You": "",
             "A Place With No Name": "",
@@ -973,10 +971,8 @@
         },
         "Michael": {
             "@date": "2010-12-13",
-            "Hold My Hand": {
-                "id": "-oCCnxBos10",
-                "views per year": "10,938,763"
-            },
+            "@id": "-oCCnxBos10",
+            "Hold My Hand": "",
             "Hollywood Tonight": "",
             "Keep Your Head Up": "",
             "(I Like) The Way You Love Me": "",
@@ -993,15 +989,13 @@
         },
         "Invincible": {
             "@date": "2001-10-29",
+            "@id": "1-7ABIM2qjU",
             "Unbreakable": "",
             "Heartbreaker": "",
             "Invincible": "",
             "Break of Dawn": "",
             "Heaven Can Wait": "",
-            "You Rock My World": {
-                "id": "1-7ABIM2qjU",
-                "views per year": "15,392,630"
-            },
+            "You Rock My World": "",
             "Butterflies": "",
             "Speechless": "",
             "2000 Watts": "",
@@ -1015,6 +1009,7 @@
         },
         "HIStory: Past, Present and Future, Book I": {
             "@date": "1995-06-19",
+            "@id": "pAyKJAtDNCw",
             "Billie Jean": "reissue",
             "The Way You Make Me Feel": "reissue",
             "Black or White": "reissue",
@@ -1038,10 +1033,7 @@
             "D.S.": "",
             "Money": "",
             "Come Together": "",
-            "You Are Not Alone": {
-                "id": "pAyKJAtDNCw",
-                "views per year": "20,952,605"
-            },
+            "You Are Not Alone": "",
             "Childhood (theme from “Free Willy 2”)": "",
             "Tabloid Junkie": "",
             "2 Bad": "",
@@ -1051,14 +1043,12 @@
         },
         "Dangerous": {
             "@date": "1991-11-25",
+            "@id": "LeiFF0gvqcc",
             "Jam": "",
             "Why You Wanna Trip on Me": "",
             "In the Closet": "",
             "She Drives Me Wild": "",
-            "Remember the Time": {
-                "id": "LeiFF0gvqcc",
-                "views per year": "33,983,081"
-            },
+            "Remember the Time": "",
             "Can’t Let Her Get Away": "",
             "Heal the World": "",
             "Black or White": "",
@@ -1071,10 +1061,8 @@
         },
         "Bad": {
             "@date": "1987-08-31",
-            "Bad": {
-                "id": "dsUXAEzaC3Q",
-                "views per year": "30,284,945"
-            },
+            "@id": "dsUXAEzaC3Q",
+            "Bad": "",
             "The Way You Make Me Feel": "",
             "Speed Demon": "",
             "Liberian Girl": "",
@@ -1087,13 +1075,11 @@
         },
         "Thriller": {
             "@date": "1982-11-30",
+            "@id": "sOnqjkJTMaA",
             "Wanna Be Startin’ Somethin’": "",
             "Baby Be Mine": "",
             "The Girl Is Mine": "",
-            "Thriller": {
-                "id": "sOnqjkJTMaA",
-                "views per year": "62,185,313"
-            },
+            "Thriller": "",
             "Beat It": "",
             "Billie Jean": "",
             "Human Nature": "",
@@ -1102,10 +1088,8 @@
         },
         "Off the Wall": {
             "@date": "1979-08-10",
-            "Don’t Stop ’til You Get Enough": {
-                "id": "yURRmWtbTbo",
-                "views per year": "23,421,499"
-            },
+            "@id": "yURRmWtbTbo",
+            "Don’t Stop ’til You Get Enough": "",
             "Rock With You": "",
             "Workin’ Day and Night": "",
             "Get on the Floor": "",
@@ -1195,12 +1179,10 @@
         },
         "Good News for People Who Love Bad News": {
             "@date": "2004-04-06",
+            "@id": "CTAud5O7Qqk",
             "Horn Intro": "short",
             "The World at Large": "",
-            "Float On": {
-                "id": "CTAud5O7Qqk",
-                "views per year": "7,739,156"
-            },
+            "Float On": "",
             "Ocean Breathes Salty": "",
             "Dig Your Grave": "short",
             "Bury Me With It": "",
@@ -1269,14 +1251,10 @@
     "Montell Jordan": {
         "This Is How We Do It": {
             "@date": "1995-04-04",
+            "@id": "0hiUuL5uTKc",
             "My Mommy (intro)": "short",
             "Somethin’ 4 da Honeyz": "",
-            "This Is How We Do It": {
-                "id": "0hiUuL5uTKc",
-                "views": "117,731,622",
-                "published": "2009-06-16",
-                "views per year": "10,703,314"
-            },
+            "This Is How We Do It": "",
             "Payback": "",
             "I’ll Do Anything": "",
             "Don’t Keep Me Waiting": "",
@@ -1294,6 +1272,7 @@
     "Mr Mister": {
         "Welcome to the Real World": {
             "@date": "1985-11-27",
+            "@id": "nKhN1t_7PEY",
             "Black/White": "",
             "Uniform of Youth": "",
             "Don’t Slow Down": "",
@@ -1301,12 +1280,7 @@
             "Into My Own Hands": "",
             "Is It Love": "",
             "Kyrie": "",
-            "Broken Wings": {
-                "id": "nKhN1t_7PEY",
-                "views": "105,034,571",
-                "published": "2013-10-02",
-                "views per year": "15,674,648"
-            },
+            "Broken Wings": "",
             "Tangent Tears": "",
             "Welcome to the Real World": ""
         }
