@@ -171,17 +171,13 @@
         },
         "Ill Communication": {
             "@date": "1994-05-23",
+            "@id": "z5rRZdiu1UE",
             "Sure Shot": "",
             "Tough Guy": "short",
             "B-Boys Makin' With the Freak Freak": "",
             "Bobo on the Corner": "short",
             "Root Down": "",
-            "Sabotage": {
-                "id": "z5rRZdiu1UE",
-                "views": "77,513,898",
-                "published": "2009-06-21",
-                "views per year": "7,101,066"
-            },
+            "Sabotage": "",
             "Get It Together": "",
             "Sabrosa": "",
             "The Update": "",
@@ -322,14 +318,12 @@
     "Berlin": {
         "Count Three & Pray": {
             "@date": "1986-11-18",
+            "@id": "Bx51eegLTY8",
             "Will I Ever Understand You": "",
             "You Don’t Know": "",
             "Like Flames": "",
             "Heartstrings": "",
-            "Take My Breath Away": {
-                "id": "Bx51eegLTY8",
-                "views per year": "20,236,646"
-            },
+            "Take My Breath Away": "",
             "Trash": "",
             "When Love Goes to War": "",
             "Hideaway": "",
@@ -563,12 +557,10 @@
     "Blink 182": {
         "blink‐182": {
             "@date": "2003-11-18",
+            "@id": "s1tAYmMjLdY",
             "Feeling This": "short",
             "Obvious": "short",
-            "I Miss You": {
-                "id": "s1tAYmMjLdY",
-                "views per year": "23,422,228"
-            },
+            "I Miss You": "",
             "Violence": "",
             "Stockholm Syndrome": "short",
             "Down": "",
@@ -583,12 +575,10 @@
         },
         "Take Off Your Pants and Jacket": {
             "@date": "2001-01-01",
+            "@id": "vVy9Lgpg1m8",
             "Anthem Part Two": "",
             "Online Songs": "short",
-            "First Date": {
-                "id": "vVy9Lgpg1m8",
-                "views per year": "13,849,870"
-            },
+            "First Date": "",
             "Happy Holidays": "short",
             "Story of a Lonely Guy": "",
             "The Rock Show": "short",
@@ -602,6 +592,7 @@
         },
         "Enema of the State": {
             "@date": "1999-06-01",
+            "@id": "9Ht5RZpzPqw",
             "Dumpweed": "short",
             "Don’t Leave Me": "short",
             "Aliens Exist": "",
@@ -609,10 +600,7 @@
             "What’s My Age Again?": "short",
             "Dysentery Gary": "short",
             "Adam’s Song": "",
-            "All the Small Things": {
-                "id": "9Ht5RZpzPqw",
-                "views per year": "23,080,683"
-            },
+            "All the Small Things": "",
             "The Party Song": "short",
             "Mutt": "",
             "Wendy Clear": "short",
@@ -944,6 +932,7 @@
     "Boyz II Men": {
         "II": {
             "@date": "1994-08-30",
+            "@id": "fV8vB1BB2qc",
             "Thank You": "",
             "All Around the World": "",
             "U Know": "",
@@ -952,10 +941,7 @@
             "Jezzebel": "",
             "Khalil (interlude)": "short",
             "Trying Times": "",
-            "I’ll Make Love to You": {
-                "id": "fV8vB1BB2qc",
-                "views per year": "13,330,905"
-            },
+            "I’ll Make Love to You": "",
             "On Bended Knee": "",
             "50 Candles": "",
             "Water Runs Dry": "",
@@ -963,10 +949,8 @@
         },
         "Cooleyhighharmony": {
             "@date": "1992",
-            "End of the Road (LP version)": {
-                "id": "zDKO6XYXioc",
-                "views per year": "15,186,681"
-            },
+            "@id": "zDKO6XYXioc",
+            "End of the Road (LP version)": "",
             "Please Don’t Go": "",
             "Lonely Heart": "",
             "This Is My Heart": "",
@@ -1033,10 +1017,8 @@
     "Britney Spears": {
         "Blackout": {
             "@date": "2007-10-27",
-            "Gimme More": {
-                "id": "elueA2rofoo",
-                "views per year": "17,436,908"
-            },
+            "@id": "elueA2rofoo",
+            "Gimme More": "",
             "Piece of Me": "",
             "Radar": "",
             "Break the Ice": "",

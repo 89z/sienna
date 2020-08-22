@@ -33,12 +33,8 @@
     "Cassie": {
         "Cassie": {
             "@date": "2006-08-08",
-            "Me&U": {
-                "id": "zVJ5gsLeCSM",
-                "views": "71,685,439",
-                "published": "2016-06-02",
-                "views per year": "17,995,262"
-            },
+            "@id": "zVJ5gsLeCSM",
+            "Me&U": "",
             "Long Way 2 Go": "",
             "About Time": "",
             "Kiss Me": "",
@@ -230,11 +226,9 @@
     "Ciara": {
         "Basic Instinct": {
             "@date": "2010-12-13",
+            "@id": "Lp6W4aK1sbs",
             "Basic Instinct (U Got Me)": "",
-            "Ride": {
-                "id": "Lp6W4aK1sbs",
-                "views per year": "18,854,398"
-            },
+            "Ride": "",
             "Gimmie Dat": "",
             "Heavy Rotation": "",
             "Girls Get Your Money": "",
@@ -374,13 +368,11 @@
     "Coldplay": {
         "A Rush of Blood to the Head": {
             "@date": "2002-08-26",
+            "@id": "RB-RcX5DS5A",
             "Politik": "",
             "In My Place": "",
             "God Put a Smile Upon Your Face": "",
-            "The Scientist": {
-                "id": "RB-RcX5DS5A",
-                "views per year": "91,516,299"
-            },
+            "The Scientist": "",
             "Clocks": "",
             "Daylight": "",
             "Green Eyes": "",
@@ -499,12 +491,10 @@
         },
         "August and Everything After": {
             "@date": "1993-09-14",
+            "@id": "-oqAU5VxFWs",
             "Round Here": "",
             "Omaha": "",
-            "Mr. Jones": {
-                "id": "-oqAU5VxFWs",
-                "views per year": "16,201,008"
-            },
+            "Mr. Jones": "",
             "Perfect Blue Buildings": "",
             "Anna Begins": "",
             "Time and Time Again": "",
