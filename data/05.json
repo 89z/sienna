@@ -1429,15 +1429,11 @@
         },
         "Tough Love": {
             "@date": "2014-10-13",
+            "@id": "DAMM8JVbr8g",
             "Tough Love": "",
             "You & I (Forever)": "",
             "Cruel": "",
-            "Say You Love Me": {
-                "id": "DAMM8JVbr8g",
-                "views": "123,723,337",
-                "published": "2014-09-11",
-                "views per year": "21,767,798"
-            },
+            "Say You Love Me": "",
             "Sweetest Song": "",
             "Kind of…Sometimes…Maybe": "",
             "Want Your Feeling": "",
@@ -1666,10 +1662,8 @@
         },
         "Love Will Tear Us Apart": {
             "@date": "1980-04-18",
-            "Love Will Tear Us Apart": {
-                "id": "zuuObGsB0No",
-                "views per year": "9,188,185"
-            },
+            "@id": "zuuObGsB0No",
+            "Love Will Tear Us Apart": "",
             "These Days": ""
         },
         "Unknown Pleasures": {
@@ -1836,10 +1830,8 @@
         },
         "Justified": {
             "@date": "2002-11-04",
-            "Señorita": {
-                "id": "nJHYDkvRB2Y",
-                "views per year": "8,843,908"
-            },
+            "@id": "nJHYDkvRB2Y",
+            "Señorita": "",
             "Like I Love You": "",
             "(Oh No) What You Got": "",
             "Take It From Here": "",
