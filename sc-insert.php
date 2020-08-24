@@ -32,7 +32,8 @@ $s_title = $a_title[2] . ' - ' . $a_title[1];
 
 # time
 $n_id_1 = time();
-$s_id_1 = r64_encode($n_id_1);
+$o_rad = new Radix64;
+$s_id_1 = $o_rad->encode($n_id_1);
 
 # print
 $a_rec = [$s_id_1, $n_year, 's/' . $s_id_2 . '/' . $s_id_3, $s_title];

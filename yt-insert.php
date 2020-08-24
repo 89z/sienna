@@ -56,7 +56,8 @@ if ($n_mat !== 0) {
 
 # time
 $n_id_1 = time();
-$s_id_1 = r64_encode($n_id_1);
+$o_rad = new Radix64;
+$s_id_1 = $o_rad->encode($n_id_1);
 
 # image
 if ($o_play->img == 'sddefault') {
