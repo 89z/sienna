@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+extension_loaded('openssl') or die('openssl');
 
 # return video_id from URL
 function yt_video_id(string $s_url): string {

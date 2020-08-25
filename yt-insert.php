@@ -1,9 +1,7 @@
 <?php
 declare(strict_types = 1);
-
-extension_loaded('openssl') or die('openssl');
-require 'lib-r64.php';
-require 'lib-yt.php';
+require 'sienna/radix-64.php';
+require 'sienna/youtube.php';
 
 if ($argc != 2) {
    echo "yt-insert.php <URL>\n";
