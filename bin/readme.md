@@ -1,4 +1,23 @@
-# MusicBrainz release
+# Bin
+
+## MusicBrainz release
+
+If you add a new release, the release group is created at the same time. Be sure
+to include:
+
+- release title
+- artist
+- type
+- status
+- date
+- country
+- label
+- release link
+- format
+- track titles
+- track lengths
+
+<https://wiki.musicbrainz.org/Development/JSON_Web_Service>
 
 The minimum is 179.5 seconds, which rounds up to 180 seconds, which is 3
 minutes. A pathological example is here:
@@ -31,3 +50,19 @@ Listed here at 3:01:
 <https://youtube.com/watch?v=tNk-mlgXRp4>
 
 To resolve this, we need to round to the second before making any decisions.
+
+## CURLOPT_USERAGENT
+
+<https://musicbrainz.org/doc/XML_Web_Service/Rate_Limiting>
+
+## MusicBrainz API
+
+<https://wiki.musicbrainz.org/MusicBrainz_API>
+
+## YouTube views
+
+Max views per year:
+
+Jessie Ware - Wildest Moments
+
+<https://www.youtube.com/watch?v=bMJkddvJ4L4>
