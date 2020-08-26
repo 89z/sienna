@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-require 'lib-mb.php';
-require 'lib-yt.php';
+require 'sienna/musicbrainz.php';
+require 'sienna/youtube.php';
 
 # return artists string from release object
 function yt_encode_artists(object $o_in): string {

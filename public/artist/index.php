@@ -1,6 +1,8 @@
 <?php
 declare(strict_types = 1);
-require '../sienna.php';
+
+require 'sienna/sienna.php';
+
 $s_artist = $_GET['a'];
 $s_file = $_GET['f'];
 ?>

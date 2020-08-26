@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-require 'lib-mb.php';
+require 'sienna/musicbrainz.php';
 
 if ($argc != 2) {
    echo <<<eof

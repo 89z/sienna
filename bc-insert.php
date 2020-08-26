@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 extension_loaded('openssl') or die('openssl');
-require 'lib-r64.php';
+require 'sienna/radix-64.php';
 
 if ($argc != 2) {
    echo "bc-insert.php <URL>\n";

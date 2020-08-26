@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
-require '../sienna.php';
+require 'sienna/sienna.php';
 
 $s_file = $_GET['f'];
 $s_artist = $_GET['a'];
