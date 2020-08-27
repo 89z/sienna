@@ -1,29 +1,39 @@
 <?php
 declare(strict_types = 1);
 
-$s_dir = 'C:/path/sienna';
+$s_dir = 'C:/php/pear/sienna';
 
-# remove php
-$a = glob($s_dir . '/*.php');
-foreach ($a as $s) {
-   echo 'unlink: ', $s, "\n";
-   unlink($s);
+# unlink
+if (is_dir($s_dir)) {
+   $a = glob($s_dir . '/*');
+   foreach ($a as $s) {
+      echo 'unlink: ', $s, "\n";
+      unlink($s);
+   }
+} else {
+   mkdir($s_dir);
 }
 
-# remove ps1
-echo "unlink: sienna.ps1\n";
-unlink($s_dir . '/sienna.ps1');
+# copy bin
+$a = glob('bin/*');
 
-# add php
-$a = glob('*.php');
 foreach ($a as $s) {
-   if ($s == 'setup.php') {
+   $s_base = basename($s);
+   if ($s_base == 'readme.md') {
       continue;
    }
    echo 'copy: ', $s, "\n";
-   copy($s, $s_dir . '/' . $s);
+   copy($s, $s_dir . '/' . $s_base);
 }
 
-# add ps1
-echo "copy: sienna.ps1\n";
-copy('sienna.ps1', $s_dir . '/sienna.ps1');
+# copy include
+$a = glob('include/*');
+
+foreach ($a as $s) {
+   $s_base = basename($s);
+   if ($s_base == 'readme.md') {
+      continue;
+   }
+   echo 'copy: ', $s, "\n";
+   copy($s, $s_dir . '/' . $s_base);
+}
