@@ -27,13 +27,10 @@ foreach ($a as $s) {
 }
 
 # copy include
-$a = glob('include/*');
+$a = glob('include/*.php');
 
 foreach ($a as $s) {
-   $s_base = basename($s);
-   if ($s_base == 'readme.md') {
-      continue;
-   }
    echo 'copy: ', $s, "\n";
+   $s_base = basename($s);
    copy($s, $s_dir . '/' . $s_base);
 }
