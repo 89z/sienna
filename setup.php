@@ -1,36 +1,42 @@
 <?php
 declare(strict_types = 1);
 
-$s_dir = 'C:/php/pear/sienna';
+$s_to = 'C:/php/pear/sienna';
 
 # unlink
-if (is_dir($s_dir)) {
-   $a = glob($s_dir . '/*');
-   foreach ($a as $s) {
-      echo 'unlink: ', $s, "\n";
-      unlink($s);
+if (is_dir($s_to)) {
+   $o_iter = new FilesystemIterator($s_to);
+   foreach ($o_iter as $o_info) {
+      $s_path = $o_info->getPathname();
+      echo 'unlink: ', $s_path, "\n";
+      unlink($s_path);
    }
 } else {
-   mkdir($s_dir);
+   mkdir($s_to);
 }
 
 # copy bin
-$a = glob('bin/*');
+$o_iter = new FilesystemIterator('bin');
 
-foreach ($a as $s) {
-   $s_base = basename($s);
-   if ($s_base == 'readme.md') {
+foreach ($o_iter as $o_info) {
+   $s_file = $o_info->getFilename();
+   if ($s_file == 'readme.md') {
       continue;
    }
-   echo 'copy: ', $s, "\n";
-   copy($s, $s_dir . '/' . $s_base);
+   $s_path = $o_info->getPathname();
+   echo 'copy: ', $s_path, "\n";
+   copy($s_path, $s_to . '/' . $s_file);
 }
 
 # copy include
-$a = glob('include/*.php');
+$o_iter = new FilesystemIterator('include');
 
-foreach ($a as $s) {
-   echo 'copy: ', $s, "\n";
-   $s_base = basename($s);
-   copy($s, $s_dir . '/' . $s_base);
+foreach ($o_iter as $o_info) {
+   $s_file = $o_info->getFilename();
+   if ($s_file == 'readme.md') {
+      continue;
+   }
+   $s_path = $o_info->getPathname();
+   echo 'copy: ', $s_path, "\n";
+   copy($s_path, $s_to . '/' . $s_file);
 }
