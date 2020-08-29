@@ -9,39 +9,21 @@ function yt_video_id(string $s_url): string {
    return $m_q['v'];
 }
 
-function f_head(string $s_url): bool {
-   $a_head = get_headers($s_url);
-   $s_code = $a_head[0];
-   if (strpos($s_code, '200 OK') !== false) {
-      return true;
-   }
-   return false;
-}
-
 # return info object from video id
-function yt_info_object(string $s_id): object {
-   # part 1
-   $s_url = 'https://www.youtube.com/get_video_info?video_id=' . $s_id;
-   # part 2
-   echo $s_url, "\n";
-   $s_info = file_get_contents($s_url);
-   parse_str($s_info, $m_info);
-   # part 3
-   $s_resp = $m_info['player_response'];
-   # part 4
-   $o_r = json_decode($s_resp);
-   # part 5
-   $o_p = new stdClass;
-   $o_p->date = $o_r->microformat->playerMicroformatRenderer->publishDate;
-   $o_p->desc = $o_r->videoDetails->shortDescription;
-   $o_p->title = $o_r->videoDetails->title;
-   $o_p->views = $o_r->videoDetails->viewCount;
-   if (f_head('https://i.ytimg.com/vi/' . $s_id . '/sddefault.jpg')) {
-      $o_p->img = 'sddefault';
-   } else if (f_head('https://i.ytimg.com/vi/' . $s_id . '/sd1.jpg')) {
-      $o_p->img = 'sd1';
-   } else {
-      $o_p->img = 'hqdefault';
+class YouTubeInfo {
+   function __construct(string $s_id) {
+      # part 1
+      $s_url = 'https://www.youtube.com/get_video_info?video_id=' . $s_id;
+      echo $s_url, "\n";
+      # part 2
+      $s_info = file_get_contents($s_url);
+      parse_str($s_info, $m_info);
+      # part 3
+      $s_resp = $m_info['player_response'];
+      # part 4
+      $o_resp = json_decode($s_resp);
+      foreach ($o_resp->microformat->playerMicroformatRenderer as $s_k => $v) {
+         $this->$s_k = $v;
+      }
    }
-   return $o_p;
 }

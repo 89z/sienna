@@ -13,8 +13,19 @@ $s_url = $argv[1];
 $s_id_2 = yt_video_id($s_url);
 
 # year
-$o_play = yt_info_object($s_id_2);
-$s_desc = $o_play->desc;
+class YouTubeRelease extends YouTubeInfo {
+   function reduce(string $s_ca, string $s_it): string {
+      $n_mat = preg_match($s_it, $this->description->simpleText, $a_mat);
+      if ($n_mat === 0) {
+         return $s_ca;
+      }
+      $s_mat = $a_mat[1];
+      if ($s_mat >= $s_ca) {
+         return $s_ca;
+      }
+      return $s_mat;
+   }
+}
 
 $a_reg = [
    '/ (\d{4})/',
@@ -23,25 +34,13 @@ $a_reg = [
    '/℗ (\d{4})/'
 ];
 
-function f_reg(string $s_ca, string $s_it): string {
-   global $s_desc;
-   $n_mat = preg_match($s_it, $s_desc, $a_mat);
-   if ($n_mat === 0) {
-      return $s_ca;
-   }
-   $s_mat = $a_mat[1];
-   if ($s_mat >= $s_ca) {
-      return $s_ca;
-   }
-   return $s_mat;
-}
-
-$s_init = substr($o_play->date, 0, 4);
-$s_year = array_reduce($a_reg, 'f_reg', $s_init);
+$o_info = new YouTubeRelease($s_id_2);
+$s_init = substr($o_info->publishDate, 0, 4);
+$s_year = array_reduce($a_reg, [$o_info, 'reduce'], $s_init);
 $n_year = (int)($s_year);
 
 # song, artist
-$n_mat = preg_match('/.* · .*/', $s_desc, $a_line);
+$n_mat = preg_match('/.* · .*/', $o_info->description->simpleText, $a_line);
 
 if ($n_mat !== 0) {
    $s_line = $a_line[0];
@@ -49,7 +48,7 @@ if ($n_mat !== 0) {
    $a_artist = array_slice($a_title, 1);
    $s_title = implode(', ', $a_artist) . ' - ' . $a_title[0];
 } else {
-   $s_title = $o_play->title;
+   $s_title = $o_info->title->simpleText;
 }
 
 # time
@@ -58,12 +57,18 @@ $o_rad = new Radix64;
 $s_id_1 = $o_rad->encode($n_id_1);
 
 # image
-if ($o_play->img == 'sddefault') {
+function f_head(string $s_url): bool {
+   $a_head = get_headers($s_url);
+   $s_code = $a_head[0];
+   return strpos($s_code, '200 OK') !== false;
+}
+
+if (f_head('https://i.ytimg.com/vi/' . $s_id_2 . '/sddefault.jpg')) {
    $s_id_3 = '';
-} else if ($o_play->img == 'sd1') {
+} else if (f_head('https://i.ytimg.com/vi/' . $s_id_2 . '/sd1.jpg')) {
    $s_id_3 = '/sd1';
 } else {
-   echo $o_play->img, "\n";
+   var_export($o_info->thumbnail);
    exit(1);
 }
 

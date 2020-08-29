@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-
 require 'sienna/musicbrainz.php';
 require 'sienna/youtube.php';
 
@@ -24,18 +23,14 @@ function yt_result(string $s_search): string {
 
 # return views map from video_id string
 function yt_views(string $s_ytid): string {
-   # part 1
-   $o_play = yt_info_object($s_ytid);
-   # part 2
+   $o_info = new YouTubeInfo($s_ytid);
    $n_now = time();
-   $n_then = strtotime($o_play->date);
-   $n_views = (int)($o_play->views);
-   # part 3
+   $n_then = strtotime($o_info->publishDate);
+   $n_views = (int)($o_info->viewCount);
    $n_diff = ($n_now - $n_then) / 60 / 60 / 24 / 365;
    $n_rate = $n_views / $n_diff;
-   # part 4
    $m_v['id'] = $s_ytid;
-   $m_v['title'] = $o_play->title;
+   $m_v['title']; $o_info->title->simpleText;
    $m_v['views per year'] = number_format($n_rate);
    $s_end = "\e[m";
    $s_v = json_encode($m_v, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
