@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 require 'sienna/radix-64.php';
 require 'sienna/youtube.php';
 
@@ -8,9 +9,7 @@ if ($argc != 2) {
    exit(1);
 }
 
-# ID
 $s_url = $argv[1];
-$s_id_2 = yt_video_id($s_url);
 
 # year
 class YouTubeRelease extends YouTubeInfo {
@@ -34,7 +33,7 @@ $a_reg = [
    '/℗ (\d{4})/'
 ];
 
-$o_info = new YouTubeRelease($s_id_2);
+$o_info = new YouTubeRelease($s_url);
 $s_init = substr($o_info->publishDate, 0, 4);
 $s_year = array_reduce($a_reg, [$o_info, 'reduce'], $s_init);
 $n_year = (int)($s_year);
@@ -63,9 +62,9 @@ function f_head(string $s_url): bool {
    return strpos($s_code, '200 OK') !== false;
 }
 
-if (f_head('https://i.ytimg.com/vi/' . $s_id_2 . '/sddefault.jpg')) {
+if (f_head('https://i.ytimg.com/vi/' . $o_info->id . '/sddefault.jpg')) {
    $s_id_3 = '';
-} else if (f_head('https://i.ytimg.com/vi/' . $s_id_2 . '/sd1.jpg')) {
+} else if (f_head('https://i.ytimg.com/vi/' . $o_info->id . '/sd1.jpg')) {
    $s_id_3 = '/sd1';
 } else {
    var_export($o_info->thumbnail);
@@ -73,6 +72,6 @@ if (f_head('https://i.ytimg.com/vi/' . $s_id_2 . '/sddefault.jpg')) {
 }
 
 # print
-$a_rec = [$s_id_1, $n_year, 'y/' . $s_id_2 . $s_id_3, $s_title];
+$a_rec = [$s_id_1, $n_year, 'y/' . $o_info->id . $s_id_3, $s_title];
 $s_json = json_encode($a_rec, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 echo $s_json, ",\n";
