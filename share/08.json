@@ -1207,42 +1207,72 @@
         }
     },
     "Pink Floyd": {
-        "The Division Bell": {
-            "@date": "1994",
-            "High Hopes": {
-                "VPY": "11,489,269",
-                "URL": "https://youtu.be/7jMlFXouPk8"
-            }
-        },
-        "A Momentary Lapse of Reason": {
-            "@date": "1987",
-            "Learning To Fly": {
-                "VPY": "13,804,895",
-                "URL": "https://youtu.be/nVhNCTH8pDs"
-            }
-        },
-        "The Wall": {
-            "@date": "1979",
-            "Another Brick In The Wall": {
-                "VPY": "45,604,600",
-                "URL": "https://youtu.be/YR5ApYxkU-U"
-            },
-            "Comfortably Numb": "",
-            "Hey You": ""
-        },
-        "Wish You Were Here": {
-            "@date": "1975",
-            "Shine on You Crazy Diamond": "",
-            "Wish You Were Here": {
-                "VPY": "14,157,030",
-                "URL": "https://youtu.be/IXdNnw99-Ic"
-            }
-        },
-        "The Dark Side of the Moon": {
-            "@date": "1973",
-            "Any Colour You Like": "",
-            "Speak to Me / Breathe": ""
-        }
+       "’94: The Division Bell": {
+           "@date": "1994",
+           "@id": "7jMlFXouPk8",
+           "Coming Back to Life": "",
+           "Wearing the Inside Out": "",
+           "Take It Back": "",
+           "Keep Talking": "",
+           "What Do You Want From Me": "",
+           "Poles Apart": "",
+           "Marooned": "",
+           "A Great Day for Freedom": "",
+           "Lost for Words": ""
+       },
+       "A Momentary Lapse of Reason": {
+           "@date": "1987-09-07",
+           "@id": "nVhNCTH8pDs",
+           "Signs of Life": "",
+           "Learning to Fly": "",
+           "The Dogs of War": "",
+           "One Slip": "",
+           "On the Turning Away": "",
+           "Yet Another Movie / Round and Around": "",
+           "A New Machine, Part 1": "short",
+           "Terminal Frost": "",
+           "A New Machine, Part 2": "short",
+           "Sorrow": ""
+       },
+       "The Wall": {
+           "@date": "1979-11-30",
+           "@id": "YR5ApYxkU-U",
+           "In the Flesh?": "",
+           "The Thin Ice": "short",
+           "Another Brick in the Wall, Part 1": "",
+           "The Happiest Days of Our Lives": "short",
+           "Another Brick in the Wall, Part 2": "",
+           "Mother": "",
+           "Goodbye Blue Sky": "short",
+           "Empty Spaces": "short",
+           "Young Lust": "",
+           "One of My Turns": "",
+           "Don’t Leave Me Now": "",
+           "Another Brick in the Wall, Part 3": "short",
+           "Goodbye Cruel World": "short",
+           "Hey You": "",
+           "Is There Anybody Out There?": "short",
+           "Nobody Home": "",
+           "Vera": "short",
+           "Bring the Boys Back Home": "short",
+           "Comfortably Numb": "",
+           "The Show Must Go On": "short",
+           "In the Flesh": "",
+           "Run Like Hell": "",
+           "Waiting for the Worms": "",
+           "Stop": "short",
+           "The Trial": "",
+           "Outside the Wall": "short"
+       },
+       "Wish You Were Here": {
+           "@date": "1975-09-12",
+           "@id": "IXdNnw99-Ic",
+           "Shine On You Crazy Diamond, Parts I–V": "",
+           "Welcome to the Machine": "",
+           "Have a Cigar": "",
+           "Wish You Were Here": "",
+           "Shine On You Crazy Diamond, Parts VI–IX": ""
+       }
     },
     "Pixies": {
         "Bossanova": {
