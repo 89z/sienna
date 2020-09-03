@@ -410,13 +410,6 @@
            "Never Wrong": "",
            "Who Taught You How to Hate": ""
        },
-        "Ten Thousand Fists": {
-            "@date": "2005",
-            "Disturbed - Stricken [Official Music Video]": {
-                "URL": "https://youtu.be/3moLkjvhEu0",
-                "VPY": "6,201,684"
-            }
-        },
         "The Sickness": {
             "@date": "2000-03-07",
             "@id": "09LTT0xwdfw",
@@ -477,26 +470,39 @@
         }
     },
     "Dr. Dre": {
-        "2001": {
-            "@date": "1999",
-            "Forgot About Dre": "",
-            "Still D.R.E.": {
-                "VPY": "82,605,839",
-                "URL": "https://youtu.be/_CL6n0FJZpk"
-            },
-            "The Next Episode": ""
-        },
+       "2001": {
+           "@date": "1999-11-16",
+           "@id": "_CL6n0FJZpk",
+           "Lolo (intro)": "short",
+           "The Watcher": "",
+           "Fuck You": "",
+           "Still D.R.E.": "",
+           "Big Ego’s": "",
+           "Xxplosive": "",
+           "What’s the Difference": "",
+           "Bar One": "short",
+           "Light Speed": "short",
+           "Forgot About Dre": "",
+           "The Next Episode": "short",
+           "Let’s Get High": "short",
+           "Bitch Niggaz": "",
+           "The Car Bomb": "short",
+           "Murder Ink": "short",
+           "ED-Ucation": "short",
+           "Some L.A. Niggaz": "",
+           "Pause 4 Porno": "short",
+           "Housewife": "",
+           "Ackrite": "",
+           "Bang Bang": "",
+           "The Message": ""
+       },
         "The Chronic": {
             "@date": "1992",
             "The Chronic (intro)": "short",
             "Fuck Wit Dre Day (And Everybody’s Celebratin’)": "",
             "Let Me Ride": "",
             "The Day the Niggaz Took Over": "",
-            "Nuthin’ but a G Thang": {
-                "rate": "good",
-                "VPY": "4,584,395",
-                "URL": "https://youtu.be/0F0CAEoF4XM"
-            },
+            "Nuthin’ but a G Thang": "good",
             "Deeez Nuuuts": "",
             "Lil’ Ghetto Boy": "",
             "A Nigga Witta Gun": "",
@@ -534,13 +540,23 @@
         }
     },
     "Duran Duran": {
-        "Duran Duran (The Wedding Album)": {
-            "@date": "1993",
-            "Duran Duran - Come Undone (Official Music Video)": {
-                "URL": "https://youtu.be/Epj84QVw2rc",
-                "VPY": "33,404,703"
-            }
-        },
+       "Duran Duran": {
+           "@date": "1993-02-11",
+           "@id": "Epj84QVw2rc",
+           "Too Much Information": "",
+           "Ordinary World": "",
+           "Love Voodoo": "",
+           "Drowning Man": "",
+           "Shotgun": "short",
+           "Come Undone": "",
+           "Breath After Breath": "",
+           "UMF": "",
+           "Femme Fatale": "",
+           "None of the Above": "",
+           "Shelter": "",
+           "To Whom It May Concern": "",
+           "Sin of the City": ""
+       },
         "Notorious": {
             "@date": "1986",
             "Notorious": "bad",

@@ -712,11 +712,7 @@
             "Daylight Sky": "short",
             "Pair of Wings": "",
             "Had We Had It": "",
-            "Night Swim": {
-                "rate": "short",
-                "VPY": "31,597",
-                "URL": "https://youtu.be/VE56wTNj7J0"
-            },
+            "Night Swim": "short",
             "Apples for the Sun": "",
             "Moon in My Mind": "",
             "The Fall": "good"
@@ -727,11 +723,7 @@
             "@date": "2004",
             "Jacqueline": "",
             "Tell Her Tonight": "short",
-            "Take Me Out": {
-                "rate": "good",
-                "VPY": "5,885,949",
-                "URL": "https://youtu.be/Ijk4j-r7qPA"
-            },
+            "Take Me Out": "good",
             "The Dark of the Matinée": "",
             "Auf Achse": "",
             "Cheating on You": "short",
@@ -1547,11 +1539,21 @@
         }
     },
     "Gwen Stefani": {
-        "Love. Angel. Music. Baby.": {
-            "Hollaback Girl": {
-                "VPY": "19,292,734",
-                "URL": "https://youtu.be/Kgjkth6BRRY"
-            }
-        }
+       "Love. Angel. Music. Baby.": {
+           "@date": "2004-11-23",
+           "@id": "Kgjkth6BRRY",
+           "What You Waiting For?": "",
+           "Rich Girl": "",
+           "Hollaback Girl": "",
+           "Cool": "",
+           "Bubble Pop Electric": "",
+           "Luxurious": "",
+           "Harajuku Girls": "",
+           "Crash": "",
+           "The Real Thing": "",
+           "Serious": "",
+           "Danger Zone": "",
+           "Long Way to Go": ""
+       }
     }
 }
