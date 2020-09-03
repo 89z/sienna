@@ -1164,24 +1164,29 @@
            "Marcy Me": "short",
            "Legacy": "short"
        },
-        "Watch the Throne": {
-            "@date": "2011",
-            "Niggas In Paris": {
-                "VPY": "34,181,289",
-                "URL": "https://youtu.be/gG_dA32oH44"
-            },
-            "Otis": ""
-        },
+       "Watch the Throne": {
+           "@date": "2011-08-08",
+           "@id": "gG_dA32oH44",
+           "No Church in the Wild": "",
+           "Lift Off": "",
+           "Niggas in Paris": "",
+           "Otis": "short",
+           "Gotta Have It": "short",
+           "New Day": "",
+           "That’s My Bitch": "",
+           "Welcome to the Jungle": "short",
+           "Who Gon Stop Me": "",
+           "Murder to Excellence": "",
+           "Made in America": "",
+           "Why I Love You": ""
+       },
         "The Blueprint² The Gift & The Curse": {
             "@date": "2002",
             "A Dream": "",
             "Hovi Baby": "",
             "The Watcher 2": "",
             "’03 Bonnie & Clyde": "good",
-            "Excuse Me Miss": {
-                "VPY": "4,272,958",
-                "URL": "https://youtu.be/tnDh0JhmaFw"
-            },
+            "Excuse Me Miss": "",
             "What They Gonna Do": "",
             "All Around the World": "",
             "Poppin’ Tags": "",
@@ -1230,37 +1235,71 @@
         }
     },
     "Jennifer Lopez": {
-        "A.K.A.": {
-            "@date": "2014",
-            "Booty": {
-                "VPY": "70,093,191",
-                "URL": "https://youtu.be/nxtIRArhVD4"
-            }
-        },
-        "LOVE?": {
-            "@date": "2011",
-            "On The Floor": {
-                "VPY": "167,548,257",
-                "URL": "https://youtu.be/t4H_Zoh7G5A"
-            },
-            "Papi": ""
-        },
-        "Rebirth": {
-            "@date": "2005",
-            "Get Right": {
-                "VPY": "11,605,360",
-                "URL": "https://youtu.be/1WIsnC-h1d0"
-            }
-        },
-        "J.Lo": {
-            "@date": "2001",
-            "I’m Gonna Be Alright": "",
-            "I’m Real": "",
-            "Love Don’t Cost a Thing": {
-                "VPY": "11,799,361",
-                "URL": "https://youtu.be/4kGvlESGvbs"
-            }
-        },
+       "A.K.A.": {
+           "@date": "2014-06-17",
+           "@id": "nxtIRArhVD4",
+           "A.K.A.": "",
+           "First Love": "",
+           "Never Satisfied": "",
+           "I Luh Ya Papi": "",
+           "Acting Like That": "",
+           "Emotions": "",
+           "So Good": "",
+           "Let It Be Me": "",
+           "Worry No More": "",
+           "Booty": ""
+       },
+       "LOVE?": {
+           "@date": "2011-05-02",
+           "@id": "t4H_Zoh7G5A",
+           "On the Floor": "",
+           "Good Hit": "",
+           "I'm Into You": "",
+           "(What Is) LOVE?": "",
+           "Run the World": "",
+           "Papi": "",
+           "Until It Beats No More": "",
+           "One Love": "",
+           "Invading My Mind": "",
+           "Villain": "",
+           "Starting Over": "",
+           "Hypnotico": ""
+       },
+       "Rebirth": {
+           "@date": "2005-02-28",
+           "@id": "1WIsnC-h1d0",
+           "Get Right": "",
+           "Step Into My World": "",
+           "Hold You Down": "",
+           "Whatever You Wanna Do": "",
+           "Cherry Pie": "",
+           "I Got U": "",
+           "Still Around": "",
+           "Ryde or Die": "",
+           "I, Love": "",
+           "He’ll Be Back": "",
+           "(Can’t Believe) This Is Me": "",
+           "12. Get Right": ""
+       },
+       "J.Lo": {
+           "@date": "2001-01-23",
+           "@id": "4kGvlESGvbs",
+           "Love Don't Cost a Thing": "",
+           "I'm Real": "",
+           "Play": "",
+           "Walking on Sunshine": "",
+           "Ain't It Funny": "",
+           "Cariño": "",
+           "Come Over": "",
+           "We Gotta Talk": "",
+           "That's Not Me": "",
+           "Dance With Me": "",
+           "Secretly": "",
+           "I'm Gonna Be Alright": "",
+           "That's the Way": "",
+           "Dame (Touch Me)": "",
+           "Si ya se acabó": ""
+       },
         "On the 6": {
             "@date": "1999",
             "If You Had My Love": {
