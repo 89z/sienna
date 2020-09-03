@@ -233,13 +233,20 @@
         }
     },
     "Chris Isaak": {
-        "Heart Shaped World": {
-            "@date": "1989",
-            "Wicked Game": {
-                "VPY": "9,828,608",
-                "URL": "https://youtu.be/ib6VAJbEBjg"
-            }
-        },
+       "Heart Shaped World": {
+           "@date": "1989",
+           "@id": "ib6VAJbEBjg",
+           "Heart Shaped World": "",
+           "I'm Not Waiting": "",
+           "Don't Make Me Dream About You": "",
+           "Kings of the Highway": "",
+           "Wicked Game": "",
+           "Blue Spanish Sky": "",
+           "Wrong to Love You": "",
+           "Forever Young": "",
+           "Nothing's Changed": "",
+           "In the Heat of the Jungle": ""
+       },
         "Chris Isaak": {
             "@date": "1986",
             "You Owe Me Some Kind of Love": "good",
@@ -422,10 +429,7 @@
             "Dryswch": "",
             "Isostasy": "",
             "Memory": "",
-            "Propagation": {
-                "VPY": "812,858",
-                "URL": "https://youtu.be/3uI9Hh26OTs"
-            },
+            "Propagation": "",
             "Vacuume": "",
             "Ternary": "",
             "Usurper": "",

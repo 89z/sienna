@@ -275,23 +275,28 @@
         }
     },
     "Depeche Mode": {
-        "Spirit": {
-            "@date": "2017",
-            "Where’s the Revolution": {
-                "VPY": "8,644,886",
-                "URL": "https://youtu.be/jsCR05oKROA"
-            }
-        },
+       "Spirit": {
+           "@date": "2017-03-17",
+           "@id": "jsCR05oKROA",
+           "Going Backwards": "",
+           "Where’s the Revolution": "",
+           "The Worst Crime": "",
+           "Scum": "",
+           "You Move": "",
+           "Cover Me": "",
+           "Eternal": "short",
+           "Poison Heart": "",
+           "So Much Love": "",
+           "Poorman": "",
+           "No More (This Is the Last Time)": "",
+           "Fail": ""
+       },
         "Ultra": {
             "@date": "1997",
             "Barrel of a Gun": "bad",
             "The Love Thieves": "bad",
             "Home": "bad",
-            "It’s No Good": {
-                "rate": "bad",
-                "VPY": "5,866,027",
-                "URL": "https://youtu.be/stpaq27-V70"
-            },
+            "It’s No Good": "bad",
             "Uselink": "short",
             "Useless": "bad",
             "Sister of Night": "bad",
@@ -301,21 +306,33 @@
             "Insight": "bad",
             "Junior Painkiller": "short"
         },
-        "Violator": {
-            "@date": "1990",
-            "Enjoy The Silence": "",
-            "Personal Jesus": {
-                "VPY": "9,479,143",
-                "URL": "https://youtu.be/u1xrNaTO1bI"
-            }
-        },
-        "Music for the Masses": {
-            "@date": "1987",
-            "Depeche Mode - Strangelove (Official Video)": {
-                "URL": "https://youtu.be/JIrm0dHbCDU",
-                "VPY": "7,162,504"
-            }
-        },
+       "Violator": {
+           "@date": "1990-02-21",
+           "@id": "u1xrNaTO1bI",
+           "World in My Eyes": "",
+           "Sweetest Perfection": "",
+           "Personal Jesus": "",
+           "Halo": "",
+           "Waiting for the Night": "",
+           "Enjoy the Silence": "",
+           "Policy of Truth": "",
+           "Blue Dress": "",
+           "Clean": ""
+       },
+       "Music for the Masses": {
+           "@date": "1987-09-28",
+           "@id": "JIrm0dHbCDU",
+           "Never Let Me Down Again": "",
+           "The Things You Said": "",
+           "Strangelove": "",
+           "Sacred": "",
+           "Little 15": "",
+           "Behind the Wheel": "",
+           "I Want You Now": "",
+           "To Have and to Hold": "short",
+           "Nothing": "",
+           "Pimpf": ""
+       },
         "Speak & Spell": {
             "@date": "1981",
             "New Life": "bad",
@@ -337,11 +354,7 @@
             "Cannibal Resource": "good",
             "Temecula Sunrise": "good",
             "The Bride": "short",
-            "Stillness Is The Move": {
-                "rate": "good",
-                "VPY": "323,658",
-                "URL": "https://youtu.be/YMPF6lpM0XM"
-            },
+            "Stillness Is The Move": "good",
             "Two Doves": "good",
             "Useful Chamber": "",
             "No Intention": "good",
@@ -355,11 +368,7 @@
             "I Should Know": "",
             "Ghosts": "",
             "Lost Not Found": "",
-            "Days Go By": {
-                "rate": "good",
-                "VPY": "1,152,039",
-                "URL": "https://youtu.be/M51rijkxa_4"
-            },
+            "Days Go By": "good",
             "Throwing Shapes": "",
             "Candles": "",
             "All or Nothing": "",
@@ -373,10 +382,8 @@
     "Disturbed": {
         "Evolution": {
             "@date": "2018",
-            "A Reason To Fight": {
-                "VPY": "16,779,619",
-                "URL": "https://youtu.be/t4382UVl0oc"
-            },
+            "@id": "t4382UVl0oc",
+            "A Reason To Fight": "",
             "Are You Ready": "",
             "Hold on to Memories": "",
             "Immortalized": "",
@@ -386,13 +393,23 @@
             "The Light": "",
             "The Vengeful One": ""
         },
-        "Immortalized": {
-            "@date": "2015",
-            "The Sound of Silence": {
-                "VPY": "153,992,522",
-                "URL": "https://youtu.be/u9Dg-g7t2l4"
-            }
-        },
+       "Immortalized": {
+           "@date": "2015-08-21",
+           "@id": "u9Dg-g7t2l4",
+           "The Eye of the Storm": "short",
+           "Immortalized": "",
+           "The Vengeful One": "",
+           "Open Your Eyes": "",
+           "The Light": "",
+           "What Are You Waiting For": "",
+           "You’re Mine": "",
+           "Who": "",
+           "Save Our Last Goodbye": "",
+           "Fire It Up": "",
+           "The Sound of Silence": "",
+           "Never Wrong": "",
+           "Who Taught You How to Hate": ""
+       },
         "Ten Thousand Fists": {
             "@date": "2005",
             "Disturbed - Stricken [Official Music Video]": {
