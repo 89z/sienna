@@ -260,13 +260,22 @@
             "Inferno": "",
             "Gold Chains": ""
         },
-        "Mellow Gold": {
-            "@date": "1994",
-            "Loser": {
-                "VPY": "10,576,977",
-                "URL": "YgSPaXgAdzE"
-            }
-        }
+       "Mellow Gold": {
+           "@date": "1994-03-01",
+           "@id": "YgSPaXgAdzE",
+           "Loser": "",
+           "Pay No Mind (Snoozer)": "",
+           "Fuckin With My Head (Mountain Dew Rock)": "",
+           "Whiskeyclone, Hotel City 1997": "",
+           "Soul Suckin Jerk": "",
+           "Truckdrivin Neighbors Downstairs (Yellow Sweat)": "short",
+           "Sweet Sunshine": "",
+           "Beercan": "",
+           "Steal My Body Home": "",
+           "Nitemare Hippy Girl": "short",
+           "Mutherfuker": "short",
+           "Blackhole / [Analog Odyssey]": ""
+       }
     },
     "Beirut": {
         "The Flying Club Cup": {
