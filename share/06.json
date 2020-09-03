@@ -890,17 +890,22 @@
            "Session": "short",
            "Numb": ""
        },
-        "Hybrid Theory": {
-            "@date": "2000",
-            "Crawling": "",
-            "In the End": {
-                "VPY": "81,909,752",
-                "URL": "https://youtu.be/eVTXPUF4Oz4"
-            },
-            "One Step Closer": "",
-            "Papercut": "",
-            "Points of Authority": ""
-        }
+       "Hybrid Theory": {
+           "@date": "2000-10-24",
+           "@id": "eVTXPUF4Oz4",
+           "Papercut": "",
+           "One Step Closer": "short",
+           "With You": "",
+           "Points of Authority": "",
+           "Crawling": "",
+           "Runaway": "",
+           "By Myself": "",
+           "In the End": "",
+           "A Place for My Head": "",
+           "Forgotten": "",
+           "Cure for the Itch": "short",
+           "Pushing Me Away": ""
+       }
     },
     "Lisa Loeb": {
         "Hello Lisa": {
@@ -988,11 +993,7 @@
             "Selling the Drama": "",
             "I Alone": "good",
             "Iris": "",
-            "Lightning Crashes": {
-                "rate": "good",
-                "VPY": "3,491,937",
-                "URL": "https://youtu.be/xsJ4O-nSveg"
-            },
+            "Lightning Crashes": "good",
             "Top": "short",
             "All Over You": "",
             "Shit Towne": "",

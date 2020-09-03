@@ -204,12 +204,22 @@
         }
     },
     "Nena": {
-        "Nena": {
-            "99 Luftballons": {
-                "VPY": "13,394,632",
-                "URL": "https://youtu.be/La4Dcd1aUcE"
-            }
-        }
+       "Nena": {
+           "@date": "1983-01-14",
+           "@id": "La4Dcd1aUcE",
+           "Kino": "short",
+           "Indianer": "",
+           "Vollmond": "",
+           "Nur geträumt": "",
+           "Tanz auf dem Vulkan": "",
+           "99 Luftballons": "",
+           "Zaubertrick": "",
+           "Einmal ist keinmal": "short",
+           "Leuchtturm": "",
+           "Ich bleib' im Bett": "short",
+           "Noch einmal": "",
+           "Satellitenstadt": ""
+       }
     },
     "New Order": {
         "Technique": {
@@ -240,13 +250,18 @@
             "Sub‐Culture": "",
             "Face Up": ""
         },
-        "Power, Corruption & Lies": {
-            "@date": "1983",
-            "Blue Monday": {
-                "VPY": "13,712,895",
-                "URL": "https://youtu.be/FYH8DsU2WCk"
-            }
-        }
+       "Power, Corruption & Lies": {
+           "@date": "1983-05",
+           "@id": "FYH8DsU2WCk",
+           "Age of Consent": "",
+           "We All Stand": "",
+           "The Village": "",
+           "5 8 6": "",
+           "Your Silent Face": "",
+           "Ultraviolence": "",
+           "Ecstasy": "",
+           "Leave Me Alone": ""
+       }
     },
     "New Radicals": {
         "Maybe You’ve Been Brainwashed Too.": {
@@ -587,11 +602,7 @@
         },
         "Come Away With Me": {
             "@date": "2002",
-            "Don’t Know Why": {
-                "rate": "good",
-                "VPY": "4,720,905",
-                "URL": "https://youtu.be/tO4dxvguQDk"
-            },
+            "Don’t Know Why": "good",
             "Seven Years": "short",
             "Cold Cold Heart": "",
             "Feelin’ the Same Way": "short",
@@ -916,11 +927,7 @@
             "State of Attraction": "",
             "I Need You": "",
             "Forever Your Girl": "",
-            "Straight Up": {
-                "rate": "good",
-                "VPY": "2,182,196",
-                "URL": "https://youtu.be/El1kgCqD7Xk"
-            },
+            "Straight Up": "good",
             "Next to You": "",
             "Cold Hearted": "",
             "One or the Other": ""
@@ -939,10 +946,7 @@
             "ME": "",
             "Feelin’ Love": "",
             "hush, hush, hush.": "",
-            "I Don’t Want to Wait": {
-                "VPY": "892,581",
-                "URL": "https://youtu.be/U0qdaTTS53M"
-            }
+            "I Don’t Want to Wait": ""
         }
     },
     "Pearl Jam": {
@@ -1112,21 +1116,14 @@
             "White Sugar": "",
             "Don’t Fade Away": "",
             "Just the Time of Year": "",
-            "Do You Feel Like We Do": {
-                "rate": "good",
-                "VPY": "1,678,580",
-                "URL": "https://youtu.be/y7rFYbMhcG8"
-            }
+            "Do You Feel Like We Do": "good"
         }
     },
     "Peter Gabriel": {
         "So": {
             "@date": "1986-05-19",
             "Red Rain": "",
-            "Sledgehammer": {
-                "VPY": "3,943,699",
-                "URL": "https://youtu.be/OJWJE0x7T4Q"
-            },
+            "Sledgehammer": "",
             "Don’t Give Up": "",
             "That Voice Again": "",
             "In Your Eyes": "",
