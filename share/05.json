@@ -1886,16 +1886,22 @@
            "Mirrors": "",
            "Blue Ocean Floor": ""
        },
-        "FutureSex/LoveSounds": {
-            "@date": "2006",
-            "Let Me Talk To You/My Love": "",
-            "LoveStoned/I Think She Knows": "",
-            "SexyBack": "",
-            "What Goes Around...Comes Around": {
-                "VPY": "30,522,506",
-                "URL": "https://youtu.be/TOrnUquxtwA"
-            }
-        },
+       "FutureSex/LoveSounds": {
+           "@date": "2006-09-11",
+           "@id": "TOrnUquxtwA",
+           "FutureSex/LoveSound": "",
+           "SexyBack": "",
+           "Sexy Ladies/Let Me Talk to You (prelude)": "",
+           "My Love": "",
+           "LoveStoned/I Think She Knows (interlude)": "",
+           "What Goes Around.../...Comes Around (interlude)": "",
+           "Chop Me Up": "",
+           "Damn Girl": "",
+           "Summer Love/Set the Mood (prelude)": "",
+           "Until the End of Time": "",
+           "Losing My Way": "",
+           "(Another Song) All Over Again": ""
+       },
         "Justified": {
             "@date": "2002-11-04",
             "@id": "nJHYDkvRB2Y",

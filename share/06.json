@@ -103,16 +103,23 @@
         }
     },
     "Kacey Musgraves": {
-        "Golden Hour": {
-            "@date": "2018",
-            "Butterflies": "",
-            "High Horse": "",
-            "Rainbow": {
-                "VPY": "33,574,919",
-                "URL": "https://youtu.be/6OFv566mj7s"
-            },
-            "Space Cowboy": ""
-        },
+       "Golden Hour": {
+           "@date": "2018-03-30",
+           "@id": "6OFv566mj7s",
+           "Slow Burn": "",
+           "Lonely Weekend": "",
+           "Butterflies": "",
+           "Oh, What a World": "",
+           "Mother": "short",
+           "Love Is a Wild Thing": "",
+           "Space Cowboy": "",
+           "Happy & Sad": "",
+           "Velvet Elvis": "short",
+           "Wonder Woman": "",
+           "High Horse": "",
+           "Golden Hour": "",
+           "Rainbow": ""
+       },
         "Pageant Material": {
             "@date": "2015",
             "High Time": "short",
@@ -447,11 +454,7 @@
             "Ocarina of Time": "short",
             "Lon Lon Ranch": "",
             "Kakariko Village": "good",
-            "Lost Woods": {
-                "rate": "short",
-                "VPY": "880,778",
-                "URL": "https://youtu.be/-uInmFU6JkU"
-            },
+            "Lost Woods": "short",
             "Zora’s Domain": "good",
             "Great Fairy’s Fountain": "good",
             "Temple of Time": "short",
@@ -789,28 +792,36 @@
         }
     },
     "Linkin Park": {
-        "One More Light": {
-            "@date": "2017",
-            "Battle Symphony": "",
-            "Good Goodbye": "",
-            "Heavy": {
-                "VPY": "64,311,891",
-                "URL": "https://youtu.be/5dmQ3QWpy1Q"
-            },
-            "Invisible": "",
-            "Nobody Can Save Me": "",
-            "One More Light": "",
-            "Sharp Edges": "",
-            "Talking to Myself": ""
-        },
-        "The Hunting Party": {
-            "@date": "2014",
-            "Final Masquerade": {
-                "VPY": "16,666,261",
-                "URL": "https://youtu.be/i8q8fFs3kTM"
-            },
-            "Until It’s Gone": ""
-        },
+       "One More Light": {
+           "@date": "2017-05-19",
+           "@id": "5dmQ3QWpy1Q",
+           "Nobody Can Save Me": "",
+           "Good Goodbye": "",
+           "Talking to Myself": "",
+           "Battle Symphony": "",
+           "Invisible": "",
+           "Heavy": "short",
+           "Sorry for Now": "",
+           "Halfway Right": "",
+           "One More Light": "",
+           "Sharp Edges": "short"
+       },
+       "The Hunting Party": {
+           "@date": "2014-06-13",
+           "@id": "i8q8fFs3kTM",
+           "Keys to the Kingdom": "",
+           "All for Nothing": "",
+           "Guilty All the Same": "",
+           "The Summoning": "short",
+           "War": "short",
+           "Wastelands": "",
+           "Until It’s Gone": "",
+           "Rebellion": "",
+           "Mark the Graves": "",
+           "Drawbar": "short",
+           "Final Masquerade": "",
+           "A Line in the Sand": ""
+       },
         "Living Things": {
             "@date": "2012",
             "Burn It Down": "",
