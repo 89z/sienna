@@ -48,33 +48,44 @@
         }
     },
     "Chet Faker": {
-        "Built on Glass": {
-            "@date": "2014",
-            "1998": "",
-            "Gold": {
-                "VPY": "40,403,436",
-                "URL": "https://youtu.be/hi4pzKvuEQM"
-            }
-        }
+       "Built on Glass": {
+           "@date": "2014-04-11",
+           "@id": "hi4pzKvuEQM",
+           "Release Your Problems": "",
+           "Talk is Cheap": "",
+           "No Advice (airport version)": "short",
+           "Melt": "",
+           "Gold": "",
+           "To Me": "",
+           "/": "short",
+           "Blush": "",
+           "1998": "",
+           "Cigarettes & Loneliness": "",
+           "Lesson in Patience": "",
+           "Dead Body": ""
+       }
     },
     "Chicago": {
-        "Chicago 17": {
-            "@date": "1984",
-            "You’re The Inspiration": {
-                "VPY": "7,406,342",
-                "URL": "https://youtu.be/wM-XhQeFzW4"
-            }
-        },
+       "Chicago 17": {
+           "@date": "1984-05-14",
+           "@id": "wM-XhQeFzW4",
+           "Stay the Night": "",
+           "We Can Stop the Hurtin’": "",
+           "Hard Habit to Break": "",
+           "Only You": "",
+           "Remember the Feeling": "",
+           "Along Comes a Woman": "",
+           "You’re the Inspiration": "",
+           "Please Hold On": "",
+           "Prima Donna": "",
+           "Once in a Lifetime": ""
+       },
         "Chicago X": {
             "@date": "1976",
             "Once or Twice": "",
             "You Are on My Mind": "",
             "Skin Tight": "",
-            "If You Leave Me Now": {
-                "rate": "good",
-                "VPY": "1,030,105",
-                "URL": "https://youtu.be/j1ykMNtzMT8"
-            },
+            "If You Leave Me Now": "good",
             "Together Again": "",
             "Another Rainy Day in New York City": "",
             "Mama Mama": "",
@@ -166,23 +177,44 @@
         }
     },
     "Childish Gambino": {
-        "Awaken, My Love!": {
-            "@date": "2016",
-            "Me and Your Mama": "",
-            "Redbone": {
-                "VPY": "130,783,298",
-                "URL": "https://youtu.be/Kp7eSUU9oy8"
-            }
-        },
-        "Because the Internet": {
-            "@date": "2013",
-            "3005": "",
-            "Sweatpants": {
-                "VPY": "25,128,289",
-                "URL": "https://youtu.be/ExVtrghW5Y4"
-            },
-            "Telegraph Ave": ""
-        },
+       "“Awaken, My Love!”": {
+           "@date": "2016-12-02",
+           "@id": "Kp7eSUU9oy8",
+           "Me and Your Mama": "",
+           "Have Some Love": "",
+           "Boogieman": "",
+           "Zombies": "",
+           "Riot": "short",
+           "Redbone": "",
+           "California": "short",
+           "Terrified": "",
+           "Baby Boy": "",
+           "The Night Me and Your Mama Met": "",
+           "Stand Tall": ""
+       },
+       "Because the Internet": {
+           "@date": "2013-12-06",
+           "@id": "ExVtrghW5Y4",
+           "The Library (intro)": "short",
+           "I. Crawl": "",
+           "II. Worldstar": "",
+           "Dial Up": "short",
+           "I. The Worst Guys": "",
+           "II. Shadows": "",
+           "III. Telegraph Ave. (\"Oakland\" by Lloyd)": "",
+           "IV. Sweatpants": "",
+           "V. 3005": "",
+           "Playing Around Before the Party Starts": "short",
+           "I. The Party": "short",
+           "II. No Exit": "short",
+           "Death by Numbers": "short",
+           "I. Flight of the Navigator": "",
+           "II. Zealots of Stockholm (Free Information)": "",
+           "III. Urn": "short",
+           "Pink Toes": "",
+           "Earth: The Oldest Computer (The Last Night)": "",
+           "Life: The Biggest Troll (Andrew Auernheimer)": ""
+       },
         "Camp": {
             "@date": "2011",
             "Outside": "bad",

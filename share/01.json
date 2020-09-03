@@ -446,14 +446,22 @@
         }
     },
     "Big Boi": {
-        "Boomiverse": {
-            "@date": "2017",
-            "All Night": {
-                "VPY": "11,499,682",
-                "URL": "QxTgr11ncJo"
-            },
-            "Kill Jill": ""
-        },
+       "Boomiverse": {
+           "@date": "2017-06-16",
+           "@id": "QxTgr11ncJo",
+           "Da Next Day": "short",
+           "Kill Jill": "",
+           "Mic Jack": "",
+           "In the South": "",
+           "Order of Operations": "",
+           "All Night": "",
+           "Get Wit It": "",
+           "Overthunk": "",
+           "Chocolate": "",
+           "Made Man": "",
+           "Freakanomics": "",
+           "Follow Deez": ""
+       },
         "Sir Lucious Left Foot… The Son of Chico Dusty": {
             "@date": "2010",
             "Feel Me (intro)": "short",
