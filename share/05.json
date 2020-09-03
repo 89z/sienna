@@ -1300,13 +1300,24 @@
            "Dame (Touch Me)": "",
            "Si ya se acabó": ""
        },
-        "On the 6": {
-            "@date": "1999",
-            "If You Had My Love": {
-                "VPY": "10,299,126",
-                "URL": "https://youtu.be/lYfkl-HXfuU"
-            }
-        }
+       "On the 6": {
+           "@date": "1999-06-01",
+           "@id": "lYfkl-HXfuU",
+           "If You Had My Love": "",
+           "Should've Never": "",
+           "Too Late": "",
+           "Feelin' So Good": "",
+           "Let's Get Loud": "",
+           "Could This Be Love": "",
+           "No me ames (Tropical remix)": "",
+           "Waiting for Tonight": "",
+           "Open Off My Love": "",
+           "Promise Me You'll Try": "",
+           "It's Not That Serious": "",
+           "Talk About Us": "",
+           "No me ames (Ballad version)": "",
+           "Una noche más": ""
+       }
     },
     "Jeremy Soule": {
         "The Northerner Diaries": {
@@ -1581,10 +1592,7 @@
     },
     "John Frusciante": {
         "Curtains": {
-            "The Past Recedes": {
-                "VPY": "820,397",
-                "URL": "https://youtu.be/4v9CfE90Sts"
-            },
+            "The Past Recedes": "",
             "Lever Pulled": "short",
             "Anne": "",
             "The Real": "",
@@ -1829,34 +1837,55 @@
         }
     },
     "Justin Timberlake": {
-        "Man of the Woods": {
-            "@date": "2018",
-            "Filthy": "",
-            "Man of the Woods": "",
-            "Say Something": {
-                "VPY": "241,339,295",
-                "URL": "https://youtu.be/8MPbR6Cbwi4"
-            },
-            "Supplies": ""
-        },
-        "The 20/20 Experience (2 of 2)": {
-            "@date": "2013-09-27",
-            "Not a Bad Thing": "",
-            "Take Back the Night": "",
-            "TKO": {
-                "VPY": "18,355,797",
-                "URL": "https://youtu.be/FyXtoTLLcDk"
-            }
-        },
-        "The 20/20 Experience": {
-            "@date": "2013-03-15",
-            "Mirrors": {
-                "VPY": "90,408,909",
-                "URL": "https://youtu.be/uuZE_IRwLNI"
-            },
-            "Suit & Tie": "",
-            "Tunnel Vision": ""
-        },
+       "Man of the Woods": {
+           "@date": "2018-01-29",
+           "@id": "8MPbR6Cbwi4",
+           "Filthy": "",
+           "Midnight Summer Jam": "",
+           "Sauce": "",
+           "Man of the Woods": "",
+           "Higher Higher": "",
+           "Wave": "",
+           "Supplies": "",
+           "Morning Light": "",
+           "Say Something": "",
+           "Hers (interlude)": "short",
+           "Flannel": "",
+           "Montana": "",
+           "Breeze Off the Pond": "",
+           "Livin’ Off the Land": "",
+           "The Hard Stuff": "",
+           "Young Man": ""
+       },
+       "The 20/20 Experience (2 of 2)": {
+           "@date": "2013-09-27",
+           "@id": "FyXtoTLLcDk",
+           "Gimme What I Don't Know (I Want)": "",
+           "True Blood": "",
+           "Cabaret": "",
+           "TKO": "",
+           "Take Back the Night": "",
+           "Murder": "",
+           "Drink You Away": "",
+           "You Got It On": "",
+           "Amnesia": "",
+           "Only When I Walk Away": "",
+           "Not a Bad Thing / Pair of Wings": ""
+       },
+       "The 20/20 Experience": {
+           "@date": "2013-03-15",
+           "@id": "uuZE_IRwLNI",
+           "Pusher Love Girl": "",
+           "Suit & Tie": "",
+           "Don’t Hold the Wall": "",
+           "Strawberry Bubblegum": "",
+           "Tunnel Vision": "",
+           "Spaceship Coupe": "",
+           "That Girl": "",
+           "Let the Groove Get In": "",
+           "Mirrors": "",
+           "Blue Ocean Floor": ""
+       },
         "FutureSex/LoveSounds": {
             "@date": "2006",
             "Let Me Talk To You/My Love": "",
