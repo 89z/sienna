@@ -1428,22 +1428,41 @@
         }
     },
     "The Wallflowers": {
-        "Bringing Down the Horse": {
-            "One Headlight": {
-                "VPY": "10,548,344",
-                "URL": "https://youtu.be/Zzyfcys1aLM"
-            }
-        }
+       "Bringing Down the Horse": {
+           "@date": "1996-05-21",
+           "@id": "Zzyfcys1aLM",
+           "One Headlight": "",
+           "6th Avenue Heartache": "",
+           "Bleeders": "",
+           "Three Marlenas": "",
+           "The Difference": "",
+           "Invisible City": "",
+           "Laughing Out Loud": "",
+           "Josephine": "",
+           "God Don’t Make Lonely Girls": "",
+           "Angel on My Bike": "",
+           "I Wish I Felt Nothing": ""
+       }
     },
     "The White Stripes": {
-        "Elephant": {
-            "@date": "2003",
-            "Ball and Biscuit": "",
-            "Seven Nation Army": {
-                "VPY": "23,256,250",
-                "URL": "https://youtu.be/0J2QdDbelmY"
-            }
-        },
+       "Elephant": {
+           "@date": "2003-03-31",
+           "@id": "0J2QdDbelmY",
+           "Seven Nation Army": "",
+           "Black Math": "",
+           "There’s No Home for You Here": "",
+           "I Just Don’t Know What to Do With Myself": "short",
+           "In the Cold, Cold Night": "short",
+           "I Want to Be the Boy to Warm Your Mother’s Heart": "",
+           "You’ve Got Her in Your Pocket": "",
+           "Ball and Biscuit": "",
+           "The Hardest Button to Button": "",
+           "Little Acorns": "",
+           "Hypnotize": "short",
+           "The Air Near My Fingers": "",
+           "Girl, You Have No Faith in Medicine": "",
+           "Well It’s True That We Love One Another": "short"
+       },
         "White Blood Cells": {
             "@date": "2001",
             "Dead Leaves and the Dirty Ground": "good",
