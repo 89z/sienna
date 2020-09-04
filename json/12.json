@@ -346,22 +346,46 @@
            "Sins of My Father": "",
            "Euphoria": ""
        },
-        "Confessions": {
-            "@date": "2004",
-            "Burn": "",
-            "Confessions, Pt. II": "",
-            "Yeah!": {
-                "VPY": "73,694,050",
-                "URL": "https://youtu.be/GxBSyx85Kp8"
-            }
-        },
-        "8701": {
-            "@date": "2001",
-            "U Got It Bad": {
-                "VPY": "20,097,223",
-                "URL": "https://youtu.be/o3IWTfcks4k"
-            }
-        }
+       "Confessions": {
+           "@date": "2004-03-22",
+           "@id": "GxBSyx85Kp8",
+           "Intro": "short",
+           "Yeah!": "",
+           "Throwback": "",
+           "Confessions (interlude)": "short",
+           "Confessions, Part II": "",
+           "Burn": "",
+           "Caught Up": "",
+           "Superstar (interlude)": "short",
+           "Superstar": "",
+           "Truth Hurts": "",
+           "Simple Things": "",
+           "Bad Girl": "",
+           "That’s What It’s Made For": "",
+           "Can U Handle It?": "",
+           "Do It to Me": "",
+           "Take Your Hand": "",
+           "Follow Me": ""
+       },
+       "8701": {
+           "@date": "2001-08-07",
+           "@id": "o3IWTfcks4k",
+           "Intro-Lude 8701": "short",
+           "U Remind Me": "",
+           "I Don't Know": "",
+           "Twork It Out": "",
+           "U Got It Bad": "",
+           "If I Want To": "",
+           "I Can't Let U Go": "",
+           "U Don't Have to Call": "",
+           "Without U (interlude)": "short",
+           "Can U Help Me": "",
+           "How Do I Say": "",
+           "Hottest Thing": "",
+           "Good Ol' Ghetto": "",
+           "U-Turn": "",
+           "U R the One": ""
+       }
     },
     "Van Halen": {
         "Van Halen": {
@@ -611,13 +635,20 @@
         }
     },
     "Yeah Yeah Yeahs": {
-        "It’s Blitz!": {
-            "@date": "2009",
-            "Heads Will Roll": {
-                "VPY": "16,143,630",
-                "URL": "https://youtu.be/or3U2rXxvQw"
-            }
-        },
+       "It’s Blitz!": {
+           "@date": "2009-03-31",
+           "@id": "or3U2rXxvQw",
+           "Zero": "",
+           "Heads Will Roll": "",
+           "Soft Shock": "",
+           "Skeletons": "",
+           "Dull Life": "",
+           "Shame and Fortune": "",
+           "Runaway": "",
+           "Dragon Queen": "",
+           "Hysteric": "",
+           "Little Shadow": ""
+       },
         "Show Your Bones": {
             "@date": "2006",
             "Gold Lion": "",
@@ -710,13 +741,6 @@
         }
     },
     "Yppah": {
-        "Eighty One": {
-            "@date": "2012",
-            "Never Mess With Sunday": {
-                "VPY": "93,586",
-                "URL": "https://youtu.be/NqfAj1C7rPc"
-            }
-        },
         "Gumball Machine Weekend": {
             "@date": "2009",
             "Gumball Machine Weekend": "",
