@@ -363,21 +363,37 @@
             "Circus Envy": "",
             "You": ""
         },
-        "Automatic for the People": {
-            "@date": "1992",
-            "Man On The Moon": {
-                "VPY": "8,055,132",
-                "URL": "https://youtu.be/dLxpNiF0YKs"
-            }
-        },
-        "Out of Time": {
-            "@date": "1991",
-            "Losing My Religion": {
-                "VPY": "70,617,941",
-                "URL": "https://youtu.be/xwtdhWltSIg"
-            },
-            "Shiny Happy People": ""
-        },
+       "Automatic for the People": {
+           "@date": "1992-10-06",
+           "@id": "dLxpNiF0YKs",
+           "Drive": "",
+           "Try Not to Breathe": "",
+           "The Sidewinder Sleeps Tonite": "",
+           "Everybody Hurts": "",
+           "New Orleans Instrumental No. 1": "short",
+           "Sweetness Follows": "",
+           "Monty Got a Raw Deal": "",
+           "Ignoreland": "",
+           "Star Me Kitten": "",
+           "Man on the Moon": "",
+           "Nightswimming": "",
+           "Find the River": ""
+       },
+       "Out of Time": {
+           "@date": "1991-03-08",
+           "@id": "xwtdhWltSIg",
+           "Radio Song": "",
+           "Losing My Religion": "",
+           "Low": "",
+           "Near Wild Heaven": "",
+           "Endgame": "",
+           "Shiny Happy People": "",
+           "Belong": "",
+           "Half a World Away": "",
+           "Texarkana": "",
+           "Country Feedback": "",
+           "Me in Honey": ""
+       },
         "Green": {
             "@date": "1988",
             "Pop Song 89": "",
@@ -442,11 +458,7 @@
             "Fifteen Fifty": "",
             "Guitar Sound": "",
             "Synth One": "",
-            "Throwing Fire": {
-                "rate": "good",
-                "VPY": "1,146,444",
-                "URL": "https://youtu.be/0O2aH4XLbto"
-            },
+            "Throwing Fire": "good",
             "Minimal MC": "short",
             "Stay Crunchy": "",
             "Inverted Mean": "",
@@ -495,14 +507,22 @@
         }
     },
     "Röyksopp": {
-        "The Inevitable End": {
-            "@date": "2014",
-            "Here She Comes Again": {
-                "VPY": "20,864,611",
-                "URL": "https://youtu.be/rFI4JfbgOSY"
-            },
-            "Monument": ""
-        },
+       "The Inevitable End": {
+           "@date": "2014-11-07",
+           "@id": "rFI4JfbgOSY",
+           "Skulls": "",
+           "Monument (T.I.E. version)": "",
+           "Sordid Affair": "",
+           "You Know I Have to Go": "",
+           "Rong": "short",
+           "Save Me": "",
+           "I Had This Thing": "",
+           "Here She Comes Again": "",
+           "Running to the Sea": "",
+           "Compulsion": "",
+           "Coup de Grace": "",
+           "Thank You": ""
+       },
         "Melody A.M.": {
             "@date": "2001",
             "So Easy": "",
@@ -876,11 +896,7 @@
             "Ný batterí": "good",
             "Hjartað hamast (bamm bamm bamm)": "good",
             "Viðrar vel til loftárása": "bad",
-            "Olsen Olsen": {
-                "rate": "bad",
-                "VPY": "1,532,586",
-                "URL": "https://youtu.be/8LeQN249Jqw"
-            },
+            "Olsen Olsen": "bad",
             "Ágætis byrjun": "good",
             "Avalon": ""
         }
@@ -1326,11 +1342,7 @@
     },
     "Stereo MCs": {
         "Connected": {
-            "Connected": {
-                "rate": "good",
-                "VPY": "341,807",
-                "URL": "https://youtu.be/LMGdRgtblmk"
-            },
+            "Connected": "good",
             "Ground Level": "",
             "Everything": "",
             "Sketch": "",

@@ -186,11 +186,7 @@
             "Here Today, Gone Tomorrow": "bad",
             "A Song About Hope": "bad",
             "Medusa": "bad",
-            "Goodbye": {
-                "rate": "good",
-                "VPY": "60,659",
-                "URL": "https://youtu.be/yLNM-rJi1mM"
-            },
+            "Goodbye": "good",
             "For Good": "bad"
         },
         "Far Away Trains Passing By": {
@@ -316,11 +312,7 @@
     },
     "Us3": {
         "Hand on the Torch": {
-            "Cantaloop": {
-                "rate": "good",
-                "VPY": "822,480",
-                "URL": "https://youtu.be/JwBjhBL9G6U"
-            },
+            "Cantaloop": "good",
             "I Got It Goin’ On": "",
             "Different Rhythms Different People": "short",
             "It’s Like That": "",
@@ -336,13 +328,24 @@
         }
     },
     "Usher": {
-        "Looking 4 Myself": {
-            "@date": "2012",
-            "Climax": {
-                "VPY": "11,119,074",
-                "URL": "https://youtu.be/nNTyfVh3nmU"
-            }
-        },
+       "Looking 4 Myself": {
+           "@date": "2012-06-08",
+           "@id": "nNTyfVh3nmU",
+           "Can't Stop Won't Stop": "",
+           "Scream": "",
+           "Climax": "",
+           "I Care for U": "",
+           "Show Me": "",
+           "Lemme See": "",
+           "Twisted": "",
+           "Dive": "",
+           "What Happened to U": "",
+           "Looking 4 Myself": "",
+           "Numb": "",
+           "Lessons for the Lover": "",
+           "Sins of My Father": "",
+           "Euphoria": ""
+       },
         "Confessions": {
             "@date": "2004",
             "Burn": "",
