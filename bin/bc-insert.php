@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-
+error_reporting(E_ALL);
 extension_loaded('openssl') or die('openssl');
 require 'sienna/radix-64.php';
 

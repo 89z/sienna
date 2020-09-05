@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+error_reporting(E_ALL);
 
 require 'sienna/musicbrainz.php';
 require 'sienna/youtube.php';
@@ -35,7 +36,6 @@ function yt_views(string $s_url): string {
    $n_rate = $n_views / $n_diff;
    # part 4
    $m_v['id'] = $o_info->id;
-   $m_v['title']; $o_info->title->simpleText;
    $m_v['views per year'] = number_format($n_rate);
    $s_end = "\e[m";
    $s_v = json_encode($m_v, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
