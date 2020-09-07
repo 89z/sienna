@@ -328,64 +328,64 @@
         }
     },
     "Usher": {
-       "Looking 4 Myself": {
-           "@date": "2012-06-08",
-           "@id": "nNTyfVh3nmU",
-           "Can't Stop Won't Stop": "",
-           "Scream": "",
-           "Climax": "",
-           "I Care for U": "",
-           "Show Me": "",
-           "Lemme See": "",
-           "Twisted": "",
-           "Dive": "",
-           "What Happened to U": "",
-           "Looking 4 Myself": "",
-           "Numb": "",
-           "Lessons for the Lover": "",
-           "Sins of My Father": "",
-           "Euphoria": ""
-       },
-       "Confessions": {
-           "@date": "2004-03-22",
-           "@id": "GxBSyx85Kp8",
-           "Intro": "short",
-           "Yeah!": "",
-           "Throwback": "",
-           "Confessions (interlude)": "short",
-           "Confessions, Part II": "",
-           "Burn": "",
-           "Caught Up": "",
-           "Superstar (interlude)": "short",
-           "Superstar": "",
-           "Truth Hurts": "",
-           "Simple Things": "",
-           "Bad Girl": "",
-           "That’s What It’s Made For": "",
-           "Can U Handle It?": "",
-           "Do It to Me": "",
-           "Take Your Hand": "",
-           "Follow Me": ""
-       },
-       "8701": {
-           "@date": "2001-08-07",
-           "@id": "o3IWTfcks4k",
-           "Intro-Lude 8701": "short",
-           "U Remind Me": "",
-           "I Don't Know": "",
-           "Twork It Out": "",
-           "U Got It Bad": "",
-           "If I Want To": "",
-           "I Can't Let U Go": "",
-           "U Don't Have to Call": "",
-           "Without U (interlude)": "short",
-           "Can U Help Me": "",
-           "How Do I Say": "",
-           "Hottest Thing": "",
-           "Good Ol' Ghetto": "",
-           "U-Turn": "",
-           "U R the One": ""
-       }
+        "Looking 4 Myself": {
+            "@date": "2012-06-08",
+            "@id": "nNTyfVh3nmU",
+            "Can't Stop Won't Stop": "",
+            "Scream": "",
+            "Climax": "",
+            "I Care for U": "",
+            "Show Me": "",
+            "Lemme See": "",
+            "Twisted": "",
+            "Dive": "",
+            "What Happened to U": "",
+            "Looking 4 Myself": "",
+            "Numb": "",
+            "Lessons for the Lover": "",
+            "Sins of My Father": "",
+            "Euphoria": ""
+        },
+        "Confessions": {
+            "@date": "2004-03-22",
+            "@id": "GxBSyx85Kp8",
+            "Intro": "short",
+            "Yeah!": "",
+            "Throwback": "",
+            "Confessions (interlude)": "short",
+            "Confessions, Part II": "",
+            "Burn": "",
+            "Caught Up": "",
+            "Superstar (interlude)": "short",
+            "Superstar": "",
+            "Truth Hurts": "",
+            "Simple Things": "",
+            "Bad Girl": "",
+            "That’s What It’s Made For": "",
+            "Can U Handle It?": "",
+            "Do It to Me": "",
+            "Take Your Hand": "",
+            "Follow Me": ""
+        },
+        "8701": {
+            "@date": "2001-08-07",
+            "@id": "o3IWTfcks4k",
+            "Intro-Lude 8701": "short",
+            "U Remind Me": "",
+            "I Don't Know": "",
+            "Twork It Out": "",
+            "U Got It Bad": "",
+            "If I Want To": "",
+            "I Can't Let U Go": "",
+            "U Don't Have to Call": "",
+            "Without U (interlude)": "short",
+            "Can U Help Me": "",
+            "How Do I Say": "",
+            "Hottest Thing": "",
+            "Good Ol' Ghetto": "",
+            "U-Turn": "",
+            "U R the One": ""
+        }
     },
     "Van Halen": {
         "Van Halen": {
@@ -492,22 +492,22 @@
             "So Much to Me": ""
         }
     },
-   "Wang Chung": {
-       "Points on the Curve": {
-           "@date": "1983",
-           "Dance Hall Days": "good",
-           "Wait": "",
-           "True Love": "",
-           "The Waves": "",
-           "Look at Me Now": "",
-           "Don’t Let Go": "",
-           "Even If You Dream": "",
-           "Don’t Be My Enemy": "",
-           "Devoted Friends": "",
-           "Talk It Out": ""
-       }
-   },
-   "Warren G": {
+    "Wang Chung": {
+        "Points on the Curve": {
+            "@date": "1983",
+            "Dance Hall Days": "good",
+            "Wait": "",
+            "True Love": "",
+            "The Waves": "",
+            "Look at Me Now": "",
+            "Don’t Let Go": "",
+            "Even If You Dream": "",
+            "Don’t Be My Enemy": "",
+            "Devoted Friends": "",
+            "Talk It Out": ""
+        }
+    },
+    "Warren G": {
         "Regulate… G Funk Era": {
             "@date": "1994-06-07",
             "@id": "1plPyJdXKIY",
@@ -635,20 +635,20 @@
         }
     },
     "Yeah Yeah Yeahs": {
-       "It’s Blitz!": {
-           "@date": "2009-03-31",
-           "@id": "or3U2rXxvQw",
-           "Zero": "",
-           "Heads Will Roll": "",
-           "Soft Shock": "",
-           "Skeletons": "",
-           "Dull Life": "",
-           "Shame and Fortune": "",
-           "Runaway": "",
-           "Dragon Queen": "",
-           "Hysteric": "",
-           "Little Shadow": ""
-       },
+        "It’s Blitz!": {
+            "@date": "2009-03-31",
+            "@id": "or3U2rXxvQw",
+            "Zero": "",
+            "Heads Will Roll": "",
+            "Soft Shock": "",
+            "Skeletons": "",
+            "Dull Life": "",
+            "Shame and Fortune": "",
+            "Runaway": "",
+            "Dragon Queen": "",
+            "Hysteric": "",
+            "Little Shadow": ""
+        },
         "Show Your Bones": {
             "@date": "2006",
             "Gold Lion": "",
