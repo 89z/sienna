@@ -204,22 +204,22 @@
         }
     },
     "Nena": {
-       "Nena": {
-           "@date": "1983-01-14",
-           "@id": "La4Dcd1aUcE",
-           "Kino": "short",
-           "Indianer": "",
-           "Vollmond": "",
-           "Nur geträumt": "",
-           "Tanz auf dem Vulkan": "",
-           "99 Luftballons": "",
-           "Zaubertrick": "",
-           "Einmal ist keinmal": "short",
-           "Leuchtturm": "",
-           "Ich bleib' im Bett": "short",
-           "Noch einmal": "",
-           "Satellitenstadt": ""
-       }
+        "Nena": {
+            "@date": "1983-01-14",
+            "@id": "La4Dcd1aUcE",
+            "Kino": "short",
+            "Indianer": "",
+            "Vollmond": "",
+            "Nur geträumt": "",
+            "Tanz auf dem Vulkan": "",
+            "99 Luftballons": "",
+            "Zaubertrick": "",
+            "Einmal ist keinmal": "short",
+            "Leuchtturm": "",
+            "Ich bleib' im Bett": "short",
+            "Noch einmal": "",
+            "Satellitenstadt": ""
+        }
     },
     "New Order": {
         "Technique": {
@@ -250,18 +250,18 @@
             "Sub‐Culture": "",
             "Face Up": ""
         },
-       "Power, Corruption & Lies": {
-           "@date": "1983-05",
-           "@id": "FYH8DsU2WCk",
-           "Age of Consent": "",
-           "We All Stand": "",
-           "The Village": "",
-           "5 8 6": "",
-           "Your Silent Face": "",
-           "Ultraviolence": "",
-           "Ecstasy": "",
-           "Leave Me Alone": ""
-       }
+        "Power, Corruption & Lies": {
+            "@date": "1983-05",
+            "@id": "FYH8DsU2WCk",
+            "Age of Consent": "",
+            "We All Stand": "",
+            "The Village": "",
+            "5 8 6": "",
+            "Your Silent Face": "",
+            "Ultraviolence": "",
+            "Ecstasy": "",
+            "Leave Me Alone": ""
+        }
     },
     "New Radicals": {
         "Maybe You’ve Been Brainwashed Too.": {
@@ -1207,72 +1207,72 @@
         }
     },
     "Pink Floyd": {
-       "’94: The Division Bell": {
-           "@date": "1994",
-           "@id": "7jMlFXouPk8",
-           "Coming Back to Life": "",
-           "Wearing the Inside Out": "",
-           "Take It Back": "",
-           "Keep Talking": "",
-           "What Do You Want From Me": "",
-           "Poles Apart": "",
-           "Marooned": "",
-           "A Great Day for Freedom": "",
-           "Lost for Words": ""
-       },
-       "A Momentary Lapse of Reason": {
-           "@date": "1987-09-07",
-           "@id": "nVhNCTH8pDs",
-           "Signs of Life": "",
-           "Learning to Fly": "",
-           "The Dogs of War": "",
-           "One Slip": "",
-           "On the Turning Away": "",
-           "Yet Another Movie / Round and Around": "",
-           "A New Machine, Part 1": "short",
-           "Terminal Frost": "",
-           "A New Machine, Part 2": "short",
-           "Sorrow": ""
-       },
-       "The Wall": {
-           "@date": "1979-11-30",
-           "@id": "YR5ApYxkU-U",
-           "In the Flesh?": "",
-           "The Thin Ice": "short",
-           "Another Brick in the Wall, Part 1": "",
-           "The Happiest Days of Our Lives": "short",
-           "Another Brick in the Wall, Part 2": "",
-           "Mother": "",
-           "Goodbye Blue Sky": "short",
-           "Empty Spaces": "short",
-           "Young Lust": "",
-           "One of My Turns": "",
-           "Don’t Leave Me Now": "",
-           "Another Brick in the Wall, Part 3": "short",
-           "Goodbye Cruel World": "short",
-           "Hey You": "",
-           "Is There Anybody Out There?": "short",
-           "Nobody Home": "",
-           "Vera": "short",
-           "Bring the Boys Back Home": "short",
-           "Comfortably Numb": "",
-           "The Show Must Go On": "short",
-           "In the Flesh": "",
-           "Run Like Hell": "",
-           "Waiting for the Worms": "",
-           "Stop": "short",
-           "The Trial": "",
-           "Outside the Wall": "short"
-       },
-       "Wish You Were Here": {
-           "@date": "1975-09-12",
-           "@id": "IXdNnw99-Ic",
-           "Shine On You Crazy Diamond, Parts I–V": "",
-           "Welcome to the Machine": "",
-           "Have a Cigar": "",
-           "Wish You Were Here": "",
-           "Shine On You Crazy Diamond, Parts VI–IX": ""
-       }
+        "’94: The Division Bell": {
+            "@date": "1994",
+            "@id": "7jMlFXouPk8",
+            "Coming Back to Life": "",
+            "Wearing the Inside Out": "",
+            "Take It Back": "",
+            "Keep Talking": "",
+            "What Do You Want From Me": "",
+            "Poles Apart": "",
+            "Marooned": "",
+            "A Great Day for Freedom": "",
+            "Lost for Words": ""
+        },
+        "A Momentary Lapse of Reason": {
+            "@date": "1987-09-07",
+            "@id": "nVhNCTH8pDs",
+            "Signs of Life": "",
+            "Learning to Fly": "",
+            "The Dogs of War": "",
+            "One Slip": "",
+            "On the Turning Away": "",
+            "Yet Another Movie / Round and Around": "",
+            "A New Machine, Part 1": "short",
+            "Terminal Frost": "",
+            "A New Machine, Part 2": "short",
+            "Sorrow": ""
+        },
+        "The Wall": {
+            "@date": "1979-11-30",
+            "@id": "YR5ApYxkU-U",
+            "In the Flesh?": "",
+            "The Thin Ice": "short",
+            "Another Brick in the Wall, Part 1": "",
+            "The Happiest Days of Our Lives": "short",
+            "Another Brick in the Wall, Part 2": "",
+            "Mother": "",
+            "Goodbye Blue Sky": "short",
+            "Empty Spaces": "short",
+            "Young Lust": "",
+            "One of My Turns": "",
+            "Don’t Leave Me Now": "",
+            "Another Brick in the Wall, Part 3": "short",
+            "Goodbye Cruel World": "short",
+            "Hey You": "",
+            "Is There Anybody Out There?": "short",
+            "Nobody Home": "",
+            "Vera": "short",
+            "Bring the Boys Back Home": "short",
+            "Comfortably Numb": "",
+            "The Show Must Go On": "short",
+            "In the Flesh": "",
+            "Run Like Hell": "",
+            "Waiting for the Worms": "",
+            "Stop": "short",
+            "The Trial": "",
+            "Outside the Wall": "short"
+        },
+        "Wish You Were Here": {
+            "@date": "1975-09-12",
+            "@id": "IXdNnw99-Ic",
+            "Shine On You Crazy Diamond, Parts I–V": "",
+            "Welcome to the Machine": "",
+            "Have a Cigar": "",
+            "Wish You Were Here": "",
+            "Shine On You Crazy Diamond, Parts VI–IX": ""
+        }
     },
     "Pixies": {
         "Bossanova": {
@@ -1310,23 +1310,23 @@
             "Silver": "short",
             "Gouge Away": "short"
         },
-       "Surfer Rosa": {
-           "@date": "1988-03-21",
-           "@id": "N3oCS85HvpY",
-           "Bone Machine": "",
-           "Break My Body": "short",
-           "Something Against You": "short",
-           "Broken Face": "short",
-           "Gigantic": "",
-           "River Euphrates": "short",
-           "Where Is My Mind?": "",
-           "Cactus": "short",
-           "Tony’s Theme": "short",
-           "Oh My Golly! / [untitled]": "short",
-           "Vamos": "",
-           "I’m Amazed": "short",
-           "Brick Is Red": "short"
-       }
+        "Surfer Rosa": {
+            "@date": "1988-03-21",
+            "@id": "N3oCS85HvpY",
+            "Bone Machine": "",
+            "Break My Body": "short",
+            "Something Against You": "short",
+            "Broken Face": "short",
+            "Gigantic": "",
+            "River Euphrates": "short",
+            "Where Is My Mind?": "",
+            "Cactus": "short",
+            "Tony’s Theme": "short",
+            "Oh My Golly! / [untitled]": "short",
+            "Vamos": "",
+            "I’m Amazed": "short",
+            "Brick Is Red": "short"
+        }
     },
     "Pizzicato Five": {
         "Sister Freedom Tapes": {
@@ -1599,20 +1599,20 @@
         }
     },
     "Portugal. The Man": {
-       "Woodstock": {
-           "@date": "2017-06-15",
-           "@id": "pBkHHoOIIn8",
-           "Number One": "",
-           "Easy Tiger": "",
-           "Live in the Moment": "",
-           "Feel It Still": "short",
-           "Rich Friends": "",
-           "Keep On": "",
-           "So Young": "",
-           "Mr Lonely": "",
-           "Tidal Wave": "",
-           "Noise Pollution (version A, vocal Up mix 1.3)": ""
-       },
+        "Woodstock": {
+            "@date": "2017-06-15",
+            "@id": "pBkHHoOIIn8",
+            "Number One": "",
+            "Easy Tiger": "",
+            "Live in the Moment": "",
+            "Feel It Still": "short",
+            "Rich Friends": "",
+            "Keep On": "",
+            "So Young": "",
+            "Mr Lonely": "",
+            "Tidal Wave": "",
+            "Noise Pollution (version A, vocal Up mix 1.3)": ""
+        },
         "Censored Colors": {
             "@date": "2008",
             "Lay Me Back Down": "",
@@ -1789,19 +1789,19 @@
         }
     },
     "Queen": {
-       "The Game": {
-           "@date": "1980-06-30",
-           "@id": "NVIbCvfkO3E",
-           "Play the Game": "",
-           "Dragon Attack": "",
-           "Another One Bites the Dust": "",
-           "Need Your Loving Tonight": "short",
-           "Crazy Little Thing Called Love": "short",
-           "Rock It (Prime Jive)": "",
-           "Don't Try Suicide": "",
-           "Sail Away Sweet Sister": "",
-           "Coming Soon": "short",
-           "Save Me": ""
-       }
+        "The Game": {
+            "@date": "1980-06-30",
+            "@id": "NVIbCvfkO3E",
+            "Play the Game": "",
+            "Dragon Attack": "",
+            "Another One Bites the Dust": "",
+            "Need Your Loving Tonight": "short",
+            "Crazy Little Thing Called Love": "short",
+            "Rock It (Prime Jive)": "",
+            "Don't Try Suicide": "",
+            "Sail Away Sweet Sister": "",
+            "Coming Soon": "short",
+            "Save Me": ""
+        }
     }
 }
