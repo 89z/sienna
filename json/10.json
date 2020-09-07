@@ -149,22 +149,22 @@
             "L'Incertitude d'Heisenberg": ""
         }
     },
-   "The B-52’s": {
-       "Cosmic Thing": {
-           "@date": "1989-06-06",
-           "Cosmic Thing": "",
-           "Dry County": "",
-           "Deadbeat Club": "",
-           "Love Shack": "",
-           "Junebug": "",
-           "Roam": "good",
-           "Bushfire": "",
-           "Channel Z": "",
-           "Topaz": "",
-           "Follow Your Bliss": ""
-       }
-   },
-   "The Be Good Tanyas": {
+    "The B-52’s": {
+        "Cosmic Thing": {
+            "@date": "1989-06-06",
+            "Cosmic Thing": "",
+            "Dry County": "",
+            "Deadbeat Club": "",
+            "Love Shack": "",
+            "Junebug": "",
+            "Roam": "good",
+            "Bushfire": "",
+            "Channel Z": "",
+            "Topaz": "",
+            "Follow Your Bliss": ""
+        }
+    },
+    "The Be Good Tanyas": {
         "Chinatown": {
             "@date": "2003-03-11",
             "It’s Not Happening": "short",
@@ -348,20 +348,20 @@
             "In the Light of Grey": "",
             "The Crete That Crete Made": ""
         },
-       "Bytes": {
-           "@date": "1993-01-25",
-           "Object Orient": "bad",
-           "Caz": "",
-           "Carceres Ex Novum": "",
-           "Focus Mel": "",
-           "Olivine": "",
-           "Clan (Mongol Hordes)": "",
-           "Yamemm": "",
-           "Fight the Hits": "",
-           "Merck": "",
-           "Jauqq": "",
-           "3/4 Heart": ""
-       }
+        "Bytes": {
+            "@date": "1993-01-25",
+            "Object Orient": "bad",
+            "Caz": "",
+            "Carceres Ex Novum": "",
+            "Focus Mel": "",
+            "Olivine": "",
+            "Clan (Mongol Hordes)": "",
+            "Yamemm": "",
+            "Fight the Hits": "",
+            "Merck": "",
+            "Jauqq": "",
+            "3/4 Heart": ""
+        }
     },
     "The Cardigans": {
         "Gran Turismo": {
@@ -446,16 +446,16 @@
             "Zero One / This Fantasy": "",
             "A Promise": ""
         },
-       "The Cinematic Orchestra Presents in Motion, Part 1": {
-           "@date": "2012-06-25",
-           "Necrology": "",
-           "Lapis": "",
-           "Outer Space": "",
-           "Dream Work": "",
-           "Entr'acte": "long",
-           "Regen": "",
-           "Manhatta": "good"
-       },
+        "The Cinematic Orchestra Presents in Motion, Part 1": {
+            "@date": "2012-06-25",
+            "Necrology": "",
+            "Lapis": "",
+            "Outer Space": "",
+            "Dream Work": "",
+            "Entr'acte": "long",
+            "Regen": "",
+            "Manhatta": "good"
+        },
         "Live at the Royal Albert Hall": {
             "@date": "2008-04-14",
             "All That You Give": "",
@@ -1443,41 +1443,41 @@
         }
     },
     "The Wallflowers": {
-       "Bringing Down the Horse": {
-           "@date": "1996-05-21",
-           "@id": "Zzyfcys1aLM",
-           "One Headlight": "",
-           "6th Avenue Heartache": "",
-           "Bleeders": "",
-           "Three Marlenas": "",
-           "The Difference": "",
-           "Invisible City": "",
-           "Laughing Out Loud": "",
-           "Josephine": "",
-           "God Don’t Make Lonely Girls": "",
-           "Angel on My Bike": "",
-           "I Wish I Felt Nothing": ""
-       }
+        "Bringing Down the Horse": {
+            "@date": "1996-05-21",
+            "@id": "Zzyfcys1aLM",
+            "One Headlight": "",
+            "6th Avenue Heartache": "",
+            "Bleeders": "",
+            "Three Marlenas": "",
+            "The Difference": "",
+            "Invisible City": "",
+            "Laughing Out Loud": "",
+            "Josephine": "",
+            "God Don’t Make Lonely Girls": "",
+            "Angel on My Bike": "",
+            "I Wish I Felt Nothing": ""
+        }
     },
     "The White Stripes": {
-       "Elephant": {
-           "@date": "2003-03-31",
-           "@id": "0J2QdDbelmY",
-           "Seven Nation Army": "",
-           "Black Math": "",
-           "There’s No Home for You Here": "",
-           "I Just Don’t Know What to Do With Myself": "short",
-           "In the Cold, Cold Night": "short",
-           "I Want to Be the Boy to Warm Your Mother’s Heart": "",
-           "You’ve Got Her in Your Pocket": "",
-           "Ball and Biscuit": "",
-           "The Hardest Button to Button": "",
-           "Little Acorns": "",
-           "Hypnotize": "short",
-           "The Air Near My Fingers": "",
-           "Girl, You Have No Faith in Medicine": "",
-           "Well It’s True That We Love One Another": "short"
-       },
+        "Elephant": {
+            "@date": "2003-03-31",
+            "@id": "0J2QdDbelmY",
+            "Seven Nation Army": "",
+            "Black Math": "",
+            "There’s No Home for You Here": "",
+            "I Just Don’t Know What to Do With Myself": "short",
+            "In the Cold, Cold Night": "short",
+            "I Want to Be the Boy to Warm Your Mother’s Heart": "",
+            "You’ve Got Her in Your Pocket": "",
+            "Ball and Biscuit": "",
+            "The Hardest Button to Button": "",
+            "Little Acorns": "",
+            "Hypnotize": "short",
+            "The Air Near My Fingers": "",
+            "Girl, You Have No Faith in Medicine": "",
+            "Well It’s True That We Love One Another": "short"
+        },
         "White Blood Cells": {
             "@date": "2001",
             "Dead Leaves and the Dirty Ground": "good",
