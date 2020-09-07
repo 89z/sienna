@@ -1539,21 +1539,21 @@
         }
     },
     "Gwen Stefani": {
-       "Love. Angel. Music. Baby.": {
-           "@date": "2004-11-23",
-           "@id": "Kgjkth6BRRY",
-           "What You Waiting For?": "",
-           "Rich Girl": "",
-           "Hollaback Girl": "",
-           "Cool": "",
-           "Bubble Pop Electric": "",
-           "Luxurious": "",
-           "Harajuku Girls": "",
-           "Crash": "",
-           "The Real Thing": "",
-           "Serious": "",
-           "Danger Zone": "",
-           "Long Way to Go": ""
-       }
+        "Love. Angel. Music. Baby.": {
+            "@date": "2004-11-23",
+            "@id": "Kgjkth6BRRY",
+            "What You Waiting For?": "",
+            "Rich Girl": "",
+            "Hollaback Girl": "",
+            "Cool": "",
+            "Bubble Pop Electric": "",
+            "Luxurious": "",
+            "Harajuku Girls": "",
+            "Crash": "",
+            "The Real Thing": "",
+            "Serious": "",
+            "Danger Zone": "",
+            "Long Way to Go": ""
+        }
     }
 }

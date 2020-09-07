@@ -10,8 +10,9 @@ if ($argc != 2) {
 $s_file = $argv[1];
 $s_get = file_get_contents($s_file);
 $o_json = json_decode($s_get);
+$n_err = json_last_error();
 
-if ($o_json == null) {
+if ($n_err != JSON_ERROR_NONE) {
    echo "invalid JSON\n";
    exit(1);
 }
