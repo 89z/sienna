@@ -260,22 +260,22 @@
             "Inferno": "",
             "Gold Chains": ""
         },
-       "Mellow Gold": {
-           "@date": "1994-03-01",
-           "@id": "YgSPaXgAdzE",
-           "Loser": "",
-           "Pay No Mind (Snoozer)": "",
-           "Fuckin With My Head (Mountain Dew Rock)": "",
-           "Whiskeyclone, Hotel City 1997": "",
-           "Soul Suckin Jerk": "",
-           "Truckdrivin Neighbors Downstairs (Yellow Sweat)": "short",
-           "Sweet Sunshine": "",
-           "Beercan": "",
-           "Steal My Body Home": "",
-           "Nitemare Hippy Girl": "short",
-           "Mutherfuker": "short",
-           "Blackhole / [Analog Odyssey]": ""
-       }
+        "Mellow Gold": {
+            "@date": "1994-03-01",
+            "@id": "YgSPaXgAdzE",
+            "Loser": "",
+            "Pay No Mind (Snoozer)": "",
+            "Fuckin With My Head (Mountain Dew Rock)": "",
+            "Whiskeyclone, Hotel City 1997": "",
+            "Soul Suckin Jerk": "",
+            "Truckdrivin Neighbors Downstairs (Yellow Sweat)": "short",
+            "Sweet Sunshine": "",
+            "Beercan": "",
+            "Steal My Body Home": "",
+            "Nitemare Hippy Girl": "short",
+            "Mutherfuker": "short",
+            "Blackhole / [Analog Odyssey]": ""
+        }
     },
     "Beirut": {
         "The Flying Club Cup": {
@@ -446,22 +446,22 @@
         }
     },
     "Big Boi": {
-       "Boomiverse": {
-           "@date": "2017-06-16",
-           "@id": "QxTgr11ncJo",
-           "Da Next Day": "short",
-           "Kill Jill": "",
-           "Mic Jack": "",
-           "In the South": "",
-           "Order of Operations": "",
-           "All Night": "",
-           "Get Wit It": "",
-           "Overthunk": "",
-           "Chocolate": "",
-           "Made Man": "",
-           "Freakanomics": "",
-           "Follow Deez": ""
-       },
+        "Boomiverse": {
+            "@date": "2017-06-16",
+            "@id": "QxTgr11ncJo",
+            "Da Next Day": "short",
+            "Kill Jill": "",
+            "Mic Jack": "",
+            "In the South": "",
+            "Order of Operations": "",
+            "All Night": "",
+            "Get Wit It": "",
+            "Overthunk": "",
+            "Chocolate": "",
+            "Made Man": "",
+            "Freakanomics": "",
+            "Follow Deez": ""
+        },
         "Sir Lucious Left Foot… The Son of Chico Dusty": {
             "@date": "2010",
             "Feel Me (intro)": "short",
@@ -494,7 +494,7 @@
             "Pneumonia": "bad",
             "Hope": "bad",
             "Declare Independence": "bad",
-            "My Juvenile": ""
+            "My Juvenile": "bad"
         },
         "Medúlla": {
             "@date": "2004-08-30",
