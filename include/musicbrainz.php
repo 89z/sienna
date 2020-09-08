@@ -35,53 +35,68 @@ function mb_decode_release(string $s_mbid): object {
 }
 
 class Release {
-   public $s_date;
-   public $n_tracks;
-
-   function s_year(): string {
-      return substr($this->s_date, 0, 4);
+   function __construct($o_release) {
+      $this->o_rel = $o_release;
    }
-
+   function b_status(): bool {
+      return $this->o_rel->status == 'Official';
+   }
    function n_date_len(): int {
-      return strlen($this->s_date);
+      return strlen($this->o_rel->date);
+   }
+   function n_tracks(): int {
+      $n_ca = 0;
+      foreach ($this->o_rel->media as $o_it) {
+         $n_ca += $o_it->{'track-count'};
+      }
+      return $n_ca;
+   }
+   function s_date(): string {
+      return $this->o_rel->date;
+   }
+   function s_year(): string {
+      return substr($this->o_rel->date, 0, 4);
    }
 }
 
 # return release object from release array
-function mb_reduce_group(object $o_old, object $o_rel): object {
-   if ($o_rel->date == '') {
-      return $o_old;
+function mb_reduce_group(
+   int $n_acc,
+   object $o_cur,
+   int $n_idx,
+   array $a_src
+): int {
+   if ($n_idx == 0) {
+      return 0;
    }
-   if ($o_rel->status == 'Promotion') {
-      return $o_old;
+   $o_old = new Release($a_src[$n_acc]);
+   $o_new = new Release($o_cur);
+   if ($o_new->s_date() == '') {
+      return $n_acc;
    }
-   $f_sum = fn($n_ca, $o_it) => $n_ca + $o_it->{'track-count'};
-   $o_new = new Release;
-   $o_new->n_tracks = array_reduce($o_rel->media, $f_sum);
-   $o_new->s_date = $o_rel->date;
-   if ($o_old == null) {
-      return $o_new;
+   if (! $o_new->b_status()) {
+      return $n_acc;
    }
    if ($o_new->s_year() > $o_old->s_year()) {
-      return $o_old;
+      return $n_acc;
    }
    if ($o_new->s_year() < $o_old->s_year()) {
-      return $o_new;
+      return $n_idx;
    }
-   if ($o_new->n_tracks > $o_old->n_tracks) {
-      return $o_old;
+   if ($o_new->n_tracks() > $o_old->n_tracks()) {
+      return $n_acc;
    }
-   if ($o_new->n_tracks < $o_old->n_tracks) {
-      return $o_new;
+   if ($o_new->n_tracks() < $o_old->n_tracks()) {
+      return $n_idx;
    }
    if ($o_new->n_date_len() < $o_old->n_date_len()) {
-      return $o_old;
+      return $n_acc;
    }
    if ($o_new->n_date_len() > $o_old->n_date_len()) {
-      return $o_new;
+      return $n_idx;
    }
-   if ($o_new->s_date >= $o_old->s_date) {
-      return $o_old;
+   if ($o_new->s_date() >= $o_old->s_date()) {
+      return $n_acc;
    }
-   return $o_new;
+   return $n_idx;
 }
