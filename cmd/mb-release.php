@@ -22,9 +22,7 @@ $s_mbid = basename($s_url);
 if (strpos($s_url, 'release-group') !== false) {
    # RELEASE GROUP
    $a_releases = mb_decode_group($s_mbid);
-   $o_init = new stdClass;
-   $o_init->year = '9999';
-   $o_re = array_reduce($a_releases, 'mb_reduce_group', $o_init);
+   $o_re = array_reduce($a_releases, 'mb_reduce_group');
 } else {
    # RELEASE
    $o_re = mb_decode_release($s_mbid);

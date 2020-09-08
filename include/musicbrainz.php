@@ -34,38 +34,54 @@ function mb_decode_release(string $s_mbid): object {
    return json_decode($s_re);
 }
 
+class Release {
+   public $s_date;
+   public $n_tracks;
+
+   function s_year(): string {
+      return substr($this->s_date, 0, 4);
+   }
+
+   function n_date_len(): int {
+      return strlen($this->s_date);
+   }
+}
+
 # return release object from release array
-function mb_reduce_group(object $o_ca, object $o_it): object {
-   if ($o_it->date == '') {
-      return $o_ca;
+function mb_reduce_group(object $o_old, object $o_rel): object {
+   if ($o_rel->date == '') {
+      return $o_old;
    }
-   if ($o_it->status == 'Promotion') {
-      return $o_ca;
+   if ($o_rel->status == 'Promotion') {
+      return $o_old;
    }
-   $o_it->year = substr($o_it->date, 0, 4);
    $f_sum = fn($n_ca, $o_it) => $n_ca + $o_it->{'track-count'};
-   $o_it->track = array_reduce($o_it->media, $f_sum);
-   $o_it->len = strlen($o_it->date);
-   if ($o_it->year > $o_ca->year) {
-      return $o_ca;
+   $o_new = new Release;
+   $o_new->n_tracks = array_reduce($o_rel->media, $f_sum);
+   $o_new->s_date = $o_rel->date;
+   if ($o_old == null) {
+      return $o_new;
    }
-   if ($o_it->year < $o_ca->year) {
-      return $o_it;
+   if ($o_new->s_year() > $o_old->s_year()) {
+      return $o_old;
    }
-   if ($o_it->track > $o_ca->track) {
-      return $o_ca;
+   if ($o_new->s_year() < $o_old->s_year()) {
+      return $o_new;
    }
-   if ($o_it->track < $o_ca->track) {
-      return $o_it;
+   if ($o_new->n_tracks > $o_old->n_tracks) {
+      return $o_old;
    }
-   if ($o_it->len < $o_ca->len) {
-      return $o_ca;
+   if ($o_new->n_tracks < $o_old->n_tracks) {
+      return $o_new;
    }
-   if ($o_it->len > $o_ca->len) {
-      return $o_it;
+   if ($o_new->n_date_len() < $o_old->n_date_len()) {
+      return $o_old;
    }
-   if ($o_it->date >= $o_ca->date) {
-      return $o_ca;
+   if ($o_new->n_date_len() > $o_old->n_date_len()) {
+      return $o_new;
    }
-   return $o_it;
+   if ($o_new->s_date >= $o_old->s_date) {
+      return $o_old;
+   }
+   return $o_new;
 }
