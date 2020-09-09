@@ -71,7 +71,11 @@ if (strpos($s_url, 'youtube') !== false) {
    if (strpos($s_url, 'release-group') !== false) {
       # RELEASE GROUP
       $a_releases = mb_decode_group($s_mbid);
-      $o_re = array_reduce($a_releases, 'mb_reduce_group');
+      $n_re = 0;
+      foreach ($a_releases as $n_idx => $o_cur) {
+         $n_re = mb_reduce_group($n_re, $o_cur, $n_idx, $a_releases);
+      }
+      $o_re = $a_releases[$n_re];
    } else {
       # RELEASE
       $o_re = mb_decode_release($s_mbid);

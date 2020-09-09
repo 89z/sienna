@@ -35,8 +35,12 @@ $a_reg = [
 ];
 
 $o_info = new YouTubeRelease($s_url);
-$s_init = substr($o_info->publishDate, 0, 4);
-$s_year = array_reduce($a_reg, [$o_info, 'reduce'], $s_init);
+$s_year = substr($o_info->publishDate, 0, 4);
+
+foreach ($a_reg as $s_reg) {
+   $s_year = $o_info->reduce($s_year, $s_reg);
+}
+
 $n_year = (int)($s_year);
 
 # song, artist
