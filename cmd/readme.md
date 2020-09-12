@@ -1,4 +1,4 @@
-# Bin
+# Commands
 
 ## MusicBrainz release
 
