@@ -7,15 +7,19 @@ extension_loaded('openssl') or die('openssl');
 
 # return release array from group string
 function mb_decode_group(string $s_mbid): array {
+   # part 1
    $m_q['fmt'] = 'json';
    $m_q['inc'] = 'artist-credits recordings';
    $m_q['release-group'] = $s_mbid;
    $s_out = 'https://musicbrainz.org/ws/2/release?' . http_build_query($m_q);
+   # part 2
    $r_c = curl_init($s_out);
-   curl_setopt($r_c, CURLOPT_USERAGENT, 'anonymous');
    curl_setopt($r_c, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($r_c, CURLOPT_USERAGENT, 'anonymous');
    echo $s_out, "\n";
+   # part 3
    $s_group = curl_exec($r_c);
+   # part 4
    $o_group = json_decode($s_group);
    return $o_group->releases;
 }
