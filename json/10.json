@@ -1806,7 +1806,24 @@
             "God of Wine": ""
         }
     },
-    "Thunderball": {
+   "This Mortal Coil": {
+       "It’ll End in Tears": {
+           "@date": "1984-10-01",
+           "Kangaroo": "",
+           "Song to the Siren": "good",
+           "Holocaust": "",
+           "Fyt": "",
+           "Fond Affections": "",
+           "The Last Ray": "",
+           "Another Day": "short",
+           "Waves Become Wings": "",
+           "Barramundi": "",
+           "Dreams Made Flesh": "",
+           "Not Me": "",
+           "A Single Wish": "short"
+       }
+   },
+   "Thunderball": {
         "12 Mile High": {
             "@date": "2010-11-09",
             "Enter the Brahmin": "good",
