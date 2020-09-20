@@ -422,18 +422,19 @@
         }
     },
     "Robin Guthrie": {
-        "Emeralds": {
-            "Digging for Gold": "",
-            "Radiola": "",
-            "Wishing": "",
-            "Torch": "",
-            "Warmed by the Winter Sun": "",
-            "Flower": "",
-            "Turn Together, Burn Together": "",
-            "Emeralds": "bad",
-            "The Blue Book": "",
-            "The Little Light Fades": "short"
-        }
+       "Emeralds": {
+           "@date": "2011-05-23",
+           "Digging for Gold": "",
+           "Radiola": "",
+           "Wishing": "",
+           "Torch": "",
+           "Warmed by the Winter Sun": "",
+           "Flower": "",
+           "Turn Together, Burn Together": "",
+           "Emeralds": "bad",
+           "The Blue Book": "",
+           "The Little Light Fades": "short"
+       }
     },
     "Róisín Murphy": {
         "Overpowered": {
