@@ -60,7 +60,7 @@ Year | Song
 1967 |
 1966 | [Nancy Sinatra - Bang Bang][1966]
 1965 | [Jackson C. Frank - Marlene][1965]
-1964 |
+1964 | [Vince Guaraldi, Bola Sete - Ginza Samba][1964]
 1963 | [Duke Ellington - Fleurette africaine][1963]
 1962 |
 1961 | [Dave Brubeck - Far More Blue (feat. Paul Desmond)][1961]
@@ -117,6 +117,7 @@ Year | Song
 [1969]:https://youtu.be/QFsqacN1ZCY
 [1966]:https://youtu.be/OEFa4ztm9P0
 [1965]:https://youtu.be/dUxHmnHA6Tc
+[1964]://youtube.com/watch?v=LG7G9HhZwtY
 [1963]:https://youtu.be/XjyzZhTci6U
 [1961]:https://youtu.be/mdaLziFxsGs
 [1960]:https://youtu.be/T-FeHIYromw
