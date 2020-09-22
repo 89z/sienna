@@ -217,6 +217,14 @@
             "Blue Spotted Tail": "",
             "Grown Ocean": ""
         },
+        "Sun Giant": {
+            "@date": "2008-03-09",
+            "Sun Giant": "short",
+            "Drops in the River": "good",
+            "English House": "good",
+            "Mykonos": "good",
+            "Innocent Son": "bad"
+        },
         "Fleet Foxes": {
             "@date": "2006",
             "She Got Dressed": "bad",
@@ -225,14 +233,6 @@
             "Textbook Love": "bad",
             "So Long to the Headstrong": "bad",
             "Icicle Tusk": ""
-        },
-        "Sun Giant": {
-            "@date": "2008-03-09",
-            "Sun Giant": "short",
-            "Drops in the River": "good",
-            "English House": "good",
-            "Mykonos": "good",
-            "Innocent Son": "bad"
         }
     },
     "Fleetwood Mac": {
