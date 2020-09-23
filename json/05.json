@@ -277,21 +277,22 @@
         }
     },
     "Hem": {
-        "Departure & Farewell": {
-            "Departure and Farewell": "",
-            "Walking Past the Graveyard, Not Breathing": "short",
-            "Things Are Not Perfect in Our Yard": "short",
-            "The Seed": "short",
-            "The Jack Pine": "",
-            "Tourniquet": "good",
-            "Seven Angels": "short",
-            "Gently Down the Stream": "",
-            "Bird Song": "short",
-            "Traveler’s Song": "short",
-            "The Tides at the Narrows": "short",
-            "Last Call": "",
-            "So Long": "short"
-        }
+       "Departure and Farewell": {
+           "@date": "2013-04-02",
+           "Departure and Farewell": "",
+           "Walking Past The Graveyard, Not Breathing": "short",
+           "Things Are Not Perfect In Our Yard": "short",
+           "The Seed": "short",
+           "The Jack Pine": "",
+           "Tourniquet": "good",
+           "Seven Angels": "short",
+           "Gently Down The Stream": "",
+           "Bird Song": "short",
+           "Traveler's Song": "short",
+           "The Tides At The Narrows": "short",
+           "Last Call": "",
+           "So Long": "short"
+       }
     },
     "Henrik Schwarz": {
         "Instruments": {
