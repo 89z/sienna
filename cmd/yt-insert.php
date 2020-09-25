@@ -35,7 +35,7 @@ $a_reg = [
 ];
 
 $o_info = new YouTubeRelease($s_url);
-$s_year = substr($o_info->publishDate, 0, 4);
+$s_year = $o_info->publishDate;
 
 foreach ($a_reg as $s_reg) {
    $s_year = $o_info->reduce($s_year, $s_reg);

@@ -3,7 +3,7 @@ declare(strict_types = 1);
 error_reporting(E_ALL);
 
 class Radix64 {
-   public $s_dig = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
+   var $s_dig = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
 
    function encode(int $n_in): string {
       $s_out = '';

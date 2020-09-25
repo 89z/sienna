@@ -58,11 +58,11 @@ class Release {
       }
       return $n_ca;
    }
+   function n_year(): int {
+      return (int)($this->o_rel->date);
+   }
    function s_date(): string {
       return $this->o_rel->date;
-   }
-   function s_year(): string {
-      return substr($this->o_rel->date, 0, 4);
    }
 }
 
@@ -84,10 +84,10 @@ function mb_reduce_group(
    if (! $o_new->b_status()) {
       return $n_acc;
    }
-   if ($o_new->s_year() > $o_old->s_year()) {
+   if ($o_new->n_year() > $o_old->n_year()) {
       return $n_acc;
    }
-   if ($o_new->s_year() < $o_old->s_year()) {
+   if ($o_new->n_year() < $o_old->n_year()) {
       return $n_idx;
    }
    if ($o_new->n_tracks() > $o_old->n_tracks()) {
