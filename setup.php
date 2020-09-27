@@ -16,25 +16,18 @@ if (is_dir($s_to)) {
    mkdir($s_to);
 }
 
-# copy bin
-$o_iter = new FilesystemIterator('cmd');
+# copy
+$f_filter = fn ($o_info) => $o_info->getFilename() != '.git';
+$o_dir = new RecursiveDirectoryIterator('.');
+$o_filter = new RecursiveCallbackFilterIterator($o_dir, $f_filter);
+$o_iter = new RecursiveIteratorIterator($o_filter);
 
 foreach ($o_iter as $o_info) {
-   $s_file = $o_info->getFilename();
-   if ($s_file == 'readme.md') {
+   if ($o_info->getExtension() != 'php') {
       continue;
    }
-   $s_path = $o_info->getPathname();
-   echo 'copy: ', $s_path, "\n";
-   copy($s_path, $s_to . '\\' . $s_file);
-}
-
-# copy include
-$o_iter = new FilesystemIterator('include');
-
-foreach ($o_iter as $o_info) {
    $s_file = $o_info->getFilename();
-   if ($s_file == 'readme.md') {
+   if ($s_file == 'setup.php') {
       continue;
    }
    $s_path = $o_info->getPathname();

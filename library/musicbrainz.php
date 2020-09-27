@@ -46,7 +46,13 @@ class Release {
       return $this->o_rel->status == 'Official';
    }
    function b_date(): bool {
-      return property_exists($this->o_rel, 'date');
+      if (! property_exists($this->o_rel, 'date')) {
+         return false;
+      }
+      if ($this->o_rel->date == '') {
+         return false;
+      }
+      return true;
    }
    function n_date_len(): int {
       return strlen($this->o_rel->date);
@@ -77,6 +83,9 @@ function mb_reduce_group(
       return 0;
    }
    $o_old = new Release($a_src[$n_acc]);
+   if (! $o_old->b_date()) {
+      return $n_idx;
+   }
    $o_new = new Release($o_cur);
    if (! $o_new->b_date()) {
       return $n_acc;
