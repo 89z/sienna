@@ -35,21 +35,21 @@
             "Close to Me": "",
             "Set Yourself Free": ""
         },
-        "Elements of Life": {
-            "@date": "2007",
-            "Ten Seconds Before Sunrise": "good",
-            "Everything": "",
-            "Do You Feel Me": "",
-            "Carpe Noctum": "",
-            "Driving to Heaven": "",
-            "Sweet Things": "",
-            "Bright Morningstar": "",
-            "Break My Fall": "",
-            "In the Dark": "",
-            "Dance4Life": "",
-            "Elements of Life": "",
-            "He’s a Pirate (Tiësto remix)": ""
-        },
+       "Elements of Life": {
+           "@date": "2007-04-06",
+           "Ten Seconds Before Sunrise": "good",
+           "Everything": "",
+           "Do You Feel Me": "",
+           "Carpe Noctum": "",
+           "Driving to Heaven": "",
+           "Sweet Things": "",
+           "Bright Morningstar": "",
+           "Break My Fall": "",
+           "In the Dark": "",
+           "Dance4Life": "",
+           "Elements of Life": "",
+           "He's a Pirate (Tiësto remix)": ""
+       },
         "Just Be": {
             "@date": "2004-05-03",
             "@id": "8tIgN7eICn4",
