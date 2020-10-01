@@ -49,12 +49,12 @@
             "Lana": "bad",
             "Love on a Real Train (Risky Business)": "good"
         },
-        "Force Majeure": {
-            "@date": "1979",
-            "Force Majeure": "bad",
-            "Cloudburst Flight": "good",
-            "Thru Metamorphic Rocks": "bad"
-        },
+       "Force Majeure": {
+           "@date": "1979-02",
+           "Force Majeure": "bad",
+           "Cloudburst Flight": "good",
+           "Thru Metamorphic Rocks": "bad"
+       },
         "Cyclone": {
             "@date": "1978-02",
             "Bent Cold Sidewalk": "",
