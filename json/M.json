@@ -417,20 +417,20 @@
     },
     "Mandalay": {
         "@check": "2020-06-11",
-        "Instinct": {
-            "@date": "2000",
-            "Not Seventeen": "bad",
-            "Don’t Invent Me": "",
-            "Like Her": "bad",
-            "Deep Love": "",
-            "No Reality": "",
-            "You Forget": "",
-            "Simple Things": "",
-            "Too Much Room": "",
-            "What If I": "",
-            "It’s Enough Now": "",
-            "Believe": ""
-        },
+       "Instinct": {
+           "@date": "2000-10-16",
+           "Not Seventeen": "bad",
+           "Don’t Invent Me": "",
+           "Like Her": "bad",
+           "Deep Love": "",
+           "No Reality": "",
+           "You Forget": "",
+           "Simple Things": "",
+           "Too Much Room": "",
+           "What If I": "",
+           "It’s Enough Now": "",
+           "Believe": ""
+       },
         "Empathy": {
             "@date": "1998-03-23",
             "This Life": "good",
