@@ -1591,7 +1591,29 @@
             "Amen": ""
         }
     },
-    "John Frusciante": {
+   "Jimi Hendrix": {
+       "Electric Ladyland": {
+         "@id": "qFfnlYbFEiE",
+         "@date": "1968-10-25",
+           "And the Gods Made Love": "short",
+           "Have You Ever Been (to Electric Ladyland)": "short",
+           "Crosstown Traffic": "short",
+           "Voodoo Chile": "long",
+           "Little Miss Strange": "short",
+           "Long Hot Summer Night": "",
+           "Come On, Part 1": "",
+           "Gypsy Eyes": "",
+           "Burning of the Midnight Lamp": "",
+           "Rainy Day, Dream Away": "",
+           "1983…(A Merman I Should Turn to Be)": "",
+           "Moon, Turn the Tides…gently gently away": "short",
+           "Still Raining, Still Dreaming": "",
+           "House Burning Down": "",
+           "All Along the Watchtower": "",
+           "Voodoo Child (slight return)": ""
+       }
+   },
+   "John Frusciante": {
         "Curtains": {
             "The Past Recedes": "",
             "Lever Pulled": "short",
