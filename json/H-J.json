@@ -717,7 +717,7 @@
             "Cuckoo Down": "bad",
             "Lace Murex": "bad",
             "Parley Glove": "bad",
-            "Glass Bird Movement": "",
+            "Glass Bird Movement": "bad",
             "Leonardo's Formula": "",
             "Every Since and Then": "",
             "Napier Deltic": "",
@@ -735,10 +735,10 @@
             "The Axle": "bad",
             "Greencracked": "short",
             "64 Fire Damage": "bad",
-            "Catgot": "",
-            "Dapperling": "",
-            "Slurs and Slowly": "",
-            "East Side V34": ""
+            "Catgot": "bad",
+            "Dapperling": "bad",
+            "Slurs and Slowly": "bad",
+            "East Side V34": "bad"
         },
         "Plans Drawn in Pencil": {
             "@date": "2006-06-13",
