@@ -61,22 +61,27 @@ $o_rad = new Radix64;
 $s_id_1 = $o_rad->encode($n_id_1);
 
 # image
-function f_head(string $s_url): bool {
+$a_jpg = [
+   '/sddefault',
+   '/sd1',
+   '/hqdefault'
+];
+
+foreach ($a_jpg as $s_jpg) {
+   $s_url = 'https://i.ytimg.com/vi/' . $o_info->id . $s_jpg . '.jpg';
+   echo $s_url, "\n";
    $a_head = get_headers($s_url);
    $s_code = $a_head[0];
-   return strpos($s_code, '200 OK') !== false;
+   if (strpos($s_code, '200 OK') !== false) {
+      break;
+   }
 }
 
-if (f_head('https://i.ytimg.com/vi/' . $o_info->id . '/sddefault.jpg')) {
-   $s_id_3 = '';
-} else if (f_head('https://i.ytimg.com/vi/' . $o_info->id . '/sd1.jpg')) {
-   $s_id_3 = '/sd1';
-} else {
-   var_export($o_info->thumbnail);
-   exit(1);
+if ($s_jpg == '/sddefault') {
+   $s_jpg = '';
 }
 
 # print
-$a_rec = [$s_id_1, $n_year, 'y/' . $o_info->id . $s_id_3, $s_title];
+$a_rec = [$s_id_1, $n_year, 'y/' . $o_info->id . $s_jpg, $s_title];
 $s_json = json_encode($a_rec, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 echo $s_json, ",\n";
