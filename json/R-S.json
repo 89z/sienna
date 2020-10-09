@@ -172,22 +172,22 @@
         }
     },
     "Ratatat": {
-        "LP3": {
-            "@date": "2008",
-            "Shiller": "good",
-            "Falcon Jab": "good",
-            "Mi Viejo": "short",
-            "Mirando": "",
-            "Flynn": "short",
-            "Bird Priest": "",
-            "Shempi": "",
-            "Imperials": "",
-            "Dura": "",
-            "Bruleé": "",
-            "Mumtaz Khan": "short",
-            "Gipsy Threat": "short",
-            "Black Heroes": ""
-        },
+       "LP3": {
+           "@date": "2008-07-07",
+           "Shiller": "good",
+           "Falcon Jab": "good",
+           "Mi Viejo": "short",
+           "Mirando": "",
+           "Flynn": "short",
+           "Bird Priest": "",
+           "Shempi": "",
+           "Imperials": "",
+           "Dura": "",
+           "Bruleé": "",
+           "Mumtaz Khan": "short",
+           "Gipsy Threat": "short",
+           "Black Heroes": ""
+       },
         "Classics": {
             "@date": "2006",
             "Montanita": "bad",
