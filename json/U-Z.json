@@ -400,19 +400,33 @@
         }
     },
     "Van Halen": {
-        "Van Halen": {
-            "Runnin’ With the Devil": "good",
-            "Eruption": "short",
-            "You Really Got Me": "short",
-            "Ain’t Talkin’ ’Bout Love": "good",
-            "I’m the One": "",
-            "Jamie’s Cryin’": "",
-            "Atomic Punk": "",
-            "Feel Your Love Tonight": "",
-            "Little Dreamer": "",
-            "Ice Cream Man": "",
-            "On Fire": ""
-        }
+       "1984": {
+           "@date": "1984-01-09",
+           "@id": "SwYN7mTi6HM",
+           "1984": "short",
+           "Jump": "",
+           "Panama": "",
+           "Top Jimmy": "",
+           "Drop Dead Legs": "",
+           "Hot for Teacher": "",
+           "I’ll Wait": "",
+           "Girl Gone Bad": "",
+           "House of Pain": ""
+       },
+       "Van Halen": {
+           "@date": "1978-02-10",
+           "Runnin' With the Devil": "good",
+           "Eruption": "short",
+           "You Really Got Me": "short",
+           "Ain't Talkin' 'Bout Love": "good",
+           "I'm the One": "",
+           "Jamie's Cryin'": "",
+           "Atomic Punk": "",
+           "Feel Your Love Tonight": "",
+           "Little Dreamer": "",
+           "Ice Cream Man": "",
+           "On Fire": ""
+       }
     },
     "Van Morrison": {
         "Moondance": {
