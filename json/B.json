@@ -481,7 +481,32 @@
             "Back Up Plan": ""
         }
     },
-    "Björk": {
+   "Biosphere": {
+       "Substrata²": {
+           "@date": "2001-05-21",
+           "Antennaria": "",
+           "As the Sun Kissed the Horizon": "short",
+           "Ballerina": "",
+           "Chukhung": "",
+           "City Wakes Up": "",
+           "Endurium": "",
+           "Freeze-Frames": "",
+           "Hyperborea": "",
+           "Kobresia": "",
+           "Manicure": "",
+           "Poa Alpina": "good",
+           "Prologue": "short",
+           "Silene": "",
+           "Sphere of No-Form": "",
+           "The Club": "short",
+           "The Eye of the Cyclone": "",
+           "The Silent Orchestra": "",
+           "The Things I Tell You": "",
+           "Times When I Know You’ll Be Sad": "",
+           "Uva-Ursi": ""
+       }
+   },
+   "Björk": {
         "@id": "87c5dedd-371d-4a53-9f7f-80522fb7f3cb",
         "Volta": {
             "@date": "2007-05-07",
