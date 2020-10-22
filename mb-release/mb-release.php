@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 require 'sienna/musicbrainz.php';
+require 'sienna/strings.php';
 
 if ($argc != 2) {
    echo <<<eof
@@ -19,7 +20,7 @@ eof;
 $s_url = $argv[1];
 $s_mbid = basename($s_url);
 
-if (strpos($s_url, 'release-group') !== false) {
+if (str_contains($s_url, 'release-group')) {
    # RELEASE GROUP
    $a_releases = mb_decode_group($s_mbid);
    $n_re = 0;
@@ -47,7 +48,7 @@ foreach ($o_re->media as $o_media) {
          $s_track = '';
       }
       $m_r = &$m_album[$o_re->title];
-      if (array_key_exists($o_track->title, $m_r)) {
+      if (key_exists($o_track->title, $m_r)) {
          $m_r[$o_track->number . '. ' . $o_track->title] = $s_track;
       } else {
          $m_r[$o_track->title] = $s_track;

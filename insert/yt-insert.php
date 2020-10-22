@@ -3,6 +3,7 @@ declare(strict_types = 1);
 error_reporting(E_ALL);
 
 require 'sienna/radix-64.php';
+require 'sienna/strings.php';
 require 'sienna/youtube.php';
 
 if ($argc != 2) {
@@ -72,7 +73,7 @@ foreach ($a_jpg as $s_jpg) {
    echo $s_url, "\n";
    $a_head = get_headers($s_url);
    $s_code = $a_head[0];
-   if (strpos($s_code, '200 OK') !== false) {
+   if (str_contains($s_code, '200 OK')) {
       break;
    }
 }

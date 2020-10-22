@@ -887,7 +887,22 @@
             "1986 Summer Fire": "short"
         }
     },
-    "Bonobo": {
+   "Bob Dylan": {
+       "Blood on the Tracks": {
+           "@date": "1975-01-20",
+           "Tangled Up in Blue": "",
+           "Simple Twist of Fate": "",
+           "You're a Big Girl Now": "",
+           "Idiot Wind": "",
+           "You're Gonna Make Me Lonesome When You Go": "short",
+           "Meet Me in the Morning": "",
+           "Lily, Rosemary and the Jack of Hearts": "",
+           "If You See Her, Say Hello": "",
+           "Shelter From the Storm": "good",
+           "Buckets of Rain": ""
+       }
+   },
+   "Bonobo": {
         "@check": "2020-04-26",
         "Migration": {
             "@date": "2017-01-13",

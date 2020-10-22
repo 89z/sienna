@@ -3,6 +3,7 @@ declare(strict_types = 1);
 error_reporting(E_ALL);
 
 require 'sienna/musicbrainz.php';
+require 'sienna/strings.php';
 require 'sienna/youtube.php';
 
 # return artists string from release object
@@ -62,13 +63,13 @@ eof;
 
 $s_url = $argv[1];
 
-if (strpos($s_url, 'youtube') !== false) {
+if (str_contains($s_url, 'youtube')) {
    # YOUTUBE
    echo yt_views($s_url);
 } else {
    # MUSICBRAINZ
    $s_mbid = basename($s_url);
-   if (strpos($s_url, 'release-group') !== false) {
+   if (str_contains($s_url, 'release-group')) {
       # RELEASE GROUP
       $a_releases = mb_decode_group($s_mbid);
       $n_re = 0;
