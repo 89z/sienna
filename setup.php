@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 
-$s_to = 'C:\\php\\pear\\sienna';
+$s_to = 'C:\php\pear\sienna';
 
 # unlink
 if (is_dir($s_to)) {
@@ -32,5 +32,5 @@ foreach ($o_iter as $o_info) {
    }
    $s_path = $o_info->getPathname();
    echo 'copy: ', $s_path, "\n";
-   copy($s_path, $s_to . '\\' . $s_file);
+   copy($s_path, $s_to . DIRECTORY_SEPARATOR . $s_file);
 }
