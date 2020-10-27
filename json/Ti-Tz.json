@@ -268,19 +268,19 @@
             "Trouble’s Braids": "short",
             "Rainbirds": ""
         },
-        "Blue Valentine": {
-            "@date": "1978",
-            "Somewhere (from ’West Side Story’)": "",
-            "Red Shoes by the Drugstore": "",
-            "Christmas Card From a Hooker in Minneapolis": "",
-            "Romeo Is Bleeding": "",
-            "$29.00": "",
-            "Wrong Side of the Road": "good",
-            "Whistlin’ Past the Graveyard": "good",
-            "Kentucky Avenue": "",
-            "A Sweet Little Bullet From a Pretty Blue Gun": "",
-            "Blue Valentines": "good"
-        },
+       "Blue Valentine": {
+           "@date": "1978-10",
+           "Somewhere (from 'West Side Story')": "",
+           "Red Shoes by the Drugstore": "",
+           "Christmas Card From a Hooker in Minneapolis": "",
+           "Romeo Is Bleeding": "",
+           "$29.00": "",
+           "Wrong Side of the Road": "good",
+           "Whistlin' Past the Graveyard": "good",
+           "Kentucky Avenue": "",
+           "A Sweet Little Bullet From a Pretty Blue Gun": "",
+           "Blue Valentines": "good"
+       },
         "Foreign Affairs": {
             "@date": "1977",
             "Cinny’s Waltz": "short",
