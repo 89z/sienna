@@ -217,6 +217,20 @@
            "Blue Spotted Tail": "",
            "Grown Ocean": ""
        },
+       "Fleet Foxes": {
+           "@date": "2008-06-03",
+           "Sun It Rises": "",
+           "White Winter Hymnal": "short",
+           "Ragged Wood": "good",
+           "Tiger Mountain Peasant Song": "",
+           "Quiet Houses": "",
+           "He Doesn't Know Why": "",
+           "Heard Them Stirring": "good",
+           "Your Protector": "good",
+           "Meadowlarks": "good",
+           "Blue Ridge Mountains": "",
+           "Oliver James": "good"
+       },
         "Sun Giant": {
             "@date": "2008-03-09",
             "Sun Giant": "short",
@@ -225,7 +239,7 @@
             "Mykonos": "good",
             "Innocent Son": "bad"
         },
-        "Fleet Foxes": {
+        "Fleet Foxes EP": {
             "@date": "2006",
             "She Got Dressed": "bad",
             "In the Hot, Hot Rays": "bad",
