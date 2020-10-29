@@ -40,12 +40,8 @@ function yt_views(string $s_url): string {
    $m_v['views per year'] = number_format($n_rate);
    $s_end = "\e[m";
    $s_v = json_encode($m_v, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-   if ($n_rate > 7_000_000) {
-      $s_f_red = "\e[1;31m";
-      return $s_f_red . $s_v . $s_end;
-   }
-   $s_f_green = "\e[1;32m";
-   return $s_f_green . $s_v . $s_end;
+   $o_co = new Color;
+   return $n_rate > 7_000_000 ? $o_co->red($s_v) : $o_co->green($s_v);
 }
 
 if ($argc != 2) {

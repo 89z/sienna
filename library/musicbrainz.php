@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 
 extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
+require 'cove/color.php';
 
 # return release array from group string
 function mb_decode_group(string $s_mbid): array {
@@ -16,12 +17,13 @@ function mb_decode_group(string $s_mbid): array {
    $r_c = curl_init($s_out);
    curl_setopt($r_c, CURLOPT_RETURNTRANSFER, true);
    curl_setopt($r_c, CURLOPT_USERAGENT, 'anonymous');
-   echo $s_out, "\n";
+   echo $s_out, "\t";
    # part 3
    $s_group = curl_exec($r_c);
    # part 4
-   $o_group = json_decode($s_group);
-   return $o_group->releases;
+   $o_co = new Color;
+   echo $o_co->green('OK'), "\n";
+   return json_decode($s_group)->releases;
 }
 
 # return release object from release string
@@ -40,35 +42,31 @@ function mb_decode_release(string $s_mbid): object {
 
 class Release {
    function __construct($o_release) {
-      $this->o_rel = $o_release;
+      foreach ($o_release as $k => $v) {
+         $this->$k = $v;
+      }
    }
    function b_status(): bool {
-      return $this->o_rel->status == 'Official';
-   }
-   function b_date(): bool {
-      if (! property_exists($this->o_rel, 'date')) {
-         return false;
-      }
-      if ($this->o_rel->date == '') {
-         return false;
-      }
-      return true;
-   }
-   function n_date_len(): int {
-      return strlen($this->o_rel->date);
+      return $this->status == 'Official';
    }
    function n_tracks(): int {
       $n_ca = 0;
-      foreach ($this->o_rel->media as $o_it) {
+      foreach ($this->media as $o_it) {
          $n_ca += $o_it->{'track-count'};
       }
       return $n_ca;
    }
-   function n_year(): int {
-      return (int)($this->o_rel->date);
+   function b_date(): bool {
+      if (! property_exists($this, 'date')) {
+         return false;
+      }
+      if ($this->date == '') {
+         return false;
+      }
+      return true;
    }
    function s_date(): string {
-      return $this->o_rel->date;
+      return $this->date . '-12-31';
    }
 }
 
@@ -93,25 +91,13 @@ function mb_reduce_group(
    if (! $o_new->b_status()) {
       return $n_acc;
    }
-   if ($o_new->n_year() > $o_old->n_year()) {
+   if ($o_new->s_date() > $o_old->s_date()) {
       return $n_acc;
    }
-   if ($o_new->n_year() < $o_old->n_year()) {
+   if ($o_new->s_date() < $o_old->s_date()) {
       return $n_idx;
    }
-   if ($o_new->n_tracks() > $o_old->n_tracks()) {
-      return $n_acc;
-   }
-   if ($o_new->n_tracks() < $o_old->n_tracks()) {
-      return $n_idx;
-   }
-   if ($o_new->n_date_len() < $o_old->n_date_len()) {
-      return $n_acc;
-   }
-   if ($o_new->n_date_len() > $o_old->n_date_len()) {
-      return $n_idx;
-   }
-   if ($o_new->s_date() >= $o_old->s_date()) {
+   if ($o_new->n_tracks() >= $o_old->n_tracks()) {
       return $n_acc;
    }
    return $n_idx;
