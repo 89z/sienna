@@ -556,7 +556,39 @@
             "Lovin’ U": ""
         }
     },
-    "America": {
+   "All About Eve": {
+       "Scarlet and Other Stories": {
+           "@date": "1989-10-16",
+           "Road to Your Soul": "",
+           "Dream Now": "good",
+           "Gold and Silver": "",
+           "Scarlet": "",
+           "December": "",
+           "Blind Lemon Sam": "",
+           "More Than the Blues": "",
+           "Tuesday’s Child": "",
+           "Pieces of Our Heart": "short",
+           "Hard Spaniard": "good",
+           "The Empty Dancehall": "",
+           "Only One Reason": "",
+           "The Pearl Fishermen": ""
+       },
+       "All About Eve": {
+           "@date": "1988-02-15",
+           "Flowers in Our Hair": "",
+           "Gypsy Dance": "",
+           "In the Clouds": "",
+           "Martha's Harbour": "",
+           "Every Angel": "",
+           "Shelter From the Rain": "",
+           "She Moves Through the Fair": "",
+           "Wild Hearted Woman": "",
+           "Never Promise (Anyone Forever)": "",
+           "What Kind of Fool": "",
+           "In the Meadow": ""
+       }
+   },
+   "America": {
         "Hat Trick": {
             "@date": "1973-10-19",
             "Muskrat Love": "bad",

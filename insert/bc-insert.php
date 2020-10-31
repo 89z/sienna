@@ -2,7 +2,6 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 extension_loaded('openssl') or die('openssl');
-require 'sienna/radix-64.php';
 
 if ($argc != 2) {
    echo "bc-insert.php <URL>\n";
@@ -31,8 +30,7 @@ $s_title = $a_title[2] . ' - ' . $a_title[1];
 
 # time
 $n_id_1 = time();
-$o_rad = new Radix64;
-$s_id_1 = $o_rad->encode($n_id_1);
+$s_id_1 = base_convert($n_id_1, 10, 36);
 
 # print
 $a_rec = [$s_id_1, $n_year, 'b/' . $s_id_2 . '/' . $s_id_3, $s_title];

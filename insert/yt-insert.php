@@ -2,7 +2,6 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 
-require 'sienna/radix-64.php';
 require 'sienna/strings.php';
 require 'sienna/youtube.php';
 
@@ -58,8 +57,7 @@ if ($n_mat !== 0) {
 
 # time
 $n_id_1 = time();
-$o_rad = new Radix64;
-$s_id_1 = $o_rad->encode($n_id_1);
+$s_id_1 = base_convert($n_id_1, 10, 36);
 
 # image
 $a_jpg = [
