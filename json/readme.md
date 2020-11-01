@@ -1,12 +1,6 @@
 # JSON
 
 ~~~
-GREEN 6,834,598 Korn The Serenity of Suffering
-GREEN 6,932,251 R.E.M. Automatic for the People
-GREEN 7,223,697 System of a Down Mezmerize
-GREEN 7,243,825 Madonna I’m Breathless
-GREEN 7,276,867 Foo Fighters One by One
-GREEN 7,285,204 Green Day Father of All Motherfuckers
 GREEN 7,297,885 Depeche Mode Music for the Masses
 GREEN 7,305,475 Beastie Boys Ill Communication
 GREEN 7,392,585 U2 The Unforgettable Fire

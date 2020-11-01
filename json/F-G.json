@@ -425,11 +425,10 @@
         },
         "One by One": {
             "@date": "2002-10-21",
-            "@id": "xQ04WbgI9rg",
             "All My Life": "",
             "Low": "",
             "Have It All": "",
-            "Times Like These": "",
+            "Times Like These": "good",
             "Disenchanted Lullaby": "",
             "Tired of You": "",
             "Halo": "",
@@ -1190,20 +1189,6 @@
         }
     },
     "Green Day": {
-        "Father of All Motherfuckers": {
-            "@date": "2020-02-07",
-            "@id": "U3cpdkhtGx0",
-            "Father of All…": "short",
-            "Fire, Ready, Aim": "short",
-            "Oh Yeah!": "",
-            "Meet Me on the Roof": "short",
-            "I Was a Teenage Teenager": "",
-            "Stab You in the Heart": "short",
-            "Sugar Youth": "short",
-            "Junkies on a High": "",
-            "Take the Money and Crawl": "short",
-            "Graffitia": ""
-        },
         "21st Century Breakdown": {
             "@date": "2009-05-12",
             "@id": "r00ikilDxW4",

@@ -21,8 +21,7 @@ function mb_decode_group(string $s_mbid): array {
    # part 3
    $s_group = curl_exec($r_c);
    # part 4
-   $o_co = new Color;
-   echo $o_co->green('OK'), "\n";
+   echo green('OK'), "\n";
    return json_decode($s_group)->releases;
 }
 

@@ -365,11 +365,10 @@
         },
         "Automatic for the People": {
             "@date": "1992-10-06",
-            "@id": "dLxpNiF0YKs",
             "Drive": "",
             "Try Not to Breathe": "",
             "The Sidewinder Sleeps Tonite": "",
-            "Everybody Hurts": "",
+            "Everybody Hurts": "good",
             "New Orleans Instrumental No. 1": "short",
             "Sweetness Follows": "",
             "Monty Got a Raw Deal": "",
@@ -1635,7 +1634,6 @@
         },
         "Mezmerize": {
             "@date": "2005-05-16",
-            "@id": "ENBv2i88g6Y",
             "Soldier Side (intro)": "short",
             "B.Y.O.B.": "",
             "Revenga": "",
@@ -1643,7 +1641,7 @@
             "Radio/Video": "",
             "This Cocaine Makes Me Feel Like I’m on This Song": "short",
             "Violent Pornography": "",
-            "Question!": "",
+            "Question!": "good",
             "Sad Statue": "",
             "Old School Hollywood": "short",
             "Lost in Hollywood": ""
