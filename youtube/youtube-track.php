@@ -6,7 +6,7 @@ require_once 'sienna/strings.php';
 require_once 'sienna/youtube.php';
 
 if ($argc != 2) {
-   echo "yt-insert.php <URL>\n";
+   echo "youtube-track.php <URL>\n";
    exit(1);
 }
 
