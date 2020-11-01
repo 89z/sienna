@@ -1,8 +1,3 @@
-GREEN 3,555,574 Pearl Jam Gigaton
-GREEN 4,326,576 Big Boi Boomiverse
-GREEN 5,514,105 Depeche Mode Spirit
-GREEN 5,911,697 Madonna Madame X
-GREEN 6,579,800 Gorillaz Humanz
 GREEN 6,834,598 Korn The Serenity of Suffering
 GREEN 6,932,251 R.E.M. Automatic for the People
 GREEN 7,223,697 System of a Down Mezmerize
