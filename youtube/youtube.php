@@ -22,6 +22,9 @@ class YouTubeInfo {
       $s_resp = $m_get['player_response'];
       # part 6
       $o_resp = json_decode($s_resp);
+      if (! property_exists($o_resp, 'microformat')) {
+         return;
+      }
       foreach ($o_resp->microformat->playerMicroformatRenderer as $k => $v) {
          $this->$k = $v;
       }
@@ -30,13 +33,19 @@ class YouTubeInfo {
 
 class YouTubeViews extends YouTubeInfo {
    function color(): string {
-      $n_now = time();
-      $n_then = strtotime($this->publishDate);
+      if (! property_exists($this, 'viewCount')) {
+         return 'undefined property: viewCount';
+      }
       $n_views = (int)($this->viewCount);
+      $n_then = strtotime($this->publishDate);
+      $n_now = time();
       $n_diff = ($n_now - $n_then) / 60 / 60 / 24 / 365;
       $n_rate = $n_views / $n_diff;
       $o_co = new Color;
       $s_rate = number_format($n_rate);
-      return $n_rate > 8_000_000 ? $o_co->red($s_rate) : $o_co->green($s_rate);
+      if ($n_rate > 8_000_000) {
+         return 'RED ' . $o_co->red($s_rate);
+      }
+      return 'GREEN ' . $o_co->green($s_rate);
    }
 }

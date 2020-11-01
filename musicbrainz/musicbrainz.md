@@ -1,4 +1,4 @@
-# Library
+# MusicBrainz
 
 ## CURLOPT_USERAGENT
 

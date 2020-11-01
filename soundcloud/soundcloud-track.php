@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 extension_loaded('openssl') or die('openssl');
 
 if ($argc != 2) {
-   echo "sc-insert.php <URL>\n";
+   echo "soundcloud-track.php <URL>\n";
    exit(1);
 }
 

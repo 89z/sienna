@@ -1,22 +1,5 @@
 # MusicBrainz release
 
-If you add a new release, the release group is created at the same time. Be sure
-to include:
-
-- release title
-- artist
-- type
-- status
-- date
-- country
-- label
-- release link
-- format
-- track titles
-- track lengths
-
-<https://wiki.musicbrainz.org/Development/JSON_Web_Service>
-
 The minimum is 179.5 seconds, which rounds up to 180 seconds, which is 3
 minutes. A pathological example is here:
 
