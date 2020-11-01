@@ -2,8 +2,8 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 
-require 'sienna/strings.php';
-require 'sienna/youtube.php';
+require_once 'sienna/strings.php';
+require_once 'sienna/youtube.php';
 
 if ($argc != 2) {
    echo "yt-insert.php <URL>\n";

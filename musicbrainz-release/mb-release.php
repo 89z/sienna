@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 error_reporting(E_ALL);
-require 'sienna/musicbrainz.php';
-require 'sienna/strings.php';
+require_once 'sienna/musicbrainz.php';
+require_once 'sienna/strings.php';
 
 if ($argc != 2) {
    echo <<<eof

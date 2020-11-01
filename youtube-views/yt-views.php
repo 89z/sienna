@@ -2,9 +2,9 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 
-require 'sienna/musicbrainz.php';
-require 'sienna/strings.php';
-require 'sienna/youtube.php';
+require_once 'sienna/musicbrainz.php';
+require_once 'sienna/strings.php';
+require_once 'sienna/youtube.php';
 
 # return artists string from release object
 function yt_encode_artists(object $o_in): string {
@@ -24,26 +24,6 @@ function yt_result(string $s_query): string {
    return $a_mat[0];
 }
 
-# return views map from URL string
-function yt_views(string $s_url): string {
-   # part 1
-   $o_info = new YouTubeInfo($s_url);
-   # part 2
-   $n_now = time();
-   $n_then = strtotime($o_info->publishDate);
-   $n_views = (int)($o_info->viewCount);
-   # part 3
-   $n_diff = ($n_now - $n_then) / 60 / 60 / 24 / 365;
-   $n_rate = $n_views / $n_diff;
-   # part 4
-   $m_v['id'] = $o_info->id;
-   $m_v['views per year'] = number_format($n_rate);
-   $s_end = "\e[m";
-   $s_v = json_encode($m_v, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-   $o_co = new Color;
-   return $n_rate > 7_000_000 ? $o_co->red($s_v) : $o_co->green($s_v);
-}
-
 if ($argc != 2) {
    echo <<<eof
 usage:
@@ -61,7 +41,8 @@ $s_url = $argv[1];
 
 if (str_contains($s_url, 'youtube')) {
    # YOUTUBE
-   echo yt_views($s_url);
+   $o = new YouTubeViews($s_url);
+   echo $o->color();
 } else {
    # MUSICBRAINZ
    $s_mbid = basename($s_url);
@@ -81,7 +62,8 @@ if (str_contains($s_url, 'youtube')) {
    foreach ($o_re->media as $o_media) {
       foreach ($o_media->tracks as $o_track) {
          $s_url = yt_result($s_artists . ' ' . $o_track->title);
-         echo yt_views($s_url), "\n";
+         $o = new YouTubeViews($s_url);
+         echo $o->color(), "\n";
          usleep(500_000);
       }
    }
