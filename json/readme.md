@@ -1,4 +1,3 @@
-GREEN 1,672,532 Fiona Apple Fetch the Bolt Cutters
 GREEN 3,555,574 Pearl Jam Gigaton
 GREEN 4,326,576 Big Boi Boomiverse
 GREEN 5,514,105 Depeche Mode Spirit

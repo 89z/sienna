@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 extension_loaded('curl') or die('curl');
 extension_loaded('openssl') or die('openssl');
-require_once 'cove/color.php';
+require_once 'cove/helper.php';
 
 # return release array from group string
 function mb_decode_group(string $s_mbid): array {

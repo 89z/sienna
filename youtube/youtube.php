@@ -3,7 +3,7 @@ declare(strict_types = 1);
 error_reporting(E_ALL);
 
 extension_loaded('openssl') or die('openssl');
-require_once 'cove/color.php';
+require_once 'cove/helper.php';
 
 class YouTubeInfo {
    function __construct(string $s_watch) {
@@ -41,11 +41,10 @@ class YouTubeViews extends YouTubeInfo {
       $n_now = time();
       $n_diff = ($n_now - $n_then) / 60 / 60 / 24 / 365;
       $n_rate = $n_views / $n_diff;
-      $o_co = new Color;
       $s_rate = number_format($n_rate);
       if ($n_rate > 8_000_000) {
-         return 'RED ' . $o_co->red($s_rate);
+         return 'RED ' . red($s_rate);
       }
-      return 'GREEN ' . $o_co->green($s_rate);
+      return 'GREEN ' . green($s_rate);
    }
 }
