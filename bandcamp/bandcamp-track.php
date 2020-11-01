@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 extension_loaded('openssl') or die('openssl');
 
 if ($argc != 2) {
-   echo "bc-insert.php <URL>\n";
+   echo "bandcamp-track.php <URL>\n";
    exit(1);
 }
 
