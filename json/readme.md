@@ -1,7 +1,6 @@
 # JSON
 
 ~~~
-GREEN 7,305,475 Beastie Boys Ill Communication
 GREEN 7,392,585 U2 The Unforgettable Fire
 GREEN 7,455,165 Lykke Li Wounded Rhymes
 GREEN 7,473,859 Madonna Like a Virgin

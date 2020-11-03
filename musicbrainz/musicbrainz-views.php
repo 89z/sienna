@@ -6,15 +6,6 @@ require_once 'cove/helper.php';
 require_once 'sienna/musicbrainz.php';
 require_once 'sienna/youtube.php';
 
-# return artists string from release object
-function yt_encode_artists(object $o_in): string {
-   foreach ($o_in->{'artist-credit'} as $o_artist) {
-      $a_out[] = $o_artist->name;
-   }
-   return implode(' ', $a_out);
-}
-
-# return video_id from search string
 function yt_result(string $s_query): string {
    $m_query['search_query'] = $s_query;
    $s_res = 'https://www.youtube.com/results?' . http_build_query($m_query);
@@ -52,7 +43,11 @@ if (str_contains($s_url, 'release-group')) {
    $o_re = mb_decode_release($s_mbid);
 }
 
-$s_artists = yt_encode_artists($o_re);
+foreach ($o_re->{'artist-credit'} as $o_artist) {
+   $a_out[] = $o_artist->name;
+}
+
+$s_artists = implode(' ', $a_out);
 
 foreach ($o_re->media as $o_media) {
    foreach ($o_media->tracks as $o_track) {
