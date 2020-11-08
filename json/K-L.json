@@ -1064,33 +1064,34 @@
         },
         "Wounded Rhymes": {
             "@date": "2010-02-28",
-            "@id": "vZYbEL06lEU",
             "Youth Knows No Pain": "short",
             "I Follow Rivers": "",
-            "Love Out of Lust": "@",
-            "Unrequited Love": "@",
-            "Get Some": "@",
-            "Rich Kids Blues": "@",
-            "Sadness Is a Blessing": "@",
-            "I Know Places": "@",
-            "Jerome": "@",
-            "Silent My Song": "@",
-            "I Follow Rivers (The Magician remix)": "@"
+            "Love Out of Lust": "",
+            "Unrequited Love": "",
+            "Get Some": "",
+            "Rich Kids Blues": "",
+            "Sadness Is a Blessing": "",
+            "I Know Places": "good",
+            "Jerome": "",
+            "Silent My Song": "bad",
+            "I Follow Rivers (The Magician remix)": ""
         },
-        "Youth Novels": {
-            "@date": "2008-01-30",
-            "Melodies & Desires": "good",
-            "Dance, Dance, Dance": "bad",
-            "I'm Good, I'm Gone": "bad",
-            "Let It Fall": "short",
-            "My Love": "bad",
-            "Little Bit": "good",
-            "Hanging High": "bad",
-            "This Trumpet in My Head": "short",
-            "Complaint Department": "bad",
-            "Breaking It Up": "bad",
-            "Time Flies": "bad",
-            "Window Blues": "bad"
-        }
+       "Youth Novels": {
+           "@date": "2008-08-19",
+           "Melodies & Desires": "good",
+           "Dance, Dance, Dance": "bad",
+           "I'm Good, I'm Gone": "bad",
+           "Let It Fall": "short",
+           "My Love": "bad",
+           "Tonight": "",
+           "Little Bit": "good",
+           "Hanging High": "bad",
+           "This Trumpet in My Head": "short",
+           "Complaint Department": "bad",
+           "Breaking It Up": "bad",
+           "Everybody but Me": "bad",
+           "Time Flies": "bad",
+           "Window Blues": "bad"
+       }
     }
 }
