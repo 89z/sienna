@@ -9,14 +9,6 @@
 
 Music rating web application
 
-## Folders
-
-~~~
-bin
-include
-srv
-~~~
-
 ## Session
 
 <https://stackoverflow.com/questions/871858>

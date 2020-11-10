@@ -2,10 +2,7 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 
-
-#require_once 'sienna/youtube.php';
-require_once 'youtube.php';
-
+require_once 'sienna/youtube.php';
 chdir('D:\Git\sienna\json');
 $o_iter = new FilesystemIterator('.');
 
