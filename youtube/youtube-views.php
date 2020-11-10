@@ -11,6 +11,6 @@ if ($argc != 2) {
    exit(1);
 }
 
-$s_url = $argv[1];
-$o = new YouTubeViews($s_url);
+$UrlS = $argv[1];
+$o = new YouTubeViews($UrlS);
 echo $o->color();

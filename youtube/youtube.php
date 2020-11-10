@@ -6,26 +6,26 @@ extension_loaded('openssl') or die('openssl');
 require_once 'cove/helper.php';
 
 class YouTubeInfo {
-   function __construct(string $s_watch) {
+   function __construct(string $WatchS) {
       # part 1
-      $s_query = parse_url($s_watch, PHP_URL_QUERY);
-      parse_str($s_query, $m_query);
+      $QueryS = parse_url($WatchS, PHP_URL_QUERY);
+      parse_str($QueryS, $QueryM);
       # part 2
-      $this->id = $m_query['v'];
+      $this->id = $QueryM['v'];
       # part 3
-      $s_info = 'https://www.youtube.com/get_video_info?video_id=' . $this->id;
-      echo $s_info, "\n";
+      $InfoS = 'https://www.youtube.com/get_video_info?video_id=' . $this->id;
+      echo $InfoS, "\n";
       # part 4
-      $s_get = file_get_contents($s_info);
-      parse_str($s_get, $m_get);
+      $GetS = file_get_contents($InfoS);
+      parse_str($GetS, $GetM);
       # part 5
-      $s_resp = $m_get['player_response'];
+      $RespS = $GetM['player_response'];
       # part 6
-      $o_resp = json_decode($s_resp);
-      if (! property_exists($o_resp, 'microformat')) {
+      $RespO = json_decode($RespS);
+      if (! property_exists($RespO, 'microformat')) {
          return;
       }
-      foreach ($o_resp->microformat->playerMicroformatRenderer as $k => $v) {
+      foreach ($RespO->microformat->playerMicroformatRenderer as $k => $v) {
          $this->$k = $v;
       }
    }
@@ -36,15 +36,15 @@ class YouTubeViews extends YouTubeInfo {
       if (! property_exists($this, 'viewCount')) {
          return 'undefined property: viewCount';
       }
-      $n_views = (int)($this->viewCount);
-      $n_then = strtotime($this->publishDate);
-      $n_now = time();
-      $n_diff = ($n_now - $n_then) / 60 / 60 / 24 / 365;
-      $n_rate = $n_views / $n_diff;
-      $s_rate = number_format($n_rate);
-      if ($n_rate > 8_000_000) {
-         return 'RED ' . red($s_rate);
+      $ViewsN = (int)($this->viewCount);
+      $ThenN = strtotime($this->publishDate);
+      $NowN = time();
+      $DiffN = ($NowN - $ThenN) / 60 / 60 / 24 / 365;
+      $RateN = $ViewsN / $DiffN;
+      $RateS = number_format($RateN);
+      if ($RateN > 8_000_000) {
+         return 'RED ' . red($RateS);
       }
-      return 'GREEN ' . green($s_rate);
+      return 'GREEN ' . green($RateS);
    }
 }
