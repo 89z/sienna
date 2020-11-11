@@ -1,7 +1,6 @@
 <?php
 declare(strict_types = 1);
 error_reporting(E_ALL);
-
 require_once 'cove/helper.php';
 require_once 'sienna/musicbrainz.php';
 
@@ -18,45 +17,44 @@ eof;
    exit(1);
 }
 
-$s_url = $argv[1];
-$s_mbid = basename($s_url);
+$url_s = $argv[1];
+$mbid_s = basename($url_s);
+$dec_o = new MusicBrainzDecode($mbid_s);
 
-if (str_contains($s_url, 'release-group')) {
-   # RELEASE GROUP
-   $a_releases = mb_decode_group($s_mbid);
-   $n_re = 0;
-   foreach ($a_releases as $n_idx => $o_cur) {
-      $n_re = mb_reduce_group($n_re, $o_cur, $n_idx, $a_releases);
+if (str_contains($url_s, 'release-group')) {
+   $rel_a = $dec_o->group();
+   $rel_n = 0;
+   foreach ($rel_a as $idx_n => $cur_o) {
+      $rel_n = MusicBrainzReduce($rel_n, $cur_o, $idx_n, $rel_a);
    }
-   $o_re = $a_releases[$n_re];
+   $rel_o = $rel_a[$rel_n];
 } else {
-   # RELEASE
-   $o_re = mb_decode_release($s_mbid);
+   $rel_o = $dec_o->release();
 }
 
-$n_min = 179.5 * 1000;
-$n_max = 15 * 60 * 1000;
-$m_album[$o_re->title]['@date'] = $o_re->date;
+$min_n = 179.5 * 1000;
+$max_n = 15 * 60 * 1000;
+$album_m[$rel_o->title]['@date'] = $rel_o->date;
 
-foreach ($o_re->media as $o_media) {
-   foreach ($o_media->tracks as $o_track) {
-      $n_len = $o_track->length;
-      if ($n_len < $n_min) {
-         $s_track = 'short';
-      } else if ($n_len > $n_max) {
-         $s_track = 'long';
+foreach ($rel_o->media as $media_o) {
+   foreach ($media_o->tracks as $track_o) {
+      $len_n = $track_o->length;
+      if ($len_n < $min_n) {
+         $note_s = 'short';
+      } else if ($len_n > $max_n) {
+         $note_s = 'long';
       } else {
-         $s_track = '';
+         $note_s = '';
       }
-      $m_r = &$m_album[$o_re->title];
-      if (key_exists($o_track->title, $m_r)) {
-         $m_r[$o_track->number . '. ' . $o_track->title] = $s_track;
+      $track_m = &$album_m[$rel_o->title];
+      if (key_exists($track_o->title, $track_m)) {
+         $track_m[$track_o->number . '. ' . $track_o->title] = $note_s;
       } else {
-         $m_r[$o_track->title] = $s_track;
+         $track_m[$track_o->title] = $note_s;
       }
    }
 }
 
-$n_opt = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
-$s_rate = json_encode($m_album, $n_opt);
-echo $s_rate, "\n";
+$opt_n = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+$rate_s = json_encode($album_m, $opt_n);
+echo $rate_s, "\n";
