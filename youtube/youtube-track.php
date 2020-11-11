@@ -10,77 +10,77 @@ if ($argc != 2) {
    exit(1);
 }
 
-$UrlS = $argv[1];
+$url_s = $argv[1];
 
 # year
 class YouTubeRelease extends YouTubeInfo {
-   function reduce(string $CarS, string $ItemS): string {
-      $MatN = preg_match($ItemS, $this->description->simpleText, $MatA);
-      if ($MatN === 0) {
-         return $CarS;
+   function reduce(string $ca_s, string $it_s): string {
+      $mat_n = preg_match($it_s, $this->description->simpleText, $mat_a);
+      if ($mat_n === 0) {
+         return $ca_s;
       }
-      $MatS = $MatA[1];
-      if ($MatS >= $CarS) {
-         return $CarS;
+      $mat_s = $mat_a[1];
+      if ($mat_s >= $ca_s) {
+         return $ca_s;
       }
-      return $MatS;
+      return $mat_s;
    }
 }
 
-$RegA = [
+$reg_a = [
    '/ (\d{4})/',
    '/(\d{4,}) /',
    '/Released on: (\d{4})/',
    '/℗ (\d{4})/'
 ];
 
-$RelO = new YouTubeRelease($UrlS);
-$YearS = $RelO->publishDate;
+$rel_o = new YouTubeRelease($url_s);
+$year_s = $rel_o->publishDate;
 
-foreach ($RegA as $RegS) {
-   $YearS = $RelO->reduce($YearS, $RegS);
+foreach ($reg_a as $reg_s) {
+   $year_s = $rel_o->reduce($year_s, $reg_s);
 }
 
-$YearN = (int)($YearS);
+$year_n = (int)($year_s);
 
 # song, artist
-$MatN = preg_match('/.* · .*/', $RelO->description->simpleText, $LineA);
+$mat_n = preg_match('/.* · .*/', $rel_o->description->simpleText, $line_a);
 
-if ($MatN !== 0) {
-   $LineS = $LineA[0];
-   $TitleA = explode(' · ', $LineS);
-   $ArtistA = array_slice($TitleA, 1);
-   $TitleS = implode(', ', $ArtistA) . ' - ' . $TitleA[0];
+if ($mat_n !== 0) {
+   $line_s = $line_a[0];
+   $title_a = explode(' · ', $line_s);
+   $artist_a = array_slice($title_a, 1);
+   $title_s = implode(', ', $artist_a) . ' - ' . $title_a[0];
 } else {
-   $TitleS = $RelO->title->simpleText;
+   $title_s = $rel_o->title->simpleText;
 }
 
 # time
-$DateN = time();
-$DateS = base_convert($DateN, 10, 36);
+$date_n = time();
+$date_s = base_convert($date_n, 10, 36);
 
 # image
-$JpgA = [
+$jpg_a = [
    '/sddefault',
    '/sd1',
    '/hqdefault'
 ];
 
-foreach ($JpgA as $JpgS) {
-   $UrlS = 'https://i.ytimg.com/vi/' . $RelO->id . $JpgS . '.jpg';
-   echo $UrlS, "\n";
-   $HeadA = get_headers($UrlS);
-   $CodeS = $HeadA[0];
-   if (str_contains($CodeS, '200 OK')) {
+foreach ($jpg_a as $jpg_s) {
+   $url_s = 'https://i.ytimg.com/vi/' . $rel_o->id . $jpg_s . '.jpg';
+   echo $url_s, "\n";
+   $head_a = get_headers($url_s);
+   $code_s = $head_a[0];
+   if (str_contains($code_s, '200 OK')) {
       break;
    }
 }
 
-if ($JpgS == '/sddefault') {
-   $JpgS = '';
+if ($jpg_s == '/sddefault') {
+   $jpg_s = '';
 }
 
 # print
-$RecA = [$DateS, $YearN, 'y/' . $RelO->id . $JpgS, $TitleS];
-$JsonS = json_encode($RecA, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-echo $JsonS, ",\n";
+$rec_a = [$date_s, $year_n, 'y/' . $rel_o->id . $jpg_s, $title_s];
+$json_s = json_encode($rec_a, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+echo $json_s, ",\n";
