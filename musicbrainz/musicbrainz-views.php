@@ -6,13 +6,13 @@ require_once 'cove/helper.php';
 require_once 'sienna/musicbrainz.php';
 require_once 'sienna/youtube.php';
 
-function yt_result(string $s_query): string {
-   $m_query['search_query'] = $s_query;
-   $s_res = 'https://www.youtube.com/results?' . http_build_query($m_query);
-   echo $s_res, "\n";
-   $s_get = file_get_contents($s_res);
-   preg_match('!/watch\?v=[^"]*!', $s_get, $a_mat);
-   return $a_mat[0];
+function yt_result(string $query_s): string {
+   $query_m['search_query'] = $query_s;
+   $res_s = 'https://www.youtube.com/results?' . http_build_query($query_m);
+   echo $res_s, "\n";
+   $get_s = file_get_contents($res_s);
+   preg_match('!/watch\?v=[^"]*!', $get_s, $mat_a);
+   return $mat_a[0];
 }
 
 if ($argc != 2) {
@@ -27,32 +27,32 @@ eof;
    exit(1);
 }
 
-$s_url = $argv[1];
-$s_mbid = basename($s_url);
+$url_s = $argv[1];
+$mbid_s = basename($url_s);
 
-if (str_contains($s_url, 'release-group')) {
+if (str_contains($url_s, 'release-group')) {
    # RELEASE GROUP
-   $a_releases = mb_decode_group($s_mbid);
-   $n_re = 0;
-   foreach ($a_releases as $n_idx => $o_cur) {
-      $n_re = mb_reduce_group($n_re, $o_cur, $n_idx, $a_releases);
+   $releases_a = mb_decode_group($mbid_s);
+   $re_n = 0;
+   foreach ($releases_a as $n_idx => $o_cur) {
+      $re_n = mb_reduce_group($re_n, $o_cur, $n_idx, $releases_a);
    }
-   $o_re = $a_releases[$n_re];
+   $re_o = $releases_a[$re_n];
 } else {
    # RELEASE
-   $o_re = mb_decode_release($s_mbid);
+   $re_o = mb_decode_release($mbid_s);
 }
 
-foreach ($o_re->{'artist-credit'} as $o_artist) {
+foreach ($re_o->{'artist-credit'} as $o_artist) {
    $a_out[] = $o_artist->name;
 }
 
-$s_artists = implode(' ', $a_out);
+$artists_s = implode(' ', $a_out);
 
-foreach ($o_re->media as $o_media) {
-   foreach ($o_media->tracks as $o_track) {
-      $s_url = yt_result($s_artists . ' ' . $o_track->title);
-      $o = new YouTubeViews($s_url);
+foreach ($re_o->media as $media_o) {
+   foreach ($media_o->tracks as $track_o) {
+      $url_s = yt_result($artists_s . ' ' . $track_o->title);
+      $o = new YouTubeViews($url_s);
       echo $o->color(), "\n";
       usleep(500_000);
    }
