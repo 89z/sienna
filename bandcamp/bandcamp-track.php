@@ -8,31 +8,31 @@ if ($argc != 2) {
    exit(1);
 }
 
-$s_url = $argv[1];
-$s_info = file_get_contents($s_url);
+$url_s = $argv[1];
+$info_s = file_get_contents($url_s);
 
 # track
-preg_match('!/track=([^/]*)/!', $s_info, $a_track);
-$s_id_2 = $a_track[1];
+preg_match('!/track=([^/]*)/!', $info_s, $track_a);
+$audio_s = $track_a[1];
 
 # img
-preg_match('!/img/([^_]*)_!', $s_info, $a_img);
-$s_id_3 = $a_img[1];
+preg_match('!/img/([^_]*)_!', $info_s, $img_a);
+$video_s = $img_a[1];
 
 # year
-preg_match("/ (\d{4})\n/", $s_info, $a_year);
-$s_year = $a_year[1];
-$n_year = (int)($s_year);
+preg_match("/ (\d{4})\n/", $info_s, $year_a);
+$year_s = $year_a[1];
+$year_n = (int)($year_s);
 
 # title
-preg_match('!<title>(.*) \| (.*)</title>!', $s_info, $a_title);
-$s_title = $a_title[2] . ' - ' . $a_title[1];
+preg_match('!<title>(.*) \| (.*)</title>!', $info_s, $title_a);
+$title_s = $title_a[2] . ' - ' . $title_a[1];
 
 # time
-$n_id_1 = time();
-$s_id_1 = base_convert($n_id_1, 10, 36);
+$date_n = time();
+$date_s = base_convert($date_n, 10, 36);
 
 # print
-$a_rec = [$s_id_1, $n_year, 'b/' . $s_id_2 . '/' . $s_id_3, $s_title];
-$s_json = json_encode($a_rec, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-echo $s_json, ",\n";
+$rec_a = [$date_s, $year_n, 'b/' . $audio_s . '/' . $video_s, $title_s];
+$json_s = json_encode($rec_a, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+echo $json_s, ",\n";

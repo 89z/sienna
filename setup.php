@@ -2,35 +2,35 @@
 declare(strict_types = 1);
 error_reporting(E_ALL);
 
-$s_to = 'C:\php\pear\sienna';
+$to_s = 'C:\php\pear\sienna';
 
 # unlink
-if (is_dir($s_to)) {
-   $o_iter = new FilesystemIterator($s_to);
-   foreach ($o_iter as $o_info) {
-      $s_path = $o_info->getPathname();
-      echo 'unlink: ', $s_path, "\n";
-      unlink($s_path);
+if (is_dir($to_s)) {
+   $iter_o = new FilesystemIterator($to_s);
+   foreach ($iter_o as $info_o) {
+      $path_s = $info_o->getPathname();
+      echo 'unlink: ', $path_s, "\n";
+      unlink($path_s);
    }
 } else {
-   mkdir($s_to);
+   mkdir($to_s);
 }
 
 # copy
-$f_filter = fn ($o_info) => $o_info->getFilename() != '.git';
-$o_dir = new RecursiveDirectoryIterator('.');
-$o_filter = new RecursiveCallbackFilterIterator($o_dir, $f_filter);
-$o_iter = new RecursiveIteratorIterator($o_filter);
+$filter_f = fn ($info_o) => $info_o->getFilename() != '.git';
+$dir_o = new RecursiveDirectoryIterator('.');
+$filter_o = new RecursiveCallbackFilterIterator($dir_o, $filter_f);
+$iter_o = new RecursiveIteratorIterator($filter_o);
 
-foreach ($o_iter as $o_info) {
-   if ($o_info->getExtension() != 'php') {
+foreach ($iter_o as $info_o) {
+   if ($info_o->getExtension() != 'php') {
       continue;
    }
-   $s_file = $o_info->getFilename();
-   if ($s_file == 'setup.php') {
+   $file_s = $info_o->getFilename();
+   if ($file_s == 'setup.php') {
       continue;
    }
-   $s_path = $o_info->getPathname();
-   echo 'copy: ', $s_path, "\n";
-   copy($s_path, $s_to . DIRECTORY_SEPARATOR . $s_file);
+   $path_s = $info_o->getPathname();
+   echo 'copy: ', $path_s, "\n";
+   copy($path_s, $to_s . DIRECTORY_SEPARATOR . $file_s);
 }

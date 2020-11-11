@@ -43,8 +43,8 @@ class YouTubeViews extends YouTubeInfo {
       $rate_n = $views_n / $diff_n;
       $rate_s = number_format($rate_n);
       if ($rate_n > 8_000_000) {
-         return 'RED ' . red($rate_s);
+         return 'RED ' . color_red($rate_s);
       }
-      return 'GREEN ' . green($rate_s);
+      return 'GREEN ' . color_green($rate_s);
    }
 }

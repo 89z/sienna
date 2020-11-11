@@ -29,27 +29,26 @@ eof;
 
 $url_s = $argv[1];
 $mbid_s = basename($url_s);
+$dec_o = new MusicBrainzDecode($mbid_s);
 
 if (str_contains($url_s, 'release-group')) {
-   # RELEASE GROUP
-   $releases_a = mb_decode_group($mbid_s);
-   $re_n = 0;
-   foreach ($releases_a as $n_idx => $o_cur) {
-      $re_n = mb_reduce_group($re_n, $o_cur, $n_idx, $releases_a);
+   $rel_a = $dec_o->group();
+   $rel_n = 0;
+   foreach ($rel_a as $idx_n => $cur_o) {
+      $rel_n = MusicBrainzReduce($rel_n, $cur_o, $idx_n, $rel_a);
    }
-   $re_o = $releases_a[$re_n];
+   $rel_o = $rel_a[$rel_n];
 } else {
-   # RELEASE
-   $re_o = mb_decode_release($mbid_s);
+   $rel_o = $dec_o->release();
 }
 
-foreach ($re_o->{'artist-credit'} as $o_artist) {
-   $a_out[] = $o_artist->name;
+foreach ($rel_o->{'artist-credit'} as $artist_o) {
+   $out_a[] = $artist_o->name;
 }
 
-$artists_s = implode(' ', $a_out);
+$artists_s = implode(' ', $out_a);
 
-foreach ($re_o->media as $media_o) {
+foreach ($rel_o->media as $media_o) {
    foreach ($media_o->tracks as $track_o) {
       $url_s = yt_result($artists_s . ' ' . $track_o->title);
       $o = new YouTubeViews($url_s);

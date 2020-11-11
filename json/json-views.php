@@ -1,29 +1,29 @@
 <?php
 declare(strict_types = 1);
 error_reporting(E_ALL);
-
 require_once 'sienna/youtube.php';
-chdir('D:\Git\sienna\json');
-$o_iter = new FilesystemIterator('.');
 
-foreach ($o_iter as $o_info) {
-   $s_name = $o_info->getFilename();
-   if ($s_name == 'readme.md') {
+chdir('D:\Git\sienna\json');
+$iter_o = new FilesystemIterator('.');
+
+foreach ($iter_o as $info_o) {
+   $name_s = $info_o->getFilename();
+   if ($name_s == 'readme.md') {
       continue;
    }
-   $s_get = file_get_contents($s_name);
-   $o_json = json_decode($s_get);
-   foreach ($o_json as $s_artist => $o_artist) {
-      foreach ($o_artist as $s_album => $o_album) {
-         if ($s_album == '@check') {
+   $get_s = file_get_contents($name_s);
+   $json_o = json_decode($get_s);
+   foreach ($json_o as $artist_s => $artist_o) {
+      foreach ($artist_o as $album_s => $album_o) {
+         if ($album_s == '@check') {
             continue;
          }
-         if (! property_exists($o_album, '@id')) {
+         if (! property_exists($album_o, '@id')) {
             continue;
          }
-         $s_id = $o_album->{'@id'};
-         $o_view = new YouTubeViews('/watch?v=' . $s_id);
-         echo $o_view->color(), ' ', $s_artist, ' ', $s_album, "\n";
+         $id_s = $album_o->{'@id'};
+         $view_o = new YouTubeViews('/watch?v=' . $id_s);
+         echo $view_o->color(), ' ', $artist_s, ' ', $album_s, "\n";
          usleep(200_000);
       }
    }
