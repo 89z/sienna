@@ -174,22 +174,25 @@
         }
     },
     "Tom Waits": {
-        "Bad as Me": {
-            "@date": "2011",
-            "Chicago": "short",
-            "Raised Right Men": "",
-            "Talking at the Same Time": "",
-            "Get Lost": "short",
-            "Face to the Highway": "",
-            "Pay Me": "",
-            "Back in the Crowd": "short",
-            "Bad as Me": "",
-            "Kiss Me": "",
-            "Satisfied": "good",
-            "Last Leaf": "short",
-            "Hell Broke Luce": "",
-            "New Year’s Eve": ""
-        },
+       "Bad as Me": {
+           "@date": "2011-10-21",
+           "Chicago": "short",
+           "Raised Right Men": "",
+           "Talking at the Same Time": "",
+           "Get Lost": "short",
+           "Face to the Highway": "",
+           "Pay Me": "",
+           "Back in the Crowd": "short",
+           "Bad as Me": "",
+           "Kiss Me": "",
+           "Satisfied": "good",
+           "Last Leaf": "short",
+           "Hell Broke Luce": "",
+           "New Year’s Eve": "",
+           "She Stole the Blush": "short",
+           "Tell Me": "",
+           "After You Die": "short"
+       },
         "Real Gone": {
             "@date": "2004",
             "Top of the Hill": "",
