@@ -202,6 +202,66 @@
             "Tacobel Canon": ""
         }
     },
+    "R.E.M.": {
+        "Monster": {
+            "@date": "1994",
+            "What’s the Frequency, Kenneth?": "good",
+            "Crush With Eyeliner": "",
+            "King of Comedy": "",
+            "I Don’t Sleep, I Dream": "",
+            "Star 69": "",
+            "Strange Currencies": "",
+            "Tongue": "",
+            "Bang and Blame": "",
+            "I Took Your Name": "",
+            "Let Me In": "",
+            "Circus Envy": "",
+            "You": ""
+        },
+        "Automatic for the People": {
+            "@date": "1992-10-06",
+            "Drive": "",
+            "Try Not to Breathe": "",
+            "The Sidewinder Sleeps Tonite": "",
+            "Everybody Hurts": "good",
+            "New Orleans Instrumental No. 1": "short",
+            "Sweetness Follows": "",
+            "Monty Got a Raw Deal": "",
+            "Ignoreland": "",
+            "Star Me Kitten": "",
+            "Man on the Moon": "",
+            "Nightswimming": "",
+            "Find the River": ""
+        },
+        "Out of Time": {
+            "@date": "1991-03-08",
+            "@id": "xwtdhWltSIg",
+            "Radio Song": "",
+            "Losing My Religion": "",
+            "Low": "",
+            "Near Wild Heaven": "",
+            "Endgame": "",
+            "Shiny Happy People": "",
+            "Belong": "",
+            "Half a World Away": "",
+            "Texarkana": "",
+            "Country Feedback": "",
+            "Me in Honey": ""
+        },
+        "Green": {
+            "@date": "1988",
+            "Pop Song 89": "",
+            "Get Up": "short",
+            "You Are the Everything": "",
+            "Stand": "",
+            "World Leader Pretend": "",
+            "The Wrong Child": "",
+            "Orange Crush": "good",
+            "Turn You Inside‐Out": "",
+            "Hairshirt": "",
+            "I Remember California": ""
+        }
+    },
     "Red Hot Chili Peppers": {
         "The Getaway": {
             "@date": "2016-06-17",
@@ -345,66 +405,6 @@
             "My Lovely Man": "",
             "Sir Psycho Sexy": "",
             "They’re Red Hot": "short"
-        }
-    },
-    "R.E.M.": {
-        "Monster": {
-            "@date": "1994",
-            "What’s the Frequency, Kenneth?": "good",
-            "Crush With Eyeliner": "",
-            "King of Comedy": "",
-            "I Don’t Sleep, I Dream": "",
-            "Star 69": "",
-            "Strange Currencies": "",
-            "Tongue": "",
-            "Bang and Blame": "",
-            "I Took Your Name": "",
-            "Let Me In": "",
-            "Circus Envy": "",
-            "You": ""
-        },
-        "Automatic for the People": {
-            "@date": "1992-10-06",
-            "Drive": "",
-            "Try Not to Breathe": "",
-            "The Sidewinder Sleeps Tonite": "",
-            "Everybody Hurts": "good",
-            "New Orleans Instrumental No. 1": "short",
-            "Sweetness Follows": "",
-            "Monty Got a Raw Deal": "",
-            "Ignoreland": "",
-            "Star Me Kitten": "",
-            "Man on the Moon": "",
-            "Nightswimming": "",
-            "Find the River": ""
-        },
-        "Out of Time": {
-            "@date": "1991-03-08",
-            "@id": "xwtdhWltSIg",
-            "Radio Song": "",
-            "Losing My Religion": "",
-            "Low": "",
-            "Near Wild Heaven": "",
-            "Endgame": "",
-            "Shiny Happy People": "",
-            "Belong": "",
-            "Half a World Away": "",
-            "Texarkana": "",
-            "Country Feedback": "",
-            "Me in Honey": ""
-        },
-        "Green": {
-            "@date": "1988",
-            "Pop Song 89": "",
-            "Get Up": "short",
-            "You Are the Everything": "",
-            "Stand": "",
-            "World Leader Pretend": "",
-            "The Wrong Child": "",
-            "Orange Crush": "good",
-            "Turn You Inside‐Out": "",
-            "Hairshirt": "",
-            "I Remember California": ""
         }
     },
     "Robert Plant": {
