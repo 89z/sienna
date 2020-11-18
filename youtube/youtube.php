@@ -31,6 +31,11 @@ class YouTubeInfo {
    }
 }
 
+function format_number(float $n): string {
+   $n2 = (int)(log10($n) / 3);
+   return sprintf('%.3f', $n / 1e3 ** $n2) . ['', ' K', ' M', ' B'][$n2];
+}
+
 class YouTubeViews extends YouTubeInfo {
    function color(): string {
       if (! property_exists($this, 'viewCount')) {
@@ -41,7 +46,7 @@ class YouTubeViews extends YouTubeInfo {
       $now_n = time();
       $diff_n = ($now_n - $then_n) / 60 / 60 / 24 / 365;
       $rate_n = $views_n / $diff_n;
-      $rate_s = number_format($rate_n);
+      $rate_s = format_number($rate_n);
       if ($rate_n > 8_000_000) {
          return 'RED ' . color_red($rate_s);
       }
