@@ -2,7 +2,7 @@
     "Daft Punk": {
         "Random Access Memories": {
             "@date": "2013-05-17",
-            "@id": "5NV6Rdv1a3I",
+            "@yt": "5NV6Rdv1a3I",
             "Give Life Back to Music": "",
             "The Game of Love": "",
             "Giorgio by Moroder": "",
@@ -73,7 +73,7 @@
         },
         "Discovery": {
             "@date": "2001-02-26",
-            "@id": "FGBhQbmPwH8",
+            "@yt": "FGBhQbmPwH8",
             "One More Time": "",
             "Aerodynamic": "",
             "Digital Love": "",
@@ -213,7 +213,7 @@
     "David Bowie": {
         "★": {
             "@date": "2016-01-08",
-            "@id": "y-JqH1M4Ya8",
+            "@yt": "y-JqH1M4Ya8",
             "Blackstar": "",
             "’Tis a Pity She Was a Whore": "",
             "Lazarus": "",
@@ -235,7 +235,7 @@
         },
         "“Heroes”": {
             "@date": "1977-10-14",
-            "@id": "bsYp9q3QNaQ",
+            "@yt": "bsYp9q3QNaQ",
             "Beauty and the Beast": "",
             "Joe the Lion": "",
             "“Heroes”": "",
@@ -249,7 +249,7 @@
         },
         "David Bowie": {
             "@date": "1969-11-04",
-            "@id": "iYYRH4apXDo",
+            "@yt": "iYYRH4apXDo",
             "Space Oddity": "",
             "Unwashed and Somewhat Slightly Dazed": "",
             "(Don’t Sit Down)": "short",
@@ -292,7 +292,7 @@
         },
         "Violator": {
             "@date": "1990-02-21",
-            "@id": "u1xrNaTO1bI",
+            "@yt": "u1xrNaTO1bI",
             "World in My Eyes": "",
             "Sweetest Perfection": "",
             "Personal Jesus": "",
@@ -305,6 +305,7 @@
         },
         "Music for the Masses": {
             "@date": "1987-09-28",
+            "@mb": "e59021bd-1710-3c13-9449-b78560039592",
             "Never Let Me Down Again": "",
             "The Things You Said": "",
             "Strangelove": "good",
@@ -365,7 +366,7 @@
     "Disturbed": {
         "Evolution": {
             "@date": "2018",
-            "@id": "t4382UVl0oc",
+            "@yt": "t4382UVl0oc",
             "A Reason To Fight": "",
             "Are You Ready": "",
             "Hold on to Memories": "",
@@ -378,7 +379,7 @@
         },
         "Immortalized": {
             "@date": "2015-08-21",
-            "@id": "u9Dg-g7t2l4",
+            "@yt": "u9Dg-g7t2l4",
             "The Eye of the Storm": "short",
             "Immortalized": "",
             "The Vengeful One": "",
@@ -395,7 +396,7 @@
         },
         "The Sickness": {
             "@date": "2000-03-07",
-            "@id": "09LTT0xwdfw",
+            "@yt": "09LTT0xwdfw",
             "Voices": "",
             "The Game": "",
             "Stupify": "",
@@ -455,7 +456,7 @@
     "Dr. Dre": {
         "2001": {
             "@date": "1999-11-16",
-            "@id": "_CL6n0FJZpk",
+            "@yt": "_CL6n0FJZpk",
             "Lolo (intro)": "short",
             "The Watcher": "",
             "Fuck You": "",
@@ -525,7 +526,7 @@
     "Duran Duran": {
         "Duran Duran": {
             "@date": "1993-02-11",
-            "@id": "Epj84QVw2rc",
+            "@yt": "Epj84QVw2rc",
             "Too Much Information": "",
             "Ordinary World": "",
             "Love Voodoo": "",
@@ -609,7 +610,7 @@
         },
         "Illusions": {
             "@date": "2013-07-22",
-            "@id": "3GEqdbh8sFI",
+            "@yt": "3GEqdbh8sFI",
             "You're so High": "",
             "The Game": "",
             "Free Your Mind": "",
@@ -619,7 +620,7 @@
     "Elton John": {
         "Madman Across the Water": {
             "@date": "1971-11-05",
-            "@id": "yYcyacLRPNs",
+            "@yt": "yYcyacLRPNs",
             "Tiny Dancer": "",
             "Levon": "",
             "Razor Face": "",
@@ -771,7 +772,7 @@
     "Enya": {
         "A Day Without Rain": {
             "@date": "2000-11-20",
-            "@id": "7wfYIMyS_dI",
+            "@yt": "7wfYIMyS_dI",
             "A Day Without Rain": "short",
             "Wild Child": "",
             "Only Time": "",
