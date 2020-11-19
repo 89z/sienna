@@ -18,10 +18,10 @@ foreach ($iter_o as $info_o) {
          if ($album_s == '@check') {
             continue;
          }
-         if (! property_exists($album_o, '@id')) {
+         if (! property_exists($album_o, '@yt')) {
             continue;
          }
-         $id_s = $album_o->{'@id'};
+         $id_s = $album_o->{'@yt'};
          $view_o = new YouTubeViews('/watch?v=' . $id_s);
          echo $view_o->color(), ' ', $artist_s, ' ', $album_s, "\n";
          usleep(200_000);

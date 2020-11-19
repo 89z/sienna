@@ -125,7 +125,7 @@
     "Beach House": {
         "Depression Cherry": {
             "@date": "2015-08-28",
-            "@id": "f9X1C7pTu-M",
+            "@yt": "f9X1C7pTu-M",
             "Levitation": "",
             "Sparks": "",
             "Space Song": "",
@@ -280,7 +280,7 @@
         },
         "Mellow Gold": {
             "@date": "1994-03-01",
-            "@id": "YgSPaXgAdzE",
+            "@yt": "YgSPaXgAdzE",
             "Loser": "",
             "Pay No Mind (Snoozer)": "",
             "Fuckin With My Head (Mountain Dew Rock)": "",
@@ -345,7 +345,7 @@
     "Berlin": {
         "Count Three & Pray": {
             "@date": "1986-11-18",
-            "@id": "Bx51eegLTY8",
+            "@yt": "Bx51eegLTY8",
             "Will I Ever Understand You": "",
             "You Don’t Know": "",
             "Like Flames": "",
@@ -610,7 +610,7 @@
     "Blink 182": {
         "blink‐182": {
             "@date": "2003-11-18",
-            "@id": "s1tAYmMjLdY",
+            "@yt": "s1tAYmMjLdY",
             "Feeling This": "short",
             "Obvious": "short",
             "I Miss You": "",
@@ -628,7 +628,7 @@
         },
         "Take Off Your Pants and Jacket": {
             "@date": "2001-01-01",
-            "@id": "vVy9Lgpg1m8",
+            "@yt": "vVy9Lgpg1m8",
             "Anthem Part Two": "",
             "Online Songs": "short",
             "First Date": "",
@@ -645,7 +645,7 @@
         },
         "Enema of the State": {
             "@date": "1999-06-01",
-            "@id": "9Ht5RZpzPqw",
+            "@yt": "9Ht5RZpzPqw",
             "Dumpweed": "short",
             "Don’t Leave Me": "short",
             "Aliens Exist": "",
@@ -1000,7 +1000,7 @@
     "Boyz II Men": {
         "II": {
             "@date": "1994-08-30",
-            "@id": "fV8vB1BB2qc",
+            "@yt": "fV8vB1BB2qc",
             "Thank You": "",
             "All Around the World": "",
             "U Know": "",
@@ -1017,7 +1017,7 @@
         },
         "Cooleyhighharmony": {
             "@date": "1992",
-            "@id": "zDKO6XYXioc",
+            "@yt": "zDKO6XYXioc",
             "End of the Road (LP version)": "",
             "Please Don’t Go": "",
             "Lonely Heart": "",
@@ -1085,7 +1085,7 @@
     "Britney Spears": {
         "Blackout": {
             "@date": "2007-10-27",
-            "@id": "elueA2rofoo",
+            "@yt": "elueA2rofoo",
             "Gimme More": "",
             "Piece of Me": "",
             "Radar": "",
@@ -1130,7 +1130,6 @@
     "Bryan Adams": {
         "18 Til I Die": {
             "@date": "1996-06-03",
-            "@id": "hq2KgzKETBw",
             "The Only Thing That Looks Good on Me Is You": "",
             "Do to You": "",
             "Let’s Make a Night to Remember": "",
@@ -1143,7 +1142,7 @@
             "It Ain’t a Party…If You Can’t Come ’round": "",
             "Black Pearl": "",
             "You’re Still Beautiful to Me": "",
-            "Have You Ever Really Loved a Woman?": ""
+            "Have You Ever Really Loved a Woman?": "good"
         }
     },
     "Burial": {
