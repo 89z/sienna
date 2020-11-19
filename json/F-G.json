@@ -845,7 +845,23 @@
             "Long Road": ""
         }
     },
-    "Genesis": {
+   "Garth Brooks": {
+       "No Fences": {
+           "@date": "1990-08-27",
+           "@id": "p0_der_5hRM",
+           "The Thunder Rolls": "",
+           "New Way to Fly": "",
+           "Two of a Kind, Workin' on a Full House": "short",
+           "Victim of the Game": "",
+           "Friends in Low Places": "",
+           "Wild Horses": "",
+           "Unanswered Prayers": "",
+           "Same Old Story": "short",
+           "Mr. Blue": "",
+           "Wolves": ""
+       }
+   },
+   "Genesis": {
         "We Can’t Dance": {
             "@date": "1991-11-11",
             "No Son of Mine": "",
