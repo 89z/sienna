@@ -2,7 +2,7 @@
     "Radiohead": {
         "A Moon Shaped Pool": {
             "@date": "2016-05-08",
-            "@id": "TTAU7lLDZYU",
+            "@yt": "TTAU7lLDZYU",
             "Burn the Witch": "",
             "Daydreaming": "",
             "Decks Dark": "",
@@ -74,7 +74,7 @@
         },
         "OK Computer": {
             "@date": "1997-05-21",
-            "@id": "1uYWYWPc9HU",
+            "@yt": "1uYWYWPc9HU",
             "Airbag": "",
             "Paranoid Android": "",
             "Subterranean Homesick Alien": "",
@@ -90,7 +90,7 @@
         },
         "The Bends": {
             "@date": "1995-03-13",
-            "@id": "7qFfFVSerQo",
+            "@yt": "7qFfFVSerQo",
             "Planet Telex": "",
             "The Bends": "",
             "High and Dry": "",
@@ -106,7 +106,7 @@
         },
         "Pablo Honey": {
             "@date": "1993-02-22",
-            "@id": "XFkzRNyygfk",
+            "@yt": "XFkzRNyygfk",
             "You": "",
             "Creep": "",
             "How Do You?": "short",
@@ -158,7 +158,7 @@
         },
         "Rage Against the Machine": {
             "@date": "1992-11-06",
-            "@id": "bWXazVhlyxQ",
+            "@yt": "bWXazVhlyxQ",
             "Bombtrack": "@",
             "Killing in the Name": "",
             "Take the Power Back": "@",
@@ -235,7 +235,7 @@
         },
         "Out of Time": {
             "@date": "1991-03-08",
-            "@id": "xwtdhWltSIg",
+            "@yt": "xwtdhWltSIg",
             "Radio Song": "",
             "Losing My Religion": "",
             "Low": "",
@@ -265,7 +265,7 @@
     "Red Hot Chili Peppers": {
         "The Getaway": {
             "@date": "2016-06-17",
-            "@id": "Q0oIoR9mLwc",
+            "@yt": "Q0oIoR9mLwc",
             "The Getaway": "",
             "Dark Necessities": "",
             "We Turn Red": "",
@@ -282,7 +282,7 @@
         },
         "I’m With You": {
             "@date": "2011-08-26",
-            "@id": "RtBbinpK5XI",
+            "@yt": "RtBbinpK5XI",
             "Monarchy of Roses": "",
             "Factory of Faith": "",
             "Brendan’s Death Song": "",
@@ -300,7 +300,7 @@
         },
         "Stadium Arcadium": {
             "@date": "2006-05-05",
-            "@id": "Sb5aq5HcS1A",
+            "@yt": "Sb5aq5HcS1A",
             "Dani California": "",
             "Snow ((Hey Oh))": "",
             "Charlie": "",
@@ -332,7 +332,7 @@
         },
         "By the Way": {
             "@date": "2002-07-09",
-            "@id": "8DyziWtkfBw",
+            "@yt": "8DyziWtkfBw",
             "By the Way": "",
             "Universally Speaking": "",
             "This Is the Place": "",
@@ -352,7 +352,7 @@
         },
         "Californication": {
             "@date": "1999-06-07",
-            "@id": "YlUKcNNmywk",
+            "@yt": "YlUKcNNmywk",
             "Around the World": "",
             "Parallel Universe": "",
             "Scar Tissue": "",
@@ -387,7 +387,7 @@
         },
         "Blood Sugar Sex Magik": {
             "@date": "1991-09-24",
-            "@id": "GLvohMXgcBo",
+            "@yt": "GLvohMXgcBo",
             "The Power of Equality": "",
             "If You Have to Ask": "",
             "Breaking the Girl": "",
@@ -509,7 +509,7 @@
     "Röyksopp": {
         "The Inevitable End": {
             "@date": "2014-11-07",
-            "@id": "rFI4JfbgOSY",
+            "@yt": "rFI4JfbgOSY",
             "Skulls": "",
             "Monument (T.I.E. version)": "",
             "Sordid Affair": "",
@@ -586,7 +586,7 @@
         },
         "Lovers Rock": {
             "@date": "1999-11-30",
-            "@id": "C8QJmI_V3j4",
+            "@yt": "C8QJmI_V3j4",
             "By Your Side": "",
             "Flow": "",
             "King of Sorrow": "",
@@ -601,7 +601,7 @@
         },
         "Love Deluxe": {
             "@date": "1992-10-23",
-            "@id": "_WcWHZc8s2I",
+            "@yt": "_WcWHZc8s2I",
             "No Ordinary Love": "",
             "Feel No Pain": "",
             "I Couldn’t Love You More": "",
@@ -763,7 +763,7 @@
     "Sarah McLachLan": {
         "Surfacing": {
             "@date": "1997-07-15",
-            "@id": "1SiylvmFI_8",
+            "@yt": "1SiylvmFI_8",
             "Building A Mystery": "",
             "I Love You": "",
             "Sweet Surrender": "",
@@ -953,7 +953,7 @@
     "Simon & Garfunkel": {
         "Bookends": {
             "@date": "1968-04-03",
-            "@id": "9C1BCAgu2I8",
+            "@yt": "9C1BCAgu2I8",
             "Bookends Theme (instrumental)": "short",
             "Save the Life of My Child": "short",
             "America": "",
@@ -969,7 +969,7 @@
         },
         "Sounds of Silence": {
             "@date": "1966-01-17",
-            "@id": "NAEppFUWLfc",
+            "@yt": "NAEppFUWLfc",
             "The Sounds of Silence": "",
             "Leaves That Are Green": "short",
             "Blessed": "",
@@ -984,7 +984,7 @@
         },
         "Wednesday Morning, 3 A.M.": {
             "@date": "1964-10-19",
-            "@id": "NAEppFUWLfc",
+            "@yt": "NAEppFUWLfc",
             "You Can Tell the World": "short",
             "Last Night I Had the Strangest Dream": "short",
             "Bleecker Street": "short",
@@ -1015,7 +1015,7 @@
         },
         "Don’t You (Forget About Me)": {
             "@date": "1985-03-19",
-            "@id": "CdqoNKCCt7A",
+            "@yt": "CdqoNKCCt7A",
             "Don’t You (Forget About Me)": "",
             "A Brass Band in African Chimes": ""
         }
@@ -1143,7 +1143,7 @@
     "Soundgarden": {
         "Superunknown": {
             "@date": "1994-03-08",
-            "@id": "3mbBbFH9fAg",
+            "@yt": "3mbBbFH9fAg",
             "Let Me Drown": "",
             "My Wave": "",
             "Fell on Black Days": "",
@@ -1176,7 +1176,7 @@
         },
         "True": {
             "@date": "1983",
-            "@id": "AR8D2yqgQ1U",
+            "@yt": "AR8D2yqgQ1U",
             "Pleasure": "",
             "Communication": "",
             "Code of Love": "",
@@ -1441,7 +1441,7 @@
     "Sting": {
         "Brand New Day": {
             "@date": "1999-09-27",
-            "@id": "C3lWwBslWqg",
+            "@yt": "C3lWwBslWqg",
             "A Thousand Years": "",
             "Desert Rose": "",
             "Big Lie Small World": "",
@@ -1455,7 +1455,7 @@
         },
         "Ten Summoner’s Tales": {
             "@date": "1993-03-09",
-            "@id": "QK-Z1K67uaA",
+            "@yt": "QK-Z1K67uaA",
             "If I Ever Lose My Faith in You": "",
             "Love Is Stronger Than Justice (The Munificent Seven)": "",
             "Fields of Gold": "",
@@ -1470,7 +1470,7 @@
         },
         "…Nothing Like the Sun": {
             "@date": "1987-10-01",
-            "@id": "d27gTrPPAyk",
+            "@yt": "d27gTrPPAyk",
             "The Lazarus Heart": "",
             "Be Still My Beating Heart": "",
             "Englishman in New York": "",
@@ -1634,7 +1634,7 @@
     "System of a Down": {
         "Hypnotize": {
             "@date": "2005-11-18",
-            "@id": "DnGdoEa1tPg",
+            "@yt": "DnGdoEa1tPg",
             "Attack": "",
             "Dreaming": "",
             "Kill Rock ’n Roll": "short",
@@ -1664,7 +1664,7 @@
         },
         "Toxicity": {
             "@date": "2001-08-27",
-            "@id": "CSvFpBOe8eY",
+            "@yt": "CSvFpBOe8eY",
             "Prison Song": "",
             "Needles": "",
             "Deer Dance": "short",
@@ -1682,7 +1682,7 @@
         },
         "System of a Down": {
             "@date": "1998-06-30",
-            "@id": "5vBGOrI6yBk",
+            "@yt": "5vBGOrI6yBk",
             "Suite-Pee": "short",
             "Know": "",
             "Sugar": "",
