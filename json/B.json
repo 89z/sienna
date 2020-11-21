@@ -661,7 +661,24 @@
             "Anthem": ""
         }
     },
-    "Blood Orange": {
+   "Blondie": {
+       "Autoamerican": {
+           "@date": "1980-11-19",
+           "Europa": "",
+           "Live It Up": "",
+           "Here’s Looking at You": "short",
+           "The Tide Is High": "",
+           "Angels on the Balcony": "",
+           "Go Through It": "short",
+           "Do the Dark": "",
+           "Rapture": "good",
+           "Faces": "",
+           "T-Birds": "",
+           "Walk Like Me": "",
+           "Follow Me": ""
+       }
+   },
+   "Blood Orange": {
         "@check": "2020-05-04",
         "Negro Swan": {
             "@date": "2018-08-24",
