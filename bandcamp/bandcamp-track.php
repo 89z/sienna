@@ -29,8 +29,13 @@ preg_match('!<title>(.*) \| (.*)</title>!', $info_s, $title_a);
 $title_s = $title_a[2] . ' - ' . $title_a[1];
 
 # time
+function encode36(int $n): string {
+   $s = (string) $n;
+   return base_convert($s, 10, 36);
+}
+
 $date_n = time();
-$date_s = base_convert($date_n, 10, 36);
+$date_s = encode36($date_n);
 
 # print
 $rec_a = [$date_s, $year_n, 'b/' . $audio_s . '/' . $video_s, $title_s];

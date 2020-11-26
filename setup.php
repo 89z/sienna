@@ -13,7 +13,7 @@ if (is_dir($to_s)) {
       unlink($path_s);
    }
 } else {
-   mkdir($to_s);
+   mkdir($to_s, recursive: true);
 }
 
 # copy

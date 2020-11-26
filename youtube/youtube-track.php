@@ -56,8 +56,13 @@ if ($mat_n !== 0) {
 }
 
 # time
+function encode36(int $n): string {
+   $s = (string) $n;
+   return base_convert($s, 10, 36);
+}
+
 $date_n = time();
-$date_s = base_convert($date_n, 10, 36);
+$date_s = encode36($date_n);
 
 # image
 $jpg_a = [
