@@ -450,7 +450,7 @@
         },
         "Speak for Yourself": {
             "@date": "2005-07-18",
-            "Headlock": "",
+            "Headlock": "good",
             "Goodnight and Go": "",
             "Have You Got It in You?": "good",
             "Loose Ends": "good",
@@ -474,8 +474,8 @@
             "Candlelight": "good",
             "Rake It In": "bad",
             "Come Here Boy": "bad",
-            "Useless": "",
-            "Sleep": ""
+            "Useless": "bad",
+            "Sleep": "bad"
         }
     },
     "Incubus": {

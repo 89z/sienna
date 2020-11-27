@@ -808,7 +808,19 @@
             "Slabulas": "good"
         }
     },
-    "Seal": {
+   "SAVON": {
+      "2020": {
+         "BIRDS": "bad",
+         "River City": "short"
+      },
+      "2018": {
+         "PERCEPTION": "bad"
+      },
+      "2015": {
+         "Ain't No Way": "good"
+      }
+   },
+   "Seal": {
         "Seal": {
             "@date": "1991-05-20",
             "The Beginning": "",

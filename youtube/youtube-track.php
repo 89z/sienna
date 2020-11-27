@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-error_reporting(E_ALL);
 
 require_once 'cove/helper.php';
 require_once 'sienna/youtube.php';

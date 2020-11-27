@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-error_reporting(E_ALL);
 
 $to_s = 'C:\php\pear\sienna';
 
