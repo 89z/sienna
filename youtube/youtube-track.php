@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'cove/helper.php';
-require_once 'sienna/youtube.php';
+require 'cove/helper.php';
+require 'sienna/youtube.php';
 
 if ($argc != 2) {
    echo "youtube-track.php <URL>\n";
@@ -10,6 +10,9 @@ if ($argc != 2) {
 }
 
 $url_s = $argv[1];
+$query_s = parse_url($url_s, PHP_URL_QUERY);
+parse_str($query_s, $query_m);
+$id_s = $query_m['v'];
 
 # year
 class YouTubeRelease extends YouTubeInfo {
@@ -33,7 +36,7 @@ $reg_a = [
    '/℗ (\d{4})/'
 ];
 
-$rel_o = new YouTubeRelease($url_s);
+$rel_o = new YouTubeRelease($id_s);
 $year_s = $rel_o->publishDate;
 
 foreach ($reg_a as $reg_s) {
@@ -71,7 +74,7 @@ $jpg_a = [
 ];
 
 foreach ($jpg_a as $jpg_s) {
-   $url_s = 'https://i.ytimg.com/vi/' . $rel_o->id . $jpg_s . '.jpg';
+   $url_s = 'https://i.ytimg.com/vi/' . $id_s . $jpg_s . '.jpg';
    echo $url_s, "\n";
    $head_a = get_headers($url_s);
    $code_s = $head_a[0];
@@ -85,6 +88,6 @@ if ($jpg_s == '/sddefault') {
 }
 
 # print
-$rec_a = [$date_s, $year_n, 'y/' . $rel_o->id . $jpg_s, $title_s];
+$rec_a = [$date_s, $year_n, 'y/' . $id_s . $jpg_s, $title_s];
 $json_s = json_encode($rec_a, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 echo $json_s, ",\n";

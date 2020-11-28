@@ -1,17 +1,17 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'cove/helper.php';
-require_once 'sienna/musicbrainz.php';
-require_once 'sienna/youtube.php';
+require 'cove/helper.php';
+require 'sienna/musicbrainz.php';
+require 'sienna/youtube.php';
 
 function yt_result(string $query_s): string {
    $query_m['search_query'] = $query_s;
    $res_s = 'https://www.youtube.com/results?' . http_build_query($query_m);
    echo $res_s, "\n";
    $get_s = file_get_contents($res_s);
-   preg_match('!/watch\?v=[^"]*!', $get_s, $mat_a);
-   return $mat_a[0];
+   preg_match('!/vi/([^/]*)/!', $get_s, $mat_a);
+   return $mat_a[1];
 }
 
 if ($argc != 2) {
@@ -49,8 +49,8 @@ $artists_s = implode(' ', $out_a);
 
 foreach ($rel_o->media as $media_o) {
    foreach ($media_o->tracks as $track_o) {
-      $url_s = yt_result($artists_s . ' ' . $track_o->title);
-      $o = new YouTubeViews($url_s);
+      $id_s = yt_result($artists_s . ' ' . $track_o->title);
+      $o = new YouTubeViews($id_s);
       echo $o->color(), "\n";
       usleep(500_000);
    }

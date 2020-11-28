@@ -61,13 +61,14 @@
         },
         "Kid A": {
             "@date": "2000-09-27",
+            "@mb": "e75c0549-ad55-39e3-8025-c72c5d4a3c5d",
             "Everything in Its Right Place": "good",
             "Kid A": "good",
             "The National Anthem": "good",
             "How to Disappear Completely": "good",
             "Treefingers": "good",
             "Optimistic": "",
-            "In Limbo": "",
+            "In Limbo": "good",
             "Idioteque": "",
             "Morning Bell": "",
             "Motion Picture Soundtrack": "good"
@@ -1399,6 +1400,17 @@
         }
     },
     "Steve Roach": {
+       "The Magnificent Void": {
+           "@date": "1996",
+           "Between the Gray and the Purple": "",
+           "Void Memory One": "short",
+           "Infinite Shore": "bad",
+           "Cloud of Unknowing": "",
+           "Void Memory Two": "",
+           "Void Memory Three": "",
+           "The Magnificent Void": "",
+           "Altus": "long"
+       },
         "Desert Solitaire": {
             "@date": "1989-10-11",
             "Flatlands": "bad",

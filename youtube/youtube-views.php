@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'cove/helper.php';
-require_once 'sienna/musicbrainz.php';
-require_once 'sienna/youtube.php';
+require 'cove/helper.php';
+require 'sienna/musicbrainz.php';
+require 'sienna/youtube.php';
 
 if ($argc != 2) {
    echo "youtube-views.php <URL>\n";
@@ -11,5 +11,8 @@ if ($argc != 2) {
 }
 
 $url_s = $argv[1];
-$o = new YouTubeViews($url_s);
+$query_s = parse_url($url_s, PHP_URL_QUERY);
+parse_str($query_s, $query_m);
+$id_s = $query_m['v'];
+$o = new YouTubeViews($id_s);
 echo $o->color();

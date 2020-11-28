@@ -862,7 +862,25 @@
             "Feed Me": ""
         }
     },
-    "TV on the Radio": {
+   "Tropics": {
+       "Nocturnal Souls": {
+           "@date": "2018-06-29",
+           "Never Letting Go": "bad",
+           "Keep Me Turning Back": "",
+           "Restless": "",
+           "Come Home": "",
+           "Velvet": "",
+           "The Heat": "good",
+           "Nocturnal Souls": "short",
+           "Overturning": "",
+           "Return To": ""
+       },
+       "Harbor": {
+           "@date": "2015-08-21",
+           "Harbor": "good"
+       }
+   },
+   "TV on the Radio": {
         "Dear Science": {
             "Halfway Home": "",
             "Crying": "",
