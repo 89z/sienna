@@ -26,8 +26,8 @@ foreach ($json_o as $artist_s => $artist_o) {
          continue;
       }
       $id_s = $album_o->{'@yt'};
-      $view_o = new YouTubeViews($id_s);
-      echo $view_o->color(), ' ', $artist_s, ' ', $album_s, "\n";
+      $info_o = youtube_info($id_s);
+      echo youtube_views($info_o), ' ', $artist_s, ' ', $album_s, "\n";
       usleep(400_000);
    }
 }

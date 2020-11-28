@@ -15,19 +15,8 @@ parse_str($query_s, $query_m);
 $id_s = $query_m['v'];
 
 # year
-class YouTubeRelease extends YouTubeInfo {
-   function reduce(string $ca_s, string $it_s): string {
-      $mat_n = preg_match($it_s, $this->description->simpleText, $mat_a);
-      if ($mat_n === 0) {
-         return $ca_s;
-      }
-      $mat_s = $mat_a[1];
-      if ($mat_s >= $ca_s) {
-         return $ca_s;
-      }
-      return $mat_s;
-   }
-}
+$info_o = youtube_info($id_s);
+$year_s = $info_o->publishDate;
 
 $reg_a = [
    '/ (\d{4})/',
@@ -36,17 +25,22 @@ $reg_a = [
    '/℗ (\d{4})/'
 ];
 
-$rel_o = new YouTubeRelease($id_s);
-$year_s = $rel_o->publishDate;
-
 foreach ($reg_a as $reg_s) {
-   $year_s = $rel_o->reduce($year_s, $reg_s);
+   $mat_n = preg_match($reg_s, $info_o->description->simpleText, $mat_a);
+   if ($mat_n === 0) {
+      continue;
+   }
+   $mat_s = $mat_a[1];
+   if ($mat_s >= $year_s) {
+      continue;
+   }
+   $year_s = $mat_s;
 }
 
 $year_n = (int)($year_s);
 
 # song, artist
-$mat_n = preg_match('/.* · .*/', $rel_o->description->simpleText, $line_a);
+$mat_n = preg_match('/.* · .*/', $info_o->description->simpleText, $line_a);
 
 if ($mat_n !== 0) {
    $line_s = $line_a[0];
@@ -54,7 +48,7 @@ if ($mat_n !== 0) {
    $artist_a = array_slice($title_a, 1);
    $title_s = implode(', ', $artist_a) . ' - ' . $title_a[0];
 } else {
-   $title_s = $rel_o->title->simpleText;
+   $title_s = $info_o->title->simpleText;
 }
 
 # time

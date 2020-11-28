@@ -50,8 +50,8 @@ $artists_s = implode(' ', $out_a);
 foreach ($rel_o->media as $media_o) {
    foreach ($media_o->tracks as $track_o) {
       $id_s = yt_result($artists_s . ' ' . $track_o->title);
-      $o = new YouTubeViews($id_s);
-      echo $o->color(), "\n";
+      $info_o = youtube_info($id_s);
+      echo youtube_views($info_o), "\n";
       usleep(500_000);
    }
 }
