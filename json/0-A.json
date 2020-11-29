@@ -576,9 +576,9 @@
        "All About Eve": {
            "@date": "1988-02-15",
            "Flowers in Our Hair": "",
-           "Gypsy Dance": "",
-           "In the Clouds": "",
-           "Martha's Harbour": "",
+           "Gypsy Dance": "bad",
+           "In the Clouds": "bad",
+           "Martha's Harbour": "good",
            "Every Angel": "",
            "Shelter From the Rain": "",
            "She Moves Through the Fair": "",

@@ -749,26 +749,25 @@
         "Open EP": {
             "@date": "2013-09-16",
             "I Get Mine, You Get Yours": "bad",
-            "Step or Stone (Breath or Bone)": "",
+            "Step or Stone (Breath or Bone)": "bad",
             "I Know Your Face, Heroine": "",
             "XVII (Rox Out)": ""
         },
         "Brother / Sister EP": {
             "@date": "2013-06-10",
-            "Brother": "",
+            "Brother": "bad",
             "Sister": "good"
         },
         "Rosalind EP": {
             "@date": "2013-02-18",
             "Untitled 017": "bad",
-            "Title #7": "",
+            "Title #7": "bad",
             "Rosalind": "short"
         },
-        "Gold Language EP": {
+        "Gold Language": {
             "@date": "2012-07-09",
             "Gold Language": "bad",
-            "Don’t Know Why": "bad",
-            "Gold Language (Gang Colours Remix)": ""
+            "Don’t Know Why": "bad"
         },
         "Mauve": {
             "@date": "2012-05",
