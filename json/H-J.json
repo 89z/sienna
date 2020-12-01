@@ -450,18 +450,19 @@
         },
         "Speak for Yourself": {
             "@date": "2005-07-18",
+            "@mb": "a100260d-0576-372f-a07b-4b22db1a77e2",
             "Headlock": "good",
-            "Goodnight and Go": "",
+            "Goodnight and Go": "bad",
             "Have You Got It in You?": "good",
             "Loose Ends": "good",
             "Hide and Seek": "good",
             "Clear the Area": "good",
-            "Daylight Robbery": "",
-            "The Walk": "",
-            "Just for Now": "",
-            "I Am in Love With You": "",
+            "Daylight Robbery": "bad",
+            "The Walk": "bad",
+            "Just for Now": "bad",
+            "I Am in Love With You": "bad",
             "Closing In": "good",
-            "The Moment I Said It": ""
+            "The Moment I Said It": "bad"
         },
         "i Megaphone": {
             "@date": "1998-06-16",

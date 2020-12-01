@@ -1097,8 +1097,24 @@
             "Wrapped Around Your Finger": "",
             "Tea in the Sahara": ""
         },
+       "Ghost in the Machine": {
+           "@date": "1981-10",
+           "@mb": "b25caa9e-e35d-3243-82d7-954da613b782",
+           "Spirits in the Material World": "short",
+           "Every Little Thing She Does Is Magic": "good",
+           "Invisible Sun": "",
+           "Hungry for You (j’aurais toujours faim de toi)": "short",
+           "Demolition Man": "",
+           "Too Much Information": "",
+           "Rehumanize Yourself": "",
+           "One World (Not Three)": "",
+           "Omegaman": "short",
+           "Secret Journey": "",
+           "Darkness": ""
+       },
         "Zenyattà Mondatta": {
             "@date": "1980-10-03",
+            "@mb": "99ca0e36-f4bb-3a15-b016-0cf7b79c5792",
             "Don't Stand So Close to Me": "",
             "Driven to Tears": "good",
             "When the World Is Running Down, You Make the Best of What's Still Around": "",
@@ -1113,6 +1129,7 @@
         },
         "Reggatta de Blanc": {
             "@date": "1979-10-05",
+            "@mb": "2b98e6d7-a521-332f-961e-d281ba33ba3d",
             "Message in a Bottle": "good",
             "Reggatta de Blanc": "",
             "It's Alright for You": "",
@@ -1620,6 +1637,7 @@
         },
         "xx": {
             "@date": "2009-08-14",
+            "@mb": "23355caf-a543-4b5f-80fe-449101868fc1",
             "Intro": "good",
             "VCR": "short",
             "Crystalised": "",
@@ -1629,7 +1647,7 @@
             "Shelter": "good",
             "Basic Space": "",
             "Infinity": "",
-            "Night Time": "",
+            "Night Time": "good",
             "Stars": ""
         }
     },

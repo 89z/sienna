@@ -277,6 +277,7 @@
     "Depeche Mode": {
         "Ultra": {
             "@date": "1997",
+            "@mb": "a40c7843-979b-38a6-926a-efa31476c51c",
             "Barrel of a Gun": "bad",
             "The Love Thieves": "bad",
             "Home": "bad",
@@ -317,8 +318,24 @@
             "Nothing": "",
             "Pimpf": ""
         },
+       "Black Celebration": {
+           "@date": "1986-03-17",
+           "@mb": "b9c6879f-3a34-3aa0-a68f-73ced2608f7a",
+           "Black Celebration": "",
+           "Fly on the Windscreen (final)": "",
+           "A Question of Lust": "bad",
+           "Sometimes": "short",
+           "It Doesn't Matter Two": "short",
+           "A Question of Time": "bad",
+           "Stripped": "bad",
+           "Here Is the House": "",
+           "World Full of Nothing": "short",
+           "Dressed in Black": "short",
+           "New Dress": ""
+       },
         "Speak & Spell": {
             "@date": "1981",
+            "@mb": "7a0e0366-91f4-3444-b45a-83b158004165",
             "New Life": "bad",
             "Puppets": "bad",
             "Dreaming of Me": "bad",
