@@ -599,9 +599,9 @@
         },
         "There Is Love in You": {
             "@date": "2010",
-            "Angel Echoes": "",
-            "Love Cry": "",
-            "Circling": "",
+            "Angel Echoes": "bad",
+            "Love Cry": "bad",
+            "Circling": "bad",
             "Pablo’s Heart": "short",
             "Sing": "",
             "This Unfolds": "",
@@ -631,8 +631,8 @@
             "And Then Patterns": "bad",
             "High Fives": "bad",
             "Turtle Turtle Up": "short",
-            "Sleep, Eat Food, Have Visions": "",
-            "You Were There With Me": ""
+            "Sleep, Eat Food, Have Visions": "bad",
+            "You Were There With Me": "bad"
         },
         "Rounds": {
             "@date": "2003",
@@ -671,7 +671,7 @@
             "Liquefaction": "bad",
             "She Scanned": "good",
             "Calamine": "good",
-            "The Butterfly Effect": ""
+            "The Butterfly Effect": "bad"
         }
     },
     "Frankie Rose": {

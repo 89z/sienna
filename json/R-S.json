@@ -921,6 +921,7 @@
    "Silversun Pickups": {
        "Carnavas": {
            "@date": "2006-07-25",
+           "@mb": "4eb68c5b-dc3f-3a1d-bcc1-9ade293f7627",
            "Melatonin": "",
            "Well Thought Out Twinkles": "",
            "Checkered Floor": "",
@@ -928,7 +929,7 @@
            "Future Foe Scenarios": "good",
            "Waste It On": "",
            "Lazy Eye": "",
-           "Rusted Wheel": "",
+           "Rusted Wheel": "good",
            "Dream at Tempo 119": "",
            "Three Seed": "",
            "Common Reactor": ""
@@ -1253,6 +1254,16 @@
             "Tommib Help Buss": "short",
             "Every Day I Love": "short"
         },
+       "Do You Know Squarepusher": {
+           "@date": "2002-09-30",
+           "Do You Know Squarepusher": "bad",
+           "F-Train": "bad",
+           "Kill Robok": "bad",
+           "Anstromm-Feck 4": "bad",
+           "Conc 2 Symmetriac": "short",
+           "Mutilation Colony": "",
+           "Love Will Tear Us Apart": ""
+       },
         "Go Plastic": {
             "@date": "2001-06-25",
             "My Red Hot Car": "bad",
