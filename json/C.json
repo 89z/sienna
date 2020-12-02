@@ -281,6 +281,28 @@
     },
     "Cocteau Twins": {
         "@check": "2020-06-21",
+      "Lullabies to Violaine, Volume 1": {
+         "@date": "2006-03-21",
+         "Feathers-Oar-Blades": "",
+         "Alas Dies Laughing": "",
+         "It’s All but an Ark Lark": "",
+         "Peppermint Pig (7″ version)": "",
+         "Laughlines": "",
+         "Hazel": "short",
+         "Sugar Hiccup (12″ version)": "",
+         "Because of Whirl-Jack": "",
+         "Pearly-Dewdrops’ Drops (alternate version)": "",
+         "Aikea-Guinea (alternate version)": "",
+         "Kookaburra": "",
+         "Quisquose": "",
+         "Rococo": "",
+         "Great Spangled Fritillary": "",
+         "Melonella": "",
+         "Pale Clouded White": "",
+         "Eggs and Their Shells": "",
+         "Mizake the Mizan": "",
+         "Watchlar": ""
+      },
         "Milk & Kisses": {
             "@date": "1996-05-14",
             "Violaine": "bad",
@@ -294,7 +316,7 @@
             "Treasure Hiding": "",
             "Seekers Who Are Lovers": ""
         },
-        "Four-Calendar Café": {
+      "Four-Calendar Café": {
             "@date": "1993-11-02",
             "Know Who You Are at Every Age": "",
             "Evangeline": "bad",
@@ -307,7 +329,7 @@
             "Summerhead": "good",
             "Pur": ""
         },
-        "Heaven or Las Vegas": {
+      "Heaven or Las Vegas": {
             "@date": "1990-08-21",
             "Cherry-Coloured Funk": "bad",
             "Pitch the Baby": "bad",
@@ -333,7 +355,7 @@
             "A Kissed Out Red Floatboat": "",
             "Ella Megalast Burls Forever": "bad"
         },
-        "Love’s Easy Tears": {
+      "Love’s Easy Tears": {
             "@date": "1986-09-01",
             "Love’s Easy Tears": "good",
             "Orange Appled": "short",
@@ -352,13 +374,24 @@
             "How to Bring a Blush to the Snow": "",
             "The Thinner the Air": ""
         },
-        "Tiny Dynamine": {
+      "Tiny Dynamine": {
             "@date": "1985-11-01",
             "Pink Orange Red": "good",
             "Ribbed and Veined": "good",
             "Plain Tiger": "",
             "Sultitan Itan": ""
         },
+      "The Pink Opaque": {
+         "@date": "1985-09",
+         "The Spangle Maker": "",
+         "Millimillenary": "",
+         "Wax and Wane (Remix)": "",
+         "Hitherto": "good",
+         "Pearly-Dewdrops’ Drops": "",
+         "From the Flagstones": "",
+         "Aikea-Guinea": "",
+         "Pepper-Tree": ""
+      },
         "Treasure": {
             "@date": "1984-10-01",
             "Ivo": "good",
@@ -371,13 +404,6 @@
             "Cicely": "",
             "Otterley": "good",
             "Donimo": ""
-        },
-        "Sunburst and Snowblind": {
-            "@date": "1983-11-07",
-            "Sugar Hiccup": "reissue",
-            "From the Flagstones": "",
-            "Hitherto": "good",
-            "Because of Whirl-Jack": ""
         },
         "Head Over Heels": {
             "@date": "1983-10-31",
