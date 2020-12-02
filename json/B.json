@@ -936,8 +936,8 @@
             "Outlier": "bad",
             "Grains": "bad",
             "Second Sun": "bad",
-            "Surface": "",
-            "Bambro Koyo Ganda": "",
+            "Surface": "bad",
+            "Bambro Koyo Ganda": "good",
             "Kerala": "",
             "Ontario": "",
             "No Reason": "",
@@ -946,8 +946,8 @@
         },
         "The North Borders": {
             "@date": "2013-03-21",
-            "First Fires": "",
-            "Emkay": "",
+            "First Fires": "bad",
+            "Emkay": "bad",
             "Cirrus": "good",
             "Heaven for the Sinner": "bad",
             "Sapphire": "good",
@@ -958,7 +958,7 @@
             "Antenna": "bad",
             "Ten Tigers": "bad",
             "Transits": "good",
-            "Pieces": ""
+            "Pieces": "bad"
         },
         "Black Sands": {
             "@date": "2010-03-29",

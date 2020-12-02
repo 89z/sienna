@@ -15,7 +15,21 @@
             "Circle Dream": "",
             "If You Intend": "",
             "I’m Not the Man": ""
-        }
+        },
+       "Blind Man’s Zoo": {
+           "@date": "1989-05-16",
+           "Eat for Two": "",
+           "Please Forgive Us": "",
+           "The Big Parade": "",
+           "Trouble Me": "good",
+           "You Happy Puppet": "",
+           "Headstrong": "",
+           "Poison in the Well": "",
+           "Dust Bowl": "",
+           "The Lion’s Share": "",
+           "Hateful Hate": "",
+           "Jubilee": ""
+       }
     },
     "9 Lazy 9": {
         "@check": "2020-06-21",
@@ -557,6 +571,20 @@
         }
     },
    "All About Eve": {
+       "Ultraviolet": {
+           "@date": "1992-10-26",
+           "Phased": "",
+           "Yesterday Goodbye": "short",
+           "Mine": "bad",
+           "Freeze": "bad",
+           "Things He Told Her": "bad",
+           "Infrared": "bad",
+           "I Don’t Know": "bad",
+           "Dream Butcher": "bad",
+           "Some Finer Day": "bad",
+           "Blindfolded Visionary": "",
+           "Outshine the Sun": ""
+       },
        "Scarlet and Other Stories": {
            "@date": "1989-10-16",
            "Road to Your Soul": "",
