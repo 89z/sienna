@@ -962,6 +962,7 @@
         },
         "In Colour": {
             "@date": "2015-06-01",
+            "@mb": "a903a977-5932-4cc2-a064-57a596658b3d",
             "Gosh": "bad",
             "Sleep Sound": "",
             "SeeSaw": "",
@@ -969,7 +970,7 @@
             "Just Saying": "short",
             "Stranger in a Room": "short",
             "Hold Tight": "",
-            "Loud Places": "",
+            "Loud Places": "good",
             "I Know There’s Gonna Be (Good Times)": "",
             "The Rest Is Noise": "",
             "Girl": "good"

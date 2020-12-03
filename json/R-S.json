@@ -578,6 +578,7 @@
         "@check": "2020-05-05",
         "Soldier of Love": {
             "@date": "2010",
+            "@mb": "cae97363-d79e-4529-b6a8-11a56742ed14",
             "The Moon and the Sky": "",
             "Soldier of Love": "good",
             "Morning Bird": "",
@@ -591,7 +592,7 @@
         },
         "Lovers Rock": {
             "@date": "1999-11-30",
-            "@yt": "C8QJmI_V3j4",
+            "@mb": "d4ec7e03-61fa-3aec-8f3c-fbcda6d3c552",
             "By Your Side": "",
             "Flow": "",
             "King of Sorrow": "",
@@ -619,6 +620,7 @@
         },
         "Stronger Than Pride": {
             "@date": "1988-04-29",
+            "@mb": "ea64beae-333e-37fd-84c4-26a5d6dab17d",
             "Love Is Stronger Than Pride": "",
             "Paradise": "good",
             "Nothing Can Come Between Us": "good",
@@ -632,6 +634,7 @@
         },
         "Promise": {
             "@date": "1985-11-16",
+            "@mb": "d49bd610-a10e-3f14-8bd0-0121f7f20a4d",
             "Is It a Crime": "good",
             "The Sweetest Taboo": "good",
             "War of the Hearts": "",
@@ -646,6 +649,7 @@
         },
         "Diamond Life": {
             "@date": "1984-07-28",
+            "@mb": "af2a0c41-e612-3232-949d-bdca340c407c",
             "Smooth Operator": "good",
             "Your Love Is King": "good",
             "Hang on to Your Love": "bad",
@@ -654,7 +658,7 @@
             "Cherry Pie": "good",
             "Sally": "good",
             "I Will Be Your Friend": "good",
-            "Why Can’t We Live Together?": ""
+            "Why Can’t We Live Together?": "good"
         }
     },
     "Saint Etienne": {

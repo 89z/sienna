@@ -396,14 +396,14 @@
             "@date": "1984-10-01",
             "Ivo": "good",
             "Lorelei": "bad",
-            "Beatrix": "",
+            "Beatrix": "bad",
             "Persephone": "good",
             "Pandora (For Cindy)": "good",
-            "Amelia": "",
-            "Aloysius": "",
-            "Cicely": "",
+            "Amelia": "bad",
+            "Aloysius": "bad",
+            "Cicely": "bad",
             "Otterley": "good",
-            "Donimo": ""
+            "Donimo": "bad"
         },
         "Head Over Heels": {
             "@date": "1983-10-31",

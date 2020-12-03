@@ -23,9 +23,9 @@ function youtube_info(string $id_s): object {
 
 function youtube_views(object $info_o): string {
    $views_n = (int)($info_o->viewCount);
-   $then_n = strtotime($info_o->publishDate);
-   $now_n = time();
-   $diff_n = ($now_n - $then_n) / 60 / 60 / 24 / 365;
+   $old_o = DateTime::createFromFormat('!Y-m-d', $info_o->publishDate);
+   $new_o = new DateTime;
+   $diff_n = $new_o->diff($old_o)->days / 365;
    $rate_n = $views_n / $diff_n;
    $rate_s = format_number($rate_n);
    if ($rate_n > 8_000_000) {
