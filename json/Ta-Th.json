@@ -152,10 +152,11 @@
     "The B-52’s": {
         "Cosmic Thing": {
             "@date": "1989-06-06",
+            "@mb": "1b36a363-eec6-35ba-b0ed-34a1f2f2cd82",
             "Cosmic Thing": "",
             "Dry County": "",
             "Deadbeat Club": "",
-            "Love Shack": "",
+            "Love Shack": "good",
             "Junebug": "",
             "Roam": "good",
             "Bushfire": "",
@@ -499,7 +500,7 @@
             "Yoyo Waltz": "short",
             "Drunken Tune": "bad",
             "The Animated Tripod": "short",
-            "All Things": "good"
+            "All Things": "bad"
         },
         "Every Day": {
             "@date": "2002-04-27",
@@ -508,7 +509,7 @@
             "Flite": "bad",
             "Evolution": "",
             "Man With the Movie Camera": "",
-            "All Things to All Men": "",
+            "All Things to All Men": "bad",
             "Everyday": "good",
             "Oregon": "good",
             "Semblance": "short"

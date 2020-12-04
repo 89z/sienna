@@ -291,9 +291,9 @@
             "Karakul": "short",
             "LesAlpx": "bad",
             "Bias": "bad",
-            "Environments": "",
-            "Birth": "",
-            "Sea‐Watch": "",
+            "Environments": "bad",
+            "Birth": "bad",
+            "Sea‐Watch": "good",
             "Apoptose, Pt. 1": "short",
             "Apoptose, Pt. 2": "short"
         },
@@ -314,11 +314,11 @@
             "@date": "2015-11-06",
             "Nespole": "good",
             "Silhouettes (I, II & III)": "good",
-            "Elaenia": "",
-            "Argenté": "",
-            "Thin Air": "",
+            "Elaenia": "bad",
+            "Argenté": "bad",
+            "Thin Air": "bad",
             "For Marmish": "good",
-            "Peroration Six": ""
+            "Peroration Six": "bad"
         },
         "King Bromeliad / Montparnasse": {
             "@date": "2014-06-23",

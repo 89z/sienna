@@ -139,31 +139,31 @@
         }
     },
     "Ulrich Schnauss": {
-        "Synthwaves": {
-            "@date": "2017",
-            "Main Theme": "",
-            "Rain on Dry Concrete": "",
-            "Slow Life": "good",
-            "Cats and Dogs": "",
-            "A Calm but Steady Flow": "",
-            "Thirst": "good",
-            "Flare": "",
-            "Prism": ""
-        },
-        "Passage": {
-            "@date": "2017",
-            "Amaris": "bad",
-            "Genau Wie Damals": "bad",
-            "Anywhere but Here": "good",
-            "Intervention Sol": "short",
-            "Mst": "bad",
-            "Ao Hinode": "good",
-            "Spellbreaker": "bad",
-            "Intervention Stjerner": "short",
-            "Caffeine Blues": "bad",
-            "Intervention Måne": "short",
-            "Coastal Path": "good"
-        },
+       "Synthwaves": {
+           "@date": "2017-06-30",
+           "Main Theme": "",
+           "Rain on Dry Concrete": "",
+           "Slow Life": "good",
+           "Cats and Dogs": "",
+           "A Calm but Steady Flow": "",
+           "Thirst": "good",
+           "Flare": "",
+           "Prism": ""
+       },
+       "Passage": {
+           "@date": "2017-01-20",
+           "Amaris": "bad",
+           "Genau Wie Damals": "bad",
+           "Anywhere but Here": "good",
+           "Intervention Sol": "short",
+           "Mst": "bad",
+           "Ao Hinode": "good",
+           "Spellbreaker": "bad",
+           "Intervention Stjerner": "short",
+           "Caffeine Blues": "bad",
+           "Intervention Måne": "short",
+           "Coastal Path": "good"
+       },
         "A Long Way to Fall": {
             "@date": "2013-01-18",
             "Her and the Sea": "bad",
@@ -177,45 +177,39 @@
             "Ten Years": "",
             "A Ritual in Time and Death": ""
         },
-        "Goodbye": {
-            "@date": "2007",
-            "Never Be the Same": "bad",
-            "Shine": "bad",
-            "Stars": "bad",
-            "Einfeld": "bad",
-            "In Between the Years": "bad",
-            "Here Today, Gone Tomorrow": "bad",
-            "A Song About Hope": "bad",
-            "Medusa": "bad",
-            "Goodbye": "good",
-            "For Good": "bad"
-        },
-        "Far Away Trains Passing By": {
-            "@date": "2005",
-            "Knuddelmaus": "bad",
-            "Between Us and Them": "bad",
-            "Passing By": "bad",
-            "Blumenwiese neben Autobahn": "",
-            "Nobody’s Home": "",
-            "Molfsee": "",
-            "Sunday Evening in Your Street": "",
-            "Suddenly the Trees Are Giving Way": "",
-            "Nothing Happens in June": "",
-            "As If You’ve Never Been Away": "",
-            "Crazy for You": "",
-            "Wherever You Are": ""
-        },
-        "A Strangely Isolated Place": {
-            "@date": "2003",
-            "Gone Forever": "bad",
-            "On My Own": "bad",
-            "A Letter From Home": "bad",
-            "Monday - Paracetamol": "good",
-            "Clear Day": "",
-            "Blumenthal": "",
-            "In All the Wrong Places": "",
-            "A Strangely Isolated Place": ""
-        }
+       "Goodbye": {
+           "@date": "2007-06-25",
+           "Never Be the Same": "bad",
+           "Shine": "bad",
+           "Stars": "bad",
+           "Einfeld": "bad",
+           "In Between the Years": "bad",
+           "Here Today, Gone Tomorrow": "bad",
+           "A Song About Hope": "bad",
+           "Medusa": "bad",
+           "Goodbye": "good",
+           "For Good": "bad"
+       },
+       "A Strangely Isolated Place": {
+           "@date": "2003-06-09",
+           "Gone Forever": "bad",
+           "On My Own": "bad",
+           "A Letter From Home": "bad",
+           "Monday - Paracetamol": "good",
+           "Clear Day": "",
+           "Blumenthal": "",
+           "In All the Wrong Places": "",
+           "A Strangely Isolated Place": ""
+       },
+       "Far Away Trains Passing By": {
+           "@date": "2001-11-14",
+           "Knuddelmaus": "bad",
+           "Between Us and Them": "bad",
+           "… Passing By": "bad",
+           "Blumenwiese neben Autobahn": "",
+           "Nobody’s Home": "",
+           "Molfsee": ""
+       }
     },
     "Underworld": {
        "Barking": {
