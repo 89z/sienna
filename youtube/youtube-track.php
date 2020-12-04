@@ -16,6 +16,12 @@ $id_s = $query_m['v'];
 
 # year
 $info_o = youtube_info($id_s);
+
+if (! property_exists($info_o, 'description')) {
+   echo "Clapham Junction\n";
+   exit(1);
+}
+
 $year_s = $info_o->publishDate;
 
 $reg_a = [
