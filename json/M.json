@@ -618,6 +618,7 @@
         "@check": "2020-06-14",
         "Ritual Spirit": {
             "@date": "2016-01-28",
+            "@mb": "ab94293e-1c6d-4c32-86a7-0da10d92f14b",
             "Dead Editors": "",
             "Ritual Spirit": "",
             "Voodoo in My Blood": "",
@@ -625,6 +626,7 @@
         },
         "Heligoland": {
             "@date": "2010-02-08",
+            "@mb": "29a4c71c-2e7a-40e3-81d7-7960e8ec1bb1",
             "Pray for Rain": "good",
             "Babel": "bad",
             "Splitting the Atom": "bad",
@@ -635,15 +637,12 @@
             "Rush Minute": "bad",
             "Saturday Come Slow": "bad",
             "Atlas Air": "bad",
-            "Paradise Circus (Gui Boratto remix)": "",
             "Fatalism (Ryuichi Sakamoto & Yukihiro Takahashi remix)": "bad",
-            "Girl I Love You (She Is Danger remix)": "",
-            "Paradise Circus (Breakage's Tight Rope remix)": "",
-            "United Snakes": "",
-            "Pray for Rain (Tim Goldsworthy remix)": ""
+            "United Snakes": ""
         },
         "Collected": {
             "@date": "2006-03-23",
+            "@mb": "0715541f-e453-3ec4-9ebb-a4dba95ce3ee",
             "Safe From Harm": "reissue",
             "Karmacoma": "reissue",
             "Angel": "reissue",
@@ -671,6 +670,7 @@
         },
         "100th Window": {
             "@date": "2003-02-10",
+            "@mb": "d9c12c5f-8ad8-334a-a238-fad5a91af242",
             "Future Proof": "good",
             "What Your Soul Sings": "bad",
             "Everywhen": "good",
@@ -679,24 +679,26 @@
             "A Prayer for England": "bad",
             "Small Time Shot Away": "good",
             "Name Taken": "good",
-            "Antistar / [LP4]": ""
+            "Antistar / [LP4]": "long"
         },
         "Mezzanine": {
             "@date": "1998-04-17",
+            "@mb": "6f9f6899-c0d3-311d-ae87-a10ae6bc53a9",
             "Angel": "good",
             "Risingson": "good",
-            "Teardrop": "",
+            "Teardrop": "bad",
             "Inertia Creeps": "good",
             "Exchange": "good",
             "Dissolved Girl": "good",
             "Man Next Door": "good",
             "Black Milk": "good",
-            "Mezzanine": "",
+            "Mezzanine": "bad",
             "Group Four": "good",
-            "(Exchange)": ""
+            "(Exchange)": "bad"
         },
         "Protection": {
             "@date": "1994-09-26",
+            "@mb": "ded46e46-788d-3c1f-b21b-9f5e9c37b1bc",
             "Protection": "good",
             "Karmacoma": "good",
             "Three": "good",
@@ -705,11 +707,11 @@
             "Better Things": "bad",
             "Eurochild": "good",
             "Sly": "good",
-            "Heat Miser": "bad",
-            "Light My Fire (live)": ""
+            "Heat Miser": "bad"
         },
         "Blue Lines": {
             "@date": "1991-04-08",
+            "@mb": "8b6f133a-2fdf-3cc2-b84d-1c889adc0939",
             "Safe From Harm": "good",
             "One Love": "bad",
             "Blue Lines": "bad",
