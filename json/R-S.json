@@ -413,6 +413,19 @@
         }
     },
     "Robert Plant": {
+       "Now and Zen": {
+           "@date": "1988-02-23",
+           "Heaven Knows": "",
+           "Dance on My Own": "bad",
+           "Tall Cool One": "bad",
+           "The Way I Feel": "bad",
+           "Helen of Troy": "bad",
+           "Billy's Revenge": "bad",
+           "Ship of Fools": "bad",
+           "Why": "bad",
+           "White, Clean and Neat": "bad",
+           "Walking Towards Paradise": ""
+       },
         "The Principle of Moments": {
             "@date": "1983-07-11",
             "Other Arms": "",
@@ -1129,7 +1142,20 @@
             "The Missing (Origin 2006)": "bad",
             "Falling Shadows (Origin 2005)": "",
             "Asteroid (Time Machine Lullaby) [Origin Unknown]": ""
-        }
+        },
+       "Random Friday": {
+           "@date": "2012-04-27",
+           "Light Control": "",
+           "Random Friday": "bad",
+           "Cobalt 2.5": "",
+           "In Motion": "",
+           "Daydreaming": "",
+           "Swoosh": "",
+           "Landing Party": "",
+           "Lift Off": "",
+           "Perception": "",
+           "Polarity": "short"
+       }
     },
     "Soul for Real": {
         "Candy Rain": {

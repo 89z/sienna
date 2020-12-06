@@ -574,9 +574,9 @@
             "Parallel Jalebi": "bad",
             "Our Navigation": "bad",
             "Ba Teaches Yoga": "good",
-            "Kool FM": "",
+            "Kool FM": "bad",
             "Crush": "short",
-            "Buchla": "",
+            "Buchla": "bad",
             "Aerial": "",
             "Ever Never": "short",
             "Unicorn": "",
@@ -589,9 +589,9 @@
             "Jupiters": "bad",
             "Ocoras": "bad",
             "128 Harps": "bad",
-            "Pyramid": "",
-            "Peace for Earth": "",
-            "Pinnacles": ""
+            "Pyramid": "bad",
+            "Peace for Earth": "bad",
+            "Pinnacles": "bad"
         },
         "Nova": {
             "@date": "2012-03-19",
@@ -603,10 +603,10 @@
             "Love Cry": "bad",
             "Circling": "bad",
             "Pablo’s Heart": "short",
-            "Sing": "",
-            "This Unfolds": "",
+            "Sing": "bad",
+            "This Unfolds": "bad",
             "Reversing": "short",
-            "Plastic People": "",
+            "Plastic People": "bad",
             "She Just Likes to Fight": "good"
         },
         "Moth / Wolf Cub": {
@@ -865,6 +865,7 @@
    "Genesis": {
         "We Can’t Dance": {
             "@date": "1991-11-11",
+            "@mb": "1f94530c-4206-3c2f-a3e8-8f9bed86590e",
             "No Son of Mine": "",
             "Jesus He Knows Me": "",
             "Driving the Last Spike": "",
@@ -880,6 +881,7 @@
         },
         "Invisible Touch": {
             "@date": "1986-06-01",
+            "@mb": "cd5b8b39-cdfd-337a-9fab-c2571be315c0",
             "Invisible Touch": "",
             "Tonight, Tonight, Tonight": "",
             "Land of Confusion": "good",
@@ -888,7 +890,19 @@
             "Domino: Part One: In the Glow of the Night - Part Two: The Last Domino": "",
             "Throwing It All Away": "",
             "The Brazilian": ""
-        }
+        },
+       "Genesis": {
+           "@date": "1983-10-03",
+           "Mama": "",
+           "That’s All": "good",
+           "Home by the Sea": "",
+           "Second Home by the Sea": "",
+           "Illegal Alien": "",
+           "Taking It All Too Hard": "",
+           "Just a Job to Do": "",
+           "Silver Rainbow": "",
+           "It’s Gonna Get Better": ""
+       }
     },
     "Gin Blossoms": {
         "New Miserable Experience": {
