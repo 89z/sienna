@@ -28,5 +28,8 @@ func main() {
       log.Fatal(e)
    }
 
-   toml.NewEncoder(create_o).QuoteMapKeys(true).Encode(m)
+   e = toml.NewEncoder(create_o).QuoteMapKeys(true).Encode(m)
+   if e != nil {
+      log.Fatal(e)
+   }
 }
