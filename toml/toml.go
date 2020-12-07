@@ -2,6 +2,7 @@ package main
 
 import (
    "encoding/json"
+   "fmt"
    "github.com/pelletier/go-toml"
    "log"
    "os"
@@ -21,7 +22,8 @@ func main() {
 
    m := map[string]interface{}{}
    json.NewDecoder(open_o).Decode(&m)
-   create_o, e := os.Create("a.toml")
+   fmt.Println(m)
+   create_o, e := os.Create("z.toml")
    if e != nil {
       log.Fatal(e)
    }
