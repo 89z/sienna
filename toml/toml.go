@@ -2,11 +2,28 @@ package main
 
 import (
    "encoding/json"
-   "fmt"
    "github.com/pelletier/go-toml"
    "log"
    "os"
 )
+
+type Map map[string]interface{}
+
+func (m Map) M(s string) Map {
+   return m[s].(map[string]interface{})
+}
+
+func Encode(m map[string]interface{}, s string) error {
+   o, e := os.Create(s)
+   if e != nil {
+      return e
+   }
+   return toml.
+   NewEncoder(o).
+   ArraysWithOneElementPerLine(true).
+   QuoteMapKeys(true).
+   Encode(m)
+}
 
 func main() {
    if len(os.Args) != 2 {
@@ -20,20 +37,9 @@ func main() {
       log.Fatal(e)
    }
 
-   m := map[string]interface{}{}
-   json.NewDecoder(open_o).Decode(&m)
-   fmt.Println(m)
-   create_o, e := os.Create("z.toml")
-   if e != nil {
-      log.Fatal(e)
-   }
-
-   e = toml.
-      NewEncoder(create_o).
-      ArraysWithOneElementPerLine(true).
-      QuoteMapKeys(true).
-      Encode(m)
-   if e != nil {
-      log.Fatal(e)
+   artist_m := Map{}
+   json.NewDecoder(open_o).Decode(&artist_m)
+   for s := range artist_m.M("Cocteau Twins") {
+      println(s)
    }
 }
