@@ -1,8 +1,9 @@
 ["Cocteau Twins"]
 check = 2020-06-21
 
-[["Cocteau Twins".album]]
-"Treasure" = { date = 1984-10-01, song = [
+["Cocteau Twins".album."Treasure"]
+date = 1984-10-01
+song = [
    { "Ivo" = "good" },
    { "Lorelei" = "bad" },
    { "Beatrix" = "bad" },
@@ -13,18 +14,4 @@ check = 2020-06-21
    { "Cicely" = "bad" },
    { "Otterley" = "good" },
    { "Donimo" = "bad" }
-] }
-
-[["Cocteau Twins".album]]
-"Head Over Heels" = { date = 1983-10-31, song = [
-   { "When Mama Was Moth" = "bad" },
-   { "Five Ten Fiftyfold" = "good" },
-   { "Sugar Hiccup" = "bad" },
-   { "In Our Angelhood" = "good" },
-   { "Glass Candle Grenades" = "short" },
-   { "In the Gold Dust Rush" = "bad" },
-   { "The Tinderbox (of a Heart)" = "good" },
-   { "Multifoiled" = "short" },
-   { "My Love Paramour" = "bad" },
-   { "Musette and Drums" = "good" }
-] }
+]
