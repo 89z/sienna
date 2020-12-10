@@ -1343,6 +1343,26 @@
         }
     },
     "The Smashing Pumpkins": {
+       "Adore": {
+           "@date": "1998-05-29",
+           "@mb": "359699b3-8118-369e-9591-c96dcd07a853",
+           "To Sheila": "bad",
+           "Ava Adore": "good",
+           "Perfect": "",
+           "Daphne Descends": "",
+           "Once Upon a Time": "",
+           "Tear": "",
+           "Crestfallen": "",
+           "Appels + Oranjes": "",
+           "Pug": "",
+           "The Tale of Dusty and Pistol Pete": "",
+           "Annie-Dog": "",
+           "Shame": "",
+           "Behold! The Night Mare": "",
+           "For Martha": "",
+           "Blank Page": "",
+           "17": "short"
+       },
         "Mellon Collie and the Infinite Sadness": {
             "@date": "1995-10-23",
             "@yt": "4aeETEoNfOg",
@@ -1377,7 +1397,8 @@
         },
         "Siamese Dream": {
             "@date": "1993-07-26",
-            "Cherub Rock": "",
+            "@mb": "a159e102-18bb-42ca-a59e-5f96a7eff241",
+            "Cherub Rock": "good",
             "Quiet": "",
             "Today": "",
             "Hummer": "",

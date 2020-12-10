@@ -277,17 +277,17 @@
        },
         "Oblivion With Bells": {
             "@date": "2007-10-12",
-            "Crocodile": "",
-            "Beautiful Burnout": "",
-            "Holding the Moth": "",
+            "Crocodile": "good",
+            "Beautiful Burnout": "bad",
+            "Holding the Moth": "bad",
             "To Heal": "short",
-            "Ring Road": "",
-            "Glam Bucket": "",
-            "Boy, Boy, Boy": "",
+            "Ring Road": "bad",
+            "Glam Bucket": "bad",
+            "Boy, Boy, Boy": "bad",
             "Cuddle Bunny vs. the Celtic Villages": "short",
-            "Faxed Invitation": "",
+            "Faxed Invitation": "bad",
             "Good Morning Cockerel": "short",
-            "Best Mamgu Ever": ""
+            "Best Mamgu Ever": "bad"
         },
         "A Hundred Days Off": {
             "@date": "2002",

@@ -1037,6 +1037,7 @@
     "Simple Minds": {
         "Street Fighting Years": {
             "@date": "1989-05-13",
+            "@mb": "a4d20069-2a9b-3aa4-acdb-da5c6b8aebeb",
             "Street Fighting Years": "",
             "Soul Crying Out": "bad",
             "Wall of Love": "bad",
@@ -1048,6 +1049,18 @@
             "Belfast Child": "",
             "Biko": ""
         },
+       "Once Upon a Time": {
+           "@date": "1985-10-21",
+           "@mb": "8b184afd-58a6-3626-a4c6-67089ab88734",
+           "Once Upon a Time": "",
+           "All the Things She Said": "",
+           "Ghost Dancing": "",
+           "Alive and Kicking": "good",
+           "Oh Jungleland": "",
+           "I Wish You Were Here": "",
+           "Sanctify Yourself": "",
+           "Come a Long Way": ""
+       },
         "Don’t You (Forget About Me)": {
             "@date": "1985-03-19",
             "@yt": "CdqoNKCCt7A",
