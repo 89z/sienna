@@ -7,8 +7,13 @@
 >
 > Barry (2018)
 
-Music rating web application
+Music database
 
-## Session
+- <https://github.com/mattn/go-sqlite3>
+- <https://github.com/mithrandie/csvq-driver>
+- <https://github.com/mithrandie/csvq>
 
-<https://stackoverflow.com/questions/871858>
+## SQLite
+
+- <https://sqlite.org/cli.html#export_to_csv>
+- <https://sqlite.org/cli.html#importing_csv_files>
