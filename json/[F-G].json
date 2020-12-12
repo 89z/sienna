@@ -173,6 +173,7 @@
         "@check": "2020-06-06",
         "Crack‐Up": {
             "@date": "2017-06-16",
+            "@mb": "0a35f45c-c89c-418a-93e5-e29ed1d34caf",
             "I Am All That I Need / Arroyo Seco / Thumbprint Scar": "",
             "Cassius, -": "",
             "- Naiads, Cassadies": "",
@@ -187,6 +188,7 @@
         },
        "Helplessness Blues": {
            "@date": "2011-04-29",
+           "@mb": "d569deba-8c6b-4d08-8c43-d0e5a1b8c7f3",
            "Montezuma": "good",
            "Bedouin Dress": "",
            "Sim Sala Bim": "",
@@ -202,6 +204,7 @@
        },
        "Fleet Foxes": {
            "@date": "2008-06-03",
+           "@mb": "af9a5099-04c5-3aaf-b0d1-fa160bd92e02",
            "Sun It Rises": "",
            "White Winter Hymnal": "short",
            "Ragged Wood": "good",
@@ -211,19 +214,21 @@
            "Heard Them Stirring": "good",
            "Your Protector": "good",
            "Meadowlarks": "good",
-           "Blue Ridge Mountains": "",
+           "Blue Ridge Mountains": "good",
            "Oliver James": "good"
        },
         "Sun Giant": {
             "@date": "2008-03-09",
+            "@mb": "5d48f82c-08c5-3df9-814c-2a4f8c1ad554",
             "Sun Giant": "short",
             "Drops in the River": "good",
             "English House": "good",
             "Mykonos": "good",
             "Innocent Son": "bad"
         },
-        "Fleet Foxes EP": {
+        "Fleet Foxes": {
             "@date": "2006",
+            "@mb": "81d8967b-0f9a-3191-96b9-5039e9f6c338",
             "She Got Dressed": "bad",
             "In the Hot, Hot Rays": "bad",
             "Anyone Who's Anyone": "bad",

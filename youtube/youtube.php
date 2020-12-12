@@ -21,12 +21,16 @@ function youtube_info(string $id_s): object {
    return json_decode($resp_s)->microformat->playerMicroformatRenderer;
 }
 
+function seconds(object $new_o, object $old_o): float {
+   $o = $new_o->diff($old_o);
+   return $o->days * 86400 + $o->h * 3600 + $o->i * 60 + $o->s + $o->f;
+}
+
 function youtube_views(object $info_o): string {
    $views_n = (int)($info_o->viewCount);
-   $old_o = DateTime::createFromFormat('!Y-m-d', $info_o->publishDate);
-   $new_o = new DateTime;
-   $diff_n = $new_o->diff($old_o)->days / 365;
-   $rate_n = $views_n / $diff_n;
+   $date_o = DateTime::createFromFormat('!Y-m-d', $info_o->publishDate);
+   $sec_n = seconds(new DateTime, $date_o);
+   $rate_n = $views_n / ($sec_n / 60 / 60 / 24 / 365);
    $rate_s = format_number($rate_n);
    if ($rate_n > 8_000_000) {
       return 'RED ' . color_red($rate_s);
