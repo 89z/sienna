@@ -7,7 +7,7 @@
 >
 > Barry (2018)
 
-Music database
+Go projects
 
 - <https://github.com/mattn/go-sqlite3>
 - <https://github.com/mithrandie/csvq-driver>
