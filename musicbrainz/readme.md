@@ -26,11 +26,11 @@ song_id | artist_id
 1       | 0
 
 ~~~
-sqlite> create table artist_t(artist_n integer primary key, artist_s);
-sqlite> insert into artist_t(artist_s) values('Cocteau Twins');
-sqlite> select * from artist_t;
-1|Cocteau Twins
+create table artist_t(artist_n integer primary key, artist_s);
+insert into artist_t(artist_s) values('Cocteau Twins');
+select * from artist_t;
 ~~~
 
 - <https://github.com/mithrandie/csvq-driver>
 - <https://github.com/mithrandie/csvq>
+- <https://sqlite.org/autoinc.html>
