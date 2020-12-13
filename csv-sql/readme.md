@@ -1,14 +1,14 @@
 # CSV sql
 
-artist_id | artist        | check
-----------|---------------|-----------
-0         | Cocteau Twins | 2020-06-21
-1         | Chicane       |
+artist_id | artist
+----------|--------------
+0         | Cocteau Twins
+1         | Chicane
 
-album_id | album           | date
----------|-----------------|-----------
-0        | Blue Bell Knoll | 1988-09-19
-1        | Treasure        | 1984-10-01
+album_id | album           | date       | youtube | musicbrainz
+---------|-----------------|------------|---------|------------
+0        | Blue Bell Knoll | 1988-09-19 |         |
+1        | Treasure        | 1984-10-01 |         |
 
 song_id | song       | note
 --------|------------|-----
@@ -25,11 +25,12 @@ song_id | artist_id
 0       | 0
 1       | 0
 
-- <https://github.com/mattn/go-sqlite3>
+~~~
+sqlite> create table artist_t(artist_n integer primary key, artist_s);
+sqlite> insert into artist_t(artist_s) values('Cocteau Twins');
+sqlite> select * from artist_t;
+1|Cocteau Twins
+~~~
+
 - <https://github.com/mithrandie/csvq-driver>
 - <https://github.com/mithrandie/csvq>
-
-## SQLite
-
-- <https://sqlite.org/cli.html#export_to_csv>
-- <https://sqlite.org/cli.html#importing_csv_files>

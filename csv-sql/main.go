@@ -6,17 +6,17 @@ import (
    _ "github.com/mithrandie/csvq-driver"
 )
 
-func Query() error {
-   o, e := sql.Open("csvq", ".")
+func main() {
+   open_o, e := sql.Open("csvq", ".")
    if e != nil {
-      return e
+      log.Fatal(e)
    }
-   query_s := "SELECT first_name, country_code FROM users WHERE id = 12"
-   var country_s, name_s string
-   e = o.QueryRow(query_s).Scan(&name_s, &country_s)
+   _, e = open_o.Exec("SET @@ANSI_QUOTES TO TRUE")
    if e != nil {
-      return e
+      log.Fatal(e)
    }
-   println(name_s, country_s)
-   return nil
+   _, e = open_o.Exec(`CREATE TABLE "artist_t.csv" (artist_n, artist_s)`)
+   if e != nil {
+      log.Fatal(e)
+   }
 }
