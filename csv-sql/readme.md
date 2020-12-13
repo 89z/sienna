@@ -1,19 +1,29 @@
 # CSV sql
 
-id | artist        | check
----|---------------|-----------
-0  | Cocteau Twins | 2020-06-21
-1  | Chicane       |
+artist_id | artist        | check
+----------|---------------|-----------
+0         | Cocteau Twins | 2020-06-21
+1         | Chicane       |
 
-id | album           | date       | artist
----|-----------------|------------|-------
-0  | Blue Bell Knoll | 1988-09-19 | 0
-1  | Treasure        | 1984-10-01 | 0
+album_id | album           | date
+---------|-----------------|-----------
+0        | Blue Bell Knoll | 1988-09-19
+1        | Treasure        | 1984-10-01
 
-id | song       | note | album
----|------------|------|------
-0  | Ivo        | good | 1
-1  | Persephone | good | 1
+song_id | song       | note
+--------|------------|-----
+0       | Ivo        | good
+1       | Persephone | good
+
+song_id | album_id
+--------|---------
+0       | 1
+1       | 1
+
+song_id | artist_id
+--------|----------
+0       | 0
+1       | 0
 
 - <https://github.com/mattn/go-sqlite3>
 - <https://github.com/mithrandie/csvq-driver>
