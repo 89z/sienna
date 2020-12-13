@@ -1,58 +1,49 @@
-package decode
+package release
 
-class MusicBrainzRelease {
-   function __construct($release_o) {
-      foreach ($release_o as $k => $v) {
-         $this->$k = $v;
-      }
+func (m Map) Date() (string, bool) {
+   s, b := m.S("date")
+   if s == "" {
+      return "", false
    }
-   function date_b(): bool {
-      if (! property_exists($this, 'date')) {
-         return false;
-      }
-      if ($this->date == '') {
-         return false;
-      }
-      return true;
-   }
-   function date_s(): string {
-      return $this->date . '-12-31';
-   }
-   function status(): bool {
-      return $this->status == 'Official';
-   }
-   function tracks(): int {
-      $ca_n = 0;
-      foreach ($this->media as $it_o) {
-         $ca_n += $it_o->{'track-count'};
-      }
-      return $ca_n;
-   }
+   return s + "-12-31", true
 }
 
-func Reduce(acc_n int, cur_m Map, idx_n int, src_a Slice) int {
-   if idx_n == 0 {
+func (m Map) IsOfficial() bool {
+   return m["status"] == "Official"
+}
+
+func (m Map) TrackLen() int {
+   n := 0
+   for _, item_m := range m.A("media") {
+      n += item_m["track-count"]
+   }
+   return n
+}
+
+func Reduce(old_n int, new_m Map, new_n int, old_a Slice) int {
+   if new_n == 0 {
       return 0
    }
-   $old_o = new MusicBrainzRelease($src_a[$acc_n]);
-   if (! $old_o->date_b()) {
-      return $idx_n;
+   old_m := old_a[old_n]
+   date_old_s, b := old_m.Date()
+   if ! b {
+      return new_n
    }
-   $new_o = new MusicBrainzRelease($cur_o);
-   if (! $new_o->date_b()) {
-      return $acc_n;
+   date_new_s, b := new_m.Date()
+   if ! b {
+      return old_n
    }
-   if (! $new_o->status()) {
-      return $acc_n;
+   if ! new_m.IsOfficial() {
+      return old_n
    }
-   if ($new_o->date_s() > $old_o->date_s()) {
-      return $acc_n;
+   if date_new_s > date_old_s {
+      return old_n
    }
-   if ($new_o->date_s() < $old_o->date_s()) {
-      return $idx_n;
+   if date_new_s < date_old_s {
+      return new_n
    }
-   if ($new_o->tracks() >= $old_o->tracks()) {
-      return $acc_n;
+   if new_m.TrackLen() >= old_m.TrackLen() {
+      return old_n
    }
-   return $idx_n;
+   return new_n
 }

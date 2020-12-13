@@ -1,14 +1,10 @@
-package decode
+package release
 
 import (
    "encoding/json"
-   "log"
    "net/http"
    "net/url"
 )
-
-type Map map[string]interface{}
-type Slice []interface{}
 
 type Decode struct {
    API string
@@ -40,7 +36,7 @@ func (dec_o Decode) Group() (Slice, error) {
    if e != nil {
       return nil, e
    }
-   return m["releases"], nil
+   return m.A("releases"), nil
 }
 
 func (dec_o Decode) Release() (Map, error) {
