@@ -18,7 +18,7 @@ func NewDecode(mbid_s string) Decode {
       mbid_s,
       url.Values{
          "fmt": []string{"json"},
-         "inc": []string{"artist-credits", "recordings"},
+         "inc": []string{"artist-credits recordings"},
       },
    }
 }
