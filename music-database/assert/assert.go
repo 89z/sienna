@@ -1,4 +1,4 @@
-package release
+package assert
 
 type Map map[string]interface{}
 type Slice []interface{}
