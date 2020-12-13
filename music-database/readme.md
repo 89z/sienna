@@ -1,29 +1,29 @@
 # CSV sql
 
-artist_id | artist
-----------|--------------
-0         | Cocteau Twins
-1         | Chicane
+artist_n | artist_s
+---------|--------------
+0        | Cocteau Twins
+1        | Chicane
 
-album_id | album           | date       | youtube | musicbrainz
----------|-----------------|------------|---------|------------
-0        | Blue Bell Knoll | 1988-09-19 |         |
-1        | Treasure        | 1984-10-01 |         |
+album_n | album_s         | date_d     | url_s
+--------|-----------------|------------|------
+0       | Blue Bell Knoll | 1988-09-19 |
+1       | Treasure        | 1984-10-01 |
 
-song_id | song       | note
---------|------------|-----
-0       | Ivo        | good
-1       | Persephone | good
+song_n | song_s     | note_s
+-------|------------|-------
+0      | Ivo        | good
+1      | Persephone | good
 
-song_id | album_id
---------|---------
-0       | 1
-1       | 1
+song_n | album_n
+-------|--------
+0      | 1
+1      | 1
 
-song_id | artist_id
---------|----------
-0       | 0
-1       | 0
+song_n | artist_n
+-------|---------
+0      | 0
+1      | 0
 
 ~~~
 create table artist_t(artist_n integer primary key, artist_s);

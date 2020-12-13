@@ -7,6 +7,10 @@ func (m Map) A(s string) Slice {
    return m[s].([]interface{})
 }
 
+func (m Map) M(s string) Map {
+   return m[s].(map[string]interface{})
+}
+
 func (m Map) N(s string) float64 {
    return m[s].(float64)
 }
