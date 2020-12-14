@@ -30,5 +30,6 @@ undefined property: viewCount OutKast Stankonia
 
 - <https://github.com/mattn/go-sqlite3/tree/master/_example>
 - <https://github.com/mattn/go-sqlite3>
+- <https://golang.org/pkg/database/sql#DB.Query>
 - <https://pkg.go.dev/github.com/mattn/go-sqlite3>
 - <https://sqlite.org/cli.html#importing_csv_files>
