@@ -1,0 +1,471 @@
+song_n,song_s,note_s
+1,Daria,good
+2,I Will Survive,
+3,It’s Coming Down,
+4,She’ll Come Back to Me,short
+5,Frank Sinatra,good
+6,The Distance,
+7,Stickshifts and Safetybelts,short
+8,Friend Is a Four Letter Word,
+9,Open Book,
+10,Race Car Ya-Yas,short
+11,Nugget,
+12,Sad Songs and Waltzes,
+13,"Perhaps, Perhaps, Perhaps",short
+14,Italian Leather Sofa,
+15,Spoon,
+16,Pinch,
+17,Sing Swan Song,
+18,One More Night,
+19,Vitamin C,good
+20,Soup,
+21,I’m So Green,
+22,Blush,
+23,Dead Body,
+24,No Advice (airport version),short
+25,/,short
+26,Release Your Problems,
+27,Melt,
+28,Gold,
+29,Lesson in Patience,
+30,1998,
+31,To Me,
+32,Cigarettes & Loneliness,
+33,Talk is Cheap,
+34,Fire Fly,bad
+35,Bonfire,bad
+36,Hold You Down,
+37,Heartbeat,
+38,You See Me,
+39,That Power,
+40,Outside,bad
+41,Sunrise,
+42,All the Shine,
+43,Letter Home,short
+44,Backpackers,
+45,L.E.S.,
+46,Kids (Keep Up),
+47,Have Some Love,
+48,Riot,short
+49,California,short
+50,Stand Tall,
+51,Terrified,
+52,Baby Boy,
+53,The Night Me and Your Mama Met,
+54,Me and Your Mama,
+55,Boogieman,
+56,Zombies,
+57,Redbone,
+58,I. Crawl,
+59,I. Flight of the Navigator,
+60,II. Zealots of Stockholm (Free Information),
+61,I. The Worst Guys,
+62,Playing Around Before the Party Starts,short
+63,II. No Exit,short
+64,III. Urn,short
+65,Life: The Biggest Troll (Andrew Auernheimer),
+66,II. Worldstar,
+67,Dial Up,short
+68,II. Shadows,
+69,IV. Sweatpants,
+70,V. 3005,
+71,Death by Numbers,short
+72,Pink Toes,
+73,The Library (intro),short
+74,"III. Telegraph Ave. (""Oakland"" by Lloyd)",
+75,I. The Party,short
+76,Earth: The Oldest Computer (The Last Night),
+77,Rain King,
+78,Round Here,
+79,Omaha,
+80,Mr. Jones,
+81,Anna Begins,
+82,Time and Time Again,
+83,Perfect Blue Buildings,
+84,Sullivan Street,
+85,Ghost Train,
+86,Raining in Baltimore,
+87,A Murder of One,
+88,Amy Hit the Atmosphere,
+89,All My Friends,
+90,High Life,
+91,Speedway,
+92,St. Robinson in His Cadillac Dream / Kid Things,
+93,Mrs. Potter’s Lullaby,
+94,Hanginaround,
+95,Four Days,
+96,Colorblind,good
+97,I Wish I Was a Girl,
+98,Goodbye,
+99,Alma Mater,
+100,All Is Well,
+101,"Dialogue, Part I",short
+102,Now That You’ve Gone,
+103,"Dialogue, Part II",
+104,While the City Sleeps,
+105,Saturday in the Park,good
+106,State of the Union,
+107,A Hit by Varèse,
+108,A.M. Mourning,short
+109,Memories of Love,
+110,It Better End Soon (2nd Movement),
+111,West Virginia Fantasies,short
+112,To Be Free,short
+113,Prelude,short
+114,It Better End Soon (4th Movement),short
+115,Movin’ In,
+116,In the Country,
+117,P.M. Mourning,short
+118,"So Much to Say, So Much to Give",short
+119,Colour My World,
+120,25 or 6 to 4,good
+121,It Better End Soon (1st Movement),short
+122,The Road,
+123,Make Me Smile,
+124,Now More Than Ever,short
+125,Fancy Colours,
+126,It Better End Soon (3rd Movement),
+127,Where Do We Go From Here,short
+128,Poem for the People,
+129,Wake Up Sunshine,short
+130,Anxiety’s Moment,short
+131,Stay the Night,
+132,We Can Stop the Hurtin’,
+133,Hard Habit to Break,
+134,Only You,
+135,Along Comes a Woman,
+136,Please Hold On,
+137,Remember the Feeling,
+138,You’re the Inspiration,
+139,Prima Donna,
+140,Once in a Lifetime,
+141,Once or Twice,
+142,Skin Tight,
+143,Together Again,
+144,Another Rainy Day in New York City,
+145,Mama Mama,
+146,Scrapbook,
+147,You Are on My Mind,
+148,If You Leave Me Now,good
+149,Gently I’ll Wake You,
+150,You Get It Up,
+151,Hope for Love,
+152,Shallow Then Halo,bad
+153,The Hollow Men,bad
+154,Garlands,bad
+155,Grail Overfloweth,bad
+156,Blood Bitch,bad
+157,Wax and Wane,bad
+158,But I’m Not,short
+159,Blind Dumb Deaf,bad
+160,Alas Dies Laughing,
+161,Sugar Hiccup (12″ version),
+162,Pearly-Dewdrops’ Drops (alternate version),
+163,Quisquose,
+164,Great Spangled Fritillary,
+165,Watchlar,
+166,Feathers-Oar-Blades,
+167,Eggs and Their Shells,
+168,Mizake the Mizan,
+169,Peppermint Pig (7″ version),
+170,Hazel,short
+171,Because of Whirl-Jack,
+172,Aikea-Guinea (alternate version),
+173,Rococo,
+174,Melonella,
+175,It’s All but an Ark Lark,
+176,Laughlines,
+177,Kookaburra,
+178,Pale Clouded White,
+179,Calfskin Smack,
+180,Ups,
+181,Eperdu,
+182,Treasure Hiding,
+183,Serpentskirt,good
+184,Tishbite,
+185,Half-Gifts,
+186,Seekers Who Are Lovers,
+187,Violaine,bad
+188,Rilkean Heart,
+189,Lazy Calm,good
+190,Throughout the Dark Months of April and May,good
+191,Feet-Like Fins,
+192,How to Bring a Blush to the Snow,
+193,The Thinner the Air,
+194,Whales Tails,good
+195,Oomingmak,short
+196,Little Spacey,
+197,Fluffy Tufts,
+198,Sultitan Itan,
+199,Pink Orange Red,good
+200,Ribbed and Veined,good
+201,Plain Tiger,
+202,Pepper-Tree,
+203,The Spangle Maker,
+204,Wax and Wane (Remix),
+205,Hitherto,good
+206,From the Flagstones,
+207,Aikea-Guinea,
+208,Millimillenary,good
+209,Pearly-Dewdrops’ Drops,
+210,Cicely,bad
+211,Ivo,good
+212,Lorelei,bad
+213,Beatrix,bad
+214,Pandora (For Cindy),good
+215,Amelia,bad
+216,Persephone,good
+217,Aloysius,bad
+218,Otterley,good
+219,Donimo,bad
+220,Five Ten Fiftyfold,good
+221,Sugar Hiccup,bad
+222,Glass Candle Grenades,short
+223,In the Gold Dust Rush,bad
+224,My Love Paramour,bad
+225,Musette and Drums,good
+226,When Mama Was Moth,bad
+227,In Our Angelhood,good
+228,The Tinderbox (of a Heart),good
+229,Multifoiled,short
+230,Bluebeard,bad
+231,"Theft, and Wandering Around Lost",
+232,Squeeze-Wax,
+233,My Truth,
+234,Pur,
+235,Know Who You Are at Every Age,
+236,Evangeline,bad
+237,Oil of Angels,bad
+238,Essence,
+239,Summerhead,good
+240,Cherry-Coloured Funk,bad
+241,Pitch the Baby,bad
+242,Iceblink Luck,bad
+243,Heaven or Las Vegas,bad
+244,"Road, River and Rail",
+245,Frou-Frou Foxes in Midsummer Fires,
+246,Fifty-Fifty Clown,bad
+247,I Wear Your Ring,
+248,Fotzepolitic,
+249,Wolf in the Breast,
+250,Carolyn's Fingers,
+251,The Itchy Glowbo Blow,good
+252,Cico Buff,bad
+253,Spooning Good Singing Gum,
+254,Ella Megalast Burls Forever,bad
+255,Blue Bell Knoll,
+256,Athol-Brose,bad
+257,For Phoebe Still a Baby,bad
+258,Suckling the Mender,
+259,A Kissed Out Red Floatboat,
+260,"Those Eyes, That Mouth",
+261,Love’s Easy Tears,good
+262,Orange Appled,short
+263,Sigh’s Smell of Farewell,
+264,Ephemeron,bad
+265,Memory,
+266,When Will You Find the Limit,
+267,Iteration,
+268,Ternary,
+269,Usurper,
+270,Of Your Fake Dimension,bad
+271,Dryswch,
+272,Isostasy,
+273,Propagation,
+274,Vacuume,
+275,Syrthio,
+276,Video Arkade,
+277,Closed,
+278,Colorvision,good
+279,Alfa Beach,good
+280,Stop,
+281,Klymaxx,
+282,Open,
+283,84’ Dreamin,
+284,Controlpop,
+285,Dreambender,
+286,Data Kiss,
+287,Yxes,
+288,Smily Cyclops,
+289,Glawio,
+290,Futureworld,
+291,Cathode Girls,bad
+292,Flightwave,bad
+293,Brokendate,
+294,Ether Drift,
+295,Karova,
+296,Terminal,short
+297,VHS Sex,bad
+298,Air Cal,bad
+299,Hyperlips,good
+300,Me&U,
+301,Long Way 2 Go,
+302,About Time,
+303,Call U Out,
+304,Kiss Me,
+305,Just One Nite,
+306,Hope You’re Behaving (interlude),short
+307,Not With You,
+308,Ditto,
+309,What Do U Want,
+310,Miss Your Touch,short
+311,Don't Make Me Dream About You,
+312,Kings of the Highway,
+313,Blue Spanish Sky,
+314,Wrong to Love You,
+315,Forever Young,
+316,Heart Shaped World,
+317,I'm Not Waiting,
+318,In the Heat of the Jungle,
+319,Wicked Game,
+320,Nothing's Changed,
+321,Fade Away,
+322,Cryin’,short
+323,Waiting for the Rain to Fall,
+324,Heart Full of Soul,
+325,Lie to Me,
+326,Wild Love,short
+327,This Love Will Last,short
+328,You Took My Heart,short
+329,Lovers Game,short
+330,You Owe Me Some Kind of Love,good
+331,Blue Hotel,
+332,Ride,
+333,Gimmie Dat,
+334,Heavy Rotation,
+335,Yeah I Know,
+336,You Can Get It,
+337,Turn It Up,
+338,Wants for Dinner,
+339,I Run It,
+340,Basic Instinct (U Got Me),
+341,Girls Get Your Money,
+342,Speechless,
+343,Left of Mother,
+344,Cuckoo,
+345,Missing Link,
+346,"Men Are From Mars, Women Are From Venus",good
+347,All of One,
+348,Unreadable Communication,
+349,Turkey Crossing,
+350,Crystal,
+351,Superblaster,
+352,Sweetest Pie,
+353,Stoned in Love,bad
+354,U R Always,bad
+355,Come Tomorrow,bad
+356,Spirit,
+357,Turning Corners,
+358,Time of Your Life,short
+359,Nothing,bad
+360,"Arizona, Part 2",good
+361,Far Away From You,
+362,Way I’m Feelin’,
+363,Saltwater (original mix),good
+364,Autumn Tactics,bad
+365,Overlap,bad
+366,Don't Give Up,bad
+367,Overture,good
+368,Halcyon,bad
+369,Saltwater (The Thrillseekers remix),good
+370,Andromeda,bad
+371,Low Sun,good
+372,No Ordinary Morning,bad
+373,Early,
+374,Offshore (original mix),
+375,From Blue to Green,
+376,Sunstroke (Disco Citizens remix),
+377,Leaving Town,
+378,Sunstroke (original mix),
+379,The Drive Home,
+380,Already There,short
+381,Lost You Somewhere,
+382,Red Skies,
+383,Offshore ’97,good
+384,A Whisper,
+385,A Rush of Blood to the Head,
+386,Amsterdam,
+387,Green Eyes,
+388,Warning Sign,
+389,Politik,
+390,In My Place,
+391,God Put a Smile Upon Your Face,
+392,The Scientist,
+393,Clocks,
+394,Daylight,
+395,Nomadic Code,
+396,The Distance,
+397,I Dream in Colour,
+398,Demon Inside,
+399,Run for Cover,
+400,Like Ice,bad
+401,Nargis,
+402,Oligarch,
+403,Places That Don't Exist,
+404,Zephyr,
+405,Existential Exile,
+406,Endless Dream,bad
+407,Pilgrimage,bad
+408,Beyond Being,
+409,Extraordinary Way,
+410,Dying Light,
+411,Into the Escape,
+412,Face the Music,bad
+413,One Word,bad
+414,I Believe,bad
+415,Forever Lost,
+416,Tidal Pool,good
+417,Sleep,
+418,Center of the Sun,
+419,Tears From the Moon,
+420,Manic Star,
+421,Redemption,
+422,Years,
+423,Make a Wish,
+424,Pandora,good
+425,Damascus,short
+426,Premonition (reprise),
+427,The Witness,
+428,We Will Fuck You Up,
+429,Barefooted,
+430,Step Into the Light,
+431,This Fire,
+432,Lean on Me,
+433,Night Rain,good
+434,Is This All It Seems,
+435,SOS,
+436,Kari,
+437,Love Is With You,
+438,Like a Fool,good
+439,Something More,
+440,Scrap the Book,
+441,Cruel Mistress,
+442,Magnetise,
+443,Walk Dance Talk Sing,
+444,The Way,
+445,Hear My Song,
+446,The Come On,
+447,Echo,
+448,Witch Doctor,
+449,Wecanonlybewhoweare,
+450,Open for Service,
+451,Changes,
+452,Twisted,
+453,Your Dark Energy,
+454,Eruption,
+455,Future Beat,
+456,Beatbox,
+457,The Unbearable Lightness of Being,
+458,Heartbreaker,good
+459,Sonar,
+460,Over to You / Say Goodbye,
+461,Stop Space Return,
+462,Lie Lost,
+463,Caught Up,
+464,Never Gonna Reach Me,
+465,Fascination,
+466,In and Out,good
+467,Love on the Line,bad
+468,Give a Little,bad
+469,Wishing For,
+470,Too Far,

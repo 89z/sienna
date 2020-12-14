@@ -68,6 +68,22 @@ func main() {
             if e != nil {
                log.Fatal(o, e)
             }
+            s = `insert into song_album_t values (
+               (select max(song_n) from song_t),
+               (select max(album_n) from album_t)
+            )`
+            o, e = sql_o.Exec(s)
+            if e != nil {
+               log.Fatal(o, e)
+            }
+            s = `insert into song_artist_t values (
+               (select max(song_n) from song_t),
+               (select max(artist_n) from artist_t)
+            )`
+            o, e = sql_o.Exec(s)
+            if e != nil {
+               log.Fatal(o, e)
+            }
          }
       }
    }
