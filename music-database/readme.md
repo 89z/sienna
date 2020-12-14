@@ -1,6 +1,18 @@
 # CSV sql
 
 ~~~
+.\sqlite3 music.db
+.read music.sql
+.mode csv
+.import album_t.csv album_t
+.import artist_t.csv artist_t
+.import song_album_t.csv song_album_t
+.import song_artist_t.csv song_artist_t
+.import song_t.csv song_t
+.quit
+~~~
+
+~~~
 create table artist_t(artist_n integer primary key, artist_s);
 insert into artist_t(artist_s) values('Cocteau Twins');
 select * from artist_t;
@@ -19,3 +31,4 @@ undefined property: viewCount OutKast Stankonia
 - <https://github.com/mattn/go-sqlite3>
 - <https://github.com/mithrandie/csvq-driver>
 - <https://github.com/mithrandie/csvq>
+- <https://sqlite.org/cli.html#importing_csv_files>
