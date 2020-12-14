@@ -10,7 +10,12 @@ import (
 )
 
 func main() {
-   os_o, e := os.Open("[C].json")
+   if len(os.Args) != 2 {
+      println("musicdb <JSON>")
+      os.Exit(1)
+   }
+   path_s := os.Args[1]
+   os_o, e := os.Open(path_s)
    if e != nil {
       log.Fatal(e)
    }
