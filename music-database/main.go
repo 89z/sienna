@@ -29,6 +29,7 @@ func main() {
       log.Fatal(e)
    }
    for artist_s := range json_m {
+      println(artist_s)
       s := `insert into artist_t values (
          (select coalesce(max(artist_n), 0) + 1 from artist_t), ?
       )`
