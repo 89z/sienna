@@ -16,5 +16,6 @@ undefined property: viewCount Chris Isaak Heart Shaped World
 undefined property: viewCount OutKast Stankonia
 ~~~
 
+- <https://github.com/mattn/go-sqlite3>
 - <https://github.com/mithrandie/csvq-driver>
 - <https://github.com/mithrandie/csvq>
