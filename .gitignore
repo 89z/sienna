@@ -1,4 +1,3 @@
 *.exe
+*.webm
 go.sum
-music.db
-music.zip
