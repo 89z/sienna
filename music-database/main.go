@@ -109,7 +109,7 @@ Examples:
       }
       return
    }
-   artist_s := os.Args[1]
+   artist_s := os.Args[2]
    e = ArtistSelect(open_o, artist_s)
    if e != nil {
       log.Fatal(e)
