@@ -8,22 +8,26 @@ import (
 )
 
 func Artist(open_o *sql.DB, artist_s string) error {
-   query_s := `select song_s, note_s from song_t where song_n in (
-      select song_n from song_artist_t where artist_n = (
-         select artist_n from artist_t where artist_s = ?
-      )
-   )`
+   query_s := `
+   SELECT album_s, song_s, note_s
+   FROM song_t
+   NATURAL JOIN song_album_t
+   NATURAL JOIN album_t
+   NATURAL JOIN song_artist_t
+   NATURAL JOIN artist_t
+   WHERE artist_s = ?
+   `
    query_o, e := open_o.Query(query_s, artist_s)
    if e != nil {
       return e
    }
-   var song_s, note_s string
+   var album_s, song_s, note_s string
    for query_o.Next() {
-      e := query_o.Scan(&song_s, &note_s)
+      e := query_o.Scan(&album_s, &song_s, &note_s)
       if e != nil {
          return e
       }
-      println(song_s, "|", note_s)
+      println(album_s, "|", song_s, "|", note_s)
    }
    return nil
 }
