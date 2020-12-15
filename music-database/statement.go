@@ -10,9 +10,9 @@ import (
 func ArtistSelect(open_o *sql.DB, artist_s string) error {
    query_s := `
    SELECT
-      album_s, date_s,
+      album_s, date_s, url_s,
       song_n, song_s, note_s,
-      artist_n, COALESCE(check_s, '')
+      artist_n, check_s
    FROM album_t
    NATURAL JOIN song_album_t
    NATURAL JOIN song_t
@@ -29,6 +29,7 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
       album_s string
       date_s string
       date_prev_s string
+      url_s string
       song_n int
       song_s string
       note_s string
@@ -37,7 +38,14 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
    )
    for query_o.Next() {
       e = query_o.Scan(
-         &album_s, &date_s, &song_n, &song_s, &note_s, &artist_n, &check_s,
+         &album_s,
+         &date_s,
+         &url_s,
+         &song_n,
+         &song_s,
+         &note_s,
+         &artist_n,
+         &check_s,
       )
       if e != nil {
          return e
@@ -46,31 +54,39 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
          if date_prev_s != "" {
             fmt.Println()
          }
-         th_s := date_s + " " + album_s
-         hr_s := strings.Repeat("-", len(th_s))
-         fmt.Print(th_s, "\n", hr_s, "\n")
+         // print album date, title
+         fmt.Print(date_s, "\n", album_s, "\n")
+         // print URL
+         len_n := len(album_s)
+         if url_s != "" {
+            len_n = len(url_s)
+            fmt.Println(url_s)
+         }
+         // print rule
+         hr_s := strings.Repeat("-", len_n)
+         fmt.Println(hr_s)
          date_prev_s = date_s
       }
-      // print space
-      note_next_s := note_s
-      if note_s == "" {
-         note_next_s = fmt.Sprint(song_n)
-      }
-      fmt.Print(strings.Repeat(" ", 7 - len(note_next_s)))
-      // print note
-      if note_s == "" {
-         fmt.Print("\x1b[30;43m", song_n, "\x1b[m")
-      } else {
-         fmt.Print(note_s)
-      }
-      // print song
-      fmt.Println(" |", song_s)
+      // print song note, title
+      note_s = SongNote(note_s, url_s, song_n)
+      fmt.Println(note_s, "|", song_s)
    }
    if check_s == "" {
       check_s = fmt.Sprint("\x1b[30;43m", artist_n, "\x1b[m")
    }
    fmt.Print("\ncheck: ", check_s, "\n")
    return nil
+}
+
+func SongNote(note_s, url_s string, song_n int) string {
+   if note_s != "" {
+      return fmt.Sprintf("%7v", note_s)
+   }
+   if strings.HasPrefix(url_s, "youtu.be/") {
+      return fmt.Sprintf("%7v", note_s)
+   }
+   return strings.Repeat(" ", 7 - len(fmt.Sprint(song_n))) +
+   fmt.Sprint("\x1b[30;43m", song_n, "\x1b[m")
 }
 
 func ArtistUpdate(open_o *sql.DB, artist_s, check_s string) error {
