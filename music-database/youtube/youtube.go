@@ -30,8 +30,11 @@ function Info(id_s string) (Map, error) {
    if e != nil {
       return nil, e
    }
-   parse_str($get_s, $get_m);
-   $resp_s = $get_m['player_response'];
+   m, e := url.ParseQuery(query_s)
+   if e != nil {
+      return nil, e
+   }
+   resp_s := m["player_response"]
    return json_decode($resp_s)->microformat->playerMicroformatRenderer;
 }
 
