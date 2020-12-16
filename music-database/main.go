@@ -14,10 +14,11 @@ func main() {
    musicdb <target> <flags>
 
 Examples:
-   musicdb artist 'Kate Bush'
-   musicdb artist 999 2019-12-31
-   musicdb album 999 youtube.com/watch?v=HQmmM_qwG4k
-   musicdb song 999 good`)
+   musicdb 'Kate Bush'
+   musicdb check 999 2019-12-31
+   musicdb note 999 good
+   musicdb pop 999 0
+   musicdb url 999 youtube.com/watch?v=HQmmM_qwG4k`)
       os.Exit(1)
    }
    db_s := os.Getenv("MUSICDB")
@@ -25,32 +26,22 @@ Examples:
    if e != nil {
       log.Fatal(e)
    }
-   if os.Args[1] == "song" {
-      song_s, note_s := os.Args[2], os.Args[3]
-      e = SongUpdate(open_o, song_s, note_s)
-      if e != nil {
-         log.Fatal(e)
-      }
-      return
-   }
-   if os.Args[1] == "album" {
-      album_s, url_s := os.Args[2], os.Args[3]
-      e = AlbumUpdate(open_o, album_s, url_s)
-      if e != nil {
-         log.Fatal(e)
-      }
-      return
-   }
-   if len(os.Args) == 4 {
+   key_s := os.Args[1]
+   switch key_s {
+   case "check":
       artist_s, check_s := os.Args[2], os.Args[3]
-      e = ArtistUpdate(open_o, artist_s, check_s)
-      if e != nil {
-         log.Fatal(e)
-      }
-      return
+      e = CheckUpdate(open_o, artist_s, check_s)
+   case "note":
+      song_s, note_s := os.Args[2], os.Args[3]
+      e = NoteUpdate(open_o, song_s, note_s)
+   case "pop":
+      println("pop")
+   case "url":
+      album_s, url_s := os.Args[2], os.Args[3]
+      e = UrlUpdate(open_o, album_s, url_s)
+   default:
+      e = ArtistSelect(open_o, key_s)
    }
-   artist_s := os.Args[2]
-   e = ArtistSelect(open_o, artist_s)
    if e != nil {
       log.Fatal(e)
    }
