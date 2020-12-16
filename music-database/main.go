@@ -15,8 +15,9 @@ func main() {
 
 Examples:
    musicdb artist 'Kate Bush'
-   musicdb artist 30 2020-12-14
-   musicdb song 10656 good`)
+   musicdb artist 999 2019-12-31
+   musicdb album 999 youtube.com/watch?v=HQmmM_qwG4k
+   musicdb song 999 good`)
       os.Exit(1)
    }
    db_s := os.Getenv("MUSICDB")
@@ -27,6 +28,14 @@ Examples:
    if os.Args[1] == "song" {
       song_s, note_s := os.Args[2], os.Args[3]
       e = SongUpdate(open_o, song_s, note_s)
+      if e != nil {
+         log.Fatal(e)
+      }
+      return
+   }
+   if os.Args[1] == "album" {
+      album_s, url_s := os.Args[2], os.Args[3]
+      e = AlbumUpdate(open_o, album_s, url_s)
       if e != nil {
          log.Fatal(e)
       }

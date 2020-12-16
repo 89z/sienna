@@ -10,7 +10,7 @@ import (
 func ArtistSelect(open_o *sql.DB, artist_s string) error {
    query_s := `
    SELECT
-      album_s, date_s, url_s,
+      album_n, album_s, date_s, url_s,
       song_n, song_s, note_s,
       artist_n, check_s
    FROM album_t
@@ -26,6 +26,7 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
       return e
    }
    var (
+      album_n int
       album_s string
       date_s string
       date_prev_s string
@@ -38,6 +39,7 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
    )
    for query_o.Next() {
       e = query_o.Scan(
+         &album_n,
          &album_s,
          &date_s,
          &url_s,
@@ -57,36 +59,35 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
          // print album date, title
          fmt.Print(date_s, "\n", album_s, "\n")
          // print URL
-         len_n := len(album_s)
          if url_s != "" {
-            len_n = len(url_s)
             fmt.Println(url_s)
+         } else {
+            fmt.Print("\x1b[30;43m", album_n, "\x1b[m\n")
          }
          // print rule
-         hr_s := strings.Repeat("-", len_n)
-         fmt.Println(hr_s)
+         fmt.Println(strings.Repeat("-", 30))
          date_prev_s = date_s
       }
-      // print song note, title
-      note_s = SongNote(note_s, url_s, song_n)
-      fmt.Println(note_s, "|", song_s)
+      note_s, color_b := SongNote(note_s, url_s, song_n)
+      // print song space
+      fmt.Printf("%*v", 7 - len(note_s), " ")
+      // print song note
+      if color_b {
+         fmt.Print("\x1b[30;43m", note_s, "\x1b[m")
+      } else {
+         fmt.Print(note_s)
+      }
+      // print song title
+      fmt.Println(" |", song_s)
    }
-   if check_s == "" {
-      check_s = fmt.Sprint("\x1b[30;43m", artist_n, "\x1b[m")
+   // print artist check
+   fmt.Print("\ncheck: ")
+   if check_s != "" {
+      fmt.Println(check_s)
+   } else {
+      fmt.Print("\x1b[30;43m", artist_n, "\x1b[m\n")
    }
-   fmt.Print("\ncheck: ", check_s, "\n")
    return nil
-}
-
-func SongNote(note_s, url_s string, song_n int) string {
-   if note_s != "" {
-      return fmt.Sprintf("%7v", note_s)
-   }
-   if strings.HasPrefix(url_s, "youtu.be/") {
-      return fmt.Sprintf("%7v", note_s)
-   }
-   return strings.Repeat(" ", 7 - len(fmt.Sprint(song_n))) +
-   fmt.Sprint("\x1b[30;43m", song_n, "\x1b[m")
 }
 
 func ArtistUpdate(open_o *sql.DB, artist_s, check_s string) error {
@@ -95,6 +96,18 @@ func ArtistUpdate(open_o *sql.DB, artist_s, check_s string) error {
    WHERE artist_n = ?
    `
    exec_o, e := open_o.Exec(query_s, check_s, artist_s)
+   if e != nil {
+      return fmt.Errorf("%v %v", exec_o, e)
+   }
+   return nil
+}
+
+func AlbumUpdate(open_o *sql.DB, album_s, url_s string) error {
+   query_s := `
+   UPDATE album_t SET url_s = ?
+   WHERE album_n = ?
+   `
+   exec_o, e := open_o.Exec(query_s, url_s, album_s)
    if e != nil {
       return fmt.Errorf("%v %v", exec_o, e)
    }
