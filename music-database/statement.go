@@ -60,48 +60,43 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
             fmt.Println()
          }
          // print album date, title
-         fmt.Print(date_s, "\n", album_s, "\n")
+         fmt.Println(date_s, "|", album_s)
          // print URL
          if pop_b {
             if url_s != "" {
                fmt.Println(url_s)
                should_b = true
             } else {
-               fmt.Print("\x1b[30;43m", album_n, "\x1b[m\n")
+               fmt.Print("\x1b[30;43murl ", album_n, "\x1b[m\n")
             }
          }
          // print rule
-         fmt.Println(strings.Repeat("-", 30))
+         fmt.Println(strings.Repeat("-", 50))
          date_prev_s = date_s
       }
-      note_s, color_b := SongNote(note_s, url_s, song_n)
-      // print song space
-      fmt.Print(strings.Repeat(" ", 7 - len(note_s)))
-      // print song note
-      if color_b {
-         fmt.Print("\x1b[30;43m", note_s, "\x1b[m")
-      } else {
-         fmt.Print(note_s)
-      }
       // print song title
-      fmt.Println(" |", song_s)
+      fmt.Printf("%40.40v | ", song_s)
+      // print song note
+      if note_s == "" && ! strings.HasPrefix(url_s, "youtube.com/") {
+         fmt.Print("\x1b[30;43mnote ", song_n, "\x1b[m\n")
+      } else {
+         fmt.Println(note_s)
+      }
    }
    fmt.Println()
    // print artist check
-   fmt.Print("check: ")
    if check_s != "" {
-      fmt.Println(check_s)
+      fmt.Println("check:", check_s)
    } else {
-      fmt.Print("\x1b[30;43m", artist_n, "\x1b[m\n")
+      fmt.Print("\x1b[30;43mcheck ", artist_n, "\x1b[m\n")
    }
    // print artist pop
-   fmt.Print("pop: ")
    if ! pop_b {
-      fmt.Println(false)
+      fmt.Println("pop: false")
    } else if should_b {
-      fmt.Println(true)
+      fmt.Println("pop: true")
    } else {
-      fmt.Print("\x1b[30;43m", artist_n, "\x1b[m\n")
+      fmt.Print("\x1b[30;43mpop ", artist_n, "\x1b[m\n")
    }
    return nil
 }
@@ -124,6 +119,18 @@ func NoteUpdate(open_o *sql.DB, song_s, note_s string) error {
    WHERE song_n = ?
    `
    exec_o, e := open_o.Exec(query_s, note_s, song_s)
+   if e != nil {
+      return fmt.Errorf("%v %v", exec_o, e)
+   }
+   return nil
+}
+
+func PopUpdate(open_o *sql.DB, artist_s, pop_s string) error {
+   query_s := `
+   UPDATE artist_t SET pop_n = ?
+   WHERE artist_n = ?
+   `
+   exec_o, e := open_o.Exec(query_s, pop_s, artist_s)
    if e != nil {
       return fmt.Errorf("%v %v", exec_o, e)
    }

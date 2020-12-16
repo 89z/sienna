@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-   if len(os.Args) < 3 {
+   if len(os.Args) == 1 {
       fmt.Println(`Synopsis:
    musicdb <target> <flags>
 
@@ -35,7 +35,8 @@ Examples:
       song_s, note_s := os.Args[2], os.Args[3]
       e = NoteUpdate(open_o, song_s, note_s)
    case "pop":
-      println("pop")
+      artist_s, pop_s := os.Args[2], os.Args[3]
+      e = PopUpdate(open_o, artist_s, pop_s)
    case "url":
       album_s, url_s := os.Args[2], os.Args[3]
       e = UrlUpdate(open_o, album_s, url_s)
