@@ -71,13 +71,13 @@ func ArtistSelect(open_o *sql.DB, artist_s string) error {
             }
          }
          // print rule
-         fmt.Println(strings.Repeat("-", 50))
+         fmt.Println(strings.Repeat("-", 52))
          date_prev_s = date_s
       }
       // print song title
       fmt.Printf("%40.40v | ", song_s)
       // print song note
-      if note_s == "" && ! strings.HasPrefix(url_s, "youtube.com/") {
+      if note_s == "" && ! strings.HasPrefix(url_s, "youtube.com/watch?") {
          fmt.Print("\x1b[30;43mnote ", song_n, "\x1b[m\n")
       } else {
          fmt.Println(note_s)

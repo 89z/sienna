@@ -1,7 +1,11 @@
 package youtube
 
 import (
+   "fmt"
+   "io/ioutil"
    "math"
+   "musicdb/json"
+   "net/http"
    "net/url"
    "strconv"
    "time"
@@ -19,29 +23,20 @@ func GetContents(s string) (string, error) {
    return string(y), nil
 }
 
-func JsonDecode(s string) (Map, error) {
-   y := []byte(s)
-   m := Map{}
-   e := json.Unmarshal(y, &m)
-   if e != nil {
-      return nil, e
-   }
-   return m, nil
-}
 
-function Info(id_s string) (Map, error) {
+func Info(id_s string) (json.Map, error) {
    info_s := "https://www.youtube.com/get_video_info?video_id=" + id_s
    println(info_s)
    query_s, e := GetContents(info_s)
    if e != nil {
       return nil, e
    }
-   query_m, e := url.ParseQuery(query_s)
+   o, e := url.ParseQuery(query_s)
    if e != nil {
       return nil, e
    }
-   resp_s := query_m["player_response"]
-   json_m, e := JsonDecode(resp_s)
+   resp_s := o.Get("player_response")
+   json_m, e := json.Decode(resp_s)
    if e != nil {
       return nil, e
    }
@@ -63,9 +58,12 @@ func NumberFormat(n float64) string {
    return fmt.Sprintf("%.3f", n3) + []string{"", " k", " M", " B"}[n2]
 }
 
-func Views(info_m Map) (string, error) {
+func Views(info_m json.Map) (string, error) {
    views_s := info_m.S("viewCount")
-   views_n := strconv.Atoi(view_s)
+   views_n, e := strconv.Atoi(view_s)
+   if e != nil {
+      return "", e
+   }
    date_s := info_m.S("publishDate")
    hour_n, e := HoursSince(date_s)
    if e != nil {
