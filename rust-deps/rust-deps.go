@@ -1,20 +1,31 @@
 package main
 
+import (
+   "github.com/pelletier/go-toml"
+   "os"
+)
+
+type Map map[string]interface{}
+
+func System(command ...string) error {
+   name, arg := command[0], command[1:]
+   o := exec.Command(name, arg...)
+   o.Stdout = os.Stdout
+   return o.Run()
+}
+
 func main() {
-   $top_s = 'rust-deps';
-   if ($argc == 1) {
-      echo <<<eof
-${top_s}.php [flags] <crate>
--v string
-   version
-eof;
-      exit(1);
+   if len(os.Args) != 2 {
+      println("rust-deps <crate>")
+      os.Exit(1)
    }
-   $opt_m = getopt('v:', [], $opt_n);
-   $ver_s = key_exists('v', $opt_m) ? $opt_m['v'] : '';
-   $crate_s = $argv[$opt_n];
-   system('cargo new ' . $top_s);
-   chdir($top_s);
+   crate_s := os.Args[1]
+   System("cargo", "new", "rust-deps")
+   os.Chdir("rust-deps")
+   m := Map{
+      "dependencies": Map{"regex": ""},
+      "package": Map{"name": "rust-deps", "version": "1.0.0"}
+   }
    $dep_s = <<<eof
 [package]
 name = "$top_s"
@@ -22,6 +33,7 @@ version = "1.0.0"
 [dependencies]
 $crate_s = "$ver_s"
 eof;
+   $top_s = 'rust-deps';
    file_put_contents('Cargo.toml', $dep_s);
    system('cargo generate-lockfile');
    $get_s = file_get_contents('Cargo.lock');
