@@ -50,6 +50,9 @@ func main() {
       if e != nil {
          log.Fatal(e)
       }
+      if example == "" {
+         continue
+      }
       if ! IsFile(example) {
          println(name)
       }
