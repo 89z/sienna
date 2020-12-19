@@ -32,7 +32,7 @@ func Decode(s string) (string, error) {
    if e != nil {
       return "", e
    }
-   if m["example"] == nil {
+   if m["_build"] != nil {
       return "", nil
    }
    return `D:\Git\` + m.S("example"), nil

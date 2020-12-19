@@ -1,18 +1,9 @@
 package main
 
 import (
-   "github.com/pelletier/go-toml"
+   "log"
    "os"
 )
-
-type Map map[string]interface{}
-
-func System(command ...string) error {
-   name, arg := command[0], command[1:]
-   o := exec.Command(name, arg...)
-   o.Stdout = os.Stdout
-   return o.Run()
-}
 
 func main() {
    if len(os.Args) != 2 {
@@ -20,27 +11,38 @@ func main() {
       os.Exit(1)
    }
    crate_s := os.Args[1]
-   System("cargo", "new", "rust-deps")
-   os.Chdir("rust-deps")
-   m := Map{
-      "dependencies": Map{"regex": ""},
-      "package": Map{"name": "rust-deps", "version": "1.0.0"}
+   e := System("cargo", "new", "rust-deps")
+   if e != nil {
+      log.Fatal(e)
    }
-   $dep_s = <<<eof
-[package]
-name = "$top_s"
-version = "1.0.0"
-[dependencies]
-$crate_s = "$ver_s"
-eof;
-   $top_s = 'rust-deps';
-   file_put_contents('Cargo.toml', $dep_s);
-   system('cargo generate-lockfile');
-   $get_s = file_get_contents('Cargo.lock');
+   os.Chdir("rust-deps")
+   toml_m := Map{
+      "dependencies": Map{crate_s: ""},
+      "package": Map{"name": "rust-deps", "version": "1.0.0"},
+   }
+   e = TomlEncode("Cargo.toml", toml_m)
+   if e != nil {
+      log.Fatal(e)
+   }
+   e = System("cargo", "generate-lockfile")
+   if e != nil {
+      log.Fatal(e)
+   }
+   lock_m, e := TomlDecode("Cargo.lock")
+   if e != nil {
+      log.Fatal(e)
+   }
+   pac_a := lock_m.A("package")
+   for n := range pac_a {
+      name_s := pac_a.M(n).S("name")
+      println(name_s)
+   }
+   /*
    preg_match_all('/name = "([^"]*)"/', $get_s, $get_a);
    $name_a = $get_a[1];
    $prev_s = '';
    $dep_n = 0;
+   $top_s = 'rust-deps';
    foreach ($name_a as $name_s) {
       if ($name_s == $top_s) {
          continue;
@@ -70,4 +72,5 @@ eof;
       }
    }
    rmdir($top_s);
+   */
 }
