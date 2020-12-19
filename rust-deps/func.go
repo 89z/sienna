@@ -24,23 +24,23 @@ func (m Map) S(s string) string {
 func System(command ...string) error {
    name, arg := command[0], command[1:]
    o := exec.Command(name, arg...)
-   o.Stdout = os.Stdout
+   o.Stderr = os.Stderr
    return o.Run()
 }
 
-func TomlDecode(filename string) (Map, error) {
-   o, e := os.Open(filename)
+func TomlDecode(s string) (Map, error) {
+   o, e := toml.LoadFile(s)
    if e != nil {
       return nil, e
    }
-   m := Map{}
-   return m, toml.NewDecoder(o).Decode(&m)
+   return o.ToMap(), nil
 }
 
-func TomlEncode(filename string, data Map) error {
-   o, e := os.Create(filename)
+func TomlEncode(s string, m Map) error {
+   o, e := os.Create(s)
    if e != nil {
       return e
    }
-   return toml.NewEncoder(o).Encode(data)
+   defer o.Close()
+   return toml.NewEncoder(o).Encode(m)
 }
