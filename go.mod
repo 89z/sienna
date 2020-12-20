@@ -1,4 +1,4 @@
-module front-matter
+module sienna
 
 go 1.15
 

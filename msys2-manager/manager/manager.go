@@ -2,10 +2,9 @@ package manager
 
 import (
    "bufio"
-   "fmt"
+   "errors"
    "github.com/mholt/archiver/v3"
    "io/ioutil"
-   "msys2/net"
    "os"
    "path"
    "strings"
@@ -34,7 +33,7 @@ func NewManager() (Manager, error) {
          continue
       }
       url_s := GetRepo(file_s) + file_s
-      e = net.Copy(url_s, real_s)
+      e = Copy(url_s, real_s)
       if e != nil {
          return Manager{}, e
       }
@@ -53,7 +52,7 @@ func (o Manager) GetName(pack_s string) (string, error) {
          return dir_s, nil
       }
    }
-   return "", fmt.Errorf(pack_s)
+   return "", errors.New(pack_s)
 }
 
 func (o Manager) GetValue(pack_s, key_s string) ([]string, error) {
@@ -120,7 +119,7 @@ func (o Manager) Sync(tar_s string) error {
       real_s := path.Join(o.Cache, file_s)
       if ! IsFile(real_s) {
          url_s := GetRepo(file_s) + file_s
-         e := net.Copy(url_s, real_s)
+         e := Copy(url_s, real_s)
          if e != nil {
             return e
          }
@@ -158,7 +157,7 @@ func IsFile(s string) bool {
 func Unarchive(in_path, out_path string) error {
    tar_o := &archiver.Tar{OverwriteExisting: true}
    in_file := path.Base(in_path)
-   fmt.Println("EXTRACT", in_file)
+   println("EXTRACT", in_file)
    switch path.Ext(in_file) {
    case ".zst":
       zstd_o := archiver.TarZstd{Tar: tar_o}

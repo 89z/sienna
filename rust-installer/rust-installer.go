@@ -7,7 +7,6 @@ import (
    "log"
    "os"
    "path"
-   "rust/net"
 )
 
 func IsFile(s string) bool {
@@ -26,7 +25,7 @@ func GetDatabase(cache_s string) (string, error) {
       return file_s, nil
    }
 
-   e := net.Copy(url_s, file_s)
+   e := Copy(url_s, file_s)
    if e != nil {
       return "", e
    }
@@ -63,7 +62,7 @@ func main() {
       url_s := toml_o.Get(key_s).(string)
       file_s := path.Base(url_s)
       if ! IsFile(file_s) {
-         e := net.Copy(url_s, file_s)
+         e := Copy(url_s, file_s)
          if e != nil {
             log.Fatal(e)
          }

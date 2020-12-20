@@ -6,13 +6,8 @@ import (
    "io/ioutil"
    "log"
    "os"
+   "sienna/assert"
 )
-
-type Map map[string]interface{}
-
-func (m Map) S(s string) string {
-   return m[s].(string)
-}
 
 func IsFile(s string) bool {
    o, e := os.Stat(s)
@@ -21,21 +16,12 @@ func IsFile(s string) bool {
 
 var toml_sep = []byte{'+', '+', '+', '\n'}
 
-func Decode(s string) (string, error) {
-   file_y, e := ioutil.ReadFile(s + `\_index.md`)
+func TomlDecode(y []byte) (assert.Map, error) {
+   o, e := toml.LoadBytes(y)
    if e != nil {
-      return "", e
+      return nil, e
    }
-   toml_y := bytes.SplitN(file_y, toml_sep, 3)[1]
-   m := Map{}
-   e = toml.Unmarshal(toml_y, &m)
-   if e != nil {
-      return "", e
-   }
-   if m["_build"] != nil {
-      return "", nil
-   }
-   return `D:\Git\` + m.S("example"), nil
+   return o.ToMap(), nil
 }
 
 func main() {
@@ -45,16 +31,32 @@ func main() {
       log.Fatal(e)
    }
    for n := range a {
-      name := a[n].Name()
-      example, e := Decode(name)
+      index_s := a[n].Name() + `\_index.md`
+      index_y, e := ioutil.ReadFile(index_s)
       if e != nil {
          log.Fatal(e)
       }
-      if example == "" {
+      toml_y := bytes.SplitN(index_y, toml_sep, 3)[1]
+      toml_m, e := TomlDecode(toml_y)
+      if e != nil {
+         log.Fatal(e)
+      }
+      if toml_m["_build"] != nil {
          continue
       }
-      if ! IsFile(example) {
-         println(name)
+      example_s := `D:\Git\` + toml_m.A("example").S(0)
+      if ! IsFile(example_s) {
+         println(index_s)
+         continue
+      }
+      example_y, e := ioutil.ReadFile(example_s)
+      if e != nil {
+         log.Fatal(e)
+      }
+      substr_s := toml_m.A("example").S(1)
+      substr_y := []byte(substr_s)
+      if ! bytes.Contains(example_y, substr_y) {
+         println(index_s)
       }
    }
 }
