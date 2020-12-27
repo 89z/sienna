@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -6,18 +5,10 @@ import (
    "golang.org/x/build/repos"
 )
 
-
 func main() {
-   
-   
-   for s := range repos.ByImportPath {
-      
-      
-      fmt.Println(s)
-      
-      
+   for s, o := range repos.ByImportPath {
+      if o.CoordinatorCanBuild {
+         fmt.Println(s)
+      }
    }
-   
-   
 }
-
