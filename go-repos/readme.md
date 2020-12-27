@@ -1,78 +1,30 @@
 # Go functions
 
-## godoc.org/-/subrepo
+repo                    | godoc.org | golang.org | pkg.go.dev
+------------------------|-----------|------------|-----------
+golang.org/x/arch       |           |            | yes
+golang.org/x/benchmarks |           |            | yes
+golang.org/x/blog       | yes       |            | yes
+golang.org/x/build      |           |            | yes
+golang.org/x/crypto     | yes       |            | yes
+golang.org/x/debug      |           |            | yes
+golang.org/x/exp        | yes       |            | yes
+golang.org/x/image      | yes       |            | yes
+golang.org/x/mobile     |           |            | yes
+golang.org/x/mod        |           |            | yes
+golang.org/x/net        |           |            | yes
+golang.org/x/oauth2     |           |            | yes
+golang.org/x/perf       |           |            | yes
+golang.org/x/review     |           |            | yes
+golang.org/x/sync       |           |            | yes
+golang.org/x/sys        |           |            | yes
+golang.org/x/talks      |           |            | yes
+golang.org/x/term       |           |            | yes
+golang.org/x/text       |           |            | yes
+golang.org/x/time       |           |            | yes
+golang.org/x/tools      |           |            | yes
+golang.org/x/website    |           |            | yes
 
-Ignore the Packages section and focus on the Repositories section
-
-~~~
-golang.org/x/blog
-golang.org/x/crypto
-golang.org/x/exp
-golang.org/x/image
-golang.org/x/mobile
-golang.org/x/net
-golang.org/x/sys
-golang.org/x/text
-golang.org/x/tools
-
-golang.org/x/talks
-~~~
-
-## golang.org/pkg#subrepo
-
-~~~
-blog
-crypto
-exp
-image
-mobile
-net
-sys
-text
-tools
-
-benchmarks
-build
-debug
-perf
-pkgsite
-review
-sync
-time
-tour
-~~~
-
-## pkg.go.dev/golang.org/x/build/repos
-
-~~~
-golang.org/dl
-golang.org/x/arch
-golang.org/x/benchmarks
-golang.org/x/blog
-golang.org/x/build
-golang.org/x/crypto
-golang.org/x/debug
-golang.org/x/example
-golang.org/x/exp
-golang.org/x/image
-golang.org/x/lint
-golang.org/x/mobile
-golang.org/x/mod
-golang.org/x/net
-golang.org/x/oauth2
-golang.org/x/perf
-golang.org/x/playground
-golang.org/x/review
-golang.org/x/scratch
-golang.org/x/sync
-golang.org/x/sys
-golang.org/x/talks
-golang.org/x/term
-golang.org/x/text
-golang.org/x/time
-golang.org/x/tools
-golang.org/x/tour
-golang.org/x/vgo
-golang.org/x/website
-golang.org/x/xerrors
-~~~
+- <https://godoc.org/-/subrepo>
+- <https://golang.org/pkg/#subrepo>
+- <https://pkg.go.dev/golang.org/x/build/repos>
