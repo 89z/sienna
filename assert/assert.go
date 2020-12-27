@@ -2,6 +2,10 @@ package assert
 type Map map[string]interface{}
 type Slice []interface{}
 
+func (a Slice) M(n int) Map {
+   return a[n].(map[string]interface{})
+}
+
 func (a Slice) S(n int) string {
    return a[n].(string)
 }
