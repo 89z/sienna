@@ -26,12 +26,12 @@ func TomlDecode(y []byte) (assert.Map, error) {
 
 func main() {
    os.Chdir(`D:\Git\autumn\content`)
-   a, e := ioutil.ReadDir(".")
+   dir_a, e := ioutil.ReadDir(".")
    if e != nil {
       log.Fatal(e)
    }
-   for n := range a {
-      index_s := a[n].Name() + `\_index.md`
+   for n := range dir_a {
+      index_s := dir_a[n].Name() + `\_index.md`
       index_y, e := ioutil.ReadFile(index_s)
       if e != nil {
          log.Fatal(e)
