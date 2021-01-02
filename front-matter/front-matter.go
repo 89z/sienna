@@ -30,8 +30,8 @@ func main() {
    if e != nil {
       log.Fatal(e)
    }
-   for n := range dir_a {
-      index_s := dir_a[n].Name() + `\_index.md`
+   for _, entry := range dir_a {
+      index_s := entry.Name() + `\_index.md`
       index_y, e := ioutil.ReadFile(index_s)
       if e != nil {
          log.Fatal(e)
