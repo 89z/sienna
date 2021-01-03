@@ -140,13 +140,11 @@ func BaseName(s, char_s string) string {
    return s[:n]
 }
 
-func GetRepo(file_s string) string {
-   switch file_s[:17] {
-   case "mingw-w64-x86_64-", "mingw64.db.tar.gz":
+func GetRepo(s string) string {
+   if s == "mingw64.db.tar.gz" || strings.HasPrefix(s, "mingw-w64-x86_64-") {
       return "http://repo.msys2.org/mingw/x86_64/"
-   default:
-      return "http://repo.msys2.org/msys/x86_64/"
    }
+   return "http://repo.msys2.org/msys/x86_64/"
 }
 
 func IsFile(s string) bool {
