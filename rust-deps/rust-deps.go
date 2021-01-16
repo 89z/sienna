@@ -5,64 +5,51 @@ import (
    "os"
 )
 
+func check(e error) {
+   if e != nil {
+      log.Fatal(e)
+   }
+}
+
 func main() {
    if len(os.Args) != 2 {
       println("rust-deps <crate>")
       os.Exit(1)
    }
-   crate_s := os.Args[1]
-
-   e := System("cargo", "new", "rust-deps")
-   if e != nil {
-      log.Fatal(e)
-   }
-
+   crate := os.Args[1]
+   e := system("cargo", "new", "rust-deps")
+   check(e)
    os.Chdir("rust-deps")
-   toml_m := Map{
-      "dependencies": Map{crate_s: ""},
-      "package": Map{"name": "rust-deps", "version": "1.0.0"},
+   toml := oMap{
+      "dependencies": oMap{crate: ""},
+      "package": oMap{"name": "rust-deps", "version": "1.0.0"},
    }
-
-   e = TomlEncode("Cargo.toml", toml_m)
-   if e != nil {
-      log.Fatal(e)
-   }
-
-   e = System("cargo", "generate-lockfile")
-   if e != nil {
-      log.Fatal(e)
-   }
-
-   lock_m, e := TomlDecode("Cargo.lock")
-   if e != nil {
-      log.Fatal(e)
-   }
-
-   prev_s := ""
-   dep_n := 0
-   name_a := lock_m.A("package")
-
+   e = tomlEncode("Cargo.toml", toml)
+   check(e)
+   e = system("cargo", "generate-lockfile")
+   check(e)
+   lock, e := tomlDecode("Cargo.lock")
+   check(e)
+   prev := ""
+   dep := 0
+   name_a := lock.A("package")
    for n := range name_a {
-      name_s := name_a.M(n).S("name")
-      if name_s == "rust-deps" {
+      name := name_a.M(n).S("name")
+      if name == "rust-deps" {
          continue
       }
-      if name_s == crate_s {
+      if name == crate {
          continue
       }
-      if name_s == prev_s {
+      if name == prev {
          continue
       }
-      println(name_s)
-      prev_s = name_s
-      dep_n++
+      println(name)
+      prev = name
+      dep++
    }
-
-   print("\n", dep_n, " deps\n")
+   print("\n", dep, " deps\n")
    os.Chdir("..")
-
    e = os.RemoveAll("rust-deps")
-   if e != nil {
-      log.Fatal(e)
-   }
+   check(e)
 }

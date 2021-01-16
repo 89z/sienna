@@ -34,12 +34,12 @@ type progress struct {
 }
 
 func (o *progress) Read(y []byte) (int, error) {
-   n, e := o.Parent.Read(y)
+   n, e := o.parent.Read(y)
    if e != nil {
       fmt.Println()
    } else {
-      o.Total += float64(n)
-      fmt.Printf("READ %9s\r", NumberFormat(o.Total))
+      o.total += float64(n)
+      fmt.Printf("READ %9s\r", numberFormat(o.total))
    }
    return n, e
 }
