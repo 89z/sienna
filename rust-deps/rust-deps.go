@@ -32,9 +32,9 @@ func main() {
    check(e)
    prev := ""
    dep := 0
-   name_a := lock.A("package")
-   for n := range name_a {
-      name := name_a.M(n).S("name")
+   packages := lock.a("package")
+   for n := range packages {
+      name := packages.m(n).s("name")
       if name == "rust-deps" {
          continue
       }

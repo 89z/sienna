@@ -56,16 +56,3 @@ func download() error {
    }
    return nil
 }
-
-func httpCopy(in, out string) (int64, error) {
-   println(in)
-   source, e := http.Get(in)
-   if e != nil {
-      return 0, e
-   }
-   dest, e := os.Create(out)
-   if e != nil {
-      return 0, e
-   }
-   return dest.ReadFrom(source.Body)
-}

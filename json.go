@@ -1,8 +1,16 @@
 package sienna
 
-type Map map[string]interface{}
+import (
+   "fmt"
+   "io"
+   "math"
+   "net/http"
+   "os"
+)
 
-func (m Map) A(s string) Slice {
+type oMap map[string]interface{}
+
+func (m oMap) a(s string) slice {
    return m[s].([]interface{})
 }
 

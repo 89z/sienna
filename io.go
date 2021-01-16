@@ -1,4 +1,4 @@
-package main
+package sienna
 
 import (
    "fmt"
@@ -11,14 +11,14 @@ import (
 func httpCopy(in, out string) (int64, error) {
    get, e := http.Get(in)
    if e != nil {
-      return 0, e
+      return e
    }
    dest, e := os.Create(out)
    if e != nil {
-      return 0, e
+      return e
    }
    fmt.Println("GET", in)
-   source := &progress{get.Body, 0}
+   source := &Progress{get.Body, 0}
    return io.Copy(dest, source)
 }
 
@@ -34,12 +34,12 @@ type progress struct {
 }
 
 func (o *progress) Read(y []byte) (int, error) {
-   n, e := o.parent.Read(y)
+   n, e := o.Parent.Read(y)
    if e != nil {
       fmt.Println()
    } else {
-      o.total += float64(n)
-      fmt.Printf("READ %9s\r", numberFormat(o.total))
+      o.Total += float64(n)
+      fmt.Printf("READ %9s\r", NumberFormat(o.Total))
    }
    return n, e
 }
