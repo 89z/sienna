@@ -53,14 +53,14 @@ type manager struct {
 }
 
 func newManager() (manager, error) {
-   cache_s, e := os.UserCacheDir()
+   cache, e := os.UserCacheDir()
    if e != nil {
-      return Manager{}, e
+      return manager{}, e
    }
-   msys_s := path.Join(cache_s, "Msys2")
+   msys_s := path.Join(cache, "Msys2")
    dir_a, e := ioutil.ReadDir(msys_s)
    if e != nil {
-      return Manager{}, e
+      return manager{}, e
    }
    db_a := []string{"mingw64.db.tar.gz", "msys.db.tar.gz"}
    for n := range db_a {
@@ -69,44 +69,44 @@ func newManager() (manager, error) {
       if isFile(real_s) {
          continue
       }
-      url_s := GetRepo(file_s) + file_s
-      e = Copy(url_s, real_s)
+      url := getRepo(file_s) + file_s
+      _, e = httpCopy(url, real_s)
       if e != nil {
-         return Manager{}, e
+         return manager{}, e
       }
-      e = Unarchive(real_s, msys_s)
+      e = unarchive(real_s, msys_s)
       if e != nil {
-         return Manager{}, e
+         return manager{}, e
       }
    }
-   return Manager{msys_s, dir_a}, nil
+   return manager{msys_s, dir_a}, nil
 }
 
-func (o manager) getName(pack_s string) (string, error) {
-   for n := range o.Packages {
-      dir_s := o.Packages[n].Name()
-      if strings.HasPrefix(dir_s, pack_s + "-") {
+func (o manager) getName(pack string) (string, error) {
+   for n := range o.packages {
+      dir_s := o.packages[n].Name()
+      if strings.HasPrefix(dir_s, pack + "-") {
          return dir_s, nil
       }
    }
-   return "", errors.New(pack_s)
+   return "", errors.New(pack)
 }
 
-func (o Manager) getValue(pack_s, key_s string) ([]string, error) {
+func (o manager) getValue(pack, key_s string) ([]string, error) {
    a := []string{}
-   name_s, e := o.GetName(pack_s)
+   name, e := o.getName(pack)
    if e != nil {
       return a, e
    }
-   real_s := path.Join(o.Cache, name_s, "desc")
-   open_o, e := os.Open(real_s)
+   real_s := path.Join(o.cache, name, "desc")
+   open, e := os.Open(real_s)
    if e != nil {
       return a, e
    }
-   scan_o := bufio.NewScanner(open_o)
+   scan := bufio.NewScanner(open)
    dep_b := false
-   for scan_o.Scan() {
-      line_s := scan_o.Text()
+   for scan.Scan() {
+      line_s := scan.Text()
       // STATE 2
       if line_s == key_s {
          dep_b = true
@@ -126,42 +126,42 @@ func (o Manager) getValue(pack_s, key_s string) ([]string, error) {
    return a, nil
 }
 
-func (o manager) resolve(pack_s string) (map[string]bool, error) {
+func (o manager) resolve(pack string) (map[string]bool, error) {
    pack_m := map[string]bool{}
-   for pack_a := []string{pack_s}; len(pack_a) > 0; pack_a = pack_a[1:] {
-      pack_s := pack_a[0]
-      dep_a, e := o.GetValue(pack_s, "%DEPENDS%")
+   for pack_a := []string{pack}; len(pack_a) > 0; pack_a = pack_a[1:] {
+      pack := pack_a[0]
+      dep_a, e := o.getValue(pack, "%DEPENDS%")
       if e != nil {
          return pack_m, e
       }
-      pack_m[pack_s] = true
+      pack_m[pack] = true
       pack_a = append(pack_a, dep_a...)
    }
    return pack_m, nil
 }
 
 func (o manager) sync(tar_s string) error {
-   open_o, e := os.Open(tar_s)
+   open, e := os.Open(tar_s)
    if e != nil {
       return e
    }
-   scan_o := bufio.NewScanner(open_o)
-   for scan_o.Scan() {
-      pack_s := scan_o.Text()
-      val_a, e := o.GetValue(pack_s, "%FILENAME%")
+   scan := bufio.NewScanner(open)
+   for scan.Scan() {
+      pack := scan.Text()
+      val_a, e := o.getValue(pack, "%FILENAME%")
       if e != nil {
          return e
       }
       file_s := val_a[0]
-      real_s := path.Join(o.Cache, file_s)
+      real_s := path.Join(o.cache, file_s)
       if ! isFile(real_s) {
-         url_s := GetRepo(file_s) + file_s
-         e := Copy(url_s, real_s)
+         url := getRepo(file_s) + file_s
+         _, e := httpCopy(url, real_s)
          if e != nil {
             return e
          }
       }
-      e = Unarchive(real_s, `C:\msys2`)
+      e = unarchive(real_s, `C:\msys2`)
       if e != nil {
          return e
       }

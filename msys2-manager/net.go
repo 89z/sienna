@@ -8,12 +8,32 @@ import (
    "os"
 )
 
-type Progress struct {
-   Parent io.Reader
-   Total float64
+func httpCopy(in, out string) (int64, error) {
+   get, e := http.Get(in)
+   if e != nil {
+      return 0, e
+   }
+   dest, e := os.Create(out)
+   if e != nil {
+      return 0, e
+   }
+   fmt.Println("GET", in)
+   source := &progress{get.Body, 0}
+   return io.Copy(dest, source)
 }
 
-func (o *Progress) Read(y []byte) (int, error) {
+func numberFormat(n float64) string {
+   n2 := int(math.Log10(n)) / 3
+   n3 := n / math.Pow10(n2 * 3)
+   return fmt.Sprintf("%.3f", n3) + []string{"", " k", " M", " G"}[n2]
+}
+
+type progress struct {
+   parent io.Reader
+   total float64
+}
+
+func (o *progress) Read(y []byte) (int, error) {
    n, e := o.Parent.Read(y)
    if e != nil {
       fmt.Println()
@@ -22,25 +42,4 @@ func (o *Progress) Read(y []byte) (int, error) {
       fmt.Printf("READ %9s\r", NumberFormat(o.Total))
    }
    return n, e
-}
-
-func Copy(url_s, path_s string) error {
-   get_o, e := http.Get(url_s)
-   if e != nil {
-      return e
-   }
-   create_o, e := os.Create(path_s)
-   if e != nil {
-      return e
-   }
-   fmt.Println("GET", url_s)
-   prog_o := &Progress{get_o.Body, 0}
-   io.Copy(create_o, prog_o)
-   return nil
-}
-
-func NumberFormat(n float64) string {
-   n2 := int(math.Log10(n)) / 3
-   n3 := n / math.Pow10(n2 * 3)
-   return fmt.Sprintf("%.3f", n3) + []string{"", " k", " M", " G"}[n2]
 }

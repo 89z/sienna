@@ -16,16 +16,16 @@ examples:
       os.Exit(1)
    }
 
-   oper_s := os.Args[1]
-   tar_s := os.Args[2]
+   oper := os.Args[1]
+   target := os.Args[2]
 
    o, e := newManager()
    if e != nil {
       log.Fatal(e)
    }
 
-   if oper_s == "deps" {
-      m, e := o.Resolve(tar_s)
+   if oper == "deps" {
+      m, e := o.resolve(target)
       if e != nil {
          log.Fatal(e)
       }
@@ -33,7 +33,7 @@ examples:
          println(s)
       }
    } else {
-      e := o.Sync(tar_s)
+      e := o.sync(target)
       if e != nil {
          log.Fatal(e)
       }
