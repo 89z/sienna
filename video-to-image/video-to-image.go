@@ -2,9 +2,8 @@ package main
 
 import (
    "flag"
-   "fmt"
    "os"
-   "os/exec"
+   "sienna"
 )
 
 var (
@@ -30,27 +29,19 @@ Flags:`)
       flag.PrintDefaults()
       os.Exit(1)
    }
-
    path_s := flag.Arg(0)
-
-   cmd_a := []string{"-hide_banner"}
+   cmd := []string{"-hide_banner"}
    if start_s != "" {
-      cmd_a = append(cmd_a, "-ss", start_s)
+      cmd = append(cmd, "-ss", start_s)
    }
-
-   cmd_a = append(cmd_a, "-i", path_s)
+   cmd = append(cmd, "-i", path_s)
    if dur_s != "" {
-      cmd_a = append(cmd_a, "-t", dur_s)
+      cmd = append(cmd, "-t", dur_s)
    }
-
-   cmd_a = append(cmd_a, "-q", "1", "-vsync", "vfr")
+   cmd = append(cmd, "-q", "1", "-vsync", "vfr")
    if ! all_b {
-      cmd_a = append(cmd_a, "-vf", "select='eq(pict_type, I)'")
+      cmd = append(cmd, "-vf", "select='eq(pict_type, I)'")
    }
-
-   cmd_a = append(cmd_a, "%d.jpg")
-   fmt.Printf("ffmpeg %q\n", cmd_a)
-   o := exec.Command("ffmpeg", cmd_a...)
-   o.Stderr = os.Stderr
-   o.Run()
+   cmd = append(cmd, "%d.jpg")
+   sienna.System(cmd...)
 }

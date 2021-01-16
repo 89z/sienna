@@ -6,6 +6,7 @@ import (
    "math"
    "net/http"
    "os"
+   "os/exec"
 )
 
 func HttpCopy(in, out string) (int64, error) {
@@ -31,6 +32,15 @@ func numberFormat(n float64) string {
    n2 := int(math.Log10(n)) / 3
    n3 := n / math.Pow10(n2 * 3)
    return fmt.Sprintf("%.3f", n3) + []string{"", " k", " M", " G"}[n2]
+}
+
+func System(command ...string) error {
+   name, arg := command[0], command[1:]
+   o := exec.Command(name, arg...)
+   o.Stderr = os.Stderr
+   o.Stdout = os.Stdout
+   println(command)
+   return o.Run()
 }
 
 type progress struct {

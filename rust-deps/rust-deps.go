@@ -4,7 +4,6 @@ import (
    "github.com/pelletier/go-toml"
    "log"
    "os"
-   "os/exec"
    "sienna"
 )
 
@@ -12,13 +11,6 @@ func check(e error) {
    if e != nil {
       log.Fatal(e)
    }
-}
-
-func system(command ...string) error {
-   name, arg := command[0], command[1:]
-   o := exec.Command(name, arg...)
-   o.Stderr = os.Stderr
-   return o.Run()
 }
 
 func tomlDecode(s string) (Map, error) {
