@@ -5,7 +5,7 @@ import (
    "golang.org/x/build/repos"
    "net/http"
    "os"
-   "sienna/assert"
+   "sienna"
    "strings"
 )
 
@@ -45,7 +45,7 @@ func Download() error {
       if e != nil {
          return e
       }
-      get_m := assert.Map{}
+      get_m := sienna.Map{}
       e = json.NewDecoder(get_o.Body).Decode(&get_m)
       if e != nil {
          return e

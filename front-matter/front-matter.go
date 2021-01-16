@@ -6,17 +6,17 @@ import (
    "io/ioutil"
    "log"
    "os"
-   "sienna/assert"
+   "sienna"
 )
+
+var toml_sep = []byte{'+', '+', '+', '\n'}
 
 func IsFile(s string) bool {
    o, e := os.Stat(s)
    return e == nil && o.Mode().IsRegular()
 }
 
-var toml_sep = []byte{'+', '+', '+', '\n'}
-
-func TomlDecode(y []byte) (assert.Map, error) {
+func TomlDecode(y []byte) (sienna.Map, error) {
    o, e := toml.LoadBytes(y)
    if e != nil {
       return nil, e

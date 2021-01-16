@@ -4,7 +4,7 @@ import (
    "encoding/json"
    "golang.org/x/build/repos"
    "net/http"
-   "sienna/assert"
+   "sienna"
    "sort"
 )
 
@@ -26,7 +26,7 @@ func Count() error {
       if e != nil {
          return e
       }
-      get_m := assert.Map{}
+      get_m := sienna.Map{}
       json.NewDecoder(get_o.Body).Decode(&get_m)
       result_a := get_m.A("results")
       len_n := len(result_a)
