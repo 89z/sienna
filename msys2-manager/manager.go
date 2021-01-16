@@ -62,7 +62,7 @@ func newManager() (manager, error) {
    for n := range db_a {
       file_s := db_a[n]
       real_s := path.Join(msys_s, file_s)
-      if isFile(real_s) {
+      if sienna.IsFile(real_s) {
          continue
       }
       url := getRepo(file_s) + file_s
@@ -150,7 +150,7 @@ func (o manager) sync(tar_s string) error {
       }
       file_s := val_a[0]
       real_s := path.Join(o.cache, file_s)
-      if ! isFile(real_s) {
+      if ! sienna.IsFile(real_s) {
          url := getRepo(file_s) + file_s
          _, e := sienna.HttpCopy(url, real_s)
          if e != nil {
