@@ -1,16 +1,23 @@
 package sienna
 
 import (
-   "fmt"
-   "io"
-   "math"
+   "encoding/json"
    "net/http"
-   "os"
 )
 
-type oMap map[string]interface{}
+func JsonFromHttp(s string) (Map, error) {
+   println(s)
+   o, e := http.Get(s)
+   if e != nil {
+      return nil, e
+   }
+   m := Map{}
+   return m, json.NewDecoder(o.Body).Decode(&m)
+}
 
-func (m oMap) a(s string) slice {
+type Map map[string]interface{}
+
+func (m Map) A(s string) Slice {
    return m[s].([]interface{})
 }
 

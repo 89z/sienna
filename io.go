@@ -11,15 +11,15 @@ import (
 func httpCopy(in, out string) (int64, error) {
    get, e := http.Get(in)
    if e != nil {
-      return e
+      return 0, e
    }
    dest, e := os.Create(out)
    if e != nil {
-      return e
+      return 0, e
    }
    fmt.Println("GET", in)
-   source := &Progress{get.Body, 0}
-   return io.Copy(dest, source)
+   source := progress{get.Body, 0}
+   return io.Copy(dest, &source)
 }
 
 func numberFormat(n float64) string {
@@ -34,12 +34,12 @@ type progress struct {
 }
 
 func (o *progress) Read(y []byte) (int, error) {
-   n, e := o.Parent.Read(y)
+   n, e := o.parent.Read(y)
    if e != nil {
       fmt.Println()
    } else {
-      o.Total += float64(n)
-      fmt.Printf("READ %9s\r", NumberFormat(o.Total))
+      o.total += float64(n)
+      fmt.Printf("READ %9s\r", numberFormat(o.total))
    }
    return n, e
 }

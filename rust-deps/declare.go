@@ -29,19 +29,3 @@ func tomlEncode(s string, m oMap) error {
    defer o.Close()
    return toml.NewEncoder(o).Encode(m)
 }
-
-type oMap map[string]interface{}
-
-func (m oMap) a(s string) slice {
-   return m[s].([]interface{})
-}
-
-func (m oMap) s(key string) string {
-   return m[key].(string)
-}
-
-type slice []interface{}
-
-func (a slice) m(n int) oMap {
-   return a[n].(map[string]interface{})
-}

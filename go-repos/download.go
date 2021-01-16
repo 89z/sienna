@@ -1,9 +1,7 @@
 package main
 
 import (
-   "encoding/json"
    "golang.org/x/build/repos"
-   "net/http"
    "os"
    "sienna"
    "strings"
@@ -26,29 +24,23 @@ func download() error {
       if bad_repo[repo_s] {
          continue
       }
-      url_s := "https://api.godoc.org/search?q=" + repo_s + "/"
-      println(url_s)
-      get_o, e := http.Get(url_s)
+      url := "https://api.godoc.org/search?q=" + repo_s + "/"
+      get, e := sienna.JsonFromHttp(url)
       if e != nil {
          return e
       }
-      get_m := sienna.Map{}
-      e = json.NewDecoder(get_o.Body).Decode(&get_m)
-      if e != nil {
-         return e
-      }
-      result_a := get_m.A("results")
+      result_a := get.A("results")
       for n := range result_a {
-         path_s := result_a.M(n).S("path")
-         if ! strings.HasPrefix(path_s, "golang.org/x/") {
+         path := result_a.M(n).S("path")
+         if ! strings.HasPrefix(path, "golang.org/x/") {
             continue
          }
-         path_a := strings.Split(path_s, "/")
+         path_a := strings.Split(path, "/")
          if len(path_a) > 4 {
             continue
          }
-         dest := strings.ReplaceAll(path_s, "/", "-")
-         _, e = httpCopy("https://pkg.go.dev/" + path_s, dest + ".html")
+         dest := strings.ReplaceAll(path, "/", "-")
+         _, e = sienna.httpCopy("https://pkg.go.dev/" + path, dest + ".html")
          if e != nil {
             return e
          }
