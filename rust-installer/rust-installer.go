@@ -9,10 +9,6 @@ import (
    "path"
 )
 
-func IsFile(s string) bool {
-   o, e := os.Stat(s)
-   return e == nil && o.Mode().IsRegular()
-}
 
 func GetDatabase(cache_s string) (string, error) {
    rust_s := path.Join(cache_s, "Rust")

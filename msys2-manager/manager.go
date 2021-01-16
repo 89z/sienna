@@ -7,6 +7,7 @@ import (
    "io/ioutil"
    "os"
    "path"
+   "sienna"
    "strings"
 )
 
@@ -23,11 +24,6 @@ func getRepo(s string) string {
       return "http://repo.msys2.org/mingw/x86_64/"
    }
    return "http://repo.msys2.org/msys/x86_64/"
-}
-
-func isFile(s string) bool {
-   o, e := os.Stat(s)
-   return e == nil && o.Mode().IsRegular()
 }
 
 func unarchive(in_path, out_path string) error {
@@ -70,7 +66,7 @@ func newManager() (manager, error) {
          continue
       }
       url := getRepo(file_s) + file_s
-      _, e = httpCopy(url, real_s)
+      _, e = sienna.HttpCopy(url, real_s)
       if e != nil {
          return manager{}, e
       }
@@ -156,7 +152,7 @@ func (o manager) sync(tar_s string) error {
       real_s := path.Join(o.cache, file_s)
       if ! isFile(real_s) {
          url := getRepo(file_s) + file_s
-         _, e := httpCopy(url, real_s)
+         _, e := sienna.HttpCopy(url, real_s)
          if e != nil {
             return e
          }

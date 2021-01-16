@@ -40,7 +40,7 @@ func download() error {
             continue
          }
          dest := strings.ReplaceAll(path, "/", "-")
-         _, e = sienna.httpCopy("https://pkg.go.dev/" + path, dest + ".html")
+         _, e = sienna.HttpCopy("https://pkg.go.dev/" + path, dest + ".html")
          if e != nil {
             return e
          }

@@ -1,8 +1,11 @@
 package main
 
 import (
+   "github.com/pelletier/go-toml"
    "log"
    "os"
+   "os/exec"
+   "sienna"
 )
 
 func check(e error) {
@@ -11,45 +14,28 @@ func check(e error) {
    }
 }
 
-func main() {
-   if len(os.Args) != 2 {
-      println("rust-deps <crate>")
-      os.Exit(1)
-   }
-   crate := os.Args[1]
-   e := system("cargo", "new", "rust-deps")
-   check(e)
-   os.Chdir("rust-deps")
-   toml := oMap{
-      "dependencies": oMap{crate: ""},
-      "package": oMap{"name": "rust-deps", "version": "1.0.0"},
-   }
-   e = tomlEncode("Cargo.toml", toml)
-   check(e)
-   e = system("cargo", "generate-lockfile")
-   check(e)
-   lock, e := tomlDecode("Cargo.lock")
-   check(e)
-   prev := ""
-   dep := 0
-   packages := lock.a("package")
-   for n := range packages {
-      name := packages.m(n).s("name")
-      if name == "rust-deps" {
-         continue
-      }
-      if name == crate {
-         continue
-      }
-      if name == prev {
-         continue
-      }
-      println(name)
-      prev = name
-      dep++
-   }
-   print("\n", dep, " deps\n")
-   os.Chdir("..")
-   e = os.RemoveAll("rust-deps")
-   check(e)
+func system(command ...string) error {
+   name, arg := command[0], command[1:]
+   o := exec.Command(name, arg...)
+   o.Stderr = os.Stderr
+   return o.Run()
 }
+
+func tomlDecode(s string) (Map, error) {
+   o, e := toml.LoadFile(s)
+   if e != nil {
+      return nil, e
+   }
+   return o.ToMap(), nil
+}
+
+func tomlEncode(s string, m Map) error {
+   o, e := os.Create(s)
+   if e != nil {
+      return e
+   }
+   defer o.Close()
+   return toml.NewEncoder(o).Encode(m)
+}
+
+type Map = sienna.Map

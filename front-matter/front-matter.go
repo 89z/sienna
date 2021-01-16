@@ -18,11 +18,6 @@ func check(e error) {
    }
 }
 
-func isFile(s string) bool {
-   o, e := os.Stat(s)
-   return e == nil && o.Mode().IsRegular()
-}
-
 func tomlDecode(y []byte) (sienna.Map, error) {
    o, e := toml.LoadBytes(y)
    if e != nil {
