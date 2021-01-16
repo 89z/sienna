@@ -12,9 +12,9 @@ func main() {
    }
    var e error
    if os.Args[1] == "download" {
-      e = Download()
+      e = download()
    } else {
-      e = Count()
+      e = count()
    }
    if e != nil {
       log.Fatal(e)

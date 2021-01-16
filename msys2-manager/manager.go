@@ -1,4 +1,4 @@
-package manager
+package main
 
 import (
    "bufio"
@@ -10,12 +10,49 @@ import (
    "strings"
 )
 
-type Manager struct {
-   Cache string
-   Packages []os.FileInfo
+func baseName(s, char_s string) string {
+   n := strings.IndexAny(s, char_s)
+   if n == -1 {
+      return s
+   }
+   return s[:n]
 }
 
-func NewManager() (Manager, error) {
+func getRepo(s string) string {
+   if s == "mingw64.db.tar.gz" || strings.HasPrefix(s, "mingw-w64-x86_64-") {
+      return "http://repo.msys2.org/mingw/x86_64/"
+   }
+   return "http://repo.msys2.org/msys/x86_64/"
+}
+
+func isFile(s string) bool {
+   o, e := os.Stat(s)
+   return e == nil && o.Mode().IsRegular()
+}
+
+func unarchive(in_path, out_path string) error {
+   tar_o := &archiver.Tar{OverwriteExisting: true}
+   in_file := path.Base(in_path)
+   println("EXTRACT", in_file)
+   switch path.Ext(in_file) {
+   case ".zst":
+      zstd_o := archiver.TarZstd{Tar: tar_o}
+      return zstd_o.Unarchive(in_path, out_path)
+   case ".xz":
+      xz_o := archiver.TarXz{Tar: tar_o}
+      return xz_o.Unarchive(in_path, out_path)
+   default:
+      gz_o := archiver.TarGz{Tar: tar_o}
+      return gz_o.Unarchive(in_path, out_path)
+   }
+}
+
+type manager struct {
+   cache string
+   packages []os.FileInfo
+}
+
+func newManager() (manager, error) {
    cache_s, e := os.UserCacheDir()
    if e != nil {
       return Manager{}, e
@@ -29,7 +66,7 @@ func NewManager() (Manager, error) {
    for n := range db_a {
       file_s := db_a[n]
       real_s := path.Join(msys_s, file_s)
-      if IsFile(real_s) {
+      if isFile(real_s) {
          continue
       }
       url_s := GetRepo(file_s) + file_s
@@ -45,7 +82,7 @@ func NewManager() (Manager, error) {
    return Manager{msys_s, dir_a}, nil
 }
 
-func (o Manager) GetName(pack_s string) (string, error) {
+func (o manager) getName(pack_s string) (string, error) {
    for n := range o.Packages {
       dir_s := o.Packages[n].Name()
       if strings.HasPrefix(dir_s, pack_s + "-") {
@@ -55,7 +92,7 @@ func (o Manager) GetName(pack_s string) (string, error) {
    return "", errors.New(pack_s)
 }
 
-func (o Manager) GetValue(pack_s, key_s string) ([]string, error) {
+func (o Manager) getValue(pack_s, key_s string) ([]string, error) {
    a := []string{}
    name_s, e := o.GetName(pack_s)
    if e != nil {
@@ -84,12 +121,12 @@ func (o Manager) GetValue(pack_s, key_s string) ([]string, error) {
          break
       }
       // STATE 3
-      a = append(a, BaseName(line_s, "=>"))
+      a = append(a, baseName(line_s, "=>"))
    }
    return a, nil
 }
 
-func (o Manager) Resolve(pack_s string) (map[string]bool, error) {
+func (o manager) resolve(pack_s string) (map[string]bool, error) {
    pack_m := map[string]bool{}
    for pack_a := []string{pack_s}; len(pack_a) > 0; pack_a = pack_a[1:] {
       pack_s := pack_a[0]
@@ -103,7 +140,7 @@ func (o Manager) Resolve(pack_s string) (map[string]bool, error) {
    return pack_m, nil
 }
 
-func (o Manager) Sync(tar_s string) error {
+func (o manager) sync(tar_s string) error {
    open_o, e := os.Open(tar_s)
    if e != nil {
       return e
@@ -117,7 +154,7 @@ func (o Manager) Sync(tar_s string) error {
       }
       file_s := val_a[0]
       real_s := path.Join(o.Cache, file_s)
-      if ! IsFile(real_s) {
+      if ! isFile(real_s) {
          url_s := GetRepo(file_s) + file_s
          e := Copy(url_s, real_s)
          if e != nil {
@@ -130,41 +167,4 @@ func (o Manager) Sync(tar_s string) error {
       }
    }
    return nil
-}
-
-func BaseName(s, char_s string) string {
-   n := strings.IndexAny(s, char_s)
-   if n == -1 {
-      return s
-   }
-   return s[:n]
-}
-
-func GetRepo(s string) string {
-   if s == "mingw64.db.tar.gz" || strings.HasPrefix(s, "mingw-w64-x86_64-") {
-      return "http://repo.msys2.org/mingw/x86_64/"
-   }
-   return "http://repo.msys2.org/msys/x86_64/"
-}
-
-func IsFile(s string) bool {
-   o, e := os.Stat(s)
-   return e == nil && o.Mode().IsRegular()
-}
-
-func Unarchive(in_path, out_path string) error {
-   tar_o := &archiver.Tar{OverwriteExisting: true}
-   in_file := path.Base(in_path)
-   println("EXTRACT", in_file)
-   switch path.Ext(in_file) {
-   case ".zst":
-      zstd_o := archiver.TarZstd{Tar: tar_o}
-      return zstd_o.Unarchive(in_path, out_path)
-   case ".xz":
-      xz_o := archiver.TarXz{Tar: tar_o}
-      return xz_o.Unarchive(in_path, out_path)
-   default:
-      gz_o := archiver.TarGz{Tar: tar_o}
-      return gz_o.Unarchive(in_path, out_path)
-   }
 }

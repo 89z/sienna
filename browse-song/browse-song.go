@@ -1,5 +1,5 @@
 //go:generate mkwinsyscall -output zbrowse-song.go browse-song.go
-//sys ShellExecute(hwnd int, verb string, file string, args string, cwd string, showCmd int) (err error) = shell32.ShellExecuteW
+//sys shellExecute(hwnd int, verb string, file string, args string, cwd string, showCmd int) (err error) = shell32.ShellExecuteW
 package main
 
 import (
@@ -9,7 +9,7 @@ import (
    "os"
 )
 
-const SW_SHOWNORMAL = 1
+const sw_shownormal = 1
 
 func main() {
    if len(os.Args) != 3 {
@@ -22,7 +22,7 @@ func main() {
    queryVal := url.Values{}
    queryVal.Set("q", query)
    result := "https://www.youtube.com/results?" + queryVal.Encode()
-   e := ShellExecute(0, "", result, "", "", SW_SHOWNORMAL)
+   e := shellExecute(0, "", result, "", "", sw_shownormal)
    if e != nil {
       log.Fatal(e)
    }

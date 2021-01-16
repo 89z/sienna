@@ -8,14 +8,8 @@ import (
    "sort"
 )
 
-type Repo struct {
-   Count int
-   Path string
-}
-
-var repo_a []Repo
-
-func Count() error {
+func count() error {
+   var repo_a []repo
    for repo_s, repo_o := range repos.ByImportPath {
       if ! repo_o.ShowOnDashboard() {
          continue
@@ -30,13 +24,18 @@ func Count() error {
       json.NewDecoder(get_o.Body).Decode(&get_m)
       result_a := get_m.A("results")
       len_n := len(result_a)
-      repo_a = append(repo_a, Repo{len_n, repo_s})
+      repo_a = append(repo_a, repo{len_n, repo_s})
    }
    sort.Slice(repo_a, func(n, n2 int) bool {
-      return repo_a[n].Count < repo_a[n2].Count
+      return repo_a[n].count < repo_a[n2].count
    })
    for _, o := range repo_a {
-      println(o.Count, o.Path)
+      println(o.count, o.path)
    }
    return nil
+}
+
+type repo struct {
+   count int
+   path string
 }

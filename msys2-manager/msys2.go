@@ -2,7 +2,6 @@ package main
 
 import (
    "log"
-   "msys2/manager"
    "os"
 )
 
@@ -20,7 +19,7 @@ examples:
    oper_s := os.Args[1]
    tar_s := os.Args[2]
 
-   o, e := manager.NewManager()
+   o, e := newManager()
    if e != nil {
       log.Fatal(e)
    }

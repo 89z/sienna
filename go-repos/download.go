@@ -16,20 +16,7 @@ var bad_repo = map[string]bool{
    "golang.org/x/tools": true,
 }
 
-func Copy(source, dest string) (int64, error) {
-   println(source)
-   get_o, e := http.Get(source)
-   if e != nil {
-      return 0, e
-   }
-   create_o, e := os.Create(dest)
-   if e != nil {
-      return 0, e
-   }
-   return create_o.ReadFrom(get_o.Body)
-}
-
-func Download() error {
+func download() error {
    os.Mkdir("x", os.ModeDir)
    os.Chdir("x")
    for repo_s, repo_o := range repos.ByImportPath {
@@ -61,11 +48,24 @@ func Download() error {
             continue
          }
          dest := strings.ReplaceAll(path_s, "/", "-")
-         _, e = Copy("https://pkg.go.dev/" + path_s, dest + ".html")
+         _, e = httpCopy("https://pkg.go.dev/" + path_s, dest + ".html")
          if e != nil {
             return e
          }
       }
    }
    return nil
+}
+
+func httpCopy(in, out string) (int64, error) {
+   println(in)
+   source, e := http.Get(in)
+   if e != nil {
+      return 0, e
+   }
+   dest, e := os.Create(out)
+   if e != nil {
+      return 0, e
+   }
+   return dest.ReadFrom(source.Body)
 }

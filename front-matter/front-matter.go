@@ -11,12 +11,12 @@ import (
 
 var toml_sep = []byte{'+', '+', '+', '\n'}
 
-func IsFile(s string) bool {
+func isFile(s string) bool {
    o, e := os.Stat(s)
    return e == nil && o.Mode().IsRegular()
 }
 
-func TomlDecode(y []byte) (sienna.Map, error) {
+func tomlDecode(y []byte) (sienna.Map, error) {
    o, e := toml.LoadBytes(y)
    if e != nil {
       return nil, e
@@ -37,7 +37,7 @@ func main() {
          log.Fatal(e)
       }
       toml_y := bytes.SplitN(index_y, toml_sep, 3)[1]
-      toml_m, e := TomlDecode(toml_y)
+      toml_m, e := tomlDecode(toml_y)
       if e != nil {
          log.Fatal(e)
       }
@@ -45,7 +45,7 @@ func main() {
          continue
       }
       example_s := `D:\Git\` + toml_m.A("example").S(0)
-      if ! IsFile(example_s) {
+      if ! isFile(example_s) {
          println(index_s)
          continue
       }
