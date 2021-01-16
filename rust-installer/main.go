@@ -4,6 +4,7 @@ import (
    "github.com/pelletier/go-toml"
    "os"
    "path"
+   "sienna"
 )
 
 func main() {
@@ -13,16 +14,15 @@ func main() {
    check(e)
    file, e := toml.LoadFile(db)
    check(e)
-   a := []string{"cargo", "rust-std", "rustc"}
-   for n := range a {
-      key_s := "pkg." + a[n] + ".target.x86_64-pc-windows-gnu.xz_url"
-      url_s := file.Get(key_s).(string)
-      file_s := path.Base(url_s)
-      if ! IsFile(file_s) {
-         e := Copy(url_s, file_s)
+   for _, pack := range []string{"cargo", "rust-std", "rustc"} {
+      key := "pkg." + pack + ".target.x86_64-pc-windows-gnu.xz_url"
+      source := file.Get(key).(string)
+      dest := path.Base(source)
+      if ! sienna.IsFile(dest) {
+         _, e := sienna.HttpCopy(source, dest)
          check(e)
       }
-      e = Unarchive(file_s, `C:\Rust`)
+      e = unarchive(dest, `C:\Rust`)
       check(e)
    }
 }
