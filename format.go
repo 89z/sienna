@@ -3,6 +3,7 @@ package sienna
 import (
    "encoding/json"
    "github.com/pelletier/go-toml"
+   "io/ioutil"
    "net/http"
    "os"
 )
