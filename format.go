@@ -2,10 +2,12 @@ package sienna
 
 import (
    "encoding/json"
+   "github.com/pelletier/go-toml"
    "net/http"
+   "os"
 )
 
-func JsonFromHttp(s string) (Map, error) {
+func JsonGetHttp(s string) (Map, error) {
    println(s)
    o, e := http.Get(s)
    if e != nil {
@@ -15,7 +17,7 @@ func JsonFromHttp(s string) (Map, error) {
    return m, json.NewDecoder(o.Body).Decode(&m)
 }
 
-func TomlDecode(y []byte) (sienna.Map, error) {
+func TomlGetByte(y []byte) (Map, error) {
    o, e := toml.LoadBytes(y)
    if e != nil {
       return nil, e
@@ -23,7 +25,7 @@ func TomlDecode(y []byte) (sienna.Map, error) {
    return o.ToMap(), nil
 }
 
-func tomlDecode(s string) (Map, error) {
+func TomlGetFile(s string) (Map, error) {
    o, e := toml.LoadFile(s)
    if e != nil {
       return nil, e
@@ -31,13 +33,12 @@ func tomlDecode(s string) (Map, error) {
    return o.ToMap(), nil
 }
 
-func tomlEncode(s string, m Map) error {
-   o, e := os.Create(s)
+func TomlPutFile(source Map, dest string) error {
+   y, e := toml.Marshal(source)
    if e != nil {
       return e
    }
-   defer o.Close()
-   return toml.NewEncoder(o).Encode(m)
+   return ioutil.WriteFile(dest, y, os.ModePerm)
 }
 
 type Map map[string]interface{}

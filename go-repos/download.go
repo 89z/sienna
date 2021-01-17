@@ -25,7 +25,7 @@ func download() error {
          continue
       }
       url := "https://api.godoc.org/search?q=" + repo_s + "/"
-      get, e := sienna.JsonFromHttp(url)
+      get, e := sienna.JsonGetHttp(url)
       if e != nil {
          return e
       }

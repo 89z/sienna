@@ -1,28 +1,31 @@
 package main
 
 import (
-   "github.com/pelletier/go-toml"
    "os"
-   "path"
    "sienna"
 )
 
 func main() {
    cache, e := os.UserCacheDir()
    check(e)
-   db, e := getDatabase(cache)
+   rust := sienna.NewPath(cache, "rust")
+   e = os.Chdir(rust.Join)
    check(e)
-   file, e := toml.LoadFile(db)
+   dist := sienna.NewPath(channel)
+   if ! sienna.IsFile(dist.Base) {
+      _, e = sienna.HttpCopy(channel, dist.Base)
+      check(e)
+   }
+   file, e := sienna.TomlGetFile(dist.Base)
    check(e)
    for _, pack := range []string{"cargo", "rust-std", "rustc"} {
-      key := "pkg." + pack + ".target.x86_64-pc-windows-gnu.xz_url"
-      source := file.Get(key).(string)
-      dest := path.Base(source)
-      if ! sienna.IsFile(dest) {
-         _, e := sienna.HttpCopy(source, dest)
+      key := file.S("pkg." + pack + ".target.x86_64-pc-windows-gnu.xz_url")
+      xz := sienna.NewPath(key)
+      if ! sienna.IsFile(xz.Base) {
+         _, e := sienna.HttpCopy(xz.Join, xz.Base)
          check(e)
       }
-      e = unarchive(dest, `C:\Rust`)
+      e = unarchive(xz.Base, `C:\rust`)
       check(e)
    }
 }

@@ -7,6 +7,7 @@ import (
    "net/http"
    "os"
    "os/exec"
+   "path/filepath"
 )
 
 func HttpCopy(in, out string) (int64, error) {
@@ -41,6 +42,23 @@ func System(command ...string) error {
    o.Stdout = os.Stdout
    println(command)
    return o.Run()
+}
+
+type Path struct {
+   Base string
+   Dir string
+   Ext string
+   Join string
+}
+
+func NewPath(a ...string) Path {
+   s := filepath.Join(a...)
+   return Path{
+      filepath.Base(s),
+      filepath.Dir(s),
+      filepath.Ext(s),
+      s,
+   }
 }
 
 type progress struct {
