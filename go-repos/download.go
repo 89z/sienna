@@ -1,6 +1,7 @@
 package main
 
 import (
+   "github.com/89z/json"
    "github.com/89z/sienna"
    "golang.org/x/build/repos"
    "os"
@@ -24,8 +25,7 @@ func download() error {
       if bad_repo[repo_s] {
          continue
       }
-      url := "https://api.godoc.org/search?q=" + repo_s + "/"
-      get, e := sienna.JsonGetHttp(url)
+      get, e := json.LoadHttp("https://api.godoc.org/search?q=" + repo_s + "/")
       if e != nil {
          return e
       }

@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/sienna"
+   "github.com/89z/json"
    "golang.org/x/build/repos"
    "sort"
 )
@@ -12,8 +12,7 @@ func count() error {
       if ! repo_o.ShowOnDashboard() {
          continue
       }
-      url := "https://api.godoc.org/search?q=" + repo_s + "/"
-      m, e := sienna.JsonGetHttp(url)
+      m, e := json.LoadHttp("https://api.godoc.org/search?q=" + repo_s + "/")
       if e != nil {
          return e
       }
