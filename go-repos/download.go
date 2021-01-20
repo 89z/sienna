@@ -1,9 +1,9 @@
 package main
 
 import (
+   "github.com/89z/sienna"
    "golang.org/x/build/repos"
    "os"
-   "sienna"
    "strings"
 )
 
