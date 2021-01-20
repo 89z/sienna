@@ -2,11 +2,11 @@ package main
 
 import (
    "bytes"
+   "github.com/89z/sienna"
    "io/ioutil"
    "log"
    "os"
    "path"
-   "sienna"
 )
 
 var toml_sep = []byte{'+', '+', '+', '\n'}

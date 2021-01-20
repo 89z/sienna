@@ -2,8 +2,8 @@ package main
 
 import (
    "flag"
+   "github.com/89z/sienna"
    "os"
-   "sienna"
 )
 
 var (

@@ -1,8 +1,8 @@
 package main
 
 import (
+   "github.com/89z/sienna"
    "os"
-   "sienna"
 )
 
 func main() {
