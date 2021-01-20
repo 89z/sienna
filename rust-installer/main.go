@@ -1,6 +1,7 @@
 package main
 
 import (
+   "github.com/89z/encoding/toml"
    "github.com/89z/sienna"
    "os"
 )
@@ -16,7 +17,7 @@ func main() {
       _, e = sienna.HttpCopy(channel, dist.Base)
       check(e)
    }
-   file, e := sienna.TomlGetFile(dist.Base)
+   file, e := toml.LoadFile(dist.Base)
    check(e)
    for _, pack := range []string{"cargo", "rust-std", "rustc"} {
       key := file.S("pkg." + pack + ".target.x86_64-pc-windows-gnu.xz_url")

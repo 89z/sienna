@@ -1,8 +1,8 @@
 package main
 
 import (
+   "github.com/89z/encoding/toml"
    "github.com/89z/sienna"
-   "log"
    "os"
 )
 
@@ -15,17 +15,17 @@ func main() {
    e := sienna.System("cargo", "new", "rust-deps")
    check(e)
    os.Chdir("rust-deps")
-   e = sienna.TomlPutFile(
+   e = toml.DumpFile(
+      "Cargo.toml",
       Map{
          "dependencies": Map{crate: ""},
          "package": Map{"name": "rust-deps", "version": "1.0.0"},
       },
-      "Cargo.toml",
    )
    check(e)
    e = sienna.System("cargo", "generate-lockfile")
    check(e)
-   lock, e := sienna.TomlGetFile("Cargo.lock")
+   lock, e := toml.LoadFile("Cargo.lock")
    check(e)
    packages := lock.A("package")
    for n := range packages {

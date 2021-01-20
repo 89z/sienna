@@ -1,10 +1,5 @@
 package main
-
-import (
-   "github.com/89z/sienna"
-   "log"
-   "os"
-)
+import "log"
 
 var (
    dep int
@@ -17,4 +12,4 @@ func check(e error) {
    }
 }
 
-type Map = sienna.Map
+type Map map[string]interface{}
