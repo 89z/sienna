@@ -1,9 +1,9 @@
 package main
 
 import (
+   "github.com/89z/sienna"
    "log"
    "os"
-   "sienna"
 )
 
 var (

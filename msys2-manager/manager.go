@@ -3,11 +3,11 @@ package main
 import (
    "bufio"
    "errors"
+   "github.com/89z/sienna"
    "github.com/mholt/archiver/v3"
    "io/ioutil"
    "os"
    "path"
-   "sienna"
    "strings"
 )
 
