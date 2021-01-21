@@ -1,12 +1,5 @@
 package main
-
-import (
-   "github.com/89z/sienna"
-   "github.com/89z/x"
-   "github.com/89z/x/toml"
-   "log"
-   "os"
-)
+import "log"
 
 var (
    dep int

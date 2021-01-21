@@ -1,10 +1,8 @@
 package main
 
 import (
-   "github.com/89z/sienna"
    "github.com/89z/x"
    "github.com/89z/x/toml"
-   "log"
    "os"
 )
 
@@ -14,7 +12,7 @@ func main() {
       os.Exit(1)
    }
    crate := os.Args[1]
-   e := sienna.System("cargo", "new", "rust-deps")
+   e := x.System("cargo", "new", "rust-deps")
    check(e)
    os.Chdir("rust-deps")
    e = toml.DumpFile(
@@ -25,7 +23,7 @@ func main() {
       },
    )
    check(e)
-   e = sienna.System("cargo", "generate-lockfile")
+   e = x.System("cargo", "generate-lockfile")
    check(e)
    lock, e := toml.LoadFile("Cargo.lock")
    check(e)
