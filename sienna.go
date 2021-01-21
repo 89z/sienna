@@ -4,30 +4,10 @@ import (
    "fmt"
    "io"
    "math"
-   "net/http"
    "os"
    "os/exec"
    "path/filepath"
 )
-
-func HttpCopy(in, out string) (int64, error) {
-   get, e := http.Get(in)
-   if e != nil {
-      return 0, e
-   }
-   dest, e := os.Create(out)
-   if e != nil {
-      return 0, e
-   }
-   fmt.Println("GET", in)
-   source := progress{get.Body, 0}
-   return io.Copy(dest, &source)
-}
-
-func IsFile(s string) bool {
-   o, e := os.Stat(s)
-   return e == nil && o.Mode().IsRegular()
-}
 
 func numberFormat(n float64) string {
    n2 := int(math.Log10(n)) / 3
