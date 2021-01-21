@@ -1,8 +1,8 @@
 package main
 
 import (
-   "github.com/89z/json"
-   "github.com/89z/sienna"
+   "github.com/89z/x"
+   "github.com/89z/x/json"
    "golang.org/x/build/repos"
    "os"
    "strings"
@@ -40,7 +40,7 @@ func download() error {
             continue
          }
          dest := strings.ReplaceAll(path, "/", "-")
-         _, e = sienna.HttpCopy("https://pkg.go.dev/" + path, dest + ".html")
+         _, e = x.HttpCopy("https://pkg.go.dev/" + path, dest + ".html")
          if e != nil {
             return e
          }

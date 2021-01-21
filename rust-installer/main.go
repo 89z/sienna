@@ -1,8 +1,8 @@
 package main
 
 import (
-   "github.com/89z/encoding/toml"
    "github.com/89z/sienna"
+   "github.com/89z/x/toml"
    "os"
 )
 

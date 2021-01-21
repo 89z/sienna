@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/json"
+   "github.com/89z/x/json"
    "golang.org/x/build/repos"
    "sort"
 )

@@ -2,8 +2,8 @@ package main
 
 import (
    "bytes"
-   "github.com/89z/encoding/toml"
-   "github.com/89z/sienna"
+   "github.com/89z/x"
+   "github.com/89z/x/toml"
    "io/ioutil"
    "os"
    "path"
@@ -32,7 +32,7 @@ func main() {
       }
       example := front.A("example")
       exFile := path.Join(root, example.S(0))
-      if ! sienna.IsFile(exFile) {
+      if ! x.IsFile(exFile) {
          println(index_s)
          continue
       }
