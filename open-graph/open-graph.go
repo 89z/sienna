@@ -8,12 +8,6 @@ import (
    "regexp"
 )
 
-var patterns = []string{
-   ` content="([^"]+)" property="og:image"`,
-   `="og:image" content="([^"]+)"`,
-   `="og:video" content="([^"]+)"`,
-   `=og:image content="([^"]+)"`,
-}
 
 func findSubmatch(re string, input []byte) string {
    a := regexp.MustCompile(re).FindSubmatch(input)
@@ -23,22 +17,16 @@ func findSubmatch(re string, input []byte) string {
    return string(a[1])
 }
 
-func open(url string) (urls []string, e error) {
+func open(url string) (string, error) {
    get, e := http.Get(url)
    if e != nil {
-      return nil, e
+      return "", e
    }
    body, e := ioutil.ReadAll(get.Body)
    if e != nil {
-      return nil, e
+      return "", e
    }
-   for _, re := range patterns {
-      sub := findSubmatch(re, body)
-      if sub != "" {
-         urls = append(urls, sub)
-      }
-   }
-   return
+   return findSubmatch(`="og:image" content="([^"]+)"`, body), nil
 }
 
 func main() {
