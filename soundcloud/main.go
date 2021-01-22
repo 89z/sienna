@@ -12,20 +12,6 @@ import (
    "time"
 )
 
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
-
-func findSubmatch(re string, input []byte) string {
-   a := regexp.MustCompile(re).FindSubmatch(input)
-   if len(a) < 2 {
-      return ""
-   }
-   return string(a[1])
-}
-
 func main() {
    if len(os.Args) != 2 {
       println("soundcloud-insert <URL>")
