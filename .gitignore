@@ -1,3 +1,4 @@
 *.exe
+*.html
 *.webm
 go.sum
