@@ -2,6 +2,7 @@ package main
 
 import (
    "log"
+   "os"
    "os/exec"
 )
 
@@ -9,6 +10,15 @@ func check(e error) {
    if e != nil {
       log.Fatal(e)
    }
+}
+
+func green(s string) string {
+   return "\x1b[92m" + s + "\x1b[m"
+}
+
+func isFile(name string) bool {
+   fi, e := os.Stat(name)
+   return e == nil && fi.Mode().IsRegular()
 }
 
 func system(command ...string) error {
@@ -21,21 +31,18 @@ func system(command ...string) error {
 func main() {
    e := system("git", "commit", "--verbose")
    check(e)
-   if (is_file('config.toml')) {
-      $dir_o = new RecursiveDirectoryIterator('docs');
-      $iter_o = new RecursiveIteratorIterator($dir_o);
-      echo "UNLINK\n";
-      foreach ($iter_o as $info_o) {
-         if ($info_o->isFile()) {
-            unlink($info_o->getPathname());
-         }
-      }
-      echo "HUGO\n";
-      system('hugo');
-      echo "GIT ADD\n";
-      system('git add .');
-      echo "GIT COMMIT\n";
-      system('git commit --amend');
+   if isFile("config.toml") {
+      println(green("unlink"))
+      os.RemoveAll("docs")
+      println(green("hugo"))
+      e = system("hugo")
+      check(e)
+      println(green("git add"))
+      e = system("git", "add", ".")
+      check(e)
+      println(green("git commit"))
+      e = system("git", "commit", "--amend")
+      check(e)
    }
-   echo "git push\n";
+   println(green("git push"))
 }
