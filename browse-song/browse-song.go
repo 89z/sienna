@@ -1,5 +1,3 @@
-//go:generate mkwinsyscall -output zbrowse-song.go browse-song.go
-//sys shellExecute(hwnd int, verb string, file string, args string, cwd string, showCmd int) (err error) = shell32.ShellExecuteW
 package main
 
 import (
