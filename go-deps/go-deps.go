@@ -3,6 +3,7 @@ package main
 import (
    "bufio"
    "bytes"
+   "github.com/89z/x"
    "log"
    "os"
    "os/exec"
@@ -15,17 +16,6 @@ func check(e error) {
    }
 }
 
-func output(name string, arg ...string) (*bufio.Scanner, error) {
-   b, e := exec.Command(name, arg...).Output()
-   return bufio.NewScanner(bytes.NewReader(b)), e
-}
-
-func system(name string, arg ...string) error {
-   c := exec.Command(name, arg...)
-   c.Stderr, c.Stdout = os.Stderr, os.Stdout
-   return c.Run()
-}
-
 func main() {
    if len(os.Args) != 2 {
       println(`usage:
@@ -36,11 +26,11 @@ example:
       os.Exit(1)
    }
    mod := os.Args[1][8:]
-   e := system("go", "mod", "init", "deps")
+   e := x.System("go", "mod", "init", "deps")
    check(e)
-   e = system("go", "get", mod)
+   e = x.System("go", "get", mod)
    check(e)
-   dep, e := output("go", "list", "-deps", mod + "/...")
+   dep, e := x.Popen("go", "list", "-deps", mod + "/...")
    check(e)
    os.Remove("go.mod")
    os.Remove("go.sum")
