@@ -24,7 +24,8 @@ func main() {
       os.Exit(1)
    }
    root, command := os.Args[1], os.Args[2:]
-   dirs, e := ioutil.ReadDir(root)
+   os.Chdir(root)
+   dirs, e := ioutil.ReadDir(".")
    if e != nil {
       log.Fatal(e)
    }
