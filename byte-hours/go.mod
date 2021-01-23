@@ -1,4 +1,4 @@
-module byte-year
+module byte-hours
 
 go 1.15
 

@@ -34,9 +34,9 @@ func main() {
       check(e)
       size, e := x.FileSize(name)
       check(e)
-      year := time.Since(then).Hours() / 24 / 365
+      hour := time.Since(then).Hours()
       files = append(files, entry{
-         name, float64(size) * year,
+         name, size * int64(hour),
       })
    }
    sort.Slice(files, func (i, j int) bool {
@@ -49,5 +49,5 @@ func main() {
 
 type entry struct {
    name string
-   size float64
+   size int64
 }
