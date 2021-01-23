@@ -12,8 +12,7 @@ func check(e error) {
    }
 }
 
-func popen(command ...string) (*bufio.Scanner, error) {
-   name, arg := command[0], command[1:]
+func popen(name string, arg ...string) (*bufio.Scanner, error) {
    cmd := exec.Command(name, arg...)
    pipe, e := cmd.StdoutPipe()
    if e != nil {

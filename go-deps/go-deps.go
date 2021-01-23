@@ -15,14 +15,12 @@ func check(e error) {
    }
 }
 
-func output(command ...string) (*bufio.Scanner, error) {
-   name, arg := command[0], command[1:]
+func output(name string, arg ...string) (*bufio.Scanner, error) {
    b, e := exec.Command(name, arg...).Output()
    return bufio.NewScanner(bytes.NewReader(b)), e
 }
 
-func system(command ...string) error {
-   name, arg := command[0], command[1:]
+func system(name string, arg ...string) error {
    c := exec.Command(name, arg...)
    c.Stderr, c.Stdout = os.Stderr, os.Stdout
    return c.Run()

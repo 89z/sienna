@@ -11,8 +11,7 @@ func cyan(s string) string {
    return "\x1b[1;36m" + s + "\x1b[m"
 }
 
-func system(command ...string) error {
-   name, arg := command[0], command[1:]
+func system(name string, arg ...string) error {
    c := exec.Command(name, arg...)
    c.Stderr, c.Stdout = os.Stderr, os.Stdout
    return c.Run()
