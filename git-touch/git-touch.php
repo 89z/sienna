@@ -14,24 +14,22 @@ while (true) {
    $file_n++;
 }
 
-$r = popen('git log -m -z --name-only --relative --format=%ct .', 'r');
+$r = popen('git log -m -z --name-only --relative --format=%n%ct .', 'r');
+fgets($r);
 
 while ($file_n > 0) {
-   $get_s = fgets($r);
-   $trim_s = rtrim($get_s);
-   $name_a = explode("\x0", $trim_s);
-   $unix_s = array_pop($name_a);
-   foreach ($name_a as $name_s) {
-      if (! key_exists($name_s, $file_m)) {
+   $unix = (int)rtrim(fgets($r));
+   $names = explode("\x0", rtrim(fgets($r)));
+   foreach ($names as $name) {
+      if (! key_exists($name, $file_m)) {
          continue;
       }
-      if ($file_m[$name_s]) {
+      if ($file_m[$name]) {
          continue;
       }
-      echo $unix_n, "\t", $name_s, "\n";
-      touch($name_s, $unix_n);
-      $file_m[$name_s] = true;
+      echo $unix, "\t", $name, "\n";
+      touch($name, $unix);
+      $file_m[$name] = true;
       $file_n--;
    }
-   $unix_n = (int)($unix_s);
 }

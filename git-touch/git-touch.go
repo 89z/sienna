@@ -1,37 +1,58 @@
-<?php
-declare(strict_types = 1);
+package main
 
-$r = popen('git ls-files', 'r');
-$file_n = 0;
+import (
+   "bufio"
+   "log"
+   "os/exec"
+)
 
-while (true) {
-   $get_s = fgets($r);
-   if (feof($r)) {
-      break;
-   }
-   $trim_s = rtrim($get_s);
-   $file_m[$trim_s] = false;
-   $file_n++;
+func output(command ...string) (*bufio.Scanner, error) {
+   name, arg := command[0], command[1:]
+   b, e := exec.Command(name, arg...).Output()
+   return bufio.NewScanner(bytes.NewReader(b)), e
 }
 
-$r = popen('git log -m -z --name-only --relative --format=%ct .', 'r');
+func popString(a *[]string) string {
+   n := len(*a)
+   s := (*a)[n - 1]
+   *a = (*a)[:n - 1]
+   return s
+}
 
-while ($file_n > 0) {
-   $get_s = fgets($r);
-   $trim_s = rtrim($get_s);
-   $name_a = explode("\x0", $trim_s);
-   $unix_s = array_pop($name_a);
-   foreach ($name_a as $name_s) {
-      if (! key_exists($name_s, $file_m)) {
-         continue;
-      }
-      if ($file_m[$name_s]) {
-         continue;
-      }
-      echo $unix_n, "\t", $name_s, "\n";
-      touch($name_s, $unix_n);
-      $file_m[$name_s] = true;
-      $file_n--;
+func main() {
+   gitLs, e := output("git", "ls-files")
+   if e != nil {
+      log.Fatal(e)
    }
-   $unix_n = (int)($unix_s);
+   files := 0
+   file := map[string]bool{}
+   for gitLs.Scan() {
+      file[gitLs.Text()] = false
+      files++
+   }
+   gitLog, e := output(
+      "git", "log", "-m", "-z", "--name-only", "--relative", "--format=%ct", ".",
+   )
+   if e != nil {
+      log.Fatal(e)
+   }
+   for files > 0 {
+      gitLog.Scan()
+      commit := gitLog.Text()
+      names := strings.Split(commit, "\x00")
+      unix := popString(&names)
+      for _, name := range names {
+         if (! key_exists($name_s, $file_m)) {
+            continue;
+         }
+         if ($file_m[$name_s]) {
+            continue;
+         }
+         echo $unix_n, "\t", $name_s, "\n";
+         touch($name_s, $unix_n);
+         $file_m[$name_s] = true;
+         $file_n--;
+      }
+      $unix_n = (int)($unix_s);
+   }
 }

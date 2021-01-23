@@ -32,7 +32,7 @@ func main() {
    e := system("git", "commit", "--verbose")
    check(e)
    if isFile("config.toml") {
-      println(green("unlink"))
+      println(green("remove docs"))
       os.RemoveAll("docs")
       println(green("hugo"))
       e = system("hugo")
