@@ -1,47 +1,53 @@
 package main
 
 import (
+   "bufio"
    "fmt"
    "github.com/89z/x"
    "log"
    "os"
+   "sort"
+   "time"
 )
 
-const year_sec = 365 * 24 * 60 * 60
+func check(e error) {
+   if e != nil {
+      log.Fatal(e)
+   }
+}
 
-var (
-   err error
-   file *bufio.Scanner
-)
-
-type entry struct {
-   name string
-   size int
+func lsFiles() (*bufio.Scanner, error) {
+   if len(os.Args) == 1 {
+      return x.Popen("git", "ls-files")
+   }
+   arg := os.Args[1]
+   return x.Popen("git", "ls-files", ":!" + arg)
 }
 
 func main() {
-   if len(os.Args) == 1 {
-      file, err = x.Popen("git", "ls-files")
-   } else {
-      arg := os.Args[1]
-      file, err = x.Popen("git", "ls-files", ":!" + arg)
-   }
+   file, e := lsFiles()
+   check(e)
    files := []entry{}
    for file.Scan() {
       name := file.Text()
       then, e := x.ModTime(name)
-      if e != nil {
-         log.Fatal(e)
-      }
-      year := x.SinceHours(then) / 24 / 365
+      check(e)
+      size, e := x.FileSize(name)
+      check(e)
+      year := time.Since(then).Hours() / 24 / 365
       files = append(files, entry{
-         name,
-         'size' => filesize($name_s) * $year_n,
+         name, float64(size) * year,
       })
    }
-   $f = fn ($m, $m2) => $m2['size'] <=> $m['size'];
-   usort($file_a, $f);
-   foreach ($file_a as $file_m) {
-      echo $file_m['size'], ' ', $file_m['name'], "\n";
+   sort.Slice(files, func (i, j int) bool {
+      return files[i].size < files[j].size
+   })
+   for _, each := range files {
+      fmt.Println(each.size, each.name)
    }
+}
+
+type entry struct {
+   name string
+   size float64
 }
