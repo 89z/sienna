@@ -2,9 +2,20 @@ package main
 
 import (
    "bufio"
+   "bytes"
    "log"
+   "os"
    "os/exec"
+   "strconv"
+   "strings"
+   "time"
 )
+
+func check(e error) {
+   if e != nil {
+      log.Fatal(e)
+   }
+}
 
 func output(command ...string) (*bufio.Scanner, error) {
    name, arg := command[0], command[1:]
@@ -12,47 +23,46 @@ func output(command ...string) (*bufio.Scanner, error) {
    return bufio.NewScanner(bytes.NewReader(b)), e
 }
 
-func popString(a *[]string) string {
-   n := len(*a)
-   s := (*a)[n - 1]
-   *a = (*a)[:n - 1]
-   return s
+func scanLines(data []byte, EOF bool) (int, []byte, error) {
+   if EOF {
+      return 0, nil, nil
+   }
+   if i := bytes.Index(data, []byte("\n\n")); i >= 0 {
+      return i + 2, data[:i], nil
+   }
+   return len(data), data[:len(data) - 1], nil
+}
+
+func touch(filename string, sec int64) error {
+   t := time.Unix(sec, 0)
+   return os.Chtimes(filename, t, t)
 }
 
 func main() {
    gitLs, e := output("git", "ls-files")
-   if e != nil {
-      log.Fatal(e)
-   }
-   files := 0
+   check(e)
    file := map[string]bool{}
    for gitLs.Scan() {
-      file[gitLs.Text()] = false
-      files++
+      file[gitLs.Text()] = true
    }
    gitLog, e := output(
-      "git", "log", "-m", "-z", "--name-only", "--relative", "--format=%ct", ".",
+      "git", "log", "--name-only", "--relative", "--pretty=format:%ct", ".",
    )
-   if e != nil {
-      log.Fatal(e)
-   }
-   for files > 0 {
+   check(e)
+   gitLog.Split(scanLines)
+   for len(file) > 0 {
       gitLog.Scan()
-      commit := gitLog.Text()
-      names := strings.Split(commit, "\x00")
-      unix := popString(&names)
-      for _, name := range names {
-         if (! key_exists($name_s, $file_m)) {
-            continue;
+      commit := strings.Split(gitLog.Text(), "\n")
+      unix, e := strconv.ParseInt(commit[0], 10, 64)
+      check(e)
+      for _, name := range commit[1:] {
+         if ! file[name] {
+            continue
          }
-         if ($file_m[$name_s]) {
-            continue;
-         }
-         echo $unix_n, "\t", $name_s, "\n";
-         touch($name_s, $unix_n);
-         $file_m[$name_s] = true;
-         $file_n--;
+         println(unix, "\t", name)
+         e = touch(name, unix)
+         check(e)
+         delete(file, name)
       }
-      $unix_n = (int)($unix_s);
    }
 }
