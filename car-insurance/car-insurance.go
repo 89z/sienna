@@ -28,12 +28,13 @@ const tmpl = `<h1>{{ .agent }}</h1>
 
 func main() {
    from := time.Now()
-   insure["months"] = []string{}
+   months := []string{}
    for n := 12; n > 0; n-- {
       month := from.String()[:10]
-      insure["months"] = append(insure["months"].([]string), month)
+      months = append(months, month)
       from = from.AddDate(0, 1, 0)
    }
+   insure["months"] = months
    fmt.Println(insure)
    t, e := template.New("index").Parse(tmpl)
    if e != nil {
