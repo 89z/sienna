@@ -5,12 +5,7 @@ import (
    "io/ioutil"
    "log"
    "os"
-   "os/exec"
 )
-
-func cyan(s string) string {
-   return "\x1b[1;36m" + s + "\x1b[m"
-}
 
 func main() {
    if len(os.Args) < 3 {
@@ -25,7 +20,7 @@ func main() {
    }
    for _, dir := range dirs {
       path := dir.Name()
-      println(cyan(path))
+      println(x.ColorCyan(path))
       os.Chdir(path)
       e = x.System(name, arg...)
       if e != nil {

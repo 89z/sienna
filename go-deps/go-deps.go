@@ -1,20 +1,10 @@
 package main
 
 import (
-   "bufio"
-   "bytes"
    "github.com/89z/x"
-   "log"
    "os"
-   "os/exec"
    "strings"
 )
-
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
 
 func main() {
    if len(os.Args) != 2 {
@@ -27,11 +17,11 @@ example:
    }
    mod := os.Args[1][8:]
    e := x.System("go", "mod", "init", "deps")
-   check(e)
+   x.Check(e)
    e = x.System("go", "get", mod)
-   check(e)
+   x.Check(e)
    dep, e := x.Popen("go", "list", "-deps", mod + "/...")
-   check(e)
+   x.Check(e)
    os.Remove("go.mod")
    os.Remove("go.sum")
    deps := 0
