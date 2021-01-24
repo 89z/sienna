@@ -10,6 +10,7 @@ import (
 )
 
 const min = 64
+var layout = time.RFC3339[:10]
 
 func check(e error) {
    if e != nil {
@@ -31,15 +32,6 @@ func diff() (*bufio.Scanner, error) {
       return x.Popen("git", "diff", "--cached", "--numstat", ":!docs")
    }
    return x.Popen("git", "diff", "--cached", "--numstat")
-}
-
-func equalDate(value string) (bool, error) {
-   t, e := time.Parse(time.RFC3339, value)
-   if e != nil {
-      return false, e
-   }
-   s := time.RFC3339[:10]
-   return t.Format(s) == time.Now().Format(s), nil
 }
 
 func main() {
@@ -66,9 +58,10 @@ func main() {
    commit, e := x.Popen("git", "log", "--format=%cI")
    check(e)
    commit.Scan()
-   then := commit.Text()
-   fmt.Println("last commit date:", then)
-   equal, e := equalDate(then)
+   parse, e := time.Parse(time.RFC3339, commit.Text())
    check(e)
-   color(equal, "current date:", time.Now())
+   then := parse.Format(layout)
+   now := time.Now().Format(layout)
+   fmt.Println("last commit date:", then)
+   color(then != now, "current date", now)
 }
