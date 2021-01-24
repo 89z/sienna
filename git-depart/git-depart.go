@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "log"
    "os"
-   "os/exec"
 )
 
 func check(e error) {
@@ -13,25 +12,21 @@ func check(e error) {
    }
 }
 
-func green(s string) string {
-   return "\x1b[92m" + s + "\x1b[m"
-}
-
 func main() {
    e := x.System("git", "commit", "--verbose")
    check(e)
    if x.IsFile("config.toml") {
-      println(green("remove docs"))
+      println(x.ColorGreen("remove docs"))
       os.RemoveAll("docs")
-      println(green("hugo"))
+      println(x.ColorGreen("hugo"))
       e = x.System("hugo")
       check(e)
-      println(green("git add"))
+      println(x.ColorGreen("git add"))
       e = x.System("git", "add", ".")
       check(e)
-      println(green("git commit"))
+      println(x.ColorGreen("git commit"))
       e = x.System("git", "commit", "--amend")
       check(e)
    }
-   println(green("git push"))
+   println(x.ColorGreen("git push"))
 }
