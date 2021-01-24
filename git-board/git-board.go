@@ -10,7 +10,6 @@ import (
 )
 
 const min = 64
-var layout = time.RFC3339[:10]
 
 func check(e error) {
    if e != nil {
@@ -58,10 +57,8 @@ func main() {
    commit, e := x.Popen("git", "log", "--format=%cI")
    check(e)
    commit.Scan()
-   parse, e := time.Parse(time.RFC3339, commit.Text())
-   check(e)
-   then := parse.Format(layout)
-   now := time.Now().Format(layout)
+   then := commit.Text()[:10]
+   now := time.Now().String()[:10]
    fmt.Println("last commit date:", then)
    color(then != now, "current date", now)
 }
