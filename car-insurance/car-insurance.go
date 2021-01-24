@@ -1,7 +1,6 @@
 package main
 
 import (
-   "fmt"
    "html/template"
    "log"
    "os"
@@ -22,26 +21,30 @@ var insure = map[string]interface{}{
    "vehicleNum": "VICTO56789R012345",
 }
 
-const tmpl = `<h1>{{ .agent }}</h1>
-<h2>{{ .agentPhone }}</h2>
-`
+func check(e error) {
+   if e != nil {
+      log.Fatal(e)
+   }
+}
+
+type date struct {
+   From string
+   To string
+}
 
 func main() {
    from := time.Now()
-   months := []string{}
-   for n := 12; n > 0; n-- {
-      month := from.String()[:10]
-      months = append(months, month)
+   months := [12]date{}
+   for n := range months {
+      months[n].From = from.String()[:10]
       from = from.AddDate(0, 1, 0)
+      months[n].To = from.String()[:10]
    }
    insure["months"] = months
-   fmt.Println(insure)
-   t, e := template.New("index").Parse(tmpl)
-   if e != nil {
-      log.Fatal(e)
-   }
-   e = t.Execute(os.Stdout, insure)
-   if e != nil {
-      log.Fatal(e)
-   }
+   in, e := template.ParseFiles("in.html")
+   check(e)
+   out, e := os.Create("out.html")
+   check(e)
+   e = in.Execute(out, insure)
+   check(e)
 }

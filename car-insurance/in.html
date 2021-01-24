@@ -52,37 +52,37 @@ h1 {
          <b>Name and Address of Insured<br>Nombre y Direction del Asegurado</b>
       </td>
       <td>
-         <b>Insurance Company &mdash; Compania de Seguro<br>{{ .company }}</b>
+         <b>Insurance Company &mdash; Compania de Seguro<br>{{ $.company }}</b>
       </td>
    </tr>
    <tr>
-      <td>{{ .driver }}<br>{{ .driverAddr }}</td>
-      <td>{{ .companyDept }}<br>{{ .companyPhone }}</td>
+      <td>{{ $.driver }}<br>{{ $.driverAddr }}</td>
+      <td>{{ $.companyDept }}<br>{{ $.companyPhone }}</td>
    </tr>
    <tr>
-      <td>{{ .driverCity }}</td>
+      <td>{{ $.driverCity }}</td>
       <td>
-         <span>Agent &mdash; Agente<br>{{ .agent }}</span>
-         <span>Phone #: {{ .agentPhone }}</span>
+         <span>Agent &mdash; Agente<br>{{ $.agent }}</span>
+         <span>Phone #: {{ $.agentPhone }}</span>
       </td>
    </tr>
    <tr>
       <td>Policy Number &mdash; Numero de Poliza</td>
-      <td>{{ .policy }}</td>
+      <td>{{ $.policy }}</td>
    </tr>
    <tr>
       <td>Effective Date &mdash; Fecha Efectiva</td>
-      <td>{{ . }}</td>
+      <td>{{ .From }}</td>
    </tr>
    <tr>
       <td>Expiration Date &mdash; Fecha de Expiration</td>
-      <td>{{ . }} &mdash; 12:01 A.M.</td>
+      <td>{{ .To }} &mdash; 12:01 A.M.</td>
    </tr>
    <tr>
       <td>
          <b>Vehicle Year / Make / Model<br>Vehiculo Ane / Marca / Modele</b>
       </td>
-      <td>{{ .vehicle }}<br>{{ .vehicleNum }}</td>
+      <td>{{ $.vehicle }}<br>{{ $.vehicleNum }}</td>
    </tr>
    <tr>
       <td>This policy provides at least the minimum amounts of liability
@@ -96,7 +96,7 @@ proveer cobertura para lotras personas y otros vehiculuos segun provisto en la
 poliza de seguro.</td>
    </tr>
    <tr><td colspan="2"><b>Driver Name(s)</b></td></tr>
-   <tr><td colspan="2"><ol><li>{{ .driver }}</li></ol></td></tr>
+   <tr><td colspan="2"><ol><li>{{ $.driver }}</li></ol></td></tr>
    <tr>
       <td>
          <p class="center"><b>Texas Liability<br>Insurance Card</b></p>
