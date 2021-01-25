@@ -7,17 +7,17 @@ import (
 )
 
 var (
-   all_b bool
-   dur_s string
-   start_s string
+   all bool
+   duration string
+   start string
 )
 
 func main() {
-   flag.BoolVar(&all_b, "a", false, "output all frames")
-   flag.StringVar(&dur_s, "d", "", "duration")
-   flag.StringVar(&start_s, "s", "", "start")
-
+   flag.BoolVar(&all, "a", false, "output all frames")
+   flag.StringVar(&duration, "d", "", "duration")
+   flag.StringVar(&start, "s", "", "start")
    flag.Parse()
+
    if flag.NArg() != 1 {
 println(`Name:
    video-to-image - create sequence of images from a video
@@ -29,19 +29,20 @@ Flags:`)
       flag.PrintDefaults()
       os.Exit(1)
    }
-   path_s := flag.Arg(0)
-   cmd := []string{"-hide_banner"}
-   if start_s != "" {
-      cmd = append(cmd, "-ss", start_s)
+
+   path := flag.Arg(0)
+   arg := []string{"-hide_banner"}
+   if start != "" {
+      arg = append(arg, "-ss", start)
    }
-   cmd = append(cmd, "-i", path_s)
-   if dur_s != "" {
-      cmd = append(cmd, "-t", dur_s)
+   arg = append(arg, "-i", path)
+   if duration != "" {
+      arg = append(arg, "-t", duration)
    }
-   cmd = append(cmd, "-q", "1", "-vsync", "vfr")
-   if ! all_b {
-      cmd = append(cmd, "-vf", "select='eq(pict_type, I)'")
+   arg = append(arg, "-q", "1", "-vsync", "vfr")
+   if ! all {
+      arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
-   cmd = append(cmd, "%d.jpg")
-   x.System(cmd...)
+   arg = append(arg, "%d.jpg")
+   x.System("ffmpeg", arg...)
 }
