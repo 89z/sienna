@@ -4,17 +4,10 @@ import (
    "bufio"
    "fmt"
    "github.com/89z/x"
-   "log"
    "os"
    "sort"
    "time"
 )
-
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
 
 func lsFiles() (*bufio.Scanner, error) {
    if len(os.Args) == 1 {
@@ -26,14 +19,14 @@ func lsFiles() (*bufio.Scanner, error) {
 
 func main() {
    file, e := lsFiles()
-   check(e)
+   x.Check(e)
    files := []entry{}
    for file.Scan() {
       name := file.Text()
       then, e := x.ModTime(name)
-      check(e)
+      x.Check(e)
       size, e := x.FileSize(name)
-      check(e)
+      x.Check(e)
       hour := time.Since(then).Hours()
       files = append(files, entry{
          name, size * int64(hour),

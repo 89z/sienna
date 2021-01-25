@@ -21,12 +21,6 @@ var insure = map[string]interface{}{
    "vehicleNum": "VICTO56789R012345",
 }
 
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
-
 type date struct {
    From string
    To string
@@ -42,9 +36,15 @@ func main() {
    }
    insure["months"] = months
    in, e := template.ParseFiles("in.html")
-   check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    out, e := os.Create("out.html")
-   check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    e = in.Execute(out, insure)
-   check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
 }
