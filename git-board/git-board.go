@@ -4,18 +4,11 @@ import (
    "bufio"
    "fmt"
    "github.com/89z/x"
-   "log"
    "strings"
    "time"
 )
 
-const min = 64
-
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
+const minimum = 64
 
 func color(test bool, key string, value interface{}) {
    message := fmt.Sprint(key, ": ", value)
@@ -35,9 +28,9 @@ func diff() (*bufio.Scanner, error) {
 
 func main() {
    e := x.System("git", "add", ".")
-   check(e)
+   x.Check(e)
    stat, e := diff()
-   check(e)
+   x.Check(e)
    var add, del, totAdd, totCha, totDel int
    for stat.Scan() {
       totCha++
@@ -49,13 +42,13 @@ func main() {
       totAdd += add
       totDel += del
    }
-   fmt.Println("minimum:", min)
-   color(totCha >= min, "changed files", totCha)
-   color(totAdd >= min, "additions", totAdd)
-   color(totDel >= min, "deletions", totDel)
+   fmt.Println("minimum:", minimum)
+   color(totCha >= minimum, "changed files", totCha)
+   color(totAdd >= minimum, "additions", totAdd)
+   color(totDel >= minimum, "deletions", totDel)
    fmt.Println()
    commit, e := x.Popen("git", "log", "--format=%cI")
-   check(e)
+   x.Check(e)
    commit.Scan()
    then := commit.Text()[:10]
    now := time.Now().String()[:10]
