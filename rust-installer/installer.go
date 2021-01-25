@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/toml"
    "github.com/mholt/archiver/v3"
-   "log"
    "os"
    "path/filepath"
 )
@@ -17,12 +16,6 @@ var packages = []string{
    "pkg.rustc.target.x86_64-pc-windows-gnu",
 }
 
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
-
 func unarchive(file, dir string) error {
    tar := &archiver.Tar{OverwriteExisting: true, StripComponents: 2}
    println("EXTRACT", file)
@@ -32,24 +25,24 @@ func unarchive(file, dir string) error {
 
 func main() {
    user, e := os.UserCacheDir()
-   check(e)
+   x.Check(e)
    e = os.Chdir(filepath.Join(user, "rust"))
-   check(e)
+   x.Check(e)
    dist := filepath.Base(channel)
    if ! x.IsFile(dist) {
       _, e = x.HttpCopy(channel, dist)
-      check(e)
+      x.Check(e)
    }
    manifest, e := toml.LoadFile(dist)
-   check(e)
+   x.Check(e)
    for _, pack := range packages {
       url := manifest.M(pack).S("xz_url")
       base := filepath.Base(url)
       if ! x.IsFile(base) {
          _, e = x.HttpCopy(url, base)
-         check(e)
+         x.Check(e)
       }
       e = unarchive(base, `C:\rust`)
-      check(e)
+      x.Check(e)
    }
 }

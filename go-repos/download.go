@@ -4,11 +4,10 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/json"
    "golang.org/x/build/repos"
-   "os"
    "strings"
 )
 
-var bad_repo = map[string]bool{
+var badRepo = map[string]bool{
    "golang.org/x/build": true,
    "golang.org/x/crypto": true,
    "golang.org/x/oauth2": true,
@@ -16,31 +15,29 @@ var bad_repo = map[string]bool{
 }
 
 func download() error {
-   os.Mkdir("x", os.ModeDir)
-   os.Chdir("x")
-   for repo_s, repo_o := range repos.ByImportPath {
-      if ! repo_o.ShowOnDashboard() {
+   for importPath, info := range repos.ByImportPath {
+      if ! info.ShowOnDashboard() {
          continue
       }
-      if bad_repo[repo_s] {
+      if badRepo[importPath] {
          continue
       }
-      get, e := json.LoadHttp("https://api.godoc.org/search?q=" + repo_s + "/")
+      get, e := json.LoadHttp(
+         "https://api.godoc.org/search?q=" + importPath + "/",
+      )
       if e != nil {
          return e
       }
-      result_a := get.A("results")
-      for n := range result_a {
-         path := result_a.M(n).S("path")
+      results := get.A("results")
+      for n := range results {
+         path := results.M(n).S("path")
          if ! strings.HasPrefix(path, "golang.org/x/") {
             continue
          }
-         path_a := strings.Split(path, "/")
-         if len(path_a) > 4 {
+         if strings.Count(path, "/") > 3 {
             continue
          }
-         dest := strings.ReplaceAll(path, "/", "-")
-         _, e = x.HttpCopy("https://pkg.go.dev/" + path, dest + ".html")
+         _, e = x.HttpCopy("https://pkg.go.dev/" + path, path)
          if e != nil {
             return e
          }
