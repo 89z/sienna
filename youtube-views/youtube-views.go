@@ -21,7 +21,7 @@ func main() {
    if e != nil {
       log.Fatal(e)
    }
-   views, e := youtube.Views(info)
+   views, e := info.Views()
    if e != nil {
       log.Fatal(e)
    }

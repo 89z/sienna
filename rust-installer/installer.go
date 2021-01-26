@@ -30,7 +30,7 @@ func main() {
    x.Check(e)
    dist := filepath.Base(channel)
    if ! x.IsFile(dist) {
-      _, e = x.HttpCopy(channel, dist)
+      _, e = x.Copy(channel, dist)
       x.Check(e)
    }
    manifest, e := toml.LoadFile(dist)
@@ -39,7 +39,7 @@ func main() {
       url := manifest.M(pack).S("xz_url")
       base := filepath.Base(url)
       if ! x.IsFile(base) {
-         _, e = x.HttpCopy(url, base)
+         _, e = x.Copy(url, base)
          x.Check(e)
       }
       e = unarchive(base, `C:\rust`)

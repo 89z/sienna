@@ -48,34 +48,32 @@ type manager struct {
    packages []os.FileInfo
 }
 
-func newManager() (manager, error) {
+func newManager() (m manager, e error) {
    cache, e := os.UserCacheDir()
    if e != nil {
-      return manager{}, e
+      return
    }
-   msys_s := path.Join(cache, "Msys2")
-   dir_a, e := ioutil.ReadDir(msys_s)
+   msys := path.Join(cache, "Msys2")
+   dir, e := ioutil.ReadDir(msys)
    if e != nil {
-      return manager{}, e
+      return
    }
-   db_a := []string{"mingw64.db.tar.gz", "msys.db.tar.gz"}
-   for n := range db_a {
-      file_s := db_a[n]
-      real_s := path.Join(msys_s, file_s)
+   for _, file := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
+      real_s := path.Join(msys, file)
       if x.IsFile(real_s) {
          continue
       }
-      url := getRepo(file_s) + file_s
-      _, e = x.HttpCopy(url, real_s)
+      url := getRepo(file) + file
+      _, e = x.Copy(url, real_s)
       if e != nil {
-         return manager{}, e
+         return
       }
-      e = unarchive(real_s, msys_s)
+      e = unarchive(real_s, msys)
       if e != nil {
-         return manager{}, e
+         return
       }
    }
-   return manager{msys_s, dir_a}, nil
+   return manager{msys, dir}, nil
 }
 
 func (o manager) getName(pack string) (string, error) {
@@ -152,7 +150,7 @@ func (o manager) sync(tar_s string) error {
       real_s := path.Join(o.cache, file_s)
       if ! x.IsFile(real_s) {
          url := getRepo(file_s) + file_s
-         _, e := x.HttpCopy(url, real_s)
+         _, e := x.Copy(url, real_s)
          if e != nil {
             return e
          }
