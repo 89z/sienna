@@ -1,21 +1,12 @@
 package main
 
 import (
+   "github.com/89z/x"
    "io/ioutil"
    "log"
    "net/http"
    "os"
-   "regexp"
 )
-
-
-func findSubmatch(re string, input []byte) string {
-   a := regexp.MustCompile(re).FindSubmatch(input)
-   if len(a) < 2 {
-      return ""
-   }
-   return string(a[1])
-}
 
 func open(url string) (string, error) {
    get, e := http.Get(url)
@@ -26,7 +17,7 @@ func open(url string) (string, error) {
    if e != nil {
       return "", e
    }
-   return findSubmatch(`="og:image" content="([^"]+)"`, body), nil
+   return x.FindSubmatch(`="og:image" content="([^"]+)"`, body), nil
 }
 
 func main() {

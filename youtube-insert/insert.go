@@ -13,12 +13,12 @@ func findSubmatch(re, input string) string {
    return a[1]
 }
 
-func getImage(id_s string) string {
-   url_s := "https://i.ytimg.com/vi/"
-   if httpHead(url_s + id_s + "/sddefault.jpg") {
+func getImage(id string) string {
+   url := "https://i.ytimg.com/vi/"
+   if httpHead(url + id + "/sddefault.jpg") {
       return ""
    }
-   if httpHead(url_s + id_s + "/sd1.jpg") {
+   if httpHead(url + id + "/sd1.jpg") {
       return "/sd1"
    }
    return "/hqdefault"
