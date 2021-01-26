@@ -15,5 +15,5 @@ func main() {
    if e != nil {
       log.Fatal(e)
    }
-   println(rec)
+   print(rec, ",\n")
 }

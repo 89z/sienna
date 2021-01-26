@@ -12,20 +12,18 @@ func main() {
       println("youtube-views <URL>")
       os.Exit(1)
    }
-   url_s := os.Args[1]
-   o, e := url.Parse(url_s)
+   u, e := url.Parse(os.Args[1])
    if e != nil {
       log.Fatal(e)
    }
-   id := o.Query().Get("v")
+   id := u.Query().Get("v")
    info, e := youtube.Info(id)
    if e != nil {
       log.Fatal(e)
    }
-   view, e := youtube.Views(info)
+   views, e := youtube.Views(info)
    if e != nil {
       log.Fatal(e)
    }
-   color, _ := youtube.Color(view)
-   println(color)
+   println(views)
 }

@@ -37,7 +37,7 @@ func download() error {
          if strings.Count(path, "/") > 3 {
             continue
          }
-         _, e = x.HttpCopy("https://pkg.go.dev/" + path, path)
+         _, e = x.Copy("https://pkg.go.dev/" + path, path)
          if e != nil {
             return e
          }

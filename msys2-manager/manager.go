@@ -27,19 +27,19 @@ func getRepo(s string) string {
 }
 
 func unarchive(in_path, out_path string) error {
-   tar_o := &archiver.Tar{OverwriteExisting: true}
+   tar := &archiver.Tar{OverwriteExisting: true}
    in_file := path.Base(in_path)
    println("EXTRACT", in_file)
    switch path.Ext(in_file) {
    case ".zst":
-      zstd_o := archiver.TarZstd{Tar: tar_o}
-      return zstd_o.Unarchive(in_path, out_path)
+      zs := archiver.TarZstd{Tar: tar}
+      return zs.Unarchive(in_path, out_path)
    case ".xz":
-      xz_o := archiver.TarXz{Tar: tar_o}
-      return xz_o.Unarchive(in_path, out_path)
+      xz := archiver.TarXz{Tar: tar}
+      return xz.Unarchive(in_path, out_path)
    default:
-      gz_o := archiver.TarGz{Tar: tar_o}
-      return gz_o.Unarchive(in_path, out_path)
+      gz := archiver.TarGz{Tar: tar}
+      return gz.Unarchive(in_path, out_path)
    }
 }
 
