@@ -55,14 +55,13 @@ func main() {
    // year
    info, e := youtube.Info(id)
    x.Check(e)
-   if info["description"] == nil {
+   if info.Description.SimpleText == "" {
       println("Clapham Junction")
       os.Exit(1)
    }
-   desc := info.M("description").S("simpleText")
-   date := info.S("publishDate")[:4]
+   date := info.PublishDate[:4]
    for _, pattern := range patterns {
-      match := findSubmatch(pattern, desc)
+      match := findSubmatch(pattern, info.Description.SimpleText)
       if match == "" {
          continue
       }
@@ -74,8 +73,8 @@ func main() {
    year, e := strconv.Atoi(date)
    x.Check(e)
    // song, artist
-   title := info.M("title").S("simpleText")
-   line := regexp.MustCompile(".* · .*").FindString(desc)
+   title := info.Title.SimpleText
+   line := regexp.MustCompile(".* · .*").FindString(info.Description.SimpleText)
    if line != "" {
       titles := strings.Split(line, " · ")
       artists := titles[1:]
