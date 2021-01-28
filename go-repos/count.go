@@ -1,35 +1,44 @@
 package main
 
 import (
-   "github.com/89z/x/json"
+   "encoding/json"
    "golang.org/x/build/repos"
+   "net/http"
    "sort"
 )
 
 func count() error {
-   var repo_a []repo
-   for repo_s, repo_o := range repos.ByImportPath {
-      if ! repo_o.ShowOnDashboard() {
+   var packs []pack
+   for path, value := range repos.ByImportPath {
+      if ! value.ShowOnDashboard() {
          continue
       }
-      m, e := json.LoadHttp("https://api.godoc.org/search?q=" + repo_s + "/")
+      url := "https://api.godoc.org/search?q=" + path + "/"
+      println(url)
+      get, e := http.Get(url)
       if e != nil {
          return e
       }
-      results := m.A("results")
-      size := len(results)
-      repo_a = append(repo_a, repo{size, repo_s})
+      var body map[string]interface{}
+      e = json.NewDecoder(get.Body).Decode(&body)
+      if e != nil {
+         return e
+      }
+      result := body["results"].([]interface{})
+      packs = append(packs, pack{
+         len(result), path,
+      })
    }
-   sort.Slice(repo_a, func(n, n2 int) bool {
-      return repo_a[n].count < repo_a[n2].count
+   sort.Slice(packs, func(i, j int) bool {
+      return packs[i].count < packs[j].count
    })
-   for _, o := range repo_a {
-      println(o.count, o.path)
+   for _, each := range packs {
+      println(each.count, each.path)
    }
    return nil
 }
 
-type repo struct {
+type pack struct {
    count int
    path string
 }
