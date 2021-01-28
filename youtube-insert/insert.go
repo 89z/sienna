@@ -1,16 +1,10 @@
 package main
 
 import (
+   "bytes"
    "encoding/json"
-   "github.com/89z/x"
-   "github.com/89z/x/youtube"
    "net/http"
-   "net/url"
-   "os"
    "regexp"
-   "strconv"
-   "strings"
-   "time"
 )
 
 /* the order doesnt matter here, as we will find the lowest date of all
@@ -48,6 +42,7 @@ func marshal(v interface{}) ([]byte, error) {
    var dst bytes.Buffer
    enc := json.NewEncoder(&dst)
    enc.SetEscapeHTML(false)
+   enc.SetIndent("", " ")
    err := enc.Encode(v)
    if err != nil {
       return nil, err

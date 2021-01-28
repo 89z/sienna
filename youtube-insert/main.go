@@ -1,10 +1,8 @@
 package main
 
 import (
-   "encoding/json"
    "github.com/89z/x"
    "github.com/89z/x/youtube"
-   "net/http"
    "net/url"
    "os"
    "regexp"
@@ -51,12 +49,7 @@ func main() {
    now := strconv.FormatInt(
       time.Now().Unix(), 36,
    )
-   /*
-   {
-      "q": "a=qnitv1&b=XeojXq6ySs4&p=y&y=2011",
-      "s": "Kate Bush - Snowflake"
-   },
-   */
+   // print
    value := make(url.Values)
    value.Set("a", now)
    value.Set("b", id)
@@ -66,11 +59,9 @@ func main() {
    if image != "" {
       value.Set("c", image)
    }
-   enc := json.NewEncoder(os.Stdout)
-   enc.SetEscapeHTML(false)
-   enc.SetIndent("", " ")
-   e = enc.Encode(map[string]string{
+   data, e := marshal(map[string]string{
       "q": value.Encode(), "s": title,
    })
    x.Check(e)
+   os.Stdout.Write(append(data, ',', '\n'))
 }

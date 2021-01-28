@@ -10,7 +10,8 @@ func open(url string) (string, error) {
    if e != nil {
       return "", e
    }
-   return x.FindSubmatch(`="og:image" content="([^"]+)"`, get), nil
+   image := x.FindSubmatch(`="og:image" content="([^"]+)"`, get)
+   return string(image), nil
 }
 
 func main() {
