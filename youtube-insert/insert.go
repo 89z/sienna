@@ -33,9 +33,9 @@ func getImage(id string) string {
       return ""
    }
    if httpHead(url + id + "/sd1.jpg") {
-      return "/sd1"
+      return "sd1"
    }
-   return "/hqdefault"
+   return "hqdefault"
 }
 
 func httpHead(url string) bool {
@@ -44,52 +44,13 @@ func httpHead(url string) bool {
    return e == nil && resp.StatusCode == 200
 }
 
-func main() {
-   if len(os.Args) != 2 {
-      println("youtube-insert <URL>")
-      os.Exit(1)
+func marshal(v interface{}) ([]byte, error) {
+   var dst bytes.Buffer
+   enc := json.NewEncoder(&dst)
+   enc.SetEscapeHTML(false)
+   err := enc.Encode(v)
+   if err != nil {
+      return nil, err
    }
-   u, e := url.Parse(os.Args[1])
-   x.Check(e)
-   id := u.Query().Get("v")
-   // year
-   info, e := youtube.Info(id)
-   x.Check(e)
-   if info.Description.SimpleText == "" {
-      println("Clapham Junction")
-      os.Exit(1)
-   }
-   date := info.PublishDate[:4]
-   for _, pattern := range patterns {
-      match := findSubmatch(pattern, info.Description.SimpleText)
-      if match == "" {
-         continue
-      }
-      if match >= date {
-         continue
-      }
-      date = match
-   }
-   year, e := strconv.Atoi(date)
-   x.Check(e)
-   // song, artist
-   title := info.Title.SimpleText
-   line := regexp.MustCompile(".* · .*").FindString(info.Description.SimpleText)
-   if line != "" {
-      titles := strings.Split(line, " · ")
-      artists := titles[1:]
-      title = strings.Join(artists, ", ") + " - " + titles[0]
-   }
-   // time
-   now := strconv.FormatInt(
-      time.Now().Unix(), 36,
-   )
-   // image
-   image := getImage(id)
-   // print
-   rec, e := json.Marshal(
-      []interface{}{now, year, "y/" + id + image, title},
-   )
-   x.Check(e)
-   os.Stdout.Write(append(rec, ',', '\n'))
+   return dst.Bytes()[:dst.Len() - 1], nil
 }
