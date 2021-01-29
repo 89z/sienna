@@ -11,6 +11,8 @@ var (
    prev string
 )
 
+type Map map[string]interface{}
+
 func main() {
    if len(os.Args) != 2 {
       println("rust-deps <crate>")

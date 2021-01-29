@@ -1,0 +1,15 @@
+[[package]]
+name = "a"
+version = "0.1.0"
+dependencies = [
+ "regex",
+]
+
+[[package]]
+name = "aho-corasick"
+version = "0.7.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7404febffaa47dac81aa44dba71523c9d069b1bdc50a77db41195149e17f68e5"
+dependencies = [
+ "memchr",
+]
