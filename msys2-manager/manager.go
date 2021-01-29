@@ -26,20 +26,20 @@ func getRepo(s string) string {
    return "http://repo.msys2.org/msys/x86_64/"
 }
 
-func unarchive(in_path, out_path string) error {
+func unarchive(in, out string) error {
    tar := &archiver.Tar{OverwriteExisting: true}
-   in_file := path.Base(in_path)
-   println("EXTRACT", in_file)
-   switch path.Ext(in_file) {
+   base := path.Base(in)
+   println("EXTRACT", base)
+   switch path.Ext(base) {
    case ".zst":
       zs := archiver.TarZstd{Tar: tar}
-      return zs.Unarchive(in_path, out_path)
+      return zs.Unarchive(in, out)
    case ".xz":
       xz := archiver.TarXz{Tar: tar}
-      return xz.Unarchive(in_path, out_path)
+      return xz.Unarchive(in, out)
    default:
       gz := archiver.TarGz{Tar: tar}
-      return gz.Unarchive(in_path, out_path)
+      return gz.Unarchive(in, out)
    }
 }
 
@@ -49,36 +49,35 @@ type manager struct {
 }
 
 func newManager() (m manager, e error) {
-   cache, e := os.UserCacheDir()
+   cache, e := x.GetCache("msys2")
    if e != nil {
       return
    }
-   msys := path.Join(cache, "Msys2")
-   dir, e := ioutil.ReadDir(msys)
+   dir, e := ioutil.ReadDir(cache)
    if e != nil {
       return
    }
    for _, file := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
-      real_s := path.Join(msys, file)
-      if x.IsFile(real_s) {
+      abs := path.Join(cache, file)
+      if x.IsFile(abs) {
          continue
       }
       url := getRepo(file) + file
-      _, e = x.Copy(url, real_s)
+      _, e = x.Copy(url, abs)
       if e != nil {
          return
       }
-      e = unarchive(real_s, msys)
+      e = unarchive(abs, cache)
       if e != nil {
          return
       }
    }
-   return manager{msys, dir}, nil
+   return manager{cache, dir}, nil
 }
 
-func (o manager) getName(pack string) (string, error) {
-   for n := range o.packages {
-      dir_s := o.packages[n].Name()
+func (m manager) getName(pack string) (string, error) {
+   for n := range m.packages {
+      dir_s := m.packages[n].Name()
       if strings.HasPrefix(dir_s, pack + "-") {
          return dir_s, nil
       }
@@ -86,14 +85,14 @@ func (o manager) getName(pack string) (string, error) {
    return "", errors.New(pack)
 }
 
-func (o manager) getValue(pack, key_s string) ([]string, error) {
+func (m manager) getValue(pack, key_s string) ([]string, error) {
    a := []string{}
-   name, e := o.getName(pack)
+   name, e := m.getName(pack)
    if e != nil {
       return a, e
    }
-   real_s := path.Join(o.cache, name, "desc")
-   open, e := os.Open(real_s)
+   abs := path.Join(m.cache, name, "desc")
+   open, e := os.Open(abs)
    if e != nil {
       return a, e
    }
@@ -120,11 +119,11 @@ func (o manager) getValue(pack, key_s string) ([]string, error) {
    return a, nil
 }
 
-func (o manager) resolve(pack string) (map[string]bool, error) {
+func (m manager) resolve(pack string) (map[string]bool, error) {
    pack_m := map[string]bool{}
    for pack_a := []string{pack}; len(pack_a) > 0; pack_a = pack_a[1:] {
       pack := pack_a[0]
-      dep_a, e := o.getValue(pack, "%DEPENDS%")
+      dep_a, e := m.getValue(pack, "%DEPENDS%")
       if e != nil {
          return pack_m, e
       }
@@ -134,7 +133,7 @@ func (o manager) resolve(pack string) (map[string]bool, error) {
    return pack_m, nil
 }
 
-func (o manager) sync(tar_s string) error {
+func (m manager) sync(tar_s string) error {
    open, e := os.Open(tar_s)
    if e != nil {
       return e
@@ -142,20 +141,20 @@ func (o manager) sync(tar_s string) error {
    scan := bufio.NewScanner(open)
    for scan.Scan() {
       pack := scan.Text()
-      val_a, e := o.getValue(pack, "%FILENAME%")
+      val_a, e := m.getValue(pack, "%FILENAME%")
       if e != nil {
          return e
       }
       file_s := val_a[0]
-      real_s := path.Join(o.cache, file_s)
-      if ! x.IsFile(real_s) {
+      abs := path.Join(m.cache, file_s)
+      if ! x.IsFile(abs) {
          url := getRepo(file_s) + file_s
-         _, e := x.Copy(url, real_s)
+         _, e := x.Copy(url, abs)
          if e != nil {
             return e
          }
       }
-      e = unarchive(real_s, `C:\msys2`)
+      e = unarchive(abs, `C:\msys2`)
       if e != nil {
          return e
       }

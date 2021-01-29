@@ -17,19 +17,19 @@ func main() {
    x.Check(e)
    e = os.Chdir("rust-deps")
    x.Check(e)
-   bToml, e := toml.Marshal(m{
+   data, e := toml.Marshal(m{
       "dependencies": m{crate: ""},
       "package": m{"name": "rust-deps", "version": "1.0.0"},
    })
    x.Check(e)
-   e = ioutil.WriteFile("Cargo.toml", bToml, os.ModePerm)
+   e = ioutil.WriteFile("Cargo.toml", data, os.ModePerm)
    x.Check(e)
    e = x.System("cargo", "generate-lockfile")
    x.Check(e)
-   bLock, e := ioutil.ReadFile("Cargo.lock")
+   data, e = ioutil.ReadFile("Cargo.lock")
    x.Check(e)
    lock := new(cargoLock)
-   e = toml.Unmarshal(bLock, lock)
+   e = toml.Unmarshal(data, lock)
    x.Check(e)
    for _, pack := range lock.Package {
       if pack.Name == "rust-deps" {
