@@ -1,5 +1,19 @@
 # Rust
 
+~~~
+source
+https://static.rust-lang.org/dist/channel-rust-stable.toml
+
+dest
+C:\Users\Steven\AppData\Local\rust\channel-rust-stable.toml
+
+distChannel
+struct
+
+channel
+new
+~~~
+
 ~~~toml
 [pkg.cargo.target.x86_64-pc-windows-gnu]
 available = true
