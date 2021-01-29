@@ -19,14 +19,13 @@ func count() error {
       if e != nil {
          return e
       }
-      var body map[string]interface{}
+      body := new(search)
       e = json.NewDecoder(get.Body).Decode(&body)
       if e != nil {
          return e
       }
-      result := body["results"].([]interface{})
       packs = append(packs, pack{
-         len(result), path,
+         len(body.Results), path,
       })
    }
    sort.Slice(packs, func(i, j int) bool {

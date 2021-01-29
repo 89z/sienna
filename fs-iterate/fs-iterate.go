@@ -7,10 +7,6 @@ import (
    "os"
 )
 
-func colorCyan(s string) string {
-   return "\x1b[96m" + s + "\x1b[m"
-}
-
 func main() {
    if len(os.Args) < 3 {
       println("fs-iterate <path> <command>")
@@ -24,7 +20,7 @@ func main() {
    }
    for _, dir := range dirs {
       path := dir.Name()
-      println(colorCyan(path))
+      println(x.ColorCyan(path))
       os.Chdir(path)
       e = x.System(name, arg...)
       if e != nil {

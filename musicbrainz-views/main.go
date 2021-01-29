@@ -22,18 +22,13 @@ https://musicbrainz.org/release/7a629d52-6a61-3ea1-a0a0-dd50bdef63b4`)
    album, e := musicbrainz.Release(os.Args[1])
    x.Check(e)
    var out []string
-   artists := album.A("artist-credit")
-   for n := range artists {
-      artist := artists.M(n).S("name")
-      out = append(out, artist)
+   for _, artist := range album.ArtistCredit {
+      out = append(out, artist.Name)
    }
    artist := strings.Join(out, " ")
-   media := album.A("media")
-   for n := range media {
-      tracks := media.M(n).A("tracks")
-      for n := range tracks {
-         title := tracks.M(n).S("title")
-         id, e := youtubeResult(artist + " " + title)
+   for _, media := range album.Media {
+      for _, track := range media.Tracks {
+         id, e := youtubeResult(artist + " " + track.Title)
          x.Check(e)
          info, e := youtube.Info(string(id))
          x.Check(e)
