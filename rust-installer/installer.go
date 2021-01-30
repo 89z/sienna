@@ -3,29 +3,23 @@ package main
 import (
    "github.com/89z/x"
    "github.com/mholt/archiver/v3"
-   "github.com/pelletier/go-toml"
-   "os"
-   "path"
+   "path/filepath"
 )
-
-const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
-
-type distChannel struct{
-   Pkg struct{
-      Cargo target
-      RustStd target `toml:"rust-std"`
-      Rustc target
-   }
-}
-
-type target struct{
-   Target struct{
-      X8664PcWindowsGnu struct{
-         XzUrl string `toml:"xz_url"`
-      } `toml:"x86_64-pc-windows-gnu"`
-   }
-}
 
 var tarXz = archiver.TarXz{
    Tar: &archiver.Tar{OverwriteExisting: true, StripComponents: 2},
+}
+
+func extract(install x.Install, pkg target) error {
+   source := pkg.Target.X8664PcWindowsGnu.XzUrl
+   base := filepath.Base(source)
+   cache := filepath.Join(install.Cache, base)
+   if ! x.IsFile(cache) {
+      _, e := x.Copy(source, cache)
+      if e != nil {
+         return e
+      }
+   }
+   println(x.ColorCyan("Extract"), base)
+   return tarXz.Unarchive(cache, install.Dest)
 }

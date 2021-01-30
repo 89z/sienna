@@ -15,10 +15,10 @@ func main() {
       println("browse-song <artist> <song>")
       os.Exit(1)
    }
-   bandArg := os.Args[1]
-   songArg := os.Args[2]
-   query := fmt.Sprintf(`intitle:"%v" intext:"%v topic"`, songArg, bandArg)
-   value := url.Values{}
+   query := fmt.Sprintf(
+      `intitle:"%v" intext:"%v topic"`, os.Args[2], os.Args[1],
+   )
+   value := make(url.Values)
    value.Set("q", query)
    result := "https://www.youtube.com/results?" + value.Encode()
    e := sys.ShellExecute(0, "", result, "", "", sw_shownormal)
