@@ -25,3 +25,7 @@ type target struct{
       } `toml:"x86_64-pc-windows-gnu"`
    }
 }
+
+var tarXz = archiver.TarXz{
+   Tar: &archiver.Tar{OverwriteExisting: true, StripComponents: 2},
+}

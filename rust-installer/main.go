@@ -8,31 +8,22 @@ import (
    "path"
 )
 
-func main() {
-   cache, e := x.GetCache("rust")
-   x.Check(e)
-   dest := path.Join(
-      cache, path.Base(source),
-   )
-   if ! x.IsFile(dest) {
-      _, e = x.Copy(source, dest)
-      x.Check(e)
-   }
-   data, e := ioutil.ReadFile(dest)
-   x.Check(e)
-   channel := new(distChannel)
-   e = toml.Unmarshal(data, channel)
-   x.Check(e)
-   e = extract(channel.Pkg.Cargo)
-   x.Check(e)
-   e = extract(channel.Pkg.RustStd)
-   x.Check(e)
-   e = extract(channel.Pkg.Rustc)
-   x.Check(e)
+type installer struct {
+   cache string
+   dest string
 }
 
-var tarXz = archiver.TarXz{
-   Tar: &archiver.Tar{OverwriteExisting: true, StripComponents: 2},
+func newInstaller(dir string) (i installer, e error) {
+   cache, e := os.UserCacheDir()
+   if e != nil {
+      return
+   }
+   return installer{
+      filepath.Join(user, dir),
+      filepath.Join(
+         filepath.VolumeName(user), dir,
+      ),
+   }, nil
 }
 
 func extract(pkg target) error {
@@ -46,4 +37,27 @@ func extract(pkg target) error {
    }
    println(x.ColorGreen("Extract"), local)
    return tarXz.Unarchive(local, `C:\rust`)
+}
+
+func main() {
+   install, e := newInstaller("rust")
+   x.Check(e)
+   cache := path.Join(
+      install.cache, path.Base(source),
+   )
+   if ! x.IsFile(cache) {
+      _, e = x.Copy(source, cache)
+      x.Check(e)
+   }
+   data, e := ioutil.ReadFile(cache)
+   x.Check(e)
+   channel := new(distChannel)
+   e = toml.Unmarshal(data, channel)
+   x.Check(e)
+   e = extract(channel.Pkg.Cargo)
+   x.Check(e)
+   e = extract(channel.Pkg.RustStd)
+   x.Check(e)
+   e = extract(channel.Pkg.Rustc)
+   x.Check(e)
 }
