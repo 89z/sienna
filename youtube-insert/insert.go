@@ -1,8 +1,6 @@
 package main
 
 import (
-   "bytes"
-   "encoding/json"
    "github.com/89z/x"
    "github.com/89z/x/youtube"
    "net/http"
@@ -32,7 +30,7 @@ func getImage(id string) string {
 }
 
 func httpHead(url string) bool {
-   println(url)
+   println(x.ColorCyan("Head"), url)
    resp, e := http.Head(url)
    return e == nil && resp.StatusCode == 200
 }
@@ -54,7 +52,7 @@ func main() {
    }
    year := info.PublishDate[:4]
    for _, pattern := range patterns {
-      match := findSubmatch(pattern, info.Description.SimpleText)
+      match := x.FindStringSubmatch(pattern, info.Description.SimpleText)
       if match == "" {
          continue
       }
@@ -85,7 +83,7 @@ func main() {
    if image != "" {
       value.Set("c", image)
    }
-   data, e := marshal(map[string]string{
+   data, e := x.JsonMarshal(map[string]string{
       "q": value.Encode(), "s": title,
    })
    x.Check(e)

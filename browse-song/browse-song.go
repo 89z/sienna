@@ -2,9 +2,8 @@ package main
 
 import (
    "fmt"
+   "github.com/89z/x"
    "github.com/89z/x/sys"
-   "log"
-   "net/url"
    "os"
 )
 
@@ -15,14 +14,15 @@ func main() {
       println("browse-song <artist> <song>")
       os.Exit(1)
    }
-   query := fmt.Sprintf(
-      `intitle:"%v" intext:"%v topic"`, os.Args[2], os.Args[1],
+   artist, song := os.Args[1], os.Args[2]
+   url := x.NewURL()
+   url.Host = "youtube.com"
+   url.Path = "results"
+   url.QuerySet(
+      "q", fmt.Sprintf(`intext:"%v topic" intitle:"%v"`, artist, song),
    )
-   value := make(url.Values)
-   value.Set("q", query)
-   result := "https://www.youtube.com/results?" + value.Encode()
-   e := sys.ShellExecute(0, "", result, "", "", sw_shownormal)
-   if e != nil {
-      log.Fatal(e)
-   }
+   e := sys.ShellExecute(
+      0, "", url.String(), "", "", sw_shownormal,
+   )
+   x.Check(e)
 }

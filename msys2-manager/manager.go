@@ -6,6 +6,7 @@ import (
    "github.com/89z/x"
    "github.com/mholt/archiver/v3"
    "io/ioutil"
+   "log"
    "os"
    "path"
    "strings"
@@ -62,8 +63,9 @@ func newManager() (m manager, e error) {
       if x.IsFile(abs) {
          continue
       }
-      url := getRepo(file) + file
-      _, e = x.Copy(url, abs)
+      _, e = x.Copy(
+         getRepo(file) + file, abs,
+      )
       if e != nil {
          return
       }
@@ -160,4 +162,29 @@ func (m manager) sync(tar_s string) error {
       }
    }
    return nil
+}
+
+func main() {
+   if len(os.Args) != 3 {
+      println(`synopsis:
+   msys2 <operation> <target>
+
+examples:
+   msys2 deps mingw-w64-x86_64-libgit2
+   msys2 sync git.txt`)
+      os.Exit(1)
+   }
+   target := os.Args[2]
+   man, e := newManager()
+   x.Check(e)
+   if os.Args[1] == "deps" {
+      deps, e := man.resolve(target)
+      x.Check(e)
+      for dep := range deps {
+         println(dep)
+      }
+   } else {
+      e := man.sync(target)
+      x.Check(e)
+   }
 }
