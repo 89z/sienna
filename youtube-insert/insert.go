@@ -3,22 +3,21 @@ package main
 import (
    "bytes"
    "encoding/json"
+   "github.com/89z/x"
+   "github.com/89z/x/youtube"
    "net/http"
+   "net/url"
+   "os"
    "regexp"
+   "strconv"
+   "strings"
+   "time"
 )
 
 /* the order doesnt matter here, as we will find the lowest date of all
 matches */
 var patterns = []string{
    ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
-}
-
-func findSubmatch(re, input string) string {
-   a := regexp.MustCompile(re).FindStringSubmatch(input)
-   if len(a) < 2 {
-      return ""
-   }
-   return a[1]
 }
 
 func getImage(id string) string {
@@ -38,14 +37,57 @@ func httpHead(url string) bool {
    return e == nil && resp.StatusCode == 200
 }
 
-func marshal(v interface{}) ([]byte, error) {
-   var dst bytes.Buffer
-   enc := json.NewEncoder(&dst)
-   enc.SetEscapeHTML(false)
-   enc.SetIndent("", " ")
-   err := enc.Encode(v)
-   if err != nil {
-      return nil, err
+func main() {
+   if len(os.Args) != 2 {
+      println("youtube-insert <URL>")
+      os.Exit(1)
    }
-   return dst.Bytes()[:dst.Len() - 1], nil
+   u, e := url.Parse(os.Args[1])
+   x.Check(e)
+   id := u.Query().Get("v")
+   // year
+   info, e := youtube.Info(id)
+   x.Check(e)
+   if info.Description.SimpleText == "" {
+      println("Clapham Junction")
+      os.Exit(1)
+   }
+   year := info.PublishDate[:4]
+   for _, pattern := range patterns {
+      match := findSubmatch(pattern, info.Description.SimpleText)
+      if match == "" {
+         continue
+      }
+      if match >= year {
+         continue
+      }
+      year = match
+   }
+   // song, artist
+   title := info.Title.SimpleText
+   line := regexp.MustCompile(".* · .*").FindString(info.Description.SimpleText)
+   if line != "" {
+      titles := strings.Split(line, " · ")
+      artists := titles[1:]
+      title = strings.Join(artists, ", ") + " - " + titles[0]
+   }
+   // time
+   now := strconv.FormatInt(
+      time.Now().Unix(), 36,
+   )
+   // print
+   value := make(url.Values)
+   value.Set("a", now)
+   value.Set("b", id)
+   value.Set("p", "y")
+   value.Set("y", year)
+   image := getImage(id)
+   if image != "" {
+      value.Set("c", image)
+   }
+   data, e := marshal(map[string]string{
+      "q": value.Encode(), "s": title,
+   })
+   x.Check(e)
+   os.Stdout.Write(append(data, ',', '\n'))
 }
