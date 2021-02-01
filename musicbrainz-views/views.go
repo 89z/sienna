@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
-   "net/url"
    "os"
    "time"
 )
@@ -12,10 +11,12 @@ import (
 var artist string
 
 func youtubeResult(query string) ([]byte, error) {
-   value := make(url.Values)
-   value.Set("search_query", query)
+   url := x.NewURL()
+   url.Host = "youtube.com"
+   url.Path = "results"
+   url.QuerySet("search_query", query)
    body, e := x.GetContents(
-      "https://www.youtube.com/results?" + value.Encode(),
+      url.String(),
    )
    if e != nil {
       return nil, e
