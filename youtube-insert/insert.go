@@ -19,19 +19,18 @@ var patterns = []string{
 }
 
 func getImage(id string) string {
-   url := "https://i.ytimg.com/vi/"
-   if httpHead(url + id + "/sddefault.jpg") {
+   if httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg") {
       return ""
    }
-   if httpHead(url + id + "/sd1.jpg") {
+   if httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg") {
       return "sd1"
    }
    return "hqdefault"
 }
 
-func httpHead(url string) bool {
-   println(x.ColorCyan("Head"), url)
-   resp, e := http.Head(url)
+func httpHead(s string) bool {
+   println(x.ColorCyan("Head"), s)
+   resp, e := http.Head(s)
    return e == nil && resp.StatusCode == 200
 }
 
