@@ -18,7 +18,7 @@ func main() {
    url := x.NewURL()
    url.Host = "youtube.com"
    url.Path = "results"
-   url.QuerySet(
+   url.Query.Set(
       "q", fmt.Sprintf(`intext:"%v topic" intitle:"%v"`, artist, song),
    )
    e := sys.ShellExecute(
