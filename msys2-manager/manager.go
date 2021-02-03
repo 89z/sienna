@@ -2,7 +2,6 @@ package main
 
 import (
    "bufio"
-   "errors"
    "github.com/89z/x"
    "github.com/mholt/archiver/v3"
    "io/ioutil"
@@ -11,8 +10,8 @@ import (
    "strings"
 )
 
-func baseName(s, char_s string) string {
-   n := strings.IndexAny(s, char_s)
+func baseName(s, char string) string {
+   n := strings.IndexAny(s, char)
    if n == -1 {
       return s
    }
@@ -43,53 +42,19 @@ func unarchive(in, out string) error {
    }
 }
 
-type manager struct {
-   cache string
-   packages []os.FileInfo
-}
 
-func newManager() (m manager, e error) {
-   cache, e := x.GetCache("msys2")
+func (m manager) getValue(pack, key string) (a []string, e error) {
+   var name string
+   packages, e := ioutil.ReadDir(m.cache)
    if e != nil {
       return
    }
-   dir, e := ioutil.ReadDir(cache)
-   if e != nil {
-      return
-   }
-   for _, file := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
-      abs := path.Join(cache, file)
-      if x.IsFile(abs) {
-         continue
+   for _, each := range packages {
+      dir := each.Name()
+      if strings.HasPrefix(dir, pack + "-") {
+         name = dir
+         break
       }
-      _, e = x.Copy(
-         getRepo(file) + file, abs,
-      )
-      if e != nil {
-         return
-      }
-      e = unarchive(abs, cache)
-      if e != nil {
-         return
-      }
-   }
-   return manager{cache, dir}, nil
-}
-
-func (m manager) getName(pack string) (string, error) {
-   for n := range m.packages {
-      dir_s := m.packages[n].Name()
-      if strings.HasPrefix(dir_s, pack + "-") {
-         return dir_s, nil
-      }
-   }
-   return "", errors.New(pack)
-}
-
-func (m manager) getValue(pack, key_s string) (a []string, e error) {
-   name, e := m.getName(pack)
-   if e != nil {
-      return
    }
    abs := path.Join(m.cache, name, "desc")
    open, e := os.Open(abs)
@@ -101,7 +66,7 @@ func (m manager) getValue(pack, key_s string) (a []string, e error) {
    for scan.Scan() {
       line := scan.Text()
       // STATE 2
-      if line == key_s {
+      if line == key {
          dep = true
          continue
       }
@@ -117,20 +82,6 @@ func (m manager) getValue(pack, key_s string) (a []string, e error) {
       a = append(a, baseName(line, "=>"))
    }
    return
-}
-
-func (m manager) resolve(pack string) (map[string]bool, error) {
-   set := map[string]bool{}
-   for packs := []string{pack}; len(packs) > 0; packs = packs[1:] {
-      pack := packs[0]
-      deps, e := m.getValue(pack, "%DEPENDS%")
-      if e != nil {
-         return set, e
-      }
-      set[pack] = true
-      packs = append(packs, deps...)
-   }
-   return set, nil
 }
 
 func (m manager) sync(tar string) error {
@@ -163,6 +114,7 @@ func (m manager) sync(tar string) error {
    return nil
 }
 
+
 func main() {
    if len(os.Args) != 3 {
       println(`synopsis:
@@ -174,16 +126,39 @@ examples:
       os.Exit(1)
    }
    target := os.Args[2]
-   man, e := newManager()
+   install, e := x.NewInstall("msys2")
    x.Check(e)
-   if os.Args[1] == "deps" {
-      deps, e := man.resolve(target)
-      x.Check(e)
-      for dep := range deps {
-         println(dep)
+   for _, each := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
+      archive := path.Join(install.Cache, each)
+      if x.IsFile(archive) {
+         continue
       }
-   } else {
-      e := man.sync(target)
+      _, e = x.Copy(
+         getRepo(each) + each, archive,
+      )
       x.Check(e)
+      e = unarcive(archive, install.Cache)
+      x.Check(e)
+   }
+   if os.Args[1] == "sync" {
+      e = sync(install, target)
+      x.Check(e)
+      return
+   }
+   // var packSet = map[string]bool{}
+   for packs := []string{target}; len(packs) > 0; packs = packs[1:] {
+      target := packs[0]
+      // FIXME
+      deps, e := m.getValue(target, "%DEPENDS%")
+      if e != nil {
+         return packSet, e
+      }
+      packSet[target] = true
+      packs = append(packs, deps...)
+   }
+   deps, e := resolve(install, target)
+   x.Check(e)
+   for dep := range deps {
+      println(dep)
    }
 }
