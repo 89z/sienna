@@ -6,7 +6,6 @@ import (
    "github.com/89z/x"
    "github.com/mholt/archiver/v3"
    "io/ioutil"
-   "log"
    "os"
    "path"
    "strings"
@@ -87,71 +86,71 @@ func (m manager) getName(pack string) (string, error) {
    return "", errors.New(pack)
 }
 
-func (m manager) getValue(pack, key_s string) ([]string, error) {
-   a := []string{}
+func (m manager) getValue(pack, key_s string) (a []string, e error) {
    name, e := m.getName(pack)
    if e != nil {
-      return a, e
+      return
    }
    abs := path.Join(m.cache, name, "desc")
    open, e := os.Open(abs)
    if e != nil {
-      return a, e
+      return
    }
+   dep := false
    scan := bufio.NewScanner(open)
-   dep_b := false
    for scan.Scan() {
-      line_s := scan.Text()
+      line := scan.Text()
       // STATE 2
-      if line_s == key_s {
-         dep_b = true
+      if line == key_s {
+         dep = true
          continue
       }
       // STATE 1
-      if ! dep_b {
+      if ! dep {
          continue
       }
       // STATE 4
-      if line_s == "" {
+      if line == "" {
          break
       }
       // STATE 3
-      a = append(a, baseName(line_s, "=>"))
+      a = append(a, baseName(line, "=>"))
    }
-   return a, nil
+   return
 }
 
 func (m manager) resolve(pack string) (map[string]bool, error) {
-   pack_m := map[string]bool{}
-   for pack_a := []string{pack}; len(pack_a) > 0; pack_a = pack_a[1:] {
-      pack := pack_a[0]
-      dep_a, e := m.getValue(pack, "%DEPENDS%")
+   set := map[string]bool{}
+   for packs := []string{pack}; len(packs) > 0; packs = packs[1:] {
+      pack := packs[0]
+      deps, e := m.getValue(pack, "%DEPENDS%")
       if e != nil {
-         return pack_m, e
+         return set, e
       }
-      pack_m[pack] = true
-      pack_a = append(pack_a, dep_a...)
+      set[pack] = true
+      packs = append(packs, deps...)
    }
-   return pack_m, nil
+   return set, nil
 }
 
-func (m manager) sync(tar_s string) error {
-   open, e := os.Open(tar_s)
+func (m manager) sync(tar string) error {
+   open, e := os.Open(tar)
    if e != nil {
       return e
    }
    scan := bufio.NewScanner(open)
    for scan.Scan() {
       pack := scan.Text()
-      val_a, e := m.getValue(pack, "%FILENAME%")
+      values, e := m.getValue(pack, "%FILENAME%")
       if e != nil {
          return e
       }
-      file_s := val_a[0]
-      abs := path.Join(m.cache, file_s)
+      file := values[0]
+      abs := path.Join(m.cache, file)
       if ! x.IsFile(abs) {
-         url := getRepo(file_s) + file_s
-         _, e := x.Copy(url, abs)
+         _, e := x.Copy(
+            getRepo(file) + file, abs,
+         )
          if e != nil {
             return e
          }

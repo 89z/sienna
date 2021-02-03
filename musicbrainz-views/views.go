@@ -14,7 +14,7 @@ func youtubeResult(query string) ([]byte, error) {
    url := x.NewURL()
    url.Host = "youtube.com"
    url.Path = "results"
-   url.QuerySet("search_query", query)
+   url.Query.Set("search_query", query)
    body, e := x.GetContents(
       url.String(),
    )
