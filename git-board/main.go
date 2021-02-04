@@ -25,16 +25,19 @@ func main() {
    commit, e := popen("git", "log", "--format=%cI")
    x.Check(e)
    commit.Scan()
-   then := commit.Text()[:10]
-   now := time.Now().String()[:10]
+   // actual
+   actual := commit.Text()[:10]
+   // target
+   target := time.Now().AddDate(0, 0, -1).String()[:10]
+   // print
    for _, each := range []test{
       {"additions", totAdd, minimum, totAdd >= minimum},
       {"deletions", totDel, minimum, totDel >= minimum},
       {"changed files", totCha, minimum, totCha >= minimum},
-      {"last commit date", then, now, now > then},
+      {"last commit", actual, target, actual <= target},
    } {
-      message := fmt.Sprint(
-         each.name, ": ", each.actual, ", target: ", each.target,
+      message := fmt.Sprintf(
+         "%-16v target: %-12v actual: %v", each.name, each.target, each.actual,
       )
       if each.result {
          fmt.Println(x.ColorGreen(message))
