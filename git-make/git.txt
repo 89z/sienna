@@ -6,6 +6,7 @@ grep
 libiconv
 libintl
 libpcre
+make
 mingw-w64-x86_64-binutils
 mingw-w64-x86_64-crt
 mingw-w64-x86_64-expat
