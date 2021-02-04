@@ -95,8 +95,8 @@ func gitMake(curl string) (e error) {
       return
    }
    os.Setenv("MSYSTEM", "MINGW64")
-   os.Setenv("PATH", `C:\msys2\mingw64\bin;C:\msys2\usr\bin`)
-   os.MkdirAll(`C:\msys2\tmp`, os.ModeDir)
+   os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
+   os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
    return x.System(
       "make", "-C", git.Cache, "-j", "8",
       "CFLAGS=-DCURL_STATICLIB",
@@ -108,7 +108,6 @@ func gitMake(curl string) (e error) {
       "NO_OPENSSL=1",
       "NO_TCLTK=1",
       "USE_LIBPCRE=",
-      "install",
    )
 }
 
