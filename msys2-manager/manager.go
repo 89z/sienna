@@ -2,16 +2,21 @@ package main
 
 import (
    "bufio"
+   "fmt"
    "github.com/89z/x"
    "io/ioutil"
    "os"
-   "path"
+   "path/filepath"
    "strings"
 )
 
-func getValue(install x.Install, pack, key string) (val []string, e error) {
+type manager struct {
+   x.Install
+}
+
+func (m manager) getValue(pack, key string) (val []string, e error) {
    var name string
-   packages, e := ioutil.ReadDir(install.Cache)
+   packages, e := ioutil.ReadDir(m.Cache)
    if e != nil {
       return
    }
@@ -22,8 +27,11 @@ func getValue(install x.Install, pack, key string) (val []string, e error) {
          break
       }
    }
+   if name == "" {
+      return nil, fmt.Errorf("%v %v", pack, key)
+   }
    open, e := os.Open(
-      path.Join(install.Cache, name, "desc"),
+      filepath.Join(m.Cache, name, "desc"),
    )
    if e != nil {
       return
@@ -46,26 +54,30 @@ func getValue(install x.Install, pack, key string) (val []string, e error) {
          break
       }
       // STATE 3
-      val = append(val, baseName(line, "=>"))
+      base := baseName(line, "=>")
+      if base == "sh" {
+         return nil, fmt.Errorf("%v %v %v", name, key, line)
+      }
+      val = append(val, base)
    }
    return
 }
 
-func sync(install x.Install, tar string) error {
+func (m manager) sync(tar string) error {
    open, e := os.Open(tar)
    if e != nil {
       return e
    }
    scan := bufio.NewScanner(open)
    for scan.Scan() {
-      values, e := getValue(
-         install, scan.Text(), "%FILENAME%",
+      values, e := m.getValue(
+         scan.Text(), "%FILENAME%",
       )
       if e != nil {
          return e
       }
       file := values[0]
-      archive := path.Join(install.Cache, file)
+      archive := filepath.Join(m.Cache, file)
       if ! x.IsFile(archive) {
          _, e := x.Copy(
             getRepo(file) + file, archive,
@@ -74,7 +86,7 @@ func sync(install x.Install, tar string) error {
             return e
          }
       }
-      e = unarchive(archive, install.Dest)
+      e = unarchive(archive, m.Dest)
       if e != nil {
          return e
       }

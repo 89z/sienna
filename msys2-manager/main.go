@@ -4,7 +4,7 @@ import (
    "github.com/89z/x"
    "github.com/mholt/archiver/v3"
    "os"
-   "path"
+   "path/filepath"
    "strings"
 )
 
@@ -25,9 +25,9 @@ func getRepo(s string) string {
 
 func unarchive(in, out string) error {
    tar := &archiver.Tar{OverwriteExisting: true}
-   base := path.Base(in)
-   println("EXTRACT", base)
-   switch path.Ext(base) {
+   base := filepath.Base(in)
+   println(x.ColorCyan("Extract"), base)
+   switch filepath.Ext(base) {
    case ".zst":
       zs := archiver.TarZstd{Tar: tar}
       return zs.Unarchive(in, out)
@@ -54,7 +54,7 @@ examples:
    install, e := x.NewInstall("msys2")
    x.Check(e)
    for _, each := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
-      archive := path.Join(install.Cache, each)
+      archive := filepath.Join(install.Cache, each)
       if x.IsFile(archive) {
          continue
       }
@@ -65,15 +65,16 @@ examples:
       e = unarchive(archive, install.Cache)
       x.Check(e)
    }
+   man := manager{install}
    if os.Args[1] == "sync" {
-      e = sync(install, target)
+      e = man.sync(target)
       x.Check(e)
       return
    }
    var packSet = map[string]bool{}
    for packs := []string{target}; len(packs) > 0; packs = packs[1:] {
       target := packs[0]
-      deps, e := getValue(install, target, "%DEPENDS%")
+      deps, e := man.getValue(target, "%DEPENDS%")
       x.Check(e)
       packs = append(packs, deps...)
       if packSet[target] {
