@@ -36,9 +36,9 @@ func main() {
       )
       index, e := ioutil.ReadFile(indexPath)
       x.Check(e)
-      front := new(frontMatter)
+      var front frontMatter
       e = toml.Unmarshal(
-         bytes.SplitN(index, tomlSep, 3)[1], front,
+         bytes.SplitN(index, tomlSep, 3)[1], &front,
       )
       x.Check(e)
       if front.Build.List != "" {

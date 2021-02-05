@@ -7,8 +7,12 @@ import (
    "sort"
 )
 
+var (
+   body search
+   packs []pack
+)
+
 func count() error {
-   var packs []pack
    for path, value := range repos.ByImportPath {
       if ! value.ShowOnDashboard() {
          continue
@@ -19,7 +23,6 @@ func count() error {
       if e != nil {
          return e
       }
-      body := new(search)
       e = json.NewDecoder(get.Body).Decode(&body)
       if e != nil {
          return e

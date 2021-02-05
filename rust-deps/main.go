@@ -7,6 +7,8 @@ import (
    "os"
 )
 
+var lock cargoLock
+
 func main() {
    if len(os.Args) != 2 {
       println("rust-deps <crate>")
@@ -28,8 +30,7 @@ func main() {
    x.Check(e)
    data, e = ioutil.ReadFile("Cargo.lock")
    x.Check(e)
-   lock := new(cargoLock)
-   e = toml.Unmarshal(data, lock)
+   e = toml.Unmarshal(data, &lock)
    x.Check(e)
    for _, pack := range lock.Package {
       if pack.Name == "rust-deps" {

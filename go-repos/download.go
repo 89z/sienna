@@ -15,6 +15,8 @@ var badRepo = map[string]bool{
    "golang.org/x/tools": true,
 }
 
+var godoc search
+
 type search struct{
    Results []struct{
       Path string
@@ -33,8 +35,7 @@ func download() error {
       if e != nil {
          return e
       }
-      godoc := new(search)
-      e = json.NewDecoder(get.Body).Decode(godoc)
+      e = json.NewDecoder(get.Body).Decode(&godoc)
       if e != nil {
          return e
       }

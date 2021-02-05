@@ -10,6 +10,8 @@ import (
 
 const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 
+var channel distChannel
+
 type distChannel struct{
    Pkg struct{
       Cargo target
@@ -38,8 +40,7 @@ func main() {
    }
    data, e := ioutil.ReadFile(cache)
    x.Check(e)
-   channel := new(distChannel)
-   e = toml.Unmarshal(data, channel)
+   e = toml.Unmarshal(data, &channel)
    x.Check(e)
    for _, each := range []target{
       channel.Pkg.Cargo, channel.Pkg.RustStd, channel.Pkg.Rustc,

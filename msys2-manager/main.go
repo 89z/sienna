@@ -24,7 +24,7 @@ func getRepo(s string) string {
 }
 
 func unarchive(source, dest string) error {
-   tar := new(extract.Tar)
+   var tar extract.Tar
    switch filepath.Ext(source) {
    case ".zst":
       return tar.Zst(source, dest)
