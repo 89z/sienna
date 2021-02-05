@@ -2,7 +2,7 @@ package main
 
 import (
    "github.com/89z/x"
-   "github.com/mholt/archiver/v3"
+   "github.com/89z/x/extract"
    "os"
    "path/filepath"
    "strings"
@@ -23,35 +23,30 @@ func getRepo(s string) string {
    return "http://repo.msys2.org/msys/x86_64/"
 }
 
-func unarchive(in, out string) error {
-   tar := &archiver.Tar{OverwriteExisting: true}
-   base := filepath.Base(in)
-   println(x.ColorCyan("Extract"), base)
-   switch filepath.Ext(base) {
+func unarchive(source, dest string) error {
+   tar := new(extract.Tar)
+   switch filepath.Ext(source) {
    case ".zst":
-      zs := archiver.TarZstd{Tar: tar}
-      return zs.Unarchive(in, out)
+      return tar.Zst(source, dest)
    case ".xz":
-      xz := archiver.TarXz{Tar: tar}
-      return xz.Unarchive(in, out)
+      return tar.Xz(source, dest)
    default:
-      gz := archiver.TarGz{Tar: tar}
-      return gz.Unarchive(in, out)
+      return tar.Gz(source, dest)
    }
 }
 
 func main() {
    if len(os.Args) != 3 {
       println(`synopsis:
-   msys2 <operation> <target>
+   msys2-manager <operation> <target>
 
 examples:
-   msys2 deps mingw-w64-x86_64-libgit2
-   msys2 sync git.txt`)
+   msys2-manager deps mingw-w64-x86_64-libgit2
+   msys2-manager sync git.txt`)
       os.Exit(1)
    }
    target := os.Args[2]
-   install, e := x.NewInstall("msys2")
+   install, e := x.NewInstall("msys64")
    x.Check(e)
    for _, each := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
       archive := filepath.Join(install.Cache, each)

@@ -84,7 +84,8 @@ func gitMake(curl string) (e error) {
       return
    }
    if isDir(git.Cache) {
-      e = x.System("git", "-C", git.Cache, "clean", "-d", "-f", "-x")
+      // e = x.System("git", "-C", git.Cache, "clean", "-d", "-f", "-x")
+      e = x.System("make", "-C", git.Cache, "clean")
    } else {
       e = x.System(
          "git", "clone", "--branch", verGit, "--depth", "1",

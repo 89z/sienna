@@ -2,17 +2,13 @@ package main
 
 import (
    "github.com/89z/x"
-   "github.com/mholt/archiver/v3"
+   "github.com/89z/x/extract"
    "github.com/pelletier/go-toml"
    "io/ioutil"
-   "path/filepath"
+   "path"
 )
 
 const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
-
-var tarXz = archiver.TarXz{
-   Tar: &archiver.Tar{OverwriteExisting: true, StripComponents: 2},
-}
 
 type distChannel struct{
    Pkg struct{
@@ -33,8 +29,8 @@ type target struct{
 func main() {
    install, e := x.NewInstall("rust")
    x.Check(e)
-   cache := filepath.Join(
-      install.Cache, filepath.Base(source),
+   cache := path.Join(
+      install.Cache, path.Base(source),
    )
    if ! x.IsFile(cache) {
       _, e = x.Copy(source, cache)
@@ -49,14 +45,14 @@ func main() {
       channel.Pkg.Cargo, channel.Pkg.RustStd, channel.Pkg.Rustc,
    } {
       source := each.Target.X8664PcWindowsGnu.XzUrl
-      base := filepath.Base(source)
-      cache := filepath.Join(install.Cache, base)
+      base := path.Base(source)
+      cache := path.Join(install.Cache, base)
       if ! x.IsFile(cache) {
          _, e := x.Copy(source, cache)
          x.Check(e)
       }
-      println(x.ColorCyan("Extract"), base)
-      e = tarXz.Unarchive(cache, install.Dest)
+      tar := extract.Tar{Strip: 2}
+      e = tar.Xz(cache, install.Dest)
       x.Check(e)
    }
 }
