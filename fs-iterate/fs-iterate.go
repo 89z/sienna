@@ -3,7 +3,6 @@ package main
 import (
    "github.com/89z/x"
    "io/ioutil"
-   "log"
    "os"
 )
 
@@ -13,19 +12,18 @@ func main() {
       os.Exit(1)
    }
    root, name, arg := os.Args[1], os.Args[2], os.Args[3:]
-   os.Chdir(root)
+   e := os.Chdir(root)
+   x.Check(e)
    dirs, e := ioutil.ReadDir(".")
-   if e != nil {
-      log.Fatal(e)
-   }
+   x.Check(e)
    for _, dir := range dirs {
       path := dir.Name()
       println(x.ColorCyan(path))
-      os.Chdir(path)
+      e = os.Chdir(path)
+      x.Check(e)
       e = x.System(name, arg...)
-      if e != nil {
-         log.Fatal(e)
-      }
-      os.Chdir("..")
+      x.Check(e)
+      e = os.Chdir("..")
+      x.Check(e)
    }
 }
