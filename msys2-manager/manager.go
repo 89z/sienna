@@ -95,8 +95,6 @@ func (m manager) sync(tar string) error {
    return nil
 }
 
-
-
 func baseName(s, char string) string {
    n := strings.IndexAny(s, char)
    if n == -1 {

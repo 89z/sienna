@@ -6,19 +6,19 @@ import (
 )
 
 func main() {
-   e := x.System("git", "commit", "--verbose")
+   e := x.Command("git", "commit", "--verbose").Run()
    x.Check(e)
    if x.IsFile("config.toml") {
       println(x.ColorGreen("remove docs"))
       os.RemoveAll("docs")
       println(x.ColorGreen("hugo"))
-      e = x.System("hugo")
+      e = x.Command("hugo").Run()
       x.Check(e)
       println(x.ColorGreen("git add"))
-      e = x.System("git", "add", ".")
+      e = x.Command("git", "add", ".").Run()
       x.Check(e)
       println(x.ColorGreen("git commit"))
-      e = x.System("git", "commit", "--amend")
+      e = x.Command("git", "commit", "--amend").Run()
       x.Check(e)
    }
 }

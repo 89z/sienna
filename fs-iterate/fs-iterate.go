@@ -21,7 +21,7 @@ func main() {
       println(x.ColorCyan(path))
       e = os.Chdir(path)
       x.Check(e)
-      e = x.System(name, arg...)
+      e = x.Command(name, arg...).Run()
       x.Check(e)
       e = os.Chdir("..")
       x.Check(e)

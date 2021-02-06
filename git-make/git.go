@@ -24,25 +24,21 @@ func curlMake() (e error) {
    if isDir(curl.Cache) {
       return
    }
-   e = x.System(
+   e = x.Command(
       "git", "clone", "--branch", verCurl, "--depth", "1",
       "git://github.com/curl/curl", curl.Cache,
-   )
+   ).Run()
    if e != nil {
       return
    }
-   return x.System(
+   return x.Command(
       "mingw32-make",
       "-C", filepath.Join(curl.Cache, "lib"),
       "-f", "Makefile.m32",
       "-j", "5",
       "CFG=-winssl",
-   )
+   ).Run()
 }
-
-/*
-.\git -C D:\Git\sienna status
-*/
 
 func copyFile(source, dest string) (int64, error) {
    open, e := os.Open(source)
@@ -84,13 +80,12 @@ func gitMake(curl string) (e error) {
       return
    }
    if isDir(git.Cache) {
-      // e = x.System("git", "-C", git.Cache, "clean", "-d", "-f", "-x")
-      e = x.System("make", "-C", git.Cache, "clean")
+      e = x.Command("git", "-C", git.Cache, "clean", "-d", "-f", "-x").Run()
    } else {
-      e = x.System(
+      e = x.Command(
          "git", "clone", "--branch", verGit, "--depth", "1",
          "git://github.com/git/git", git.Cache,
-      )
+      ).Run()
    }
    if e != nil {
       return
@@ -98,7 +93,7 @@ func gitMake(curl string) (e error) {
    os.Setenv("MSYSTEM", "MINGW64")
    os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
    os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
-   return x.System(
+   return x.Command(
       "make", "-C", git.Cache, "-j", "8",
       "CFLAGS=-DCURL_STATICLIB",
       "CURLDIR=" + filepath.ToSlash(curl),
@@ -109,7 +104,7 @@ func gitMake(curl string) (e error) {
       "NO_OPENSSL=1",
       "NO_TCLTK=1",
       "USE_LIBPCRE=",
-   )
+   ).Run()
 }
 
 func main() {
