@@ -17,7 +17,6 @@ func main() {
    flag.StringVar(&duration, "d", "", "duration")
    flag.StringVar(&start, "s", "", "start")
    flag.Parse()
-
    if flag.NArg() != 1 {
 println(`Name:
    video-to-image - create sequence of images from a video
@@ -29,7 +28,6 @@ Flags:`)
       flag.PrintDefaults()
       os.Exit(1)
    }
-
    path := flag.Arg(0)
    arg := []string{"-hide_banner"}
    if start != "" {
@@ -44,5 +42,5 @@ Flags:`)
       arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
    arg = append(arg, "%d.jpg")
-   x.System("ffmpeg", arg...)
+   x.Command("ffmpeg", arg...).Run()
 }
