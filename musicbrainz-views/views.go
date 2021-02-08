@@ -4,6 +4,8 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
+   "io/ioutil"
+   "net/http"
    "os"
    "time"
 )
@@ -15,9 +17,11 @@ func youtubeResult(query string) ([]byte, error) {
    url.Host = "youtube.com"
    url.Path = "results"
    url.Query.Set("search_query", query)
-   body, e := x.GetContents(
-      url.String(),
-   )
+   get, e := http.Get(url.String())
+   if e != nil {
+      return nil, e
+   }
+   body, e := ioutil.ReadAll(get.Body)
    if e != nil {
       return nil, e
    }
