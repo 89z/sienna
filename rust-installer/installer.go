@@ -34,10 +34,8 @@ func main() {
    cache := path.Join(
       install.Cache, path.Base(source),
    )
-   if ! x.IsFile(cache) {
-      _, e = x.Copy(source, cache)
-      x.Check(e)
-   }
+   _, e = x.Get(source, cache, x.Ignore)
+   x.Check(e)
    data, e := ioutil.ReadFile(cache)
    x.Check(e)
    e = toml.Unmarshal(data, &channel)
@@ -48,10 +46,8 @@ func main() {
       source := each.Target.X8664PcWindowsGnu.XzUrl
       base := path.Base(source)
       cache := path.Join(install.Cache, base)
-      if ! x.IsFile(cache) {
-         _, e := x.Copy(source, cache)
-         x.Check(e)
-      }
+      _, e = x.Get(source, cache, x.Ignore)
+      x.Check(e)
       tar := extract.Tar{Strip: 2}
       e = tar.Xz(cache, install.Dest)
       x.Check(e)

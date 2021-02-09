@@ -3,22 +3,25 @@ package main
 import (
    "github.com/89z/x"
    "os"
+   "os/exec"
 )
 
 func main() {
-   e := x.Command("git", "commit", "--verbose").Run()
+   e := exec.Command("git", "commit", "--verbose").Run()
    x.Check(e)
-   if x.IsFile("config.toml") {
-      println(x.ColorGreen("remove docs"))
-      os.RemoveAll("docs")
-      println(x.ColorGreen("hugo"))
-      e = x.Command("hugo").Run()
-      x.Check(e)
-      println(x.ColorGreen("git add"))
-      e = x.Command("git", "add", ".").Run()
-      x.Check(e)
-      println(x.ColorGreen("git commit"))
-      e = x.Command("git", "commit", "--amend").Run()
-      x.Check(e)
+   _, e = os.Stat("config.toml")
+   if e != nil {
+      return
    }
+   println(x.ColorGreen("remove docs"))
+   os.RemoveAll("docs")
+   println(x.ColorGreen("hugo"))
+   e = exec.Command("hugo").Run()
+   x.Check(e)
+   println(x.ColorGreen("git add"))
+   e = exec.Command("git", "add", ".").Run()
+   x.Check(e)
+   println(x.ColorGreen("git commit"))
+   e = exec.Command("git", "commit", "--amend").Run()
+   x.Check(e)
 }

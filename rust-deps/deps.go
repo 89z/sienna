@@ -5,14 +5,14 @@ import (
    "github.com/pelletier/go-toml"
    "io/ioutil"
    "os"
+   "os/exec"
 )
 
 var (
    dep int
+   lock cargoLock
    prev string
 )
-
-type m map[string]interface{}
 
 type cargoLock struct{
    Package []struct{
@@ -20,7 +20,7 @@ type cargoLock struct{
    }
 }
 
-var lock cargoLock
+type m map[string]interface{}
 
 func main() {
    if len(os.Args) != 2 {
@@ -28,7 +28,7 @@ func main() {
       os.Exit(1)
    }
    crate := os.Args[1]
-   e := x.Command("cargo", "new", "rust-deps").Run()
+   e := exec.Command("cargo", "new", "rust-deps").Run()
    x.Check(e)
    e = os.Chdir("rust-deps")
    x.Check(e)
@@ -39,7 +39,7 @@ func main() {
    x.Check(e)
    e = ioutil.WriteFile("Cargo.toml", data, os.ModePerm)
    x.Check(e)
-   e = x.Command("cargo", "generate-lockfile").Run()
+   e = exec.Command("cargo", "generate-lockfile").Run()
    x.Check(e)
    data, e = ioutil.ReadFile("Cargo.lock")
    x.Check(e)

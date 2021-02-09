@@ -4,6 +4,8 @@ import (
    "github.com/89z/x"
    "io/ioutil"
    "os"
+   "os/exec"
+   "path/filepath"
 )
 
 func main() {
@@ -12,18 +14,15 @@ func main() {
       os.Exit(1)
    }
    root, name, arg := os.Args[1], os.Args[2], os.Args[3:]
-   e := os.Chdir(root)
+   dirs, e := ioutil.ReadDir(root)
    x.Check(e)
-   dirs, e := ioutil.ReadDir(".")
-   x.Check(e)
-   for _, dir := range dirs {
-      path := dir.Name()
-      println(x.ColorCyan(path))
-      e = os.Chdir(path)
-      x.Check(e)
-      e = x.Command(name, arg...).Run()
-      x.Check(e)
-      e = os.Chdir("..")
+   for _, each := range dirs {
+      dir := filepath.Join(root, each.Name())
+      println(x.ColorCyan(dir))
+      cmd := exec.Command(name, arg...)
+      cmd.Dir = dir
+      cmd.Stdout = os.Stdout
+      e = cmd.Run()
       x.Check(e)
    }
 }

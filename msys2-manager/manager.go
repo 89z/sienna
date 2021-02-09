@@ -79,13 +79,11 @@ func (m manager) sync(tar string) error {
       }
       file := values[0]
       archive := path.Join(m.Cache, file)
-      if ! x.IsFile(archive) {
-         _, e := x.Copy(
-            getRepo(file) + file, archive,
-         )
-         if e != nil {
-            return e
-         }
+      _, e = x.Get(
+         getRepo(file) + file, archive, x.Ignore,
+      )
+      if e != nil {
+         return e
       }
       e = unarchive(archive, m.Dest)
       if e != nil {
@@ -137,11 +135,8 @@ examples:
    x.Check(e)
    for _, each := range []string{"mingw64.db.tar.gz", "msys.db.tar.gz"} {
       archive := path.Join(install.Cache, each)
-      if x.IsFile(archive) {
-         continue
-      }
-      _, e = x.Copy(
-         getRepo(each) + each, archive,
+      _, e = x.Get(
+         getRepo(each) + each, archive, x.Ignore,
       )
       x.Check(e)
       e = unarchive(archive, install.Cache)

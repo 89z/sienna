@@ -3,6 +3,7 @@ package main
 import (
    "github.com/89z/x"
    "os"
+   "os/exec"
    "path/filepath"
 )
 
@@ -24,14 +25,14 @@ func curlMake() (e error) {
    if isDir(curl.Cache) {
       return
    }
-   e = x.Command(
+   e = exec.Command(
       "git", "clone", "--branch", verCurl, "--depth", "1",
       "git://github.com/curl/curl", curl.Cache,
    ).Run()
    if e != nil {
       return
    }
-   return x.Command(
+   return exec.Command(
       "mingw32-make",
       "-C", filepath.Join(curl.Cache, "lib"),
       "-f", "Makefile.m32",
@@ -80,9 +81,9 @@ func gitMake(curl string) (e error) {
       return
    }
    if isDir(git.Cache) {
-      e = x.Command("git", "-C", git.Cache, "clean", "-d", "-f", "-x").Run()
+      e = exec.Command("git", "-C", git.Cache, "clean", "-d", "-f", "-x").Run()
    } else {
-      e = x.Command(
+      e = exec.Command(
          "git", "clone", "--branch", verGit, "--depth", "1",
          "git://github.com/git/git", git.Cache,
       ).Run()
@@ -93,7 +94,7 @@ func gitMake(curl string) (e error) {
    os.Setenv("MSYSTEM", "MINGW64")
    os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
    os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
-   return x.Command(
+   return exec.Command(
       "make", "-C", git.Cache, "-j", "8",
       "CFLAGS=-DCURL_STATICLIB",
       "CURLDIR=" + filepath.ToSlash(curl),

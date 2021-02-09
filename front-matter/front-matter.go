@@ -43,7 +43,8 @@ func main() {
          continue
       }
       examplePath := path.Join(root, front.Filename)
-      if ! x.IsFile(examplePath) {
+      _, err := os.Stat(examplePath)
+      if err != nil {
          println(indexPath)
          continue
       }

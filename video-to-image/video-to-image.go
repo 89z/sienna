@@ -2,8 +2,9 @@ package main
 
 import (
    "flag"
-   "github.com/89z/x"
+   "log"
    "os"
+   "os/exec"
 )
 
 var (
@@ -42,5 +43,8 @@ Flags:`)
       arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
    arg = append(arg, "%d.jpg")
-   x.Command("ffmpeg", arg...).Run()
+   e := exec.Command("ffmpeg", arg...).Run()
+   if e != nil {
+      log.Fatal(e)
+   }
 }

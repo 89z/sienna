@@ -4,6 +4,7 @@ import (
    "bufio"
    "fmt"
    "github.com/89z/x"
+   "os"
    "os/exec"
    "strings"
    "time"
@@ -13,10 +14,11 @@ const minimum = 64
 var add, del, totAdd, totCha, totDel int
 
 func diff() (*bufio.Scanner, error) {
-   if x.IsFile("config.toml") {
-      return popen("git", "diff", "--cached", "--numstat", ":!docs")
+   _, err := os.Stat("config.toml")
+   if err != nil {
+      return popen("git", "diff", "--cached", "--numstat")
    }
-   return popen("git", "diff", "--cached", "--numstat")
+   return popen("git", "diff", "--cached", "--numstat", ":!docs")
 }
 
 func popen(name string, arg ...string) (*bufio.Scanner, error) {
@@ -36,7 +38,7 @@ type test struct {
 }
 
 func main() {
-   e := x.Command("git", "add", ".").Run()
+   e := exec.Command("git", "add", ".").Run()
    x.Check(e)
    stat, e := diff()
    x.Check(e)
