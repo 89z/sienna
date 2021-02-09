@@ -5,7 +5,7 @@ import (
    "github.com/pelletier/go-toml"
    "io/ioutil"
    "os"
-   "os/exec"
+   "path"
 )
 
 var (
@@ -23,30 +23,31 @@ type cargoLock struct{
 type m map[string]interface{}
 
 func main() {
+   name := "rust-deps"
    if len(os.Args) != 2 {
-      println("rust-deps <crate>")
+      println(name, "<crate>")
       os.Exit(1)
    }
    crate := os.Args[1]
-   e := exec.Command("cargo", "new", "rust-deps").Run()
-   x.Check(e)
-   e = os.Chdir("rust-deps")
+   e := x.Command("cargo", "new", name).Run()
    x.Check(e)
    data, e := toml.Marshal(m{
       "dependencies": m{crate: ""},
-      "package": m{"name": "rust-deps", "version": "1.0.0"},
+      "package": m{"name": name, "version": "1.0.0"},
    })
    x.Check(e)
-   e = ioutil.WriteFile("Cargo.toml", data, os.ModePerm)
+   e = ioutil.WriteFile(path.Join(name, "Cargo.toml"), data, 0)
    x.Check(e)
-   e = exec.Command("cargo", "generate-lockfile").Run()
+   cmd := x.Command("cargo", "generate-lockfile")
+   cmd.Dir = name
+   e = cmd.Run()
    x.Check(e)
-   data, e = ioutil.ReadFile("Cargo.lock")
+   data, e = ioutil.ReadFile(path.Join(name, "Cargo.lock"))
    x.Check(e)
    e = toml.Unmarshal(data, &lock)
    x.Check(e)
    for _, pack := range lock.Package {
-      if pack.Name == "rust-deps" {
+      if pack.Name == name {
          continue
       }
       if pack.Name == crate {
@@ -60,8 +61,6 @@ func main() {
       dep++
    }
    print("\n", dep, " deps\n")
-   e = os.Chdir("..")
-   x.Check(e)
-   e = os.RemoveAll("rust-deps")
+   e = os.RemoveAll(name)
    x.Check(e)
 }

@@ -38,7 +38,7 @@ type test struct {
 }
 
 func main() {
-   e := exec.Command("git", "add", ".").Run()
+   e := x.Command("git", "add", ".").Run()
    x.Check(e)
    stat, e := diff()
    x.Check(e)

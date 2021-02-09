@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "io/ioutil"
    "os"
-   "os/exec"
    "path/filepath"
 )
 
@@ -18,10 +17,8 @@ func main() {
    x.Check(e)
    for _, each := range dirs {
       dir := filepath.Join(root, each.Name())
-      println(x.ColorCyan(dir))
-      cmd := exec.Command(name, arg...)
+      cmd := x.Command(name, arg...)
       cmd.Dir = dir
-      cmd.Stdout = os.Stdout
       e = cmd.Run()
       x.Check(e)
    }
