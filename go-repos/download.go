@@ -46,7 +46,9 @@ func download() error {
          if strings.Count(result.Path, "/") > 3 {
             continue
          }
-         _, e = x.Get("https://pkg.go.dev/" + result.Path, result.Path, x.Ignore)
+         _, e = x.Copy(
+            "https://pkg.go.dev/" + result.Path, result.Path, x.Ignore,
+         )
          if e != nil {
             return e
          }

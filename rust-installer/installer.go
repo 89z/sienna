@@ -9,7 +9,6 @@ import (
 )
 
 const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
-
 var channel distChannel
 
 type distChannel struct{
@@ -34,7 +33,7 @@ func main() {
    cache := path.Join(
       install.Cache, path.Base(source),
    )
-   _, e = x.Get(source, cache, x.Ignore)
+   _, e = x.Copy(source, cache, x.Ignore)
    x.Check(e)
    data, e := ioutil.ReadFile(cache)
    x.Check(e)
@@ -46,7 +45,7 @@ func main() {
       source := each.Target.X8664PcWindowsGnu.XzUrl
       base := path.Base(source)
       cache := path.Join(install.Cache, base)
-      _, e = x.Get(source, cache, x.Ignore)
+      _, e = x.Copy(source, cache, x.Ignore)
       x.Check(e)
       tar := extract.Tar{Strip: 2}
       e = tar.Xz(cache, install.Dest)

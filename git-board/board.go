@@ -14,8 +14,8 @@ const minimum = 64
 var add, del, totAdd, totCha, totDel int
 
 func diff() (*bufio.Scanner, error) {
-   _, err := os.Stat("config.toml")
-   if err != nil {
+   _, e := os.Stat("config.toml")
+   if e != nil {
       return popen("git", "diff", "--cached", "--numstat")
    }
    return popen("git", "diff", "--cached", "--numstat", ":!docs")
@@ -23,9 +23,9 @@ func diff() (*bufio.Scanner, error) {
 
 func popen(name string, arg ...string) (*bufio.Scanner, error) {
    cmd := exec.Command(name, arg...)
-   pipe, err := cmd.StdoutPipe()
-   if err != nil {
-      return nil, err
+   pipe, e := cmd.StdoutPipe()
+   if e != nil {
+      return nil, fmt.Errorf("StdoutPipe %v", e)
    }
    return bufio.NewScanner(pipe), cmd.Start()
 }
@@ -38,7 +38,7 @@ type test struct {
 }
 
 func main() {
-   e := x.Command("git", "add", ".").Run()
+   e := exec.Command("git", "add", ".").Run()
    x.Check(e)
    stat, e := diff()
    x.Check(e)
