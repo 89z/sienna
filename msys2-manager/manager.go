@@ -15,12 +15,16 @@ type manager struct {
    x.Install
 }
 
-func (m manager) getValue(pack, key string) (val []string, e error) {
-   var name string
+func (m manager) getValue(pack, key string) ([]string, error) {
    packages, e := ioutil.ReadDir(m.Cache)
    if e != nil {
-      return
+      return nil, e
    }
+   var (
+      dep bool
+      name string
+      val []string
+   )
    for _, each := range packages {
       dir := each.Name()
       if strings.HasPrefix(dir, pack + "-") {
@@ -35,9 +39,8 @@ func (m manager) getValue(pack, key string) (val []string, e error) {
       path.Join(m.Cache, name, "desc"),
    )
    if e != nil {
-      return
+      return nil, e
    }
-   var dep bool
    scan := bufio.NewScanner(open)
    for scan.Scan() {
       line := scan.Text()
@@ -61,7 +64,7 @@ func (m manager) getValue(pack, key string) (val []string, e error) {
       }
       val = append(val, base)
    }
-   return
+   return val, nil
 }
 
 func (m manager) sync(tar string) error {

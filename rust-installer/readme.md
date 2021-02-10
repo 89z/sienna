@@ -37,4 +37,5 @@ dest
 C:\rust\channel-rust-stable.toml
 ~~~
 
-<https://github.com/rust-lang/rustup/issues/2569>
+- <https://github.com/rust-lang/rustup/issues/2568>
+- <https://github.com/rust-lang/rustup/issues/2569>
