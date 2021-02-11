@@ -5,11 +5,9 @@ import (
    "github.com/89z/x/extract"
    "github.com/pelletier/go-toml"
    "io/ioutil"
-   "path"
+   "os"
+   "path/filepath"
 )
-
-const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
-var channel distChannel
 
 type distChannel struct{
    Pkg struct{
@@ -22,33 +20,41 @@ type distChannel struct{
 type target struct{
    Target struct{
       X8664PcWindowsGnu struct{
-         XzUrl string `toml:"xz_url"`
+         Url string
       } `toml:"x86_64-pc-windows-gnu"`
    }
 }
 
+const (
+   source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
+   dest = `C:\rust`
+)
+
 func main() {
-   install, e := x.NewInstall("rust")
+   cache, e := os.UserCacheDir()
    x.Check(e)
-   cache := path.Join(
-      install.Cache, path.Base(source),
+   cache = filepath.Join(cache, "rust")
+   channel := filepath.Join(
+      cache, filepath.Base(source),
    )
-   _, e = x.Copy(source, cache)
+   _, e = x.Copy(source, channel)
    x.Check(e)
-   data, e := ioutil.ReadFile(cache)
+   data, e := ioutil.ReadFile(channel)
    x.Check(e)
-   e = toml.Unmarshal(data, &channel)
+   var dist distChannel
+   e = toml.Unmarshal(data, &dist)
    x.Check(e)
+   tar := extract.Tar{Strip: 2}
    for _, each := range []target{
-      channel.Pkg.Cargo, channel.Pkg.RustStd, channel.Pkg.Rustc,
+      dist.Pkg.Cargo, dist.Pkg.RustStd, dist.Pkg.Rustc,
    } {
-      source := each.Target.X8664PcWindowsGnu.XzUrl
-      base := path.Base(source)
-      cache := path.Join(install.Cache, base)
-      _, e = x.Copy(source, cache)
+      source := each.Target.X8664PcWindowsGnu.Url
+      archive := filepath.Join(
+         cache, filepath.Base(source),
+      )
+      _, e = x.Copy(source, archive)
       x.Check(e)
-      tar := extract.Tar{Strip: 2}
-      e = tar.Xz(cache, install.Dest)
+      e = tar.Gz(archive, dest)
       x.Check(e)
    }
 }

@@ -59,12 +59,17 @@ func (m manager) getValue(pack, key string) ([]string, error) {
       }
       // STATE 3
       base := baseName(line, "=>")
-      if base == "sh" {
-         return nil, fmt.Errorf("%v %v %v", name, key, line)
-      }
       val = append(val, base)
    }
    return val, nil
+}
+
+func baseName(s, char string) string {
+   n := strings.IndexAny(s, char)
+   if n == -1 {
+      return s
+   }
+   return s[:n]
 }
 
 func (m manager) sync(tar string) error {
@@ -96,14 +101,6 @@ func (m manager) sync(tar string) error {
    return nil
 }
 
-func baseName(s, char string) string {
-   n := strings.IndexAny(s, char)
-   if n == -1 {
-      return s
-   }
-   return s[:n]
-}
-
 func getRepo(s string) string {
    if s == "mingw64.db.tar.gz" || strings.HasPrefix(s, "mingw-w64-x86_64-") {
       return "http://repo.msys2.org/mingw/x86_64/"
@@ -116,10 +113,10 @@ func unarchive(source, dest string) error {
    switch path.Ext(source) {
    case ".zst":
       return tar.Zst(source, dest)
-   case ".xz":
-      return tar.Xz(source, dest)
-   default:
+   case ".gz":
       return tar.Gz(source, dest)
+   default:
+      return fmt.Errorf("%v", source)
    }
 }
 
