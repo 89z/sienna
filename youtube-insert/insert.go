@@ -2,14 +2,8 @@ package main
 
 import (
    "github.com/89z/x"
-   "github.com/89z/x/youtube"
    "net/http"
-   "net/url"
-   "os"
    "regexp"
-   "strconv"
-   "strings"
-   "time"
 )
 
 func getImage(id string) string {
@@ -28,7 +22,7 @@ func httpHead(s string) bool {
    return e == nil && resp.StatusCode == 200
 }
 
-func FindStringSubmatch(re, input string) string {
+func findStringSubmatch(re, input string) string {
    a := regexp.MustCompile(re).FindStringSubmatch(input)
    if len(a) < 2 {
       return ""

@@ -3,7 +3,6 @@ package main
 import (
    "github.com/89z/x"
    "github.com/89z/x/youtube"
-   "net/http"
    "net/url"
    "os"
    "regexp"
@@ -33,7 +32,7 @@ func main() {
       matches */
       ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
    } {
-      match := x.FindStringSubmatch(pattern, info.Description.SimpleText)
+      match := findStringSubmatch(pattern, info.Description.SimpleText)
       if match == "" {
          continue
       }

@@ -33,7 +33,7 @@ func main() {
    cache := path.Join(
       install.Cache, path.Base(source),
    )
-   _, e = x.Copy(source, cache, x.Ignore)
+   _, e = x.Copy(source, cache)
    x.Check(e)
    data, e := ioutil.ReadFile(cache)
    x.Check(e)
@@ -45,7 +45,7 @@ func main() {
       source := each.Target.X8664PcWindowsGnu.XzUrl
       base := path.Base(source)
       cache := path.Join(install.Cache, base)
-      _, e = x.Copy(source, cache, x.Ignore)
+      _, e = x.Copy(source, cache)
       x.Check(e)
       tar := extract.Tar{Strip: 2}
       e = tar.Xz(cache, install.Dest)

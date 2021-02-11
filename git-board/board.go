@@ -5,7 +5,6 @@ import (
    "fmt"
    "github.com/89z/x"
    "os"
-   "os/exec"
    "strings"
    "time"
 )
@@ -22,7 +21,7 @@ func diff() (*bufio.Scanner, error) {
 }
 
 func popen(name string, arg ...string) (*bufio.Scanner, error) {
-   cmd := exec.Command(name, arg...)
+   cmd := x.Command(name, arg...)
    pipe, e := cmd.StdoutPipe()
    if e != nil {
       return nil, fmt.Errorf("StdoutPipe %v", e)
@@ -38,7 +37,7 @@ type test struct {
 }
 
 func main() {
-   e := exec.Command("git", "add", ".").Run()
+   e := x.Command("git", "add", ".").Run()
    x.Check(e)
    stat, e := diff()
    x.Check(e)
