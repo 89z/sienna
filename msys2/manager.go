@@ -10,7 +10,7 @@ import (
    "strings"
 )
 
-const repo = "http://repo.msys2.org"
+const mirror = "http://repo.msys2.org"
 
 func baseName(s, char string) string {
    n := strings.IndexAny(s, char)
@@ -20,25 +20,24 @@ func baseName(s, char string) string {
    return s[:n]
 }
 
-func getDesc(name string) (description, error) {
-   open, e := os.Open(name)
+func getDesc(file, repo, variant string) (description, error) {
+   open, e := os.Open(file)
    if e != nil {
       return description{}, e
    }
    scan := bufio.NewScanner(open)
    var desc description
    for scan.Scan() {
-      line := scan.Text()
-      switch line {
+      switch scan.Text() {
       case "%FILENAME%":
          scan.Scan()
-         desc.filename = scan.Text()
+         desc.filename = path.Join(mirror, repo, variant, scan.Text())
       case "%NAME%":
          scan.Scan()
          desc.name = scan.Text()
       case "%DEPENDS%":
          for scan.Scan() {
-            line = scan.Text()
+            line := scan.Text()
             if line == "" {
                break
             }
@@ -48,7 +47,7 @@ func getDesc(name string) (description, error) {
          }
       case "%PROVIDES%":
          for scan.Scan() {
-            line = scan.Text()
+            line := scan.Text()
             if line == "" {
                break
             }
@@ -60,7 +59,7 @@ func getDesc(name string) (description, error) {
 }
 
 func main() {
-   if len(os.Args) {
+   if len(os.Args) != 3 {
       println(`msys2 query mingw-w64-x86_64-gcc
 msys2 sync gcc.txt`)
       os.Exit(1)
@@ -75,11 +74,14 @@ msys2 sync gcc.txt`)
       "/mingw/x86_64/mingw64.db.tar.gz",
       "/msys/x86_64/msys.db.tar.gz",
    } {
-      archive := cache + each
-      _, e = x.Copy(repo + each, archive)
-      if e != nil {
+      archive := path.Join(cache, each)
+      _, e = x.Copy(mirror + each, archive)
+      if os.IsExist(e) {
+         continue
+      } else if e != nil {
          log.Fatal(e)
       }
+      println(x.ColorCyan("Extract"), each)
       e = tar.Gz(
          archive, path.Dir(archive),
       )

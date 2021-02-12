@@ -5,6 +5,7 @@ import (
    "io/ioutil"
    "log"
    "os"
+   "os/exec"
    "path/filepath"
 )
 
@@ -20,8 +21,11 @@ func main() {
    }
    for _, each := range dirs {
       dir := filepath.Join(root, each.Name())
-      cmd := x.Command(name, arg...)
+      cmd := exec.Command(name, arg...)
       cmd.Dir = dir
+      cmd.Stderr = os.Stderr
+      cmd.Stdout = os.Stdout
+      println(x.ColorCyan(dir))
       e = cmd.Run()
       if e != nil {
          log.Fatal(e)
