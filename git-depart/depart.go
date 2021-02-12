@@ -6,33 +6,32 @@ import (
    "os/exec"
 )
 
-func hugo(config string) error {
-   _, e := os.Stat(config)
+func check(e error) {
    if e != nil {
-      return nil
+      log.Fatal(e)
    }
-   e = os.RemoveAll("docs")
-   if e != nil {
-      return e
-   }
-   e = exec.Command("hugo").Run()
-   if e != nil {
-      return e
-   }
-   e = exec.Command("git", "add", ".").Run()
-   if e != nil {
-      return e
-   }
-   return exec.Command("git", "commit", "--amend").Run()
+}
+
+func run(name string, arg ...string) error {
+   c := exec.Command(name, arg...)
+   c.Stderr = os.Stderr
+   c.Stdout = os.Stdout
+   return c.Run()
 }
 
 func main() {
-   e := exec.Command("git", "commit", "--verbose").Run()
+   e := run("git", "commit", "--verbose")
+   check(e)
+   _, e = os.Stat("config.toml")
    if e != nil {
-      log.Fatal(e)
+      return
    }
-   e = hugo("config.toml")
-   if e != nil {
-      log.Fatal(e)
-   }
+   e = os.RemoveAll("docs")
+   check(e)
+   e = run("hugo")
+   check(e)
+   e = run("git", "add", ".")
+   check(e)
+   e = run("git", "commit", "--amend")
+   check(e)
 }

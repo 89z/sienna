@@ -9,41 +9,74 @@ import (
 )
 
 const (
+   local = `C:\git`
    verCurl = "curl-7_73_0"
    verGit = "v2.29.1"
 )
+
+type userCache struct {
+   dir string
+}
+
+func gitCopy() error {
+   var (
+      cache userCache
+      err error
+   )
+   cache.dir, err = os.UserCacheDir()
+   if err != nil {
+      return err
+   }
+   core := filepath.Join(local, "libexec", "git-core")
+   err = os.MkdirAll(core, os.ModeDir)
+   if err != nil {
+      return err
+   }
+   err = os.MkdirAll(
+      filepath.Join(local, "share", "git-core", "templates"), os.ModeDir,
+   )
+   if err != nil {
+      return err
+   }
+   cache.dir = filepath.Join(cache.dir, "sienna", "git")
+   for _, each := range []string{"git.exe", "git-remote-https.exe"} {
+      err = os.Link(
+         filepath.Join(cache.dir, each), filepath.Join(core, each),
+      )
+      if err != nil {
+         return err
+      }
+   }
+   return nil
+}
 
 func isDir(name string) bool {
    fi, err := os.Stat(name)
    return err == nil && fi.IsDir()
 }
 
-type userCache struct {
-   dir string
-}
-
 func curlMake() error {
-   curl, err := x.NewInstall("curl")
+   var (
+      cache userCache
+      err error
+   )
+   cache.dir, err = os.UserCacheDir()
    if err != nil {
       return err
    }
-   if isDir(curl.Cache) {
-      return err
-   }
+   cache.dir = filepath.Join(cache.dir, "sienna", "curl")
    err = exec.Command(
       "git", "clone", "--branch", verCurl, "--depth", "1",
-      "git://github.com/curl/curl", curl.Cache,
+      "git://github.com/curl/curl", cache.dir,
    ).Run()
    if err != nil {
       return err
    }
-   return exec.Command(
-      "mingw32-make",
-      "-C", filepath.Join(curl.Cache, "lib"),
-      "-f", "Makefile.m32",
-      "-j", "5",
-      "CFG=-winssl",
-   ).Run()
+   cmd := exec.Command(
+      "mingw32-make", "-f", "Makefile.m32", "-j", "5", "CFG=-winssl",
+   )
+   cmd.Dir = filepath.Join(cache.dir, "lib")
+   return cmd.Run()
 }
 
 func copyFile(source, dest string) (int64, error) {
@@ -59,26 +92,6 @@ func copyFile(source, dest string) (int64, error) {
    return create.ReadFrom(open)
 }
 
-func gitCopy() error {
-   git, err := x.NewInstall("git")
-   if err != nil {
-      return err
-   }
-   os.MkdirAll(
-      filepath.Join(git.Dest, "share", "git-core", "templates"), os.ModeDir,
-   )
-   core := filepath.Join(git.Dest, "libexec", "git-core")
-   os.MkdirAll(core, os.ModeDir)
-   for _, each := range []string{"git.exe", "git-remote-https.exe"} {
-      _, err = copyFile(
-         filepath.Join(git.Cache, each), filepath.Join(core, each),
-      )
-      if err != nil {
-         return err
-      }
-   }
-   return nil
-}
 
 func gitMake(curl string) error {
    git, err := x.NewInstall("git")
