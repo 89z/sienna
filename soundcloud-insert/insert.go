@@ -3,6 +3,7 @@ package main
 import (
    "github.com/89z/x"
    "github.com/89z/x/soundcloud"
+   "log"
    "net/url"
    "os"
    "strconv"
@@ -15,7 +16,9 @@ func main() {
       os.Exit(1)
    }
    player, e := soundcloud.Insert(os.Args[1])
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    value := make(url.Values)
    date := strconv.FormatInt(
       time.Now().Unix(), 36,
@@ -28,6 +31,8 @@ func main() {
    rec, e := x.JsonMarshal(map[string]string{
       "q": value.Encode(), "s": player.Title,
    })
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    os.Stdout.Write(append(rec, ',', '\n'))
 }

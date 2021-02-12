@@ -2,6 +2,7 @@ package main
 
 import (
    "github.com/89z/x"
+   "log"
    "os"
    "path/filepath"
 )
@@ -114,11 +115,17 @@ func main() {
    }
    if os.Args[1] == "copy" {
       e := gitCopy()
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
    } else {
       curl, e := x.NewInstall("curl")
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
       e = gitMake(curl.Cache)
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
    }
 }

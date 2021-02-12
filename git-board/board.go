@@ -4,6 +4,7 @@ import (
    "bufio"
    "fmt"
    "github.com/89z/x"
+   "log"
    "os"
    "strings"
    "time"
@@ -38,9 +39,13 @@ type test struct {
 
 func main() {
    e := x.Command("git", "add", ".").Run()
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    stat, e := diff()
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    for stat.Scan() {
       totCha++
       text := stat.Text()
@@ -52,7 +57,9 @@ func main() {
       totDel += del
    }
    commit, e := popen("git", "log", "--format=%cI")
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    commit.Scan()
    // actual
    actual := commit.Text()[:10]

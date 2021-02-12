@@ -3,6 +3,7 @@ package main
 import (
    "github.com/89z/x"
    "github.com/89z/x/youtube"
+   "log"
    "net/http"
    "net/url"
    "os"
@@ -41,12 +42,16 @@ func main() {
       println("youtube-insert <URL>")
       os.Exit(1)
    }
-   u, e := url.Parse(os.Args[1])
-   x.Check(e)
-   id := u.Query().Get("v")
+   watch, e := url.Parse(os.Args[1])
+   if e != nil {
+      log.Fatal(e)
+   }
+   id := watch.Query().Get("v")
    // year
    info, e := youtube.Info(id)
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    if info.Description.SimpleText == "" {
       println("Clapham Junction")
       os.Exit(1)
@@ -91,6 +96,8 @@ func main() {
    data, e := x.JsonMarshal(map[string]string{
       "q": value.Encode(), "s": title,
    })
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    os.Stdout.Write(append(data, ',', '\n'))
 }

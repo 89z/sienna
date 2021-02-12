@@ -2,9 +2,9 @@ package main
 
 import (
    "bytes"
-   "github.com/89z/x"
    "github.com/pelletier/go-toml"
    "io/ioutil"
+   "log"
    "os"
    "path"
 )
@@ -19,6 +19,16 @@ type frontMatter struct{
    Substr string
 }
 
+func unmarshal(file string, v interface{}) error {
+   index, e := ioutil.ReadFile(file)
+   if e != nil {
+      return e
+   }
+   return toml.Unmarshal(
+      bytes.SplitN(index, tomlSep[:], 3)[1], v,
+   )
+}
+
 func main() {
    if len(os.Args) != 2 {
       println(`front-matter D:\Git`)
@@ -27,18 +37,18 @@ func main() {
    root := os.Args[1]
    content := path.Join(root, "autumn", "content")
    dir, e := ioutil.ReadDir(content)
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    for _, entry := range dir {
       indexPath := path.Join(
          content, entry.Name(), "_index.md",
       )
-      index, e := ioutil.ReadFile(indexPath)
-      x.Check(e)
       var front frontMatter
-      e = toml.Unmarshal(
-         bytes.SplitN(index, tomlSep[:], 3)[1], &front,
-      )
-      x.Check(e)
+      e = unmarshal(indexPath, &front)
+      if e != nil {
+         log.Fatal(e)
+      }
       if front.Build.List != "" {
          continue
       }
@@ -49,7 +59,9 @@ func main() {
          continue
       }
       example, e := ioutil.ReadFile(examplePath)
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
       sub := []byte(front.Substr)
       if front.Substr == "" || ! bytes.Contains(example, sub) {
          println(indexPath)

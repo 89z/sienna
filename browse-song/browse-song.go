@@ -4,6 +4,7 @@ import (
    "fmt"
    "github.com/89z/x"
    "github.com/89z/x/sys"
+   "log"
    "os"
 )
 
@@ -24,5 +25,7 @@ func main() {
    e := sys.ShellExecute(
       0, "", url.String(), "", "", sw_shownormal,
    )
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
 }

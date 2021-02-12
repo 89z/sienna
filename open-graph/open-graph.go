@@ -3,6 +3,7 @@ package main
 import (
    "github.com/89z/x"
    "io/ioutil"
+   "log"
    "net/http"
    "os"
 )
@@ -26,6 +27,8 @@ func main() {
       os.Exit(1)
    }
    url, e := open(os.Args[1])
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    println(url)
 }
