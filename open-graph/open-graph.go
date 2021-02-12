@@ -8,8 +8,9 @@ import (
    "os"
 )
 
-func open(url string) (string, error) {
-   get, e := http.Get(url)
+func open(source string) (string, error) {
+   println(x.ColorCyan("Get"), source)
+   get, e := http.Get(source)
    if e != nil {
       return "", e
    }
@@ -17,8 +18,9 @@ func open(url string) (string, error) {
    if e != nil {
       return "", e
    }
-   image := x.FindSubmatch(`="og:image" content="([^"]+)"`, body)
-   return string(image), nil
+   return string(
+      x.FindSubmatch(`="og:image" content="([^"]+)"`, body),
+   ), nil
 }
 
 func main() {
@@ -26,9 +28,9 @@ func main() {
       println("open-graph <URL>")
       os.Exit(1)
    }
-   url, e := open(os.Args[1])
+   image, e := open(os.Args[1])
    if e != nil {
       log.Fatal(e)
    }
-   println(url)
+   println(image)
 }

@@ -11,18 +11,6 @@ import (
    "strings"
 )
 
-type manager struct {
-   x.Install
-}
-
-func baseName(s, char string) string {
-   n := strings.IndexAny(s, char)
-   if n == -1 {
-      return s
-   }
-   return s[:n]
-}
-
 func (m manager) sync(tar string) error {
    open, e := os.Open(tar)
    if e != nil {
@@ -53,7 +41,6 @@ func (m manager) sync(tar string) error {
 }
 
 func main() {
-   man := manager{install}
    target := os.Args[2]
    if os.Args[1] == "sync" {
       e = man.sync(target)
