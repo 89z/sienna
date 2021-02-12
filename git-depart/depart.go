@@ -1,9 +1,9 @@
 package main
 
 import (
-   "github.com/89z/x"
    "log"
    "os"
+   "os/exec"
 )
 
 func hugo(config string) error {
@@ -15,19 +15,19 @@ func hugo(config string) error {
    if e != nil {
       return e
    }
-   e = x.Command("hugo").Run()
+   e = exec.Command("hugo").Run()
    if e != nil {
       return e
    }
-   e = x.Command("git", "add", ".").Run()
+   e = exec.Command("git", "add", ".").Run()
    if e != nil {
       return e
    }
-   return x.Command("git", "commit", "--amend").Run()
+   return exec.Command("git", "commit", "--amend").Run()
 }
 
 func main() {
-   e := x.Command("git", "commit", "--verbose").Run()
+   e := exec.Command("git", "commit", "--verbose").Run()
    if e != nil {
       log.Fatal(e)
    }

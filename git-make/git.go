@@ -4,6 +4,7 @@ import (
    "github.com/89z/x"
    "log"
    "os"
+   "os/exec"
    "path/filepath"
 )
 
@@ -17,22 +18,26 @@ func isDir(name string) bool {
    return err == nil && fi.IsDir()
 }
 
-func curlMake() (e error) {
-   curl, e := x.NewInstall("curl")
-   if e != nil {
-      return
+type userCache struct {
+   dir string
+}
+
+func curlMake() error {
+   curl, err := x.NewInstall("curl")
+   if err != nil {
+      return err
    }
    if isDir(curl.Cache) {
-      return
+      return err
    }
-   e = x.Command(
+   err = exec.Command(
       "git", "clone", "--branch", verCurl, "--depth", "1",
       "git://github.com/curl/curl", curl.Cache,
    ).Run()
-   if e != nil {
-      return
+   if err != nil {
+      return err
    }
-   return x.Command(
+   return exec.Command(
       "mingw32-make",
       "-C", filepath.Join(curl.Cache, "lib"),
       "-f", "Makefile.m32",
@@ -42,22 +47,22 @@ func curlMake() (e error) {
 }
 
 func copyFile(source, dest string) (int64, error) {
-   open, e := os.Open(source)
-   if e != nil {
-      return 0, e
+   open, err := os.Open(source)
+   if err != nil {
+      return 0, err
    }
-   create, e := os.Create(dest)
-   if e != nil {
-      return 0, e
+   create, err := os.Create(dest)
+   if err != nil {
+      return 0, err
    }
    defer create.Close()
    return create.ReadFrom(open)
 }
 
-func gitCopy() (e error) {
-   git, e := x.NewInstall("git")
-   if e != nil {
-      return
+func gitCopy() error {
+   git, err := x.NewInstall("git")
+   if err != nil {
+      return err
    }
    os.MkdirAll(
       filepath.Join(git.Dest, "share", "git-core", "templates"), os.ModeDir,
@@ -65,36 +70,36 @@ func gitCopy() (e error) {
    core := filepath.Join(git.Dest, "libexec", "git-core")
    os.MkdirAll(core, os.ModeDir)
    for _, each := range []string{"git.exe", "git-remote-https.exe"} {
-      _, e = copyFile(
+      _, err = copyFile(
          filepath.Join(git.Cache, each), filepath.Join(core, each),
       )
-      if e != nil {
-         return
+      if err != nil {
+         return err
       }
    }
-   return
+   return nil
 }
 
-func gitMake(curl string) (e error) {
-   git, e := x.NewInstall("git")
-   if e != nil {
-      return
+func gitMake(curl string) error {
+   git, err := x.NewInstall("git")
+   if err != nil {
+      return err
    }
    if isDir(git.Cache) {
-      e = x.Command("git", "-C", git.Cache, "clean", "-d", "-f", "-x").Run()
+      err = exec.Command("git", "-C", git.Cache, "clean", "-d", "-f", "-x").Run()
    } else {
-      e = x.Command(
+      err = exec.Command(
          "git", "clone", "--branch", verGit, "--depth", "1",
          "git://github.com/git/git", git.Cache,
       ).Run()
    }
-   if e != nil {
-      return
+   if err != nil {
+      return err
    }
    os.Setenv("MSYSTEM", "MINGW64")
    os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
    os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
-   return x.Command(
+   return exec.Command(
       "make", "-C", git.Cache, "-j", "8",
       "CFLAGS=-DCURL_STATICLIB",
       "CURLDIR=" + filepath.ToSlash(curl),
@@ -114,18 +119,18 @@ func main() {
       os.Exit(1)
    }
    if os.Args[1] == "copy" {
-      e := gitCopy()
-      if e != nil {
-         log.Fatal(e)
+      err := gitCopy()
+      if err != nil {
+         log.Fatal(err)
       }
    } else {
-      curl, e := x.NewInstall("curl")
-      if e != nil {
-         log.Fatal(e)
+      curl, err := x.NewInstall("curl")
+      if err != nil {
+         log.Fatal(err)
       }
-      e = gitMake(curl.Cache)
-      if e != nil {
-         log.Fatal(e)
+      err = gitMake(curl.Cache)
+      if err != nil {
+         log.Fatal(err)
       }
    }
 }
