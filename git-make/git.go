@@ -4,99 +4,71 @@ import (
    "log"
    "os"
    "os/exec"
-   "path"
+   "path/filepath"
 )
 
 const (
-   local = `C:\git`
    verCurl = "curl-7_73_0"
    verGit = "v2.29.1"
 )
 
 func curlMake() error {
-   cache, e := os.UserCacheDir()
-   if e != nil {
-      return e
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      return err
    }
-   cache = path.Join(cache, "sienna", "curl")
-   e = exec.Command(
+   cache = filepath.Join(cache, "sienna", "curl")
+   err = exec.Command(
       "git", "clone", "--branch", verCurl, "--depth", "1",
       "git://github.com/curl/curl", cache,
    ).Run()
-   if e != nil {
-      return e
+   if err != nil {
+      return err
    }
    cmd := exec.Command(
       "mingw32-make", "-f", "Makefile.m32", "-j", "5", "CFG=-winssl",
    )
-   cmd.Dir = path.Join(cache, "lib")
+   cmd.Dir = filepath.Join(cache, "lib")
    return cmd.Run()
 }
 
-func gitCopy() error {
-   cache, e := os.UserCacheDir()
-   if e != nil {
-      return e
-   }
-   core := path.Join(local, "libexec", "git-core")
-   e = os.MkdirAll(core, os.ModeDir)
-   if e != nil {
-      return e
-   }
-   e = os.MkdirAll(
-      path.Join(local, "share", "git-core", "templates"), os.ModeDir,
-   )
-   if e != nil {
-      return e
-   }
-   cache = path.Join(cache, "sienna", "git")
-   for _, each := range []string{"git.exe", "git-remote-https.exe"} {
-      e = os.Link(
-         path.Join(cache, each), path.Join(core, each),
-      )
-      if e != nil {
-         return e
-      }
-   }
-   return nil
-}
-
-func gitMake() error {
-   cache, e := os.UserCacheDir()
-   if e != nil {
-      return e
+func gitMake(root string) error {
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      return err
    }
    cmd := exec.Command(
       "git", "clone", "--branch", verGit, "--depth", "1",
       "git://github.com/git/git",
    )
-   cmd.Dir = path.Join(cache, "sienna")
-   e = cmd.Run()
-   git := path.Join(cache, "sienna", "git")
-   if e != nil {
+   cmd.Dir = filepath.Join(cache, "sienna")
+   err = cmd.Run()
+   git := filepath.Join(cache, "sienna", "git")
+   if err != nil {
       cmd = exec.Command("git", "clean", "-d", "-f", "-x")
       cmd.Dir = git
-      e = cmd.Run()
-      if e != nil {
-         return e
+      err = cmd.Run()
+      if err != nil {
+         return err
       }
    }
-   e = os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
-   if e != nil {
-      return e
+   err = os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
+   if err != nil {
+      return err
    }
-   e = os.Setenv("MSYSTEM", "MINGW64")
-   if e != nil {
-      return e
+   err = os.Setenv("MSYSTEM", "MINGW64")
+   if err != nil {
+      return err
    }
-   e = os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
-   if e != nil {
-      return e
+   err = os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
+   if err != nil {
+      return err
    }
    cmd = exec.Command(
       "make", "-j", "8",
       "CFLAGS=-DCURL_STATICLIB",
-      "CURLDIR=" + path.Join(cache, "sienna", "curl"),
+      // FIXME this needs to be forward slash, or maybe quoted
+      "CURLDIR=" + filepath.Join(cache, "sienna", "curl"),
       "CURL_LDFLAGS=-lcurl -lwldap32 -lcrypt32",
       "LDFLAGS=-static",
       "NO_GETTEXT=1",
@@ -109,18 +81,49 @@ func gitMake() error {
    return cmd.Run()
 }
 
+func gitCopy(root string) error {
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      return err
+   }
+   cache = filepath.Join(cache, "sienna", "git")
+   core := filepath.Join(root, "git", "libexec", "git-core")
+   err = os.MkdirAll(core, os.ModeDir)
+   if err != nil {
+      return err
+   }
+   err = os.MkdirAll(
+      filepath.Join(root, "git", "share", "git-core", "templates"), os.ModeDir,
+   )
+   if err != nil {
+      return err
+   }
+   for _, each := range []string{"git.exe", "git-remote-https.exe"} {
+      err = os.Link(
+         filepath.Join(cache, each), filepath.Join(core, each),
+      )
+      if err != nil {
+         return err
+      }
+   }
+   return nil
+}
+
 func main() {
    if len(os.Args) != 2 {
       println("git-make <compile | copy>")
       os.Exit(1)
    }
-   var e error
+   var (
+      err error
+      root = os.Getenv("SystemDrive") + string(os.PathSeparator)
+   )
    if os.Args[1] == "copy" {
-      e = gitCopy()
+      err = gitCopy(root)
    } else {
-      e = gitMake()
+      err = gitMake(root)
    }
-   if e != nil {
-      log.Fatal(e)
+   if err != nil {
+      log.Fatal(err)
    }
 }
