@@ -10,10 +10,7 @@ import (
    "path"
 )
 
-const (
-   remote = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
-   local = `C:\rust`
-)
+const remote = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 
 type distChannel struct {
    Pkg struct {
@@ -46,7 +43,9 @@ func (c userCache) install(source string) error {
    }
    tar := extract.Tar{Strip: 2}
    println(x.ColorCyan("Xz"), base)
-   return tar.Xz(archive, local)
+   return tar.Xz(
+      archive, os.Getenv("SystemDrive") + string(os.PathSeparator) + "rust",
+   )
 }
 
 func (c userCache) unmarshal(v interface{}) error {
