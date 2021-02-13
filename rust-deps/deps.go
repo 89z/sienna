@@ -1,51 +1,79 @@
 package main
 
 import (
-   "github.com/89z/x"
    "github.com/pelletier/go-toml"
-   "io/ioutil"
+   "log"
    "os"
+   "os/exec"
    "path"
 )
 
-var (
-   dep int
-   lock cargoLock
-   prev string
-)
+const name = "rust-deps"
 
-type cargoLock struct{
-   Package []struct{
+type m map[string]interface{}
+
+type lockFile struct {
+   Package []struct {
       Name string
    }
 }
 
-type m map[string]interface{}
+func cargoLock(v interface{}) error {
+   cmd := exec.Command("cargo", "generate-lockfile")
+   cmd.Dir = name
+   cmd.Stderr = os.Stderr
+   cmd.Stdout = os.Stdout
+   e := cmd.Run()
+   if e != nil {
+      return e
+   }
+   open, e := os.Open(
+      path.Join(name, "Cargo.lock"),
+   )
+   if e != nil {
+      return e
+   }
+   defer open.Close()
+   return toml.NewDecoder(open).Decode(v)
+}
+
+func cargoToml(crate string) error {
+   e := exec.Command("cargo", "new", name).Run()
+   if e != nil {
+      return e
+   }
+   create, e := os.Create(
+      path.Join(name, "Cargo.toml"),
+   )
+   if e != nil {
+      return e
+   }
+   defer create.Close()
+   return toml.NewEncoder(create).Encode(m{
+      "dependencies": m{crate: ""},
+      "package": m{"name": name, "version": "1.0.0"},
+   })
+}
 
 func main() {
-   name := "rust-deps"
    if len(os.Args) != 2 {
       println(name, "<crate>")
       os.Exit(1)
    }
    crate := os.Args[1]
-   e := x.Command("cargo", "new", name).Run()
-   x.Check(e)
-   data, e := toml.Marshal(m{
-      "dependencies": m{crate: ""},
-      "package": m{"name": name, "version": "1.0.0"},
-   })
-   x.Check(e)
-   e = ioutil.WriteFile(path.Join(name, "Cargo.toml"), data, 0)
-   x.Check(e)
-   cmd := x.Command("cargo", "generate-lockfile")
-   cmd.Dir = name
-   e = cmd.Run()
-   x.Check(e)
-   data, e = ioutil.ReadFile(path.Join(name, "Cargo.lock"))
-   x.Check(e)
-   e = toml.Unmarshal(data, &lock)
-   x.Check(e)
+   e := cargoToml(crate)
+   if e != nil {
+      log.Fatal(e)
+   }
+   var lock lockFile
+   e = cargoLock(&lock)
+   if e != nil {
+      log.Fatal(e)
+   }
+   var (
+      dep int
+      prev string
+   )
    for _, pack := range lock.Package {
       if pack.Name == name {
          continue
@@ -62,5 +90,7 @@ func main() {
    }
    print("\n", dep, " deps\n")
    e = os.RemoveAll(name)
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
 }
