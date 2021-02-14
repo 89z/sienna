@@ -1,10 +1,12 @@
 package main
 
 import (
+   "fmt"
    "log"
    "os"
    "os/exec"
    "path/filepath"
+   "strings"
 )
 
 const (
@@ -32,27 +34,60 @@ func curlMake() error {
    return cmd.Run()
 }
 
+func gitCopy(root string) error {
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      return err
+   }
+   cache = filepath.Join(cache, "sienna", "git")
+   dest := root + "git"
+   err = os.MkdirAll(
+      filepath.Join(dest, "libexec", "git-core"), os.ModeDir,
+   )
+   if err != nil {
+      return err
+   }
+   err = os.MkdirAll(
+      filepath.Join(dest, "share", "git-core", "templates"), os.ModeDir,
+   )
+   if err != nil {
+      return err
+   }
+   for _, each := range []string{"git.exe", "git-remote-https.exe"} {
+      err = os.Link(
+         filepath.Join(cache, each),
+         filepath.Join(dest, "libexec", "git-core", each),
+      )
+      if err != nil {
+         return err
+      }
+   }
+   return nil
+}
+
 func gitMake(root string) error {
    cache, err := os.UserCacheDir()
    if err != nil {
       return err
    }
+   cache = filepath.Join(cache, "sienna")
    cmd := exec.Command(
       "git", "clone", "--branch", verGit, "--depth", "1",
       "git://github.com/git/git",
    )
-   cmd.Dir = filepath.Join(cache, "sienna")
+   cmd.Dir = cache
    err = cmd.Run()
-   git := filepath.Join(cache, "sienna", "git")
    if err != nil {
       cmd = exec.Command("git", "clean", "-d", "-f", "-x")
-      cmd.Dir = git
+      cmd.Dir = filepath.Join(cache, "git")
       err = cmd.Run()
       if err != nil {
          return err
       }
    }
-   err = os.MkdirAll(`C:\msys64\tmp`, os.ModeDir)
+   err = os.MkdirAll(
+      root + filepath.Join("msys64", "tmp"), os.ModeDir,
+   )
    if err != nil {
       return err
    }
@@ -60,15 +95,17 @@ func gitMake(root string) error {
    if err != nil {
       return err
    }
-   err = os.Setenv("PATH", `C:\msys64\mingw64\bin;C:\msys64\usr\bin`)
+   paths := []string{
+      root + filepath.Join("msys64", "mingw64", "bin"),
+      root + filepath.Join("msys64", "usr", "bin"),
+   }
+   err = os.Setenv("PATH", strings.Join(paths, string(os.PathListSeparator)))
    if err != nil {
       return err
    }
    cmd = exec.Command(
       "make", "-j", "8",
       "CFLAGS=-DCURL_STATICLIB",
-      // FIXME this needs to be forward slash, or maybe quoted
-      "CURLDIR=" + filepath.Join(cache, "sienna", "curl"),
       "CURL_LDFLAGS=-lcurl -lwldap32 -lcrypt32",
       "LDFLAGS=-static",
       "NO_GETTEXT=1",
@@ -76,37 +113,10 @@ func gitMake(root string) error {
       "NO_OPENSSL=1",
       "NO_TCLTK=1",
       "USE_LIBPCRE=",
+      fmt.Sprintf(`CURLDIR="%v"`, filepath.Join(cache, "curl")),
    )
-   cmd.Dir = git
+   cmd.Dir = filepath.Join(cache, "git")
    return cmd.Run()
-}
-
-func gitCopy(root string) error {
-   cache, err := os.UserCacheDir()
-   if err != nil {
-      return err
-   }
-   cache = filepath.Join(cache, "sienna", "git")
-   core := filepath.Join(root, "git", "libexec", "git-core")
-   err = os.MkdirAll(core, os.ModeDir)
-   if err != nil {
-      return err
-   }
-   err = os.MkdirAll(
-      filepath.Join(root, "git", "share", "git-core", "templates"), os.ModeDir,
-   )
-   if err != nil {
-      return err
-   }
-   for _, each := range []string{"git.exe", "git-remote-https.exe"} {
-      err = os.Link(
-         filepath.Join(cache, each), filepath.Join(core, each),
-      )
-      if err != nil {
-         return err
-      }
-   }
-   return nil
 }
 
 func main() {
@@ -116,7 +126,7 @@ func main() {
    }
    var (
       err error
-      root = os.Getenv("SystemDrive") + string(os.PathSeparator)
+      root = os.Getenv("SystemDrive") + "/"
    )
    if os.Args[1] == "copy" {
       err = gitCopy(root)
