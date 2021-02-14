@@ -7,6 +7,7 @@ import (
    "io/ioutil"
    "log"
    "net/http"
+   "net/url"
    "os"
    "time"
 )
@@ -20,11 +21,11 @@ func infoViews(id string) (string, error) {
 }
 
 func youtubeResult(query string) (string, error) {
-   url := x.NewURL()
-   url.Host = "youtube.com"
-   url.Path = "results"
-   url.Query.Set("search_query", query)
-   get, e := http.Get(url.String())
+   value := url.Values{}
+   value.Set("search_query", query)
+   get, e := http.Get(
+      "http://youtube.com/results?" + value.Encode(),
+   )
    if e != nil {
       return "", e
    }
