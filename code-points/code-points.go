@@ -13,11 +13,11 @@ func main() {
       os.Exit(1)
    }
    s := os.Args[1]
-   y, e := ioutil.ReadFile(s)
+   data, e := ioutil.ReadFile(s)
    if e != nil {
       log.Fatal(e)
    }
-   for _, r := range string(y) {
+   for _, r := range string(data) {
       if r == '\n' {
          fmt.Println("--------------------------------------------------------")
          continue

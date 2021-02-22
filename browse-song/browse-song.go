@@ -3,12 +3,11 @@ package main
 import (
    "fmt"
    "github.com/89z/x/sys"
+   "golang.org/x/sys/windows"
    "log"
    "net/url"
    "os"
 )
-
-const sw_shownormal = 1
 
 func main() {
    if len(os.Args) != 3 {
@@ -25,7 +24,7 @@ func main() {
       "http://youtube.com/results?" + value.Encode(),
       "",
       "",
-      sw_shownormal,
+      windows.SW_SHOWNORMAL,
    )
    if e != nil {
       log.Fatal(e)

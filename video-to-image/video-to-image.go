@@ -2,6 +2,8 @@ package main
 
 import (
    "flag"
+   "fmt"
+   "github.com/89z/x"
    "log"
    "os"
    "os/exec"
@@ -20,7 +22,7 @@ func main() {
    flag.StringVar(&f.start, "s", "", "start")
    flag.Parse()
    if flag.NArg() != 1 {
-println(`Name:
+      fmt.Println(`Name:
    video-to-image - create sequence of images from a video
 
 Synopsis:
@@ -45,7 +47,10 @@ Flags:`)
       arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
    arg = append(arg, "%d.jpg")
-   e := exec.Command("ffmpeg", arg...).Run()
+   cmd := exec.Command("ffmpeg", arg...)
+   cmd.Stderr, cmd.Stdout = os.Stderr, os.Stdout
+   fmt.Println(x.ColorCyan("Run"), "ffmpeg", arg)
+   e := cmd.Run()
    if e != nil {
       log.Fatal(e)
    }
