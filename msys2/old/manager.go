@@ -2,13 +2,9 @@ package main
 
 import (
    "bufio"
-   "fmt"
    "github.com/89z/x"
-   "github.com/89z/x/extract"
-   "io/ioutil"
    "os"
    "path"
-   "strings"
 )
 
 func (m manager) sync(tar string) error {
