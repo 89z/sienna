@@ -3,7 +3,7 @@ module sienna
 go 1.15
 
 require (
-	github.com/89z/x v1.10.0
+	github.com/89z/x v1.10.1
 	github.com/klauspost/compress v1.11.7 // indirect
 	github.com/pelletier/go-toml v1.8.1
 	github.com/saracen/go7z v0.0.0-20191010121135-9c09b6bd7fda // indirect

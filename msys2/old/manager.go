@@ -3,6 +3,7 @@ package main
 import (
    "bufio"
    "github.com/89z/x"
+   "log"
    "os"
    "path"
 )
@@ -39,15 +40,19 @@ func (m manager) sync(tar string) error {
 func main() {
    target := os.Args[2]
    if os.Args[1] == "sync" {
-      e = man.sync(target)
-      x.Check(e)
+      e := man.sync(target)
+      if e != nil {
+         log.Fatal(e)
+      }
       return
    }
    packSet := map[string]bool{}
    for packs := []string{target}; len(packs) > 0; packs = packs[1:] {
       target := packs[0]
       deps, e := man.getValue(target, "%DEPENDS%")
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
       packs = append(packs, deps...)
       if packSet[target] {
          continue
