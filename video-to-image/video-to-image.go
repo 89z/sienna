@@ -49,7 +49,7 @@ Flags:`)
    arg = append(arg, "%d.jpg")
    cmd := exec.Command("ffmpeg", arg...)
    cmd.Stderr, cmd.Stdout = os.Stderr, os.Stdout
-   fmt.Println(x.ColorCyan("Run"), "ffmpeg", arg)
+   fmt.Printf("%v ffmpeg %q\n", x.ColorCyan("Run"), arg)
    e := cmd.Run()
    if e != nil {
       log.Fatal(e)
