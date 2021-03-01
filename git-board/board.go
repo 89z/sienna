@@ -39,7 +39,9 @@ type test struct {
 }
 
 func main() {
-   e := exec.Command("git", "add", ".").Run()
+   c := exec.Command("git", "add", ".")
+   c.Stderr, c.Stdout = os.Stderr, os.Stdout
+   e := c.Run()
    if e != nil {
       log.Fatal(e)
    }
