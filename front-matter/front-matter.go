@@ -6,7 +6,7 @@ import (
    "io/ioutil"
    "log"
    "os"
-   "path"
+   "path/filepath"
 )
 
 var tomlSep = [4]byte{'+', '+', '+', '\n'}
@@ -35,13 +35,13 @@ func main() {
       os.Exit(1)
    }
    root := os.Args[1]
-   content := path.Join(root, "autumn", "content")
+   content := filepath.Join(root, "autumn", "content")
    dir, e := ioutil.ReadDir(content)
    if e != nil {
       log.Fatal(e)
    }
    for _, entry := range dir {
-      indexPath := path.Join(
+      indexPath := filepath.Join(
          content, entry.Name(), "_index.md",
       )
       var front frontMatter
@@ -52,7 +52,7 @@ func main() {
       if front.Build.List != "" {
          continue
       }
-      examplePath := path.Join(root, front.Filename)
+      examplePath := filepath.Join(root, front.Filename)
       _, err := os.Stat(examplePath)
       if err != nil {
          println(indexPath)

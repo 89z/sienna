@@ -4,6 +4,7 @@ import (
    "bufio"
    "fmt"
    "github.com/89z/x"
+   "log"
    "os"
    "sort"
    "time"
@@ -17,16 +18,30 @@ func lsFiles() (*bufio.Scanner, error) {
    return x.Popen("git", "ls-files", ":!" + arg)
 }
 
+func modTime(name string) (time.Time, error) {
+   stat, e := os.Stat(name)
+   if e != nil {
+      return time.Time{}, e
+   }
+   return stat.ModTime(), nil
+}
+
 func main() {
    file, e := lsFiles()
-   x.Check(e)
-   files := []entry{}
+   if e != nil {
+      log.Fatal(e)
+   }
+   var files []entry
    for file.Scan() {
       name := file.Text()
-      then, e := x.ModTime(name)
-      x.Check(e)
+      then, e := modTime(name)
+      if e != nil {
+         log.Fatal(e)
+      }
       size, e := x.FileSize(name)
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
       hour := time.Since(then).Hours()
       files = append(files, entry{
          name, size * int64(hour),
