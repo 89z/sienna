@@ -15,15 +15,14 @@ var badRepo = map[string]bool{
    "golang.org/x/tools": true,
 }
 
-var godoc search
-
-type search struct{
-   Results []struct{
+type search struct {
+   Results []struct {
       Path string
    }
 }
 
 func download() error {
+   var godoc search
    for importPath, info := range repos.ByImportPath {
       if ! info.ShowOnDashboard() {
          continue

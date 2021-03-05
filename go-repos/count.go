@@ -7,12 +7,11 @@ import (
    "sort"
 )
 
-var (
-   body search
-   packs []pack
-)
-
 func count() error {
+   var (
+      body search
+      packs []pack
+   )
    for path, value := range repos.ByImportPath {
       if ! value.ShowOnDashboard() {
          continue
