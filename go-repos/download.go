@@ -5,12 +5,12 @@ import (
    "github.com/89z/x"
    "golang.org/x/build/repos"
    "net/http"
+   "os"
    "strings"
 )
 
 var badRepo = map[string]bool{
    "golang.org/x/build": true,
-   "golang.org/x/crypto": true,
    "golang.org/x/oauth2": true,
    "golang.org/x/tools": true,
 }
@@ -46,7 +46,9 @@ func download() error {
             continue
          }
          _, e = x.Copy("https://pkg.go.dev/" + result.Path, result.Path)
-         if e != nil {
+         if os.IsExist(e) {
+            println(x.ColorCyan("Exist"), result.Path)
+         } else if e != nil {
             return e
          }
       }
