@@ -79,9 +79,9 @@ func main() {
          "%-16v target: %-12v actual: %v", each.name, each.target, each.actual,
       )
       if each.result {
-         fmt.Println(x.ColorGreen(message))
+         x.LogPass(message)
       } else {
-         fmt.Println(x.ColorRed(message))
+         x.LogFail(message)
       }
    }
 }

@@ -12,14 +12,6 @@ import (
    "time"
 )
 
-func infoViews(id string) (string, error) {
-   info, e := youtube.Info(id)
-   if e != nil {
-      return "", e
-   }
-   return info.Views()
-}
-
 func youtubeResult(query string) (string, error) {
    value := url.Values{}
    value.Set("search_query", query)
@@ -62,11 +54,11 @@ https://musicbrainz.org/release/7a629d52-6a61-3ea1-a0a0-dd50bdef63b4`)
          if e != nil {
             log.Fatal(e)
          }
-         views, e := infoViews(id)
+         info, e := youtube.Info(id)
          if e != nil {
             log.Fatal(e)
          }
-         println(views)
+         info.Views()
          time.Sleep(100 * time.Millisecond)
       }
    }

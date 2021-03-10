@@ -24,7 +24,7 @@ func getImage(id string) string {
 }
 
 func httpHead(s string) bool {
-   println(x.ColorCyan("Head"), s)
+   x.LogInfo("Head", s)
    resp, e := http.Head(s)
    return e == nil && resp.StatusCode == 200
 }

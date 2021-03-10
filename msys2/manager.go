@@ -81,7 +81,7 @@ msys2 sync gcc.txt`)
       } else if e != nil {
          log.Fatal(e)
       }
-      println(x.ColorCyan("Extract"), each)
+      x.LogInfo("Gz", each)
       e = tar.Gz(
          archive, path.Dir(archive),
       )

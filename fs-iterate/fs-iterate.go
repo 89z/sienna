@@ -25,7 +25,7 @@ func main() {
       cmd.Dir = dir
       cmd.Stderr = os.Stderr
       cmd.Stdout = os.Stdout
-      println(x.ColorCyan(dir))
+      x.LogInfo(dir)
       e = cmd.Run()
       if e != nil {
          log.Fatal(e)

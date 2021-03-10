@@ -1,7 +1,6 @@
 package main
 
 import (
-   "fmt"
    "github.com/89z/x"
    "log"
    "os"
@@ -18,7 +17,7 @@ func run(name string, arg ...string) error {
    c := exec.Command(name, arg...)
    c.Stderr = os.Stderr
    c.Stdout = os.Stdout
-   fmt.Println(x.ColorCyan("Run"), name, arg)
+   x.LogInfo("Run", name, arg)
    return c.Run()
 }
 
