@@ -79,9 +79,9 @@ func main() {
          "%-16v target: %-12v actual: %v", each.name, each.target, each.actual,
       )
       if each.result {
-         x.LogPass(message)
+         x.LogPass("Pass", message)
       } else {
-         x.LogFail(message)
+         x.LogFail("Fail", message)
       }
    }
 }

@@ -10,6 +10,14 @@ import (
    "time"
 )
 
+func fileSize(name string) (int64, error) {
+   info, e := os.Stat(name)
+   if e != nil {
+      return 0, e
+   }
+   return info.Size(), nil
+}
+
 func lsFiles() (*bufio.Scanner, error) {
    if len(os.Args) == 1 {
       return x.Popen("git", "ls-files")
@@ -25,7 +33,6 @@ func modTime(name string) (time.Time, error) {
    }
    return stat.ModTime(), nil
 }
-
 func main() {
    file, e := lsFiles()
    if e != nil {
@@ -38,7 +45,7 @@ func main() {
       if e != nil {
          log.Fatal(e)
       }
-      size, e := x.FileSize(name)
+      size, e := fileSize(name)
       if e != nil {
          log.Fatal(e)
       }

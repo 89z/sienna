@@ -37,12 +37,12 @@ func (c userCache) install(source string) error {
    archive := path.Join(c.dir, base)
    _, err := x.Copy(source, archive)
    if os.IsExist(err) {
-      println(x.ColorCyan("Exist"), base)
+      x.LogInfo("Exist", base)
    } else if err != nil {
       return err
    }
    tar := extract.Tar{Strip: 2}
-   println(x.ColorCyan("Xz"), base)
+   x.LogInfo("Xz", base)
    return tar.Xz(
       archive, os.Getenv("SystemDrive") + string(os.PathSeparator) + "rust",
    )
@@ -53,7 +53,7 @@ func (c userCache) unmarshal(v interface{}) error {
    dest := path.Join(c.dir, base)
    _, err := x.Copy(remote, dest)
    if os.IsExist(err) {
-      println(x.ColorCyan("Exist"), base)
+      x.LogInfo("Exist", base)
    } else if err != nil {
       return err
    }

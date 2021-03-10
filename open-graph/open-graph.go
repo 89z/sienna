@@ -9,7 +9,7 @@ import (
 )
 
 func open(source string) (string, error) {
-   println(x.ColorCyan("Get"), source)
+   x.LogInfo("Get", source)
    get, e := http.Get(source)
    if e != nil {
       return "", e
