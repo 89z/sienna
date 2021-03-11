@@ -22,10 +22,10 @@ func main() {
    for _, each := range dirs {
       dir := filepath.Join(root, each.Name())
       cmd := exec.Command(name, arg...)
+      x.LogInfo("Dir", dir)
       cmd.Dir = dir
       cmd.Stderr = os.Stderr
       cmd.Stdout = os.Stdout
-      x.LogInfo(dir)
       e = cmd.Run()
       if e != nil {
          log.Fatal(e)

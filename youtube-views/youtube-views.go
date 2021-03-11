@@ -21,9 +21,5 @@ func main() {
    if e != nil {
       log.Fatal(e)
    }
-   views, e := info.Views()
-   if e != nil {
-      log.Fatal(e)
-   }
-   println(views)
+   info.Views()
 }
