@@ -11,8 +11,8 @@ import (
 
 var tomlSep = [4]byte{'+', '+', '+', '\n'}
 
-type frontMatter struct{
-   Build struct{
+type frontMatter struct {
+   Build struct {
       List string
    } `toml:"_build"`
    Filename string
