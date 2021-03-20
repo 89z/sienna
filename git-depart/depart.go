@@ -34,6 +34,6 @@ func main() {
    check(e)
    e = run("git", "add", ".")
    check(e)
-   e = run("git", "commit", "--amend")
+   e = run("git", "commit", "--amend", "--no-edit")
    check(e)
 }
