@@ -20,6 +20,13 @@ func baseName(s, char string) string {
    return s[:n]
 }
 
+type description struct {
+   name string
+   filename string
+   provides []string
+   depends []string
+}
+
 func getDesc(file, repo, variant string) (description, error) {
    open, e := os.Open(file)
    if e != nil {
