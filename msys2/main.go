@@ -18,23 +18,27 @@ msys2 sync gcc.txt`)
    if e != nil {
       log.Fatal(e)
    }
-   cache = path.Join(cache, "sienna")
+   cache = path.Join(cache, "sienna", "msys2")
    var tar extract.Tar
    for _, each := range []string{
-      "/mingw/x86_64/mingw64.db.tar.gz", "/msys/x86_64/msys.db.tar.gz",
+      "mingw/x86_64/mingw64.db.tar.gz", "msys/x86_64/msys.db.tar.gz",
    } {
+      mirror.Path = each
       archive := path.Join(cache, each)
-      _, e = x.Copy(mirror + each, archive)
-      if os.IsExist(e) {
-         continue
-      } else if e != nil {
-         log.Fatal(e)
-      }
-      x.LogInfo("Gz", each)
-      e = tar.Gz(
-         archive, path.Dir(archive),
+      _, e = x.Copy(
+         mirror.String(), archive,
       )
-      if e != nil {
+      if e == nil {
+         x.LogInfo("Gz", archive)
+         e = tar.Gz(
+            archive, path.Dir(archive),
+         )
+         if e != nil {
+            log.Fatal(e)
+         }
+      } else if os.IsExist(e) {
+         x.LogInfo("Exist", archive)
+      } else {
          log.Fatal(e)
       }
    }
