@@ -25,19 +25,13 @@ msys2 sync gcc.txt`)
    } {
       mirror.Path = each
       archive := path.Join(cache, each)
-      _, e = x.Copy(
-         mirror.String(), archive,
-      )
+      dir := path.Dir(archive)
+      _, e = x.Copy(mirror.String(), archive)
       if e == nil {
-         x.LogInfo("Gz", archive)
-         e = tar.Gz(
-            archive, path.Dir(archive),
-         )
-         if e != nil {
-            log.Fatal(e)
-         }
+         x.LogInfo("Gz", each)
+         tar.Gz(archive, dir)
       } else if os.IsExist(e) {
-         x.LogInfo("Exist", archive)
+         x.LogInfo("Exist", each)
       } else {
          log.Fatal(e)
       }

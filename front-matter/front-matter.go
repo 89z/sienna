@@ -36,13 +36,13 @@ func main() {
    }
    root := os.Args[1]
    content := filepath.Join(root, "autumn", "content")
-   dir, e := ioutil.ReadDir(content)
+   dir, e := os.ReadDir(content)
    if e != nil {
       log.Fatal(e)
    }
-   for _, entry := range dir {
+   for _, each := range dir {
       indexPath := filepath.Join(
-         content, entry.Name(), "_index.md",
+         content, each.Name(), "_index.md",
       )
       var front frontMatter
       e = unmarshal(indexPath, &front)
