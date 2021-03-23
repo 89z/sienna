@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "io/ioutil"
    "log"
    "os"
    "os/exec"
@@ -15,7 +14,7 @@ func main() {
       os.Exit(1)
    }
    root, name, arg := os.Args[1], os.Args[2], os.Args[3:]
-   dirs, e := ioutil.ReadDir(root)
+   dirs, e := os.ReadDir(root)
    if e != nil {
       log.Fatal(e)
    }

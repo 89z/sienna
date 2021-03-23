@@ -20,8 +20,10 @@ msys2 sync gcc.txt`)
    }
    cache = path.Join(cache, "sienna", "msys2")
    var tar extract.Tar
-   for _, each := range []string{
-      "mingw/x86_64/mingw64.db.tar.gz", "msys/x86_64/msys.db.tar.gz",
+   db := newDatabase()
+   for _, each := range []pack{
+      {"mingw", "x86_64", "mingw64.db.tar.gz"},
+      {"msys", "x86_64", "msys.db.tar.gz"},
    } {
       mirror.Path = each
       archive := path.Join(cache, each)
@@ -34,6 +36,14 @@ msys2 sync gcc.txt`)
          x.LogInfo("Exist", each)
       } else {
          log.Fatal(e)
+      }
+      dirs, e := os.ReadDir(dir)
+      if e != nil {
+         log.Fatal(e)
+      }
+      for _, each := range dirs {
+         desc := path.Join(dir, each.Name())
+         db.scan()
       }
    }
 }

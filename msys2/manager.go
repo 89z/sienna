@@ -32,7 +32,7 @@ func newDatabase() database {
    }
 }
 
-func (d database) scan(file, repo, variant string) error {
+func (db database) scan(file string) error {
    open, e := os.Open(file)
    if e != nil {
       return e
@@ -52,7 +52,7 @@ func (d database) scan(file, repo, variant string) error {
          for scan.Scan() {
             line := scan.Text()
             if line == "" { break }
-            d.provides[line] = name
+            db.provides[line] = name
          }
       case "%DEPENDS%":
          desc := description{filename: filename}
@@ -61,7 +61,7 @@ func (d database) scan(file, repo, variant string) error {
             if line == "" { break }
             desc.depends = append(desc.depends, line)
          }
-         d.name[name] = desc
+         db.name[name] = desc
       }
    }
    return nil
@@ -70,4 +70,14 @@ func (d database) scan(file, repo, variant string) error {
 type description struct {
    filename string
    depends []string
+}
+
+type pack struct {
+   repo string
+   variant string
+   file string
+}
+
+func (p pack) join(s string) string {
+   return path.Join(s, p.repo, p.variant, p.file)
 }
