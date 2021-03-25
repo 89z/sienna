@@ -4,7 +4,7 @@ import (
    "bufio"
    "net/url"
    "os"
-   "path"
+   "path/filepath"
    "strings"
 )
 
@@ -44,7 +44,6 @@ func (db database) scan(file string) error {
       switch scan.Text() {
       case "%FILENAME%":
          scan.Scan()
-         //filename = path.Join(repo, variant, scan.Text())
          filename = scan.Text()
       case "%NAME%":
          scan.Scan()
@@ -74,18 +73,17 @@ type description struct {
 }
 
 type install struct {
+   source string
    cache string
-   destination string
+   dest string
 }
 
-var a = []string{
-   "http://repo.msys2.org/msys/x86_64/msys.db.tar.gz",
-   `%LocalAppData%\sienna\msys2\msys\x86_64\msys.db.tar.gz`,
-   `%LocalAppData%\sienna\msys2`,
-}
-
-var b = []string{
-   "http://repo.msys2.org/msys/x86_64/zstd-1.4.8-1-x86_64.pkg.tar.zst",
-   `%LocalAppData%\sienna\msys2\msys\x86_64\zstd-1.4.8-1-x86_64.pkg.tar.zst`,
-   `C:\sienna\msys2`,
+func newInstall(source url.URL, cache, dest string, base ...string) install {
+   for _, each := range base {
+      cache = filepath.Join(cache, each)
+      dest = filepath.Join(dest, each)
+   }
+   src := source.String()
+   cache = filepath.Join(cache, filepath.Base(src))
+   return install{src, cache, dest}
 }

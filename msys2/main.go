@@ -5,7 +5,6 @@ import (
    "github.com/89z/x/extract"
    "log"
    "os"
-   "path"
 )
 
 func main() {
@@ -18,28 +17,28 @@ msys2 sync gcc.txt`)
    if e != nil {
       log.Fatal(e)
    }
-   cache = path.Join(cache, "sienna", "msys2")
-   var tar extract.Tar
-   //db := newDatabase()
-   for _, each := range []pack{
-      {cache, "mingw", "x86_64", "mingw64.db.tar.gz"},
-      {cache, "msys", "x86_64", "msys.db.tar.gz"},
+   var inst install
+   for _, each := range []string{
+      "mingw/x86_64/mingw64.db.tar.gz", "msys/x86_64/msys.db.tar.gz",
    } {
-      _, e = x.Copy(each.remote(), each.local())
+      mirror.Path = each
+      inst = newInstall(mirror, cache, cache, "sienna", "msys2")
+      _, e = x.Copy(inst.source, inst.cache)
       if e == nil {
-         x.LogInfo("Gz", each.local())
-         tar.Gz(each.local(), each.dir())
+         x.LogInfo("Gz", inst.cache)
+         var tar extract.Tar
+         tar.Gz(inst.cache, inst.dest)
       } else if os.IsExist(e) {
-         x.LogInfo("Exist", each.local())
+         x.LogInfo("Exist", inst.cache)
       } else {
          log.Fatal(e)
       }
-      dirs, e := os.ReadDir(each.dir())
-      if e != nil {
-         log.Fatal(e)
-      }
-      for _, each := range dirs {
-         println(each)
-      }
+   }
+   dirs, e := os.ReadDir(inst.cache)
+   if e != nil {
+      log.Fatal(e)
+   }
+   for _, each := range dirs {
+      println(each)
    }
 }
