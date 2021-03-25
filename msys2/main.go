@@ -5,6 +5,7 @@ import (
    "github.com/89z/x/extract"
    "log"
    "os"
+   "path"
 )
 
 func main() {
@@ -13,6 +14,7 @@ func main() {
 msys2 sync gcc.txt`)
       os.Exit(1)
    }
+   target := os.Args[2]
    cache, e := os.UserCacheDir()
    if e != nil {
       log.Fatal(e)
@@ -34,11 +36,24 @@ msys2 sync gcc.txt`)
          log.Fatal(e)
       }
    }
-   dirs, e := os.ReadDir(inst.cache)
+   dirs, e := os.ReadDir(inst.dest)
    if e != nil {
       log.Fatal(e)
    }
+   db := newDatabase()
    for _, each := range dirs {
-      println(each)
+      desc := path.Join(inst.dest, each.Name(), "desc")
+      db.scan(desc)
+   }
+   done := map[string]bool{}
+   for todo := []string{target}; len(todo) > 0; todo = todo[1:] {
+      target := todo[0]
+      println(target)
+      for _, each := range db.name[target].depends {
+         if ! done[each] {
+            todo = append(todo, each)
+         }
+      }
+      done[target] = true
    }
 }

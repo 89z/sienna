@@ -26,20 +26,3 @@ func (m manager) sync(tar string) error {
    }
    return nil
 }
-
-func main() {
-   packSet := map[string]bool{}
-   for packs := []string{target}; len(packs) > 0; packs = packs[1:] {
-      target := packs[0]
-      deps, e := man.getValue(target, "%DEPENDS%")
-      if e != nil {
-         log.Fatal(e)
-      }
-      packs = append(packs, deps...)
-      if packSet[target] {
-         continue
-      }
-      println(target)
-      packSet[target] = true
-   }
-}

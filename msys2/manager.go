@@ -10,7 +10,6 @@ import (
 
 var mirror = url.URL{Scheme: "http", Host: "repo.msys2.org"}
 
-// baseName(line, "=>")
 func baseName(s, chars string) string {
    n := strings.IndexAny(s, chars)
    if n == -1 {
@@ -52,14 +51,14 @@ func (db database) scan(file string) error {
          for scan.Scan() {
             line := scan.Text()
             if line == "" { break }
-            db.provides[line] = name
+            db.provides[baseName(line, ">=")] = name
          }
       case "%DEPENDS%":
          desc := description{filename: filename}
          for scan.Scan() {
             line := scan.Text()
             if line == "" { break }
-            desc.depends = append(desc.depends, line)
+            desc.depends = append(desc.depends, baseName(line, ">="))
          }
          db.name[name] = desc
       }
