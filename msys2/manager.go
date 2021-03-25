@@ -44,7 +44,8 @@ func (db database) scan(file string) error {
       switch scan.Text() {
       case "%FILENAME%":
          scan.Scan()
-         filename = path.Join(repo, variant, scan.Text())
+         //filename = path.Join(repo, variant, scan.Text())
+         filename = scan.Text()
       case "%NAME%":
          scan.Scan()
          name = scan.Text()
@@ -72,12 +73,19 @@ type description struct {
    depends []string
 }
 
-type pack struct {
-   repo string
-   variant string
-   file string
+type install struct {
+   cache string
+   destination string
 }
 
-func (p pack) join(s string) string {
-   return path.Join(s, p.repo, p.variant, p.file)
+var a = []string{
+   "http://repo.msys2.org/msys/x86_64/msys.db.tar.gz",
+   `%LocalAppData%\sienna\msys2\msys\x86_64\msys.db.tar.gz`,
+   `%LocalAppData%\sienna\msys2`,
+}
+
+var b = []string{
+   "http://repo.msys2.org/msys/x86_64/zstd-1.4.8-1-x86_64.pkg.tar.zst",
+   `%LocalAppData%\sienna\msys2\msys\x86_64\zstd-1.4.8-1-x86_64.pkg.tar.zst`,
+   `C:\sienna\msys2`,
 }

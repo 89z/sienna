@@ -20,30 +20,26 @@ msys2 sync gcc.txt`)
    }
    cache = path.Join(cache, "sienna", "msys2")
    var tar extract.Tar
-   db := newDatabase()
+   //db := newDatabase()
    for _, each := range []pack{
-      {"mingw", "x86_64", "mingw64.db.tar.gz"},
-      {"msys", "x86_64", "msys.db.tar.gz"},
+      {cache, "mingw", "x86_64", "mingw64.db.tar.gz"},
+      {cache, "msys", "x86_64", "msys.db.tar.gz"},
    } {
-      mirror.Path = each
-      archive := path.Join(cache, each)
-      dir := path.Dir(archive)
-      _, e = x.Copy(mirror.String(), archive)
+      _, e = x.Copy(each.remote(), each.local())
       if e == nil {
-         x.LogInfo("Gz", each)
-         tar.Gz(archive, dir)
+         x.LogInfo("Gz", each.local())
+         tar.Gz(each.local(), each.dir())
       } else if os.IsExist(e) {
-         x.LogInfo("Exist", each)
+         x.LogInfo("Exist", each.local())
       } else {
          log.Fatal(e)
       }
-      dirs, e := os.ReadDir(dir)
+      dirs, e := os.ReadDir(each.dir())
       if e != nil {
          log.Fatal(e)
       }
       for _, each := range dirs {
-         desc := path.Join(dir, each.Name())
-         db.scan()
+         println(each)
       }
    }
 }
