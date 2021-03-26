@@ -4,7 +4,7 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
-   "io/ioutil"
+   "io"
    "log"
    "net/http"
    "net/url"
@@ -21,7 +21,7 @@ func youtubeResult(query string) (string, error) {
    if e != nil {
       return "", e
    }
-   body, e := ioutil.ReadAll(get.Body)
+   body, e := io.ReadAll(get.Body)
    if e != nil {
       return "", e
    }

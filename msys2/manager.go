@@ -19,7 +19,7 @@ func baseName(s, chars string) string {
 }
 
 type database struct {
-   // %NAME% -> %FILENAME%, %DEPENDS%
+   // %NAME% -> %FILENAME%, %ARCH%, %DEPENDS%
    name map[string]description
    // %PROVIDES% -> %NAME%
    provides map[string]string
@@ -31,22 +31,42 @@ func newDatabase() database {
    }
 }
 
+func (db database) query(target string) {
+   done := map[string]bool{target: true}
+   for todo := []string{target}; len(todo) > 0; todo = todo[1:] {
+      do := todo[0]
+      for _, dep := range db.name[do].depends {
+         if ! done[dep] {
+            todo = append(todo, dep)
+            done[dep] = true
+         }
+      }
+      println(do)
+   }
+}
+
 func (db database) scan(file string) error {
    open, e := os.Open(file)
    if e != nil {
       return e
    }
    defer open.Close()
-   scan := bufio.NewScanner(open)
-   var filename, name string
+   var (
+      desc description
+      name string
+      scan = bufio.NewScanner(open)
+   )
    for scan.Scan() {
       switch scan.Text() {
       case "%FILENAME%":
          scan.Scan()
-         filename = scan.Text()
+         desc.filename = scan.Text()
       case "%NAME%":
          scan.Scan()
          name = scan.Text()
+      case "%ARCH%":
+         scan.Scan()
+         desc.arch = scan.Text()
       case "%PROVIDES%":
          for scan.Scan() {
             line := scan.Text()
@@ -54,7 +74,6 @@ func (db database) scan(file string) error {
             db.provides[baseName(line, ">=")] = name
          }
       case "%DEPENDS%":
-         desc := description{filename: filename}
          for scan.Scan() {
             line := scan.Text()
             if line == "" { break }
@@ -68,6 +87,7 @@ func (db database) scan(file string) error {
 
 type description struct {
    filename string
+   arch string
    depends []string
 }
 
@@ -85,4 +105,34 @@ func newInstall(source url.URL, cache, dest string, base ...string) install {
    src := source.String()
    cache = filepath.Join(cache, filepath.Base(src))
    return install{src, cache, dest}
+}
+
+// FIXME
+func (m manager) sync(tar string) error {
+   open, e := os.Open(tar)
+   if e != nil {
+      return e
+   }
+   scan := bufio.NewScanner(open)
+   for scan.Scan() {
+      values, e := m.getValue(
+         scan.Text(), "%FILENAME%",
+      )
+      if e != nil {
+         return e
+      }
+      file := values[0]
+      archive := path.Join(m.Cache, file)
+      _, e = x.Copy(
+         getRepo(file) + file, archive,
+      )
+      if e != nil {
+         return e
+      }
+      e = unarchive(archive, m.Dest)
+      if e != nil {
+         return e
+      }
+   }
+   return nil
 }

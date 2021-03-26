@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/extract"
    "github.com/pelletier/go-toml"
-   "io/ioutil"
    "log"
    "os"
    "path"
@@ -57,7 +56,7 @@ func (c userCache) unmarshal(v interface{}) error {
    } else if err != nil {
       return err
    }
-   data, err := ioutil.ReadFile(dest)
+   data, err := os.ReadFile(dest)
    if err != nil {
       return err
    }

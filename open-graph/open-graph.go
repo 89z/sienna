@@ -2,7 +2,7 @@ package main
 
 import (
    "github.com/89z/x"
-   "io/ioutil"
+   "io"
    "log"
    "net/http"
    "os"
@@ -14,7 +14,7 @@ func open(source string) (string, error) {
    if e != nil {
       return "", e
    }
-   body, e := ioutil.ReadAll(get.Body)
+   body, e := io.ReadAll(get.Body)
    if e != nil {
       return "", e
    }

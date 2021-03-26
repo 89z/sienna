@@ -2,7 +2,6 @@ package main
 
 import (
    "fmt"
-   "io/ioutil"
    "log"
    "os"
 )
@@ -13,7 +12,7 @@ func main() {
       os.Exit(1)
    }
    s := os.Args[1]
-   data, e := ioutil.ReadFile(s)
+   data, e := os.ReadFile(s)
    if e != nil {
       log.Fatal(e)
    }

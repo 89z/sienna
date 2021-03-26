@@ -9,12 +9,12 @@ import (
 )
 
 func main() {
+   // both
    if len(os.Args) != 3 {
       println(`msys2 query mingw-w64-x86_64-gcc
 msys2 sync gcc.txt`)
       os.Exit(1)
    }
-   target := os.Args[2]
    cache, e := os.UserCacheDir()
    if e != nil {
       log.Fatal(e)
@@ -45,15 +45,10 @@ msys2 sync gcc.txt`)
       desc := path.Join(inst.dest, each.Name(), "desc")
       db.scan(desc)
    }
-   done := map[string]bool{}
-   for todo := []string{target}; len(todo) > 0; todo = todo[1:] {
-      target := todo[0]
-      println(target)
-      for _, each := range db.name[target].depends {
-         if ! done[each] {
-            todo = append(todo, each)
-         }
-      }
-      done[target] = true
+   target := os.Args[2]
+   switch os.Args[1] {
+   case "query":
+      db.query(target)
+   case "sync":
    }
 }

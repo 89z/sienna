@@ -3,7 +3,6 @@ package main
 import (
    "bytes"
    "github.com/pelletier/go-toml"
-   "io/ioutil"
    "log"
    "os"
    "path/filepath"
@@ -20,7 +19,7 @@ type frontMatter struct {
 }
 
 func unmarshal(file string, v interface{}) error {
-   index, e := ioutil.ReadFile(file)
+   index, e := os.ReadFile(file)
    if e != nil {
       return e
    }
@@ -58,7 +57,7 @@ func main() {
          println(indexPath)
          continue
       }
-      example, e := ioutil.ReadFile(examplePath)
+      example, e := os.ReadFile(examplePath)
       if e != nil {
          log.Fatal(e)
       }
