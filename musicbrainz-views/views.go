@@ -1,7 +1,6 @@
 package main
 
 import (
-   "github.com/89z/x"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
    "io"
@@ -9,6 +8,7 @@ import (
    "net/http"
    "net/url"
    "os"
+   "regexp"
    "time"
 )
 
@@ -25,9 +25,8 @@ func youtubeResult(query string) (string, error) {
    if e != nil {
       return "", e
    }
-   return string(
-      x.FindSubmatch("/vi/([^/]*)/", body),
-   ), nil
+   vi := regexp.MustCompile("/vi/([^/]*)/")
+   return string(vi.FindSubmatch(body)[1]), nil
 }
 
 func main() {

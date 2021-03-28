@@ -6,6 +6,7 @@ import (
    "log"
    "net/http"
    "os"
+   "regexp"
 )
 
 func open(source string) (string, error) {
@@ -18,9 +19,8 @@ func open(source string) (string, error) {
    if e != nil {
       return "", e
    }
-   return string(
-      x.FindSubmatch(`="og:image" content="([^"]+)"`, body),
-   ), nil
+   re := regexp.MustCompile(`="og:image" content="([^"]+)"`)
+   return string(re.FindSubmatch(body)[1]), nil
 }
 
 func main() {
