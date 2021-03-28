@@ -2,6 +2,7 @@ package main
 
 import (
    "github.com/89z/x"
+   "log"
    "os"
    "strconv"
    "time"
@@ -9,7 +10,9 @@ import (
 
 func main() {
    gitLs, e := x.Popen("git", "ls-files")
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    files := map[string]bool{}
    for gitLs.Scan() {
       files[gitLs.Text()] = true
@@ -18,11 +21,15 @@ func main() {
       "git", "log", "-m",
       "--name-only", "--relative", "--pretty=format:%ct", ".",
    )
-   x.Check(e)
+   if e != nil {
+      log.Fatal(e)
+   }
    for len(files) > 0 {
       gitLog.Scan()
       sec, e := strconv.ParseInt(gitLog.Text(), 10, 64)
-      x.Check(e)
+      if e != nil {
+         log.Fatal(e)
+      }
       unix := time.Unix(sec, 0)
       for gitLog.Scan() {
          name := gitLog.Text()
