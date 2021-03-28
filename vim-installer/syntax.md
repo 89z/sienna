@@ -6,7 +6,7 @@ https://github.com/dart-lang/dart-vim-plugin/blob/master/syntax/dart.vim
 
 ## Go
 
-https://github.com/google/vim-ft-go/blob/4d9cdee7/syntax/go.vim
+https://github.com/google/vim-ft-go/blob/793761b4/syntax/go.vim
 
 ## JavaScript
 
