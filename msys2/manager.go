@@ -45,16 +45,11 @@ func (db database) query(target string) {
    }
 }
 
-func (db database) scan(file string) error {
-   open, e := os.Open(file)
-   if e != nil {
-      return e
-   }
-   defer open.Close()
+func (db database) scan(file []byte) error {
    var (
       desc description
       name string
-      scan = bufio.NewScanner(open)
+      scan = bufio.NewScanner(bytes.NewReader(file))
    )
    for scan.Scan() {
       switch scan.Text() {
@@ -111,7 +106,12 @@ type install struct {
    dest string
 }
 
-func newInstall(source url.URL, cache, dest string, base ...string) install {
+func newInstall(source url.URL, base ...string) (install, error) {
+   cache, e := os.UserCacheDir()
+   if e != nil {
+      return install{}, e
+   }
+   dest := filepath.VolumeName(cache) + string(os.PathSeparator)
    for _, each := range base {
       cache = filepath.Join(cache, each)
       dest = filepath.Join(dest, each)
