@@ -9,20 +9,20 @@ import (
    "path"
 )
 
-type install struct { cache, dest string }
-
-func newInstall(dir, base string) install {
-   cache := path.Join(dir, path.Base(base))
-   return install{
-      cache, os.Getenv("SystemDrive") + string(os.PathSeparator) + cache,
-   }
-}
-
-func (i *install) setCache() error {
-   cache, e := os.UserCacheDir()
-   if e != nil { return e }
-   i.cache, i.dest = path.Join(cache, i.cache), path.Dir(i.dest)
-   return nil
+var runtime = []struct{dir, base string}{
+   {
+      "sienna/vim/colors",
+      "NLKNguyen/papercolor-theme/e397d18a/colors/PaperColor.vim",
+   }, {
+      "sienna/vim/syntax",
+      "tpope/vim-markdown/564d7436/syntax/markdown.vim",
+   }, {
+      "sienna/vim/syntax",
+      "vim/vim/a942f9ad/runtime/syntax/javascript.vim",
+   }, {
+      "sienna/vim/syntax",
+      "vim/vim/b9c8312e/runtime/syntax/python.vim",
+   },
 }
 
 func main() {
@@ -35,20 +35,27 @@ func main() {
       "v8.2.2677",
       "gvim_8.2.2677_x64.zip",
    )
-   inst := newInstall("sienna/vim", web.Path)
-   inst.setCache()
-   _, e := x.Copy(web.String(), inst.cache)
+   inst := x.NewInstall("sienna/vim", web.Path)
+   inst.SetCache()
+   _, e := x.Copy(web.String(), inst.Cache)
    if os.IsExist(e) {
-      x.LogInfo("Exist", inst.cache)
+      x.LogInfo("Exist", inst.Cache)
    } else if e != nil {
       log.Fatal(e)
    }
    arc := extract.Archive{2}
-   x.LogInfo("Zip", inst.cache)
-   arc.Zip(inst.cache, inst.dest)
-   // PaperColor
+   x.LogInfo("Zip", inst.Cache)
+   arc.Zip(inst.Cache, inst.Dest)
    web.Host = "raw.githubusercontent.com"
-   web.Path = "NLKNguyen/papercolor-theme/e397d18a/colors/PaperColor.vim"
-   inst = newInstall("sienna/vim/colors", web.Path)
-   x.Copy(web.String(), inst.dest)
+   for _, each := range runtime {
+      web.Path = each.base
+      inst = x.NewInstall(each.dir, each.base)
+      os.Remove(inst.Dest)
+      _, e = x.Copy(web.String(), inst.Dest)
+      if os.IsExist(e) {
+         x.LogInfo("Exist", inst.Dest)
+      } else if e != nil {
+         log.Fatal(e)
+      }
+   }
 }

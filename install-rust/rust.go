@@ -8,14 +8,12 @@ import (
    "os"
 )
 
-const remote = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
+const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 
 func main() {
-   inst, e := x.NewInstall(remote, "sienna", "rust")
-   if e != nil {
-      log.Fatal(e)
-   }
-   _, e = x.Copy(remote, inst.Cache)
+   inst := x.NewInstall("sienna/rust", source)
+   inst.SetCache()
+   _, e := x.Copy(source, inst.Cache)
    if os.IsExist(e) {
       x.LogInfo("Exist", inst.Cache)
    } else if e != nil {
@@ -34,10 +32,8 @@ func main() {
    toml.NewDecoder(channel).Decode(&dist)
    for _, each := range []string{"cargo", "rust-std", "rustc"} {
       source := dist.Pkg[each].Target["x86_64-pc-windows-gnu"].XZ_URL
-      inst, e = x.NewInstall(source, "sienna", "rust")
-      if e != nil {
-         log.Fatal(e)
-      }
+      inst = x.NewInstall("sienna/rust", source)
+      inst.SetCache()
       _, e = x.Copy(source, inst.Cache)
       if os.IsExist(e) {
          x.LogInfo("Exist", inst.Cache)
