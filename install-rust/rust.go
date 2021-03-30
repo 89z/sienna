@@ -28,9 +28,7 @@ func main() {
    defer channel.Close()
    var dist struct {
       Pkg map[string]struct {
-         Target map[string]struct{
-            XZ_URL string
-         }
+         Target map[string]struct { XZ_URL string }
       }
    }
    toml.NewDecoder(channel).Decode(&dist)

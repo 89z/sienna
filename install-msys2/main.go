@@ -17,12 +17,10 @@ msys2 sync gcc.txt`)
    for _, each := range []string{
       "mingw/x86_64/mingw64.db.tar.gz", "msys/x86_64/msys.db.tar.gz",
    } {
-      inst, e := x.NewInstall(each, "sienna", "msys2")
-      if e != nil {
-         log.Fatal(e)
-      }
       mirror.Path = each
-      _, e = x.Copy(mirror.String(), inst.Cache)
+      inst := x.NewInstall("sienna/msys2", each)
+      inst.SetCache()
+      _, e := x.Copy(mirror.String(), inst.Cache)
       if os.IsExist(e) {
          x.LogInfo("Exist", inst.Cache)
       } else if e != nil {
