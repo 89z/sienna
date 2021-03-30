@@ -62,28 +62,3 @@ func (c userCache) unmarshal(v interface{}) error {
    }
    return toml.Unmarshal(data, v)
 }
-
-func main() {
-   var (
-      cache userCache
-      err error
-   )
-   cache.dir, err = os.UserCacheDir()
-   if err != nil {
-      log.Fatal(err)
-   }
-   cache.dir = path.Join(cache.dir, "sienna", "rust")
-   var dist distChannel
-   err = cache.unmarshal(&dist)
-   if err != nil {
-      log.Fatal(err)
-   }
-   for _, each := range []target{
-      dist.Pkg.Cargo, dist.Pkg.RustStd, dist.Pkg.Rustc,
-   } {
-      err = cache.install(each.Target.X8664PcWindowsGnu.XzUrl)
-      if err != nil {
-         log.Fatal(err)
-      }
-   }
-}

@@ -2,9 +2,9 @@ package main
 
 import (
    "bufio"
+   "bytes"
    "net/url"
    "os"
-   "path/filepath"
    "strings"
 )
 
@@ -98,25 +98,4 @@ type description struct {
    filename string
    arch string
    depends []string
-}
-
-type install struct {
-   source string
-   cache string
-   dest string
-}
-
-func newInstall(source url.URL, base ...string) (install, error) {
-   cache, e := os.UserCacheDir()
-   if e != nil {
-      return install{}, e
-   }
-   dest := filepath.VolumeName(cache) + string(os.PathSeparator)
-   for _, each := range base {
-      cache = filepath.Join(cache, each)
-      dest = filepath.Join(dest, each)
-   }
-   src := source.String()
-   cache = filepath.Join(cache, filepath.Base(src))
-   return install{src, cache, dest}
 }
