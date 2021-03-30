@@ -1,9 +1,5 @@
 # gVim
 
-## color
-
-https://github.com/NLKNguyen/papercolor-theme/blob/e397d18a/colors/PaperColor.vim
-
 ## Dart
 
 https://github.com/dart-lang/dart-vim-plugin/blob/master/syntax/dart.vim
@@ -18,13 +14,14 @@ autocmd BufRead *.toml set filetype=toml
 
 ## Go
 
-https://github.com/google/vim-ft-go/blob/c70c1f7c/syntax/go.vim
+https://github.com/google/vim-ft-go/blob/5ae0c569/syntax/go.vim
 
 ## gvimrc
 
 ~~~
-C:\Users\Steven\.gvimrc
-C:\msys64\home\Steven\.gvimrc
+Copy-Item .gvimrc C:\Users\Steven
+Copy-Item .gvimrc C:\msys64\home\Steven
+Copy-Item colors\hearth.vim C:\vim82\colors\hearth.vim
 ~~~
 
 ## JavaScript

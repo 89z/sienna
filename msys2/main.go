@@ -28,7 +28,7 @@ msys2 sync gcc.txt`)
       _, e = x.Copy(inst.source, inst.cache)
       if e == nil {
          x.LogInfo("Gz", inst.cache)
-         var tar extract.Tar
+         var tar extract.Archive
          tar.Gz(inst.cache, inst.dest)
       } else if os.IsExist(e) {
          x.LogInfo("Exist", inst.cache)

@@ -2,7 +2,7 @@ package main
 
 import (
    "net/url"
-   "path"
+   "path/filepath"
 )
 
 type install struct {

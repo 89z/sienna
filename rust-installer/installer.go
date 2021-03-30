@@ -40,7 +40,7 @@ func (c userCache) install(source string) error {
    } else if err != nil {
       return err
    }
-   tar := extract.Tar{Strip: 2}
+   tar := extract.Archive{2}
    x.LogInfo("Xz", base)
    return tar.Xz(
       archive, os.Getenv("SystemDrive") + string(os.PathSeparator) + "rust",
