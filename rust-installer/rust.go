@@ -6,59 +6,48 @@ import (
    "github.com/pelletier/go-toml"
    "log"
    "os"
-   "path"
 )
 
 const remote = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 
-type distChannel struct {
-   Pkg struct {
-      Cargo target
-      RustStd target `toml:"rust-std"`
-      Rustc target
+func main() {
+   inst, e := x.NewInstall(remote, "sienna", "rust")
+   if e != nil {
+      log.Fatal(e)
    }
-}
-
-type target struct {
-   Target struct {
-      X8664PcWindowsGnu struct {
-         XzUrl string `toml:"xz_url"`
-      } `toml:"x86_64-pc-windows-gnu"`
+   _, e = x.Copy(remote, inst.Cache)
+   if os.IsExist(e) {
+      x.LogInfo("Exist", inst.Cache)
+   } else if e != nil {
+      log.Fatal(e)
    }
-}
-
-type userCache struct {
-   dir string
-}
-
-func (c userCache) install(source string) error {
-   base := path.Base(source)
-   archive := path.Join(c.dir, base)
-   _, err := x.Copy(source, archive)
-   if os.IsExist(err) {
-      x.LogInfo("Exist", base)
-   } else if err != nil {
-      return err
+   channel, e := os.Open(inst.Cache)
+   if e != nil {
+      log.Fatal(e)
    }
-   tar := extract.Archive{2}
-   x.LogInfo("Xz", base)
-   return tar.Xz(
-      archive, os.Getenv("SystemDrive") + string(os.PathSeparator) + "rust",
-   )
-}
-
-func (c userCache) unmarshal(v interface{}) error {
-   base := path.Base(remote)
-   dest := path.Join(c.dir, base)
-   _, err := x.Copy(remote, dest)
-   if os.IsExist(err) {
-      x.LogInfo("Exist", base)
-   } else if err != nil {
-      return err
+   defer channel.Close()
+   var dist struct {
+      Pkg map[string]struct {
+         Target map[string]struct{
+            XZ_URL string
+         }
+      }
    }
-   data, err := os.ReadFile(dest)
-   if err != nil {
-      return err
+   toml.NewDecoder(channel).Decode(&dist)
+   for _, each := range []string{"cargo", "rust-std", "rustc"} {
+      source := dist.Pkg[each].Target["x86_64-pc-windows-gnu"].XZ_URL
+      inst, e = x.NewInstall(source, "sienna", "rust")
+      if e != nil {
+         log.Fatal(e)
+      }
+      _, e = x.Copy(source, inst.Cache)
+      if os.IsExist(e) {
+         x.LogInfo("Exist", inst.Cache)
+      } else if e != nil {
+         log.Fatal(e)
+      }
+      tar := extract.Archive{2}
+      x.LogInfo("Xz", inst.Cache)
+      tar.Xz(inst.Cache, inst.Dest)
    }
-   return toml.Unmarshal(data, v)
 }
