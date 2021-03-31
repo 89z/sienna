@@ -14,14 +14,35 @@ var runtime = []struct{dir, base string}{
       "sienna/vim/colors",
       "NLKNguyen/papercolor-theme/e397d18a/colors/PaperColor.vim",
    }, {
+      "sienna/vim/ftdetect",
+      "zah/nim.vim/master/ftdetect/nim.vim",
+   }, {
+      "sienna/vim/ftdetect",
+      "PProvost/vim-ps1/master/ftdetect/ps1.vim",
+   }, {
       "sienna/vim/syntax",
-      "tpope/vim-markdown/564d7436/syntax/markdown.vim",
+      "dart-lang/dart-vim-plugin/master/syntax/dart.vim",
+   }, {
+      "sienna/vim/syntax",
+      "google/vim-ft-go/5ae0c569/syntax/go.vim",
    }, {
       "sienna/vim/syntax",
       "vim/vim/a942f9ad/runtime/syntax/javascript.vim",
    }, {
       "sienna/vim/syntax",
+      "tpope/vim-markdown/564d7436/syntax/markdown.vim",
+   }, {
+      "sienna/vim/syntax",
+      "zah/nim.vim/master/syntax/nim.vim",
+   }, {
+      "sienna/vim/syntax",
+      "PProvost/vim-ps1/master/syntax/ps1.vim",
+   }, {
+      "sienna/vim/syntax",
       "vim/vim/b9c8312e/runtime/syntax/python.vim",
+   }, {
+      "sienna/vim/syntax",
+      "cespare/vim-toml/master/syntax/toml.vim",
    },
 }
 
@@ -52,9 +73,7 @@ func main() {
       inst = x.NewInstall(each.dir, each.base)
       os.Remove(inst.Dest)
       _, e = x.Copy(web.String(), inst.Dest)
-      if os.IsExist(e) {
-         x.LogInfo("Exist", inst.Dest)
-      } else if e != nil {
+      if e != nil {
          log.Fatal(e)
       }
    }
