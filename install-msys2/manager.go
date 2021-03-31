@@ -3,8 +3,12 @@ package main
 import (
    "bufio"
    "bytes"
+   "fmt"
+   "github.com/89z/x"
+   "github.com/89z/x/extract"
    "net/url"
    "os"
+   "path"
    "strings"
 )
 
@@ -17,7 +21,7 @@ func baseName(s, chars string) string {
 }
 
 type database struct {
-   // %NAME% -> %FILENAME%, %ARCH%, %DEPENDS%
+   // %NAME% -> %FILENAME%, %DEPENDS%
    name map[string]description
    // %PROVIDES% -> %NAME%
    provides map[string]string
@@ -34,12 +38,14 @@ func (db database) query(target string) {
    for todo := []string{target}; len(todo) > 0; todo = todo[1:] {
       do := todo[0]
       for _, dep := range db.name[do].depends {
+         provide, ok := db.provides[dep]
+         if ok { dep = provide }
          if ! done[dep] {
             todo = append(todo, dep)
             done[dep] = true
          }
       }
-      println(do)
+      fmt.Println(do)
    }
 }
 
@@ -57,9 +63,6 @@ func (db database) scan(file []byte) error {
       case "%NAME%":
          buf.Scan()
          name = buf.Text()
-      case "%ARCH%":
-         buf.Scan()
-         desc.arch = buf.Text()
       case "%PROVIDES%":
          for buf.Scan() {
             line := buf.Text()
@@ -72,16 +75,10 @@ func (db database) scan(file []byte) error {
             if line == "" { break }
             desc.depends = append(desc.depends, baseName(line, ">="))
          }
-         db.name[name] = desc
       }
    }
+   db.name[name] = desc
    return nil
-}
-
-type description struct {
-   filename string
-   arch string
-   depends []string
 }
 
 func (db database) sync(name string) error {
@@ -89,9 +86,34 @@ func (db database) sync(name string) error {
    if e != nil { return e }
    defer file.Close()
    buf := bufio.NewScanner(file)
+   repos := map[bool]string{true: "mingw", false: "msys"}
    for buf.Scan() {
-      println(db.name[buf.Text()].filename)
-      // FIXME download file and extract
+      desc, ok := db.name[buf.Text()]
+      if ! ok { continue }
+      repo := repos[strings.HasPrefix(desc.filename, "mingw-w64-x86_64-")]
+      mirror.Path = repo + "/x86_64/" + desc.filename
+      inst := x.NewInstall("sienna/msys2", desc.filename)
+      inst.SetCache()
+      _, e = x.Copy(mirror.String(), inst.Cache)
+      if os.IsExist(e) {
+         x.LogInfo("Exist", desc.filename)
+      } else if e != nil {
+         return e
+      }
+      var arc extract.Archive
+      switch path.Ext(desc.filename) {
+      case ".xz":
+         x.LogInfo("Xz", desc.filename)
+         arc.Xz(inst.Cache, inst.Dest)
+      case ".zst":
+         x.LogInfo("Zst", desc.filename)
+         arc.Zst(inst.Cache, inst.Dest)
+      }
    }
    return nil
+}
+
+type description struct {
+   filename string
+   depends []string
 }

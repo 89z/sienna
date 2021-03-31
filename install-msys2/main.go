@@ -9,8 +9,8 @@ import (
 
 func main() {
    if len(os.Args) != 3 {
-      println(`msys2 query mingw-w64-x86_64-gcc
-msys2 sync gcc.txt`)
+      println(`install-msys2 query git
+install-msys2 sync git.txt`)
       os.Exit(1)
    }
    db := newDatabase()
