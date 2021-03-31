@@ -39,5 +39,6 @@ msys2 sync gcc.txt`)
    case "query":
       db.query(target)
    case "sync":
+      db.sync(target)
    }
 }

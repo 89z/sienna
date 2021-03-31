@@ -24,7 +24,7 @@ var runtime = []struct{dir, base string}{
       "dart-lang/dart-vim-plugin/master/syntax/dart.vim",
    }, {
       "sienna/vim/syntax",
-      "google/vim-ft-go/5ae0c569/syntax/go.vim",
+      "google/vim-ft-go/master/syntax/go.vim",
    }, {
       "sienna/vim/syntax",
       "vim/vim/a942f9ad/runtime/syntax/javascript.vim",

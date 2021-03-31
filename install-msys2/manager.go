@@ -12,9 +12,7 @@ var mirror = url.URL{Scheme: "http", Host: "repo.msys2.org"}
 
 func baseName(s, chars string) string {
    n := strings.IndexAny(s, chars)
-   if n == -1 {
-      return s
-   }
+   if n == -1 { return s }
    return s[:n]
 }
 
@@ -49,28 +47,28 @@ func (db database) scan(file []byte) error {
    var (
       desc description
       name string
-      scan = bufio.NewScanner(bytes.NewReader(file))
+      buf = bufio.NewScanner(bytes.NewReader(file))
    )
-   for scan.Scan() {
-      switch scan.Text() {
+   for buf.Scan() {
+      switch buf.Text() {
       case "%FILENAME%":
-         scan.Scan()
-         desc.filename = scan.Text()
+         buf.Scan()
+         desc.filename = buf.Text()
       case "%NAME%":
-         scan.Scan()
-         name = scan.Text()
+         buf.Scan()
+         name = buf.Text()
       case "%ARCH%":
-         scan.Scan()
-         desc.arch = scan.Text()
+         buf.Scan()
+         desc.arch = buf.Text()
       case "%PROVIDES%":
-         for scan.Scan() {
-            line := scan.Text()
+         for buf.Scan() {
+            line := buf.Text()
             if line == "" { break }
             db.provides[baseName(line, ">=")] = name
          }
       case "%DEPENDS%":
-         for scan.Scan() {
-            line := scan.Text()
+         for buf.Scan() {
+            line := buf.Text()
             if line == "" { break }
             desc.depends = append(desc.depends, baseName(line, ">="))
          }
@@ -80,22 +78,20 @@ func (db database) scan(file []byte) error {
    return nil
 }
 
-func (db database) sync(txt string) error {
-   open, e := os.Open(txt)
-   if e != nil {
-      return e
-   }
-   scan := bufio.NewScanner(open)
-   for scan.Scan() {
-      name := scan.Text()
-      println(db.name[name].filename)
-      // download file and extract
-   }
-   return nil
-}
-
 type description struct {
    filename string
    arch string
    depends []string
+}
+
+func (db database) sync(name string) error {
+   file, e := os.Open(name)
+   if e != nil { return e }
+   defer file.Close()
+   buf := bufio.NewScanner(file)
+   for buf.Scan() {
+      println(db.name[buf.Text()].filename)
+      // FIXME download file and extract
+   }
+   return nil
 }
