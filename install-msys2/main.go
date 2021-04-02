@@ -15,12 +15,13 @@ install-msys2 sync git.txt`)
    }
    db := newDatabase()
    for _, each := range []string{
-      "mingw/x86_64/mingw64.db.tar.gz", "msys/x86_64/msys.db.tar.gz",
+      "/mingw/ucrt64/ucrt64.db",
+      "/mingw/x86_64/mingw64.db",
+      "/msys/x86_64/msys.db",
    } {
-      mirror.Path = each
       inst := x.NewInstall("sienna/msys2", each)
       inst.SetCache()
-      _, e := x.Copy(mirror.String(), inst.Cache)
+      _, e := x.Copy(mirror + each, inst.Cache)
       if os.IsExist(e) {
          x.LogInfo("Exist", inst.Cache)
       } else if e != nil {
