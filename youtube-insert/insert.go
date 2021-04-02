@@ -14,13 +14,14 @@ import (
 )
 
 func getImage(id string) string {
-   if httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg") {
+   switch {
+   case httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg"):
       return ""
-   }
-   if httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg") {
+   case httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg"):
       return "sd1"
+   default:
+      return "hqdefault"
    }
-   return "hqdefault"
 }
 
 func httpHead(s string) bool {
@@ -29,24 +30,17 @@ func httpHead(s string) bool {
    return e == nil && resp.StatusCode == 200
 }
 
-func findStringSubmatch(re, input string) string {
-   a := regexp.MustCompile(re).FindStringSubmatch(input)
-   if len(a) < 2 {
-      return ""
-   }
-   return a[1]
-}
-
 func main() {
    if len(os.Args) != 2 {
       println("youtube-insert <URL>")
       os.Exit(1)
    }
-   watch, e := url.Parse(os.Args[1])
+   arg := os.Args[1]
+   addr, e := url.Parse(arg)
    if e != nil {
       log.Fatal(e)
    }
-   id := watch.Query().Get("v")
+   id := addr.Query().Get("v")
    // year
    info, e := youtube.Info(id)
    if e != nil {
@@ -62,14 +56,11 @@ func main() {
       matches */
       ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
    } {
-      match := findStringSubmatch(pattern, info.Description.SimpleText)
-      if match == "" {
-         continue
-      }
-      if match >= year {
-         continue
-      }
-      year = match
+      re := regexp.MustCompile(pattern)
+      find := re.FindStringSubmatch(info.Description.SimpleText)
+      if len(find) < 2 { continue }
+      if find[1] >= year { continue }
+      year = find[1]
    }
    // song, artist
    title := info.Title.SimpleText
@@ -80,9 +71,7 @@ func main() {
       title = strings.Join(artists, ", ") + " - " + titles[0]
    }
    // time
-   now := strconv.FormatInt(
-      time.Now().Unix(), 36,
-   )
+   now := strconv.FormatInt(time.Now().Unix(), 36)
    // print
    value := make(url.Values)
    value.Set("a", now)

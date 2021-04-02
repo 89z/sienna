@@ -15,14 +15,13 @@ func main() {
       println("soundcloud-insert <URL>")
       os.Exit(1)
    }
-   player, e := soundcloud.Insert(os.Args[1])
+   arg := os.Args[1]
+   player, e := soundcloud.Insert(arg)
    if e != nil {
       log.Fatal(e)
    }
    value := make(url.Values)
-   date := strconv.FormatInt(
-      time.Now().Unix(), 36,
-   )
+   date := strconv.FormatInt(time.Now().Unix(), 36)
    value.Set("a", date)
    value.Set("b", player.Id)
    value.Set("c", player.Artwork)

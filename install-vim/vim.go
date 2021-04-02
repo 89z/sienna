@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/extract"
    "log"
-   "net/url"
    "os"
    "path"
 )
@@ -47,8 +46,7 @@ var runtime = []struct{dir, base string}{
 }
 
 func main() {
-   web := url.URL{Scheme: "https", Host: "github.com"}
-   web.Path = path.Join(
+   zip := path.Join(
       "vim",
       "vim-win32-installer",
       "releases",
@@ -56,9 +54,9 @@ func main() {
       "v8.2.2677",
       "gvim_8.2.2677_x64.zip",
    )
-   inst := x.NewInstall("sienna/vim", web.Path)
+   inst := x.NewInstall("sienna/vim", zip)
    inst.SetCache()
-   _, e := x.Copy(web.String(), inst.Cache)
+   _, e := x.Copy("https://github.com/" + zip, inst.Cache)
    if os.IsExist(e) {
       x.LogInfo("Exist", inst.Cache)
    } else if e != nil {
@@ -67,12 +65,10 @@ func main() {
    arc := extract.Archive{2}
    x.LogInfo("Zip", inst.Cache)
    arc.Zip(inst.Cache, inst.Dest)
-   web.Host = "raw.githubusercontent.com"
    for _, each := range runtime {
-      web.Path = each.base
       inst = x.NewInstall(each.dir, each.base)
       os.Remove(inst.Dest)
-      _, e = x.Copy(web.String(), inst.Dest)
+      _, e = x.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
       if e != nil {
          log.Fatal(e)
       }

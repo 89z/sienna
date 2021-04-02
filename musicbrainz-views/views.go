@@ -1,32 +1,27 @@
 package main
 
 import (
+   "bytes"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
-   "io"
    "log"
    "net/http"
-   "net/url"
    "os"
    "regexp"
    "time"
 )
 
 func youtubeResult(query string) (string, error) {
-   value := url.Values{}
-   value.Set("search_query", query)
-   get, e := http.Get(
-      "http://youtube.com/results?" + value.Encode(),
-   )
-   if e != nil {
-      return "", e
-   }
-   body, e := io.ReadAll(get.Body)
-   if e != nil {
-      return "", e
-   }
-   vi := regexp.MustCompile("/vi/([^/]*)/")
-   return string(vi.FindSubmatch(body)[1]), nil
+   req, e := http.NewRequest("GET", "http://youtube.com/results", nil)
+   if e != nil { return "", e }
+   val := req.URL.Query()
+   val.Set("search_query", query)
+   res, e := http.DefaultClient.Do(req)
+   if e != nil { return "", e }
+   var buf bytes.Buffer
+   buf.ReadFrom(res.Body)
+   str := buf.String()
+   return regexp.MustCompile("/vi/([^/]*)/").FindStringSubmatch(str)[1], nil
 }
 
 func main() {
@@ -44,9 +39,7 @@ https://musicbrainz.org/release/7a629d52-6a61-3ea1-a0a0-dd50bdef63b4`)
       log.Fatal(e)
    }
    var artist string
-   for _, each := range album.ArtistCredit {
-      artist += each.Name + " "
-   }
+   for _, each := range album.ArtistCredit { artist += each.Name + " " }
    for _, media := range album.Media {
       for _, track := range media.Tracks {
          id, e := youtubeResult(artist + track.Title)
