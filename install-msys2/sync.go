@@ -10,20 +10,22 @@ import (
    "strings"
 )
 
-/*
-bad
-http://repo.msys2.org/msys/x86_64/mingw-w64-ucrt-x86_64-gcc-10.2.0-9-any.pkg.tar.zst
-
-good
-http://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-10.2.0-9-any.pkg.tar.zst
-*/
+func variant(s string) string {
+   switch {
+   case strings.HasPrefix(s, "mingw-w64-ucrt-x86_64-"):
+      return "/mingw/ucrt64/"
+   case strings.HasPrefix(s, "mingw-w64-x86_64-"):
+      return "/mingw/x86_64/"
+   default:
+      return "/msys/x86_64/"
+   }
+}
 
 func (db database) sync(name string) error {
    file, e := os.Open(name)
    if e != nil { return e }
    defer file.Close()
    buf := bufio.NewScanner(file)
-   repos := map[bool]string{true: "/mingw", false: "/msys"}
    for buf.Scan() {
       text := buf.Text()
       desc, ok := db.name[text]
@@ -33,8 +35,8 @@ func (db database) sync(name string) error {
       }
       inst := x.NewInstall("sienna/msys2", desc.filename)
       inst.SetCache()
-      repo := repos[strings.HasPrefix(desc.filename, "mingw-w64-x86_64-")]
-      _, e = x.Copy(mirror + repo + "/x86_64/" + desc.filename, inst.Cache)
+      dir := variant(desc.filename)
+      _, e = x.Copy(mirror + dir + desc.filename, inst.Cache)
       if os.IsExist(e) {
          x.LogInfo("Exist", desc.filename)
       } else if e != nil {

@@ -7,33 +7,30 @@ import (
    "os/exec"
 )
 
-func check(e error) {
-   if e != nil {
-      log.Fatal(e)
-   }
-}
-
 func run(name string, arg ...string) error {
    c := exec.Command(name, arg...)
-   c.Stderr = os.Stderr
-   c.Stdout = os.Stdout
+   c.Stderr, c.Stdout = os.Stderr, os.Stdout
    x.LogInfo("Run", name, arg)
    return c.Run()
 }
 
-func main() {
+func depart() error {
    e := run("git", "commit", "--verbose")
-   check(e)
+   if e != nil { return e }
    _, e = os.Stat("config.toml")
-   if e != nil {
-      return
-   }
+   if e != nil { return nil }
    e = os.RemoveAll("docs")
-   check(e)
+   if e != nil { return e }
    e = run("hugo")
-   check(e)
+   if e != nil { return e }
    e = run("git", "add", ".")
-   check(e)
-   e = run("git", "commit", "--amend", "--no-edit")
-   check(e)
+   if e != nil { return e }
+   return run("git", "commit", "--amend", "--no-edit")
+}
+
+func main() {
+   e := depart()
+   if e != nil {
+      log.Fatal(e)
+   }
 }

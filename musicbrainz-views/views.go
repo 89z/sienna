@@ -2,6 +2,7 @@ package main
 
 import (
    "bytes"
+   "fmt"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
    "log"
@@ -16,12 +17,17 @@ func youtubeResult(query string) (string, error) {
    if e != nil { return "", e }
    val := req.URL.Query()
    val.Set("search_query", query)
+   req.URL.RawQuery = val.Encode()
    res, e := http.DefaultClient.Do(req)
    if e != nil { return "", e }
    var buf bytes.Buffer
    buf.ReadFrom(res.Body)
    str := buf.String()
-   return regexp.MustCompile("/vi/([^/]*)/").FindStringSubmatch(str)[1], nil
+   find := regexp.MustCompile("/vi/([^/]*)/").FindStringSubmatch(str)
+   if len(find) < 2 {
+      return "", fmt.Errorf("%v", req.URL)
+   }
+   return find[1], nil
 }
 
 func main() {

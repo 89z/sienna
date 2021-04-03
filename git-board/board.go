@@ -33,8 +33,7 @@ func popen(name string, arg ...string) (*bufio.Scanner, error) {
 
 type test struct {
    name string
-   actual interface{}
-   target interface{}
+   actual, target interface{}
    result bool
 }
 
