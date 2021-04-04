@@ -12,15 +12,6 @@ import (
 )
 
 const minimum = 64
-var add, del, totAdd, totCha, totDel int
-
-func diff() (*bufio.Scanner, error) {
-   _, e := os.Stat("config.toml")
-   if e != nil {
-      return popen("git", "diff", "--cached", "--numstat")
-   }
-   return popen("git", "diff", "--cached", "--numstat", ":!docs")
-}
 
 func popen(name string, arg ...string) (*bufio.Scanner, error) {
    cmd := exec.Command(name, arg...)
@@ -31,48 +22,56 @@ func popen(name string, arg ...string) (*bufio.Scanner, error) {
    return bufio.NewScanner(pipe), cmd.Start()
 }
 
-type test struct {
-   name string
-   actual, target interface{}
-   result bool
-}
-
-func main() {
-   c := exec.Command("git", "add", ".")
-   c.Stderr, c.Stdout = os.Stderr, os.Stdout
-   e := c.Run()
-   if e != nil {
-      log.Fatal(e)
+func newBoard() (board, error) {
+   exec.Command("git", "add", ".").Run()
+   arg := []string{"diff", "--cached", "--numstat"}
+   _, e := os.Stat("config.toml")
+   if e == nil {
+      arg = append(arg, ":!docs")
    }
-   stat, e := diff()
+   stat, e := popen("git", arg...)
    if e != nil {
-      log.Fatal(e)
+      return board{}, e
    }
+   var b board
    for stat.Scan() {
-      totCha++
+      b.totCha++
       text := stat.Text()
-      if strings.HasPrefix(text, "-") {
-         continue
-      }
-      fmt.Sscanf(text, "%v\t%v", &add, &del)
-      totAdd += add
-      totDel += del
+      if strings.HasPrefix(text, "-") { continue }
+      var add, del int
+      fmt.Sscan(text, &add, &del)
+      b.totAdd += add
+      b.totDel += del
    }
    commit, e := popen("git", "log", "--format=%cI")
    if e != nil {
-      log.Fatal(e)
+      return board{}, e
    }
    commit.Scan()
-   // actual
-   actual := commit.Text()[:10]
-   // target
-   target := time.Now().AddDate(0, 0, -1).String()[:10]
-   // print
-   for _, each := range []test{
-      {"additions", totAdd, minimum, totAdd >= minimum},
-      {"deletions", totDel, minimum, totDel >= minimum},
-      {"changed files", totCha, minimum, totCha >= minimum},
-      {"last commit", actual, target, actual <= target},
+   b.actual = commit.Text()[:10]
+   b.target = time.Now().AddDate(0, 0, -1).String()[:10]
+   return b, nil
+}
+
+type board struct {
+   actual, target string
+   totAdd, totCha, totDel int
+}
+
+func main() {
+   b, e := newBoard()
+   if e != nil {
+      log.Fatal(e)
+   }
+   for _, each := range []struct{
+      name string
+      actual, target interface{}
+      result bool
+   } {
+      {"additions", b.totAdd, minimum, b.totAdd >= minimum},
+      {"deletions", b.totDel, minimum, b.totDel >= minimum},
+      {"changed files", b.totCha, minimum, b.totCha >= minimum},
+      {"last commit", b.actual, b.target, b.actual <= b.target},
    } {
       message := fmt.Sprintf(
          "%-16v target: %-12v actual: %v", each.name, each.target, each.actual,
@@ -84,3 +83,9 @@ func main() {
       }
    }
 }
+
+
+
+
+
+
