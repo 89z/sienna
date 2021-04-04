@@ -1,6 +1,8 @@
 package main
 
 import (
+   "encoding/json"
+   "fmt"
    "github.com/89z/x"
    "github.com/89z/x/youtube"
    "log"
@@ -13,42 +15,25 @@ import (
    "time"
 )
 
-func getImage(id string) string {
-   switch {
-   case httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg"):
-      return ""
-   case httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg"):
-      return "sd1"
-   default:
-      return "hqdefault"
-   }
-}
-
-func httpHead(s string) bool {
-   x.LogInfo("Head", s)
-   resp, e := http.Head(s)
+func httpHead(addr string) bool {
+   x.LogInfo("Head", addr)
+   resp, e := http.Head(addr)
    return e == nil && resp.StatusCode == 200
 }
 
-func main() {
-   if len(os.Args) != 2 {
-      println("youtube-insert <URL>")
-      os.Exit(1)
-   }
-   arg := os.Args[1]
-   addr, e := url.Parse(arg)
+func newTableRow(enc string) (tableRow, error) {
+   dec, e := url.Parse(enc)
    if e != nil {
-      log.Fatal(e)
+      return tableRow{}, e
    }
-   id := addr.Query().Get("v")
+   id := dec.Query().Get("v")
    // year
    info, e := youtube.Info(id)
    if e != nil {
-      log.Fatal(e)
+      return tableRow{}, e
    }
    if info.Description.SimpleText == "" {
-      println("Clapham Junction")
-      os.Exit(1)
+      return tableRow{}, fmt.Errorf("Clapham Junction")
    }
    year := info.PublishDate[:4]
    for _, pattern := range []string{
@@ -73,20 +58,52 @@ func main() {
    // time
    now := strconv.FormatInt(time.Now().Unix(), 36)
    // print
-   value := make(url.Values)
-   value.Set("a", now)
-   value.Set("b", id)
-   value.Set("p", "y")
-   value.Set("y", year)
-   image := getImage(id)
-   if image != "" {
-      value.Set("c", image)
+   val := make(url.Values)
+   val.Set("a", now)
+   val.Set("b", id)
+   val.Set("p", "y")
+   val.Set("y", year)
+   switch {
+   case httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg"):
+   case httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg"):
+      val.Set("c", "sd1")
+   default:
+      val.Set("c", "hqdefault")
    }
-   data, e := x.JsonMarshal(map[string]string{
-      "q": value.Encode(), "s": title,
-   })
+   return tableRow{
+      val.Encode(), title,
+   }, nil
+}
+
+type tableRow struct { Q, S string }
+
+func main() {
+   if len(os.Args) != 2 {
+      fmt.Println("youtube-insert <URL>")
+      os.Exit(1)
+   }
+   // decode
+   umber := os.Getenv("UMBER")
+   file, e := os.Open(umber)
    if e != nil {
       log.Fatal(e)
    }
-   os.Stdout.Write(append(data, ',', '\n'))
+   var rows []tableRow
+   json.NewDecoder(file).Decode(&rows)
+   // append
+   arg := os.Args[1]
+   row, e := newTableRow(arg)
+   if e != nil {
+      log.Fatal(e)
+   }
+   rows = append([]tableRow{row}, rows...)
+   // encode
+   file, e = os.Create(umber)
+   if e != nil {
+      log.Fatal(e)
+   }
+   enc := json.NewEncoder(file)
+   enc.SetEscapeHTML(false)
+   enc.SetIndent("", " ")
+   enc.Encode(rows)
 }
