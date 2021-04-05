@@ -1,7 +1,6 @@
 package main
 
 import (
-   "bufio"
    "fmt"
    "github.com/89z/x"
    "log"
@@ -13,15 +12,6 @@ import (
 
 const minimum = 64
 
-func popen(name string, arg ...string) (*bufio.Scanner, error) {
-   cmd := exec.Command(name, arg...)
-   pipe, e := cmd.StdoutPipe()
-   if e != nil {
-      return nil, fmt.Errorf("StdoutPipe %v", e)
-   }
-   return bufio.NewScanner(pipe), cmd.Start()
-}
-
 func newBoard() (board, error) {
    exec.Command("git", "add", ".").Run()
    arg := []string{"diff", "--cached", "--numstat"}
@@ -29,26 +19,24 @@ func newBoard() (board, error) {
    if e == nil {
       arg = append(arg, ":!docs")
    }
-   stat, e := popen("git", arg...)
+   stat, e := x.ShellExec("git", arg...)
    if e != nil {
       return board{}, e
    }
    var b board
-   for stat.Scan() {
+   for _, each := range strings.Split(stat, "\n") {
       b.totCha++
-      text := stat.Text()
-      if strings.HasPrefix(text, "-") { continue }
+      if strings.HasPrefix(each, "-") { continue }
       var add, del int
-      fmt.Sscan(text, &add, &del)
+      fmt.Sscan(each, &add, &del)
       b.totAdd += add
       b.totDel += del
    }
-   commit, e := popen("git", "log", "--format=%cI")
+   commit, e := x.ShellExec("git", "log", "-1", "--format=%cI")
    if e != nil {
       return board{}, e
    }
-   commit.Scan()
-   b.actual = commit.Text()[:10]
+   b.actual = commit[:10]
    b.target = time.Now().AddDate(0, 0, -1).String()[:10]
    return b, nil
 }
