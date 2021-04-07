@@ -10,11 +10,7 @@ import (
 func run(name string, arg ...string) error {
    c := exec.Command(name, arg...)
    c.Stderr, c.Stdout = os.Stderr, os.Stdout
-   run := []interface{}{name}
-   for _, each := range arg {
-      run = append(run, each)
-   }
-   x.LogInfo("Run", run...)
+   x.LogInfo("Run", c)
    return c.Run()
 }
 
