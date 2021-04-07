@@ -12,6 +12,11 @@ import (
 
 const minimum = 64
 
+type board struct {
+   actual, target string
+   totAdd, totCha, totDel int
+}
+
 func newBoard() (board, error) {
    exec.Command("git", "add", ".").Run()
    arg := []string{"diff", "--cached", "--numstat"}
@@ -26,7 +31,6 @@ func newBoard() (board, error) {
    var b board
    for _, each := range strings.Split(stat, "\n") {
       b.totCha++
-      if strings.HasPrefix(each, "-") { continue }
       var add, del int
       fmt.Sscan(each, &add, &del)
       b.totAdd += add
@@ -39,11 +43,6 @@ func newBoard() (board, error) {
    b.actual = commit[:10]
    b.target = time.Now().AddDate(0, 0, -1).String()[:10]
    return b, nil
-}
-
-type board struct {
-   actual, target string
-   totAdd, totCha, totDel int
 }
 
 func main() {
@@ -71,9 +70,3 @@ func main() {
       }
    }
 }
-
-
-
-
-
-
