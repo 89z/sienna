@@ -8,33 +8,33 @@ import (
    "os"
 )
 
-const source = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
+const channel = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 
 func main() {
-   inst := x.NewInstall("sienna/rust", source)
+   inst := x.NewInstall("sienna/rust", channel)
    inst.SetCache()
-   _, e := x.Copy(source, inst.Cache)
+   _, e := x.Copy(channel, inst.Cache)
    if os.IsExist(e) {
       x.LogInfo("Exist", inst.Cache)
    } else if e != nil {
       log.Fatal(e)
    }
-   channel, e := os.Open(inst.Cache)
+   cache, e := os.Open(inst.Cache)
    if e != nil {
       log.Fatal(e)
    }
-   defer channel.Close()
+   defer cache.Close()
    var dist struct {
       Pkg map[string]struct {
          Target map[string]struct { XZ_URL string }
       }
    }
-   toml.NewDecoder(channel).Decode(&dist)
+   toml.NewDecoder(cache).Decode(&dist)
    for _, each := range []string{"cargo", "rust-std", "rustc"} {
-      source := dist.Pkg[each].Target["x86_64-pc-windows-gnu"].XZ_URL
-      inst = x.NewInstall("sienna/rust", source)
+      addr := dist.Pkg[each].Target["x86_64-pc-windows-gnu"].XZ_URL
+      inst = x.NewInstall("sienna/rust", addr)
       inst.SetCache()
-      _, e = x.Copy(source, inst.Cache)
+      _, e = x.Copy(addr, inst.Cache)
       if os.IsExist(e) {
          x.LogInfo("Exist", inst.Cache)
       } else if e != nil {
