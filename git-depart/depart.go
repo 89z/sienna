@@ -4,28 +4,21 @@ import (
    "github.com/89z/x"
    "log"
    "os"
-   "os/exec"
 )
 
-func run(name string, arg ...string) error {
-   c := exec.Command(name, arg...)
-   c.Stderr, c.Stdout = os.Stderr, os.Stdout
-   x.LogInfo("Run", c)
-   return c.Run()
-}
-
 func depart() error {
-   e := run("git", "commit", "--verbose")
+   var c x.Cmd
+   e := c.Run("git", "commit", "--verbose")
    if e != nil { return e }
    _, e = os.Stat("config.toml")
    if e != nil { return nil }
    e = os.RemoveAll("docs")
    if e != nil { return e }
-   e = run("hugo")
+   e = c.Run("hugo")
    if e != nil { return e }
-   e = run("git", "add", ".")
+   e = c.Run("git", "add", ".")
    if e != nil { return e }
-   return run("git", "commit", "--amend", "--no-edit")
+   return c.Run("git", "commit", "--amend", "--no-edit")
 }
 
 func main() {

@@ -5,7 +5,6 @@ import (
    "github.com/89z/x"
    "log"
    "os"
-   "os/exec"
    "strings"
    "time"
 )
@@ -18,13 +17,14 @@ type board struct {
 }
 
 func newBoard() (board, error) {
-   exec.Command("git", "add", ".").Run()
+   var c x.Cmd
+   c.Run("git", "add", ".")
    arg := []string{"diff", "--cached", "--numstat"}
    _, e := os.Stat("config.toml")
    if e == nil {
       arg = append(arg, ":!docs")
    }
-   stat, e := x.ShellExec("git", arg...)
+   stat, e := c.Out("git", arg...)
    if e != nil {
       return board{}, e
    }
@@ -36,7 +36,7 @@ func newBoard() (board, error) {
       b.totAdd += add
       b.totDel += del
    }
-   commit, e := x.ShellExec("git", "log", "-1", "--format=%cI")
+   commit, e := c.Out("git", "log", "-1", "--format=%cI")
    if e != nil {
       return board{}, e
    }

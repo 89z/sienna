@@ -6,7 +6,6 @@ import (
    "github.com/89z/x"
    "log"
    "os"
-   "os/exec"
 )
 
 func main() {
@@ -44,11 +43,9 @@ Flags:`)
       arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
    arg = append(arg, "%d.jpg")
-   cmd := exec.Command("ffmpeg", arg...)
-   cmd.Stderr, cmd.Stdout = os.Stderr, os.Stdout
-   x.LogInfo("Run", cmd)
-   e := cmd.Run()
-   if e != nil {
-      log.Fatal(e)
+   var cmd x.Cmd
+   err := cmd.Run("ffmpeg", arg...)
+   if err != nil {
+      log.Fatal(err)
    }
 }

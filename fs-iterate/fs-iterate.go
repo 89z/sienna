@@ -4,7 +4,6 @@ import (
    "github.com/89z/x"
    "log"
    "os"
-   "os/exec"
    "path/filepath"
 )
 
@@ -14,20 +13,17 @@ func main() {
       os.Exit(1)
    }
    root, name, arg := os.Args[1], os.Args[2], os.Args[3:]
-   dirs, e := os.ReadDir(root)
-   if e != nil {
-      log.Fatal(e)
+   dirs, err := os.ReadDir(root)
+   if err != nil {
+      log.Fatal(err)
    }
    for _, each := range dirs {
       dir := filepath.Join(root, each.Name())
-      cmd := exec.Command(name, arg...)
+      cmd := x.Cmd{dir}
       x.LogInfo("Dir", dir)
-      cmd.Dir = dir
-      cmd.Stderr = os.Stderr
-      cmd.Stdout = os.Stdout
-      e = cmd.Run()
-      if e != nil {
-         log.Fatal(e)
+      err = cmd.Run(name, arg...)
+      if err != nil {
+         log.Fatal(err)
       }
    }
 }
