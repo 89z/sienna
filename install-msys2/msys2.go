@@ -5,7 +5,6 @@ import (
    "bytes"
    "fmt"
    "github.com/89z/x"
-   "github.com/89z/x/extract"
    "os"
    "path"
    "strings"
@@ -112,7 +111,7 @@ func (db database) sync(name string) error {
       } else if e != nil {
          return e
       }
-      var arc extract.Archive
+      var arc x.Archive
       switch path.Ext(desc.filename) {
       case ".xz":
          x.LogInfo("Xz", desc.filename)

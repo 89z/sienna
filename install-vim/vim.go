@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "github.com/89z/x/extract"
    "log"
    "os"
    "path"
@@ -62,7 +61,7 @@ func main() {
    } else if e != nil {
       log.Fatal(e)
    }
-   arc := extract.Archive{2}
+   arc := x.Archive{2}
    x.LogInfo("Zip", inst.Cache)
    arc.Zip(inst.Cache, inst.Dest)
    for _, each := range runtime {

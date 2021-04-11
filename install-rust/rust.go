@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "github.com/89z/x/extract"
    "github.com/pelletier/go-toml"
    "log"
    "os"
@@ -40,7 +39,7 @@ func main() {
       } else if e != nil {
          log.Fatal(e)
       }
-      tar := extract.Archive{2}
+      tar := x.Archive{2}
       x.LogInfo("Xz", inst.Cache)
       tar.Xz(inst.Cache, inst.Dest)
    }

@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "github.com/89z/x/extract"
    "log"
    "os"
 )
@@ -21,18 +20,18 @@ install-msys2 sync git.txt`)
    } {
       inst := x.NewInstall("sienna/msys2", each)
       inst.SetCache()
-      _, e := x.Copy(mirror + each, inst.Cache)
-      if os.IsExist(e) {
+      _, err := x.Copy(mirror + each, inst.Cache)
+      if os.IsExist(err) {
          x.LogInfo("Exist", inst.Cache)
-      } else if e != nil {
-         log.Fatal(e)
+      } else if err != nil {
+         log.Fatal(err)
       }
-      files, e := extract.TarGzMemory(inst.Cache)
-      if e != nil {
-         log.Fatal(e)
+      fs, err := x.TarGzMemory(inst.Cache)
+      if err != nil {
+         log.Fatal(err)
       }
-      for _, each := range files {
-         db.scan(each)
+      for _, each := range fs {
+         db.scan(each.Data)
       }
    }
    target := os.Args[2]
