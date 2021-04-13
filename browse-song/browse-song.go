@@ -3,11 +3,12 @@ package main
 import (
    "fmt"
    "github.com/89z/x/sys"
-   "golang.org/x/sys/windows"
    "log"
    "net/url"
    "os"
 )
+
+const sw_shownormal = 1
 
 func main() {
    if len(os.Args) != 3 {
@@ -18,15 +19,15 @@ func main() {
    query := fmt.Sprintf(`intext:"%v topic" intitle:"%v"`, artist, song)
    value := make(url.Values)
    value.Set("q", query)
-   e := sys.ShellExecute(
+   err := sys.ShellExecute(
       0,
       "",
       "http://youtube.com/results?" + value.Encode(),
       "",
       "",
-      windows.SW_SHOWNORMAL,
+      sw_shownormal,
    )
-   if e != nil {
-      log.Fatal(e)
+   if err != nil {
+      log.Fatal(err)
    }
 }

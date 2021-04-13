@@ -1,5 +1,5 @@
-github.com/89z/x v1.13.4 h1:lL1QuNyoQpQz38Kzpyx7jPLUQnij8O6GiITe5Nw5LSA=
-github.com/89z/x v1.13.4/go.mod h1:QfaOLBiqZj3Sirjr9C2eMrS0XlGttcRVB+ededggzc0=
+github.com/89z/x v1.13.6 h1:Z2XULcJfitUjPlgtH73YCqHS9A4AkUrA1Z8tm/SBsKI=
+github.com/89z/x v1.13.6/go.mod h1:QfaOLBiqZj3Sirjr9C2eMrS0XlGttcRVB+ededggzc0=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/klauspost/compress v1.11.13 h1:eSvu8Tmq6j2psUJqJrLcWH6K3w5Dwc+qipbaA6eVEN4=

@@ -1,6 +1,4 @@
-bash
 brotli
-coreutils
 gcc-libs
 git
 heimdal-libs

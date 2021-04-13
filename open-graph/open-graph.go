@@ -12,13 +12,9 @@ import (
 func open(source string) (string, error) {
    x.LogInfo("Get", source)
    get, e := http.Get(source)
-   if e != nil {
-      return "", e
-   }
+   if e != nil { return "", e }
    body, e := io.ReadAll(get.Body)
-   if e != nil {
-      return "", e
-   }
+   if e != nil { return "", e }
    re := regexp.MustCompile(`="og:image" content="([^"]+)"`)
    return string(re.FindSubmatch(body)[1]), nil
 }
