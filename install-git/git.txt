@@ -16,5 +16,4 @@ libssh2
 libunistring
 libzstd
 msys2-runtime
-sed
 zlib
