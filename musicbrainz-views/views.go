@@ -20,7 +20,7 @@ func youtubeResult(query string) (string, error) {
    val.Set("search_query", query)
    req.URL.RawQuery = val.Encode()
    x.LogInfo("GET", req.URL)
-   res, e := http.DefaultClient.Do(req)
+   res, e := new(http.Client).Do(req)
    if e != nil { return "", e }
    var buf bytes.Buffer
    buf.ReadFrom(res.Body)
