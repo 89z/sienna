@@ -3,6 +3,7 @@ package main
 import (
    "bytes"
    "fmt"
+   "io"
    "net/http"
    "os"
 )
@@ -19,20 +20,19 @@ func newWorker(addr string, jobs int64) (worker, error) {
       return worker{}, e
    }
    return worker{
-      addr, res.ContentLength / jobs, make([]*bytes.Buffer, jobs),
+      addr, res.ContentLength / jobs + 1, make([]*bytes.Buffer, jobs),
    }, nil
 }
 
 func (w worker) work(job int, ch chan bool) error {
    req, e := http.NewRequest("GET", w.addr, nil)
    if e != nil { return e }
-   pos := int64(job) * (w.step + 1)
-   req.Header.Set("Range", fmt.Sprintf("bytes=%v-%v", pos, pos + w.step))
+   req.Header.Set("Range", fmt.Sprintf("bytes=%v-", int64(job) * w.step))
    res, e := new(http.Client).Do(req)
    if e != nil { return e }
    defer res.Body.Close()
    w.jobs[job] = new(bytes.Buffer)
-   w.jobs[job].ReadFrom(res.Body)
+   io.CopyN(w.jobs[job], res.Body, w.step)
    println("END", job)
    ch <- true
    return nil
@@ -48,13 +48,13 @@ func main() {
       println("BEGIN", job)
       go w.work(job, done)
    }
-   bad, e := os.Create("bad.dat")
+   dat, e := os.Create("10Mio.dat")
    if e != nil {
       panic(e)
    }
-   defer bad.Close()
+   defer dat.Close()
    for range w.jobs { <-done }
    for _, job := range w.jobs {
-      bad.ReadFrom(job)
+      dat.ReadFrom(job)
    }
 }
