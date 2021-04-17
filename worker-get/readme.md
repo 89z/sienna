@@ -1,4 +1,4 @@
-# Chan GET
+# Worker GET
 
 - https://github.com/kkdai/youtube/blob/master/decipher.go
 - https://github.com/kkdai/youtube/issues/151
