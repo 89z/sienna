@@ -21,14 +21,9 @@ var insure = map[string]interface{}{
    "vehicleNum": "VICTO56789R012345",
 }
 
-type date struct {
-   From string
-   To string
-}
-
 func main() {
    from := time.Now()
-   months := [12]date{}
+   var months [12]struct { From, To string }
    for n := range months {
       months[n].From = from.String()[:10]
       from = from.AddDate(0, 1, 0)
