@@ -96,12 +96,14 @@ func main() {
    if e != nil {
       log.Fatal(e)
    }
+   fmt.Printf("%+v\n", row)
    rows = append([]tableRow{row}, rows...)
    // encode
    file, e = os.Create(umber)
    if e != nil {
       log.Fatal(e)
    }
+   defer file.Close()
    enc := json.NewEncoder(file)
    enc.SetEscapeHTML(false)
    enc.SetIndent("", " ")
