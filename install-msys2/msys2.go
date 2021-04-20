@@ -14,8 +14,10 @@ const mirror = "http://repo.msys2.org"
 
 func baseName(s, chars string) string {
    n := strings.IndexAny(s, chars)
-   if n == -1 { return s }
-   return s[:n]
+   switch n {
+   case -1: return s
+   default: return s[:n]
+   }
 }
 
 func variant(s string) string {
