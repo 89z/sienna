@@ -6,30 +6,37 @@ import (
    "net/url"
    "os"
    "strconv"
+   "strings"
    "time"
 )
+
+func split(s string) (string, string) {
+   f := strings.LastIndexByte
+   d, e := f(s, os.PathSeparator), f(s, '.')
+   return s[d + 1:e], s[e + 1:]
+}
 
 type tableRow struct { Q, S string }
 
 func newTableRow(year, file string) tableRow {
+   stem, ext := split(file)
    val := make(url.Values)
    unix := time.Now().Unix()
-   // Bryan Adams - Have You Ever Really Loved A Woman.mp3
    // audio id
    format := strconv.FormatInt(unix + 1, 36)
    val.Set("a", format)
-   println(format + ".mp4a")
+   println(format + "." + ext)
    // image id
    format = strconv.FormatInt(unix, 36)
    val.Set("b", format)
    println(format + ".jpg")
    // platform
-   val.Set("p", "mp4a")
+   val.Set("p", ext)
    // year
    val.Set("y", year)
    // return
    return tableRow{
-      val.Encode(), title,
+      val.Encode(), stem,
    }
 }
 

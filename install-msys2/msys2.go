@@ -12,14 +12,6 @@ import (
 
 const mirror = "http://repo.msys2.org"
 
-func baseName(s, chars string) string {
-   n := strings.IndexAny(s, chars)
-   switch n {
-   case -1: return s
-   default: return s[:n]
-   }
-}
-
 func variant(s string) string {
    switch {
    case strings.HasPrefix(s, "mingw-w64-ucrt-x86_64-"):
@@ -90,6 +82,14 @@ func (db database) scan(file []byte) error {
    }
    db.name[name] = desc
    return nil
+}
+
+func baseName(s, chars string) string {
+   n := strings.IndexAny(s, chars)
+   switch n {
+   case -1: return s
+   default: return s[:n]
+   }
 }
 
 func (db database) sync(name string) error {
