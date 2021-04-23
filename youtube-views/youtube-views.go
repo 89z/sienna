@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x/youtube"
-   "log"
    "net/url"
    "os"
 )
@@ -15,12 +14,12 @@ func main() {
    arg := os.Args[1]
    addr, e := url.Parse(arg)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    id := addr.Query().Get("v")
    info, e := youtube.Info(id)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    info.Views()
 }
