@@ -4,7 +4,6 @@ import (
    "flag"
    "fmt"
    "github.com/89z/x"
-   "log"
    "os"
 )
 
@@ -46,6 +45,6 @@ Flags:`)
    var cmd x.Cmd
    err := cmd.Run("ffmpeg", arg...)
    if err != nil {
-      log.Fatal(err)
+      panic(err)
    }
 }

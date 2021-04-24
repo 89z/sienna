@@ -3,7 +3,6 @@ package main
 import (
    "fmt"
    "github.com/89z/x"
-   "log"
    "os"
    "strings"
    "time"
@@ -17,14 +16,14 @@ type board struct {
 }
 
 func newBoard() (board, error) {
-   var c x.Cmd
-   c.Run("git", "add", ".")
+   var cmd x.Cmd
+   cmd.Run("git", "add", ".")
    arg := []string{"diff", "--cached", "--numstat"}
    _, e := os.Stat("config.toml")
    if e == nil {
       arg = append(arg, ":!docs")
    }
-   stat, e := c.Out("git", arg...)
+   stat, e := cmd.Out("git", arg...)
    if e != nil {
       return board{}, e
    }
@@ -36,7 +35,7 @@ func newBoard() (board, error) {
       b.totAdd += add
       b.totDel += del
    }
-   commit, e := c.Out("git", "log", "-1", "--format=%cI")
+   commit, e := cmd.Out("git", "log", "-1", "--format=%cI")
    if e != nil {
       return board{}, e
    }
@@ -48,7 +47,7 @@ func newBoard() (board, error) {
 func main() {
    b, e := newBoard()
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    for _, each := range []struct{
       name string

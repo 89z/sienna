@@ -3,7 +3,6 @@ package main
 import (
    "github.com/89z/x"
    "github.com/pelletier/go-toml"
-   "log"
    "os"
 )
 
@@ -16,11 +15,11 @@ func main() {
    if os.IsExist(e) {
       x.LogInfo("Exist", inst.Cache)
    } else if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    cache, e := os.Open(inst.Cache)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    defer cache.Close()
    var dist struct {
@@ -37,7 +36,7 @@ func main() {
       if os.IsExist(e) {
          x.LogInfo("Exist", inst.Cache)
       } else if e != nil {
-         log.Fatal(e)
+         panic(e)
       }
       tar := x.Archive{2}
       x.LogInfo("Xz", inst.Cache)

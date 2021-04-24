@@ -3,7 +3,6 @@ package main
 import (
    "fmt"
    "github.com/89z/x/sys"
-   "log"
    "net/url"
    "os"
 )
@@ -28,6 +27,6 @@ func main() {
       sw_shownormal,
    )
    if err != nil {
-      log.Fatal(err)
+      panic(err)
    }
 }

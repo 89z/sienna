@@ -3,7 +3,6 @@ package main
 import (
    "bytes"
    "github.com/pelletier/go-toml"
-   "log"
    "os"
    "path/filepath"
 )
@@ -37,7 +36,7 @@ func main() {
    content := filepath.Join(root, "autumn", "content")
    dir, e := os.ReadDir(content)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    for _, each := range dir {
       indexPath := filepath.Join(
@@ -46,7 +45,7 @@ func main() {
       var front frontMatter
       e = unmarshal(indexPath, &front)
       if e != nil {
-         log.Fatal(e)
+         panic(e)
       }
       if front.Build.List != "" {
          continue
@@ -59,7 +58,7 @@ func main() {
       }
       example, e := os.ReadFile(examplePath)
       if e != nil {
-         log.Fatal(e)
+         panic(e)
       }
       sub := []byte(front.Substr)
       if front.Substr == "" || ! bytes.Contains(example, sub) {

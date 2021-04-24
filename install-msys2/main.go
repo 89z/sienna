@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "log"
    "os"
 )
 
@@ -24,11 +23,11 @@ install-msys2 sync git.txt`)
       if os.IsExist(err) {
          x.LogInfo("Exist", inst.Cache)
       } else if err != nil {
-         log.Fatal(err)
+         panic(err)
       }
       fs, err := x.TarGzMemory(inst.Cache)
       if err != nil {
-         log.Fatal(err)
+         panic(err)
       }
       for _, each := range fs {
          db.scan(each.Data)

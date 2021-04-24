@@ -2,7 +2,6 @@ package main
 
 import (
    "encoding/json"
-   "log"
    "net/url"
    "os"
    "strconv"
@@ -50,7 +49,7 @@ func main() {
    // save
    file, e := os.Open(umber)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    var rows []tableRow
    json.NewDecoder(file).Decode(&rows)
@@ -59,7 +58,7 @@ func main() {
    // encode
    file, e = os.Create(umber)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    defer file.Close()
    enc := json.NewEncoder(file)

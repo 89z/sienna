@@ -2,7 +2,6 @@ package main
 
 import (
    "html/template"
-   "log"
    "os"
    "time"
 )
@@ -32,14 +31,14 @@ func main() {
    insure["months"] = months
    in, e := template.ParseFiles("in.html")
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    out, e := os.Create("out.html")
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    e = in.Execute(out, insure)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
 }

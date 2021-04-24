@@ -1,5 +1,5 @@
-github.com/89z/x v1.14.2 h1:6b+mrRU4aEE8t6FRLQwepjy8Ii1njY099eZJ0A5zTWI=
-github.com/89z/x v1.14.2/go.mod h1:VANZX4Qc/Ve8MXD7yGtN/gRSo/Azh/+X4O29RhZlwqA=
+github.com/89z/x v1.14.3 h1:62VgfBj/JYzxri/Txi5uU2CEkpKf7lLJ1zvwd/6NYBg=
+github.com/89z/x v1.14.3/go.mod h1:VANZX4Qc/Ve8MXD7yGtN/gRSo/Azh/+X4O29RhZlwqA=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/golang/snappy v0.0.3 h1:fHPg5GQYlCeLIPB9BZqMVR5nR9A+IM5zcgeTdjMYmLA=

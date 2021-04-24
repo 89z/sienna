@@ -5,7 +5,6 @@ import (
    "fmt"
    "github.com/89z/x"
    "github.com/89z/x/youtube"
-   "log"
    "net/http"
    "net/url"
    "os"
@@ -86,7 +85,7 @@ func main() {
    umber := os.Getenv("UMBER")
    file, e := os.Open(umber)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    var rows []tableRow
    json.NewDecoder(file).Decode(&rows)
@@ -94,14 +93,14 @@ func main() {
    arg := os.Args[1]
    row, e := newTableRow(arg)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    fmt.Printf("%+v\n", row)
    rows = append([]tableRow{row}, rows...)
    // encode
    file, e = os.Create(umber)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    defer file.Close()
    enc := json.NewEncoder(file)

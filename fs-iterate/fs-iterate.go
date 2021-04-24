@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "log"
    "os"
    "path/filepath"
 )
@@ -15,7 +14,7 @@ func main() {
    root, name, arg := os.Args[1], os.Args[2], os.Args[3:]
    dirs, err := os.ReadDir(root)
    if err != nil {
-      log.Fatal(err)
+      panic(err)
    }
    for _, each := range dirs {
       dir := filepath.Join(root, each.Name())
@@ -23,7 +22,7 @@ func main() {
       x.LogInfo("Dir", dir)
       err = cmd.Run(name, arg...)
       if err != nil {
-         log.Fatal(err)
+         panic(err)
       }
    }
 }

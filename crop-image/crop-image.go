@@ -5,7 +5,6 @@ import (
    "fmt"
    "image"
    "image/jpeg"
-   "log"
    "os"
    "path/filepath"
 )
@@ -39,6 +38,6 @@ func main() {
    }
    e := encode(flag.Arg(0), top, right, bottom, left)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
 }

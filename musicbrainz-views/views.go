@@ -6,7 +6,6 @@ import (
    "github.com/89z/x"
    "github.com/89z/x/musicbrainz"
    "github.com/89z/x/youtube"
-   "log"
    "net/http"
    "os"
    "regexp"
@@ -45,7 +44,7 @@ https://musicbrainz.org/release/7a629d52-6a61-3ea1-a0a0-dd50bdef63b4`)
    arg := os.Args[1]
    album, e := musicbrainz.NewRelease(arg)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    var artists string
    for _, artist := range album.ArtistCredit { artists += artist.Name + " " }
@@ -53,11 +52,11 @@ https://musicbrainz.org/release/7a629d52-6a61-3ea1-a0a0-dd50bdef63b4`)
       for _, track := range media.Tracks {
          id, e := youtubeResult(artists + track.Title)
          if e != nil {
-            log.Fatal(e)
+            panic(e)
          }
          info, e := youtube.Info(id)
          if e != nil {
-            log.Fatal(e)
+            panic(e)
          }
          info.Views()
          time.Sleep(100 * time.Millisecond)

@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "log"
    "os"
 )
 
@@ -24,6 +23,6 @@ func depart() error {
 func main() {
    e := depart()
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
 }

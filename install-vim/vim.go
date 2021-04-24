@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "log"
    "os"
    "path"
 )
@@ -59,7 +58,7 @@ func main() {
    if os.IsExist(e) {
       x.LogInfo("Exist", inst.Cache)
    } else if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    arc := x.Archive{2}
    x.LogInfo("Zip", inst.Cache)
@@ -69,7 +68,7 @@ func main() {
       os.Remove(inst.Dest)
       _, e = x.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
       if e != nil {
-         log.Fatal(e)
+         panic(e)
       }
    }
 }

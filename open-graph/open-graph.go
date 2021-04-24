@@ -3,7 +3,6 @@ package main
 import (
    "github.com/89z/x"
    "io"
-   "log"
    "net/http"
    "os"
    "regexp"
@@ -26,7 +25,7 @@ func main() {
    }
    image, e := open(os.Args[1])
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
    println(image)
 }

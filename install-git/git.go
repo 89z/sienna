@@ -2,7 +2,6 @@ package main
 
 import (
    "github.com/89z/x"
-   "log"
    "os"
 )
 
@@ -11,6 +10,6 @@ func main() {
    os.Remove(inst.Dest)
    _, e := x.Copy("https://curl.haxx.se/ca/cacert.pem", inst.Dest)
    if e != nil {
-      log.Fatal(e)
+      panic(e)
    }
 }
