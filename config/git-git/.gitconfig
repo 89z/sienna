@@ -1,0 +1,12 @@
+[blame]
+coloring = highlightRecent
+
+[color "diff"]
+meta = yellow bold
+
+[diff]
+wsErrorHighlight = all
+
+[user]
+email = srpen6@gmail.com
+name = Steven Penny

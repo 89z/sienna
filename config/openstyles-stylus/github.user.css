@@ -1,0 +1,46 @@
+/* ==userstyle==
+@version 1.0.0
+@namespace Steven Penny
+@name GitHub
+==/userstyle== */
+@-moz-document domain("github.com") {
+   .contrib-legend {
+      display: none;
+   }
+   /* contrib color red */
+   .ContributionCalendar-day[data-level="4"] {
+      fill: hsl(10, 80%, 50%) !important;
+   }
+   /* contrib color yellow */
+   .ContributionCalendar-day[data-level="3"] {
+      fill: hsl(50, 80%, 60%) !important;
+   }
+   /* contrib color green */
+   .ContributionCalendar-day[data-level="2"] {
+      fill: hsl(100, 70%, 60%) !important;
+   }
+   /* contrib color blue */
+   .ContributionCalendar-day[data-level="1"] {
+      fill: hsl(210, 100%, 80%) !important;
+   }
+   .markdown-body,
+   body {
+      font-family: Arial !important;
+   }
+   textarea {
+      font-family: Consolas !important;
+   }
+   /* font */
+   .comment-body code,
+   .comment-body pre,
+   .highlight td {
+      font-size: 1em !important;
+   }
+   /* header height */
+   .Header {
+      padding: 6px !important;
+   }
+   .position-sticky {
+      position: static !important;
+   }
+}

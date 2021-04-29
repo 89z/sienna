@@ -1,0 +1,16 @@
+/* ==userstyle==
+@version 1.0.0
+@namespace Steven Penny
+@name stack exchange
+==/userstyle== */
+@-moz-document domain("stackexchange.com"),
+domain("stackoverflow.com"),
+domain("superuser.com") {
+   a[href^="/"]:visited,
+   a[href^="http"]:visited {
+      color: purple !important;
+   }
+   .top-bar {
+      position: absolute !important;
+   }
+}

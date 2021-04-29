@@ -1,0 +1,14 @@
+{
+   "copyOnSelect": true,
+   "multiLinePasteWarning": false,
+   "profiles": {
+      "list": [
+         {
+            "colorScheme": "Tango Dark",
+            "commandline": "C:/PowerShell/pwsh.exe -NoLogo",
+            "fontSize": 11,
+            "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}"
+         }
+      ]
+   }
+}

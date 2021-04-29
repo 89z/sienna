@@ -1,0 +1,14 @@
+/* ==userstyle==
+@version 1.0.0
+@namespace Steven Penny
+@name Washington Post
+==/userstyle== */
+@-moz-document domain("washingtonpost.com") {
+   body,
+   html {
+      overflow: visible !important;
+   }
+   body {
+      position: static !important;
+   }
+}

@@ -1,0 +1,33 @@
+/* ==userstyle==
+@version 1.0.0
+@namespace Steven Penny
+@name hacker news
+==/userstyle== */
+@-moz-document domain("ycombinator.com") {
+   [width="0"] {
+      border-color: blue;
+   }
+   [width="40"] {
+      border-color: green;
+   }
+   [width="80"] {
+      border-color: orange;
+   }
+   [width="0"],
+   [width="40"],
+   [width="80"] {
+      border-right-style: solid;
+   }
+   [height="1"] {
+      border-width: thick;
+   }
+   [height="1"] {
+      height: 3rem;
+   }
+   .ind {
+      vertical-align: top;
+   }
+   .votelinks {
+      visibility: hidden !important;
+   }
+}
