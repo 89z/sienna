@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "github.com/pelletier/go-toml"
    "os"
 )
@@ -9,11 +9,11 @@ import (
 const channel = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 
 func main() {
-   inst := x.NewInstall("sienna/rust", channel)
+   inst := rosso.NewInstall("sienna/rust", channel)
    inst.SetCache()
-   _, e := x.Copy(channel, inst.Cache)
+   _, e := rosso.Copy(channel, inst.Cache)
    if os.IsExist(e) {
-      x.LogInfo("Exist", inst.Cache)
+      rosso.LogInfo("Exist", inst.Cache)
    } else if e != nil {
       panic(e)
    }
@@ -30,16 +30,16 @@ func main() {
    toml.NewDecoder(cache).Decode(&dist)
    for _, each := range []string{"cargo", "rust-std", "rustc"} {
       addr := dist.Pkg[each].Target["x86_64-pc-windows-gnu"].XZ_URL
-      inst = x.NewInstall("sienna/rust", addr)
+      inst = rosso.NewInstall("sienna/rust", addr)
       inst.SetCache()
-      _, e = x.Copy(addr, inst.Cache)
+      _, e = rosso.Copy(addr, inst.Cache)
       if os.IsExist(e) {
-         x.LogInfo("Exist", inst.Cache)
+         rosso.LogInfo("Exist", inst.Cache)
       } else if e != nil {
          panic(e)
       }
-      tar := x.Archive{2}
-      x.LogInfo("Xz", inst.Cache)
+      tar := rosso.Archive{2}
+      rosso.LogInfo("Xz", inst.Cache)
       tar.Xz(inst.Cache, inst.Dest)
    }
 }

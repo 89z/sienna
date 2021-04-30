@@ -3,7 +3,7 @@ package main
 import (
    "flag"
    "fmt"
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
 )
 
@@ -42,7 +42,7 @@ Flags:`)
       arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
    arg = append(arg, "%d.jpg")
-   var cmd x.Cmd
+   var cmd rosso.Cmd
    err := cmd.Run("ffmpeg", arg...)
    if err != nil {
       panic(err)

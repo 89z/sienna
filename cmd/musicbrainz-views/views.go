@@ -3,9 +3,9 @@ package main
 import (
    "bytes"
    "fmt"
-   "github.com/89z/x"
-   "github.com/89z/x/musicbrainz"
-   "github.com/89z/x/youtube"
+   "github.com/89z/rosso"
+   "github.com/89z/rosso/musicbrainz"
+   "github.com/89z/youtube"
    "net/http"
    "os"
    "regexp"
@@ -18,7 +18,7 @@ func youtubeResult(query string) (string, error) {
    val := req.URL.Query()
    val.Set("search_query", query)
    req.URL.RawQuery = val.Encode()
-   x.LogInfo("GET", req.URL)
+   rosso.LogInfo("GET", req.URL)
    res, e := new(http.Client).Do(req)
    if e != nil { return "", e }
    var buf bytes.Buffer

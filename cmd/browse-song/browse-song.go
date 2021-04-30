@@ -2,7 +2,7 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/x/sys"
+   "github.com/89z/rosso/sys"
    "net/url"
    "os"
 )

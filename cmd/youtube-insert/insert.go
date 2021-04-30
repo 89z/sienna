@@ -3,8 +3,8 @@ package main
 import (
    "encoding/json"
    "fmt"
-   "github.com/89z/x"
-   "github.com/89z/x/youtube"
+   "github.com/89z/rosso"
+   "github.com/89z/youtube"
    "net/http"
    "net/url"
    "os"
@@ -15,7 +15,7 @@ import (
 )
 
 func httpHead(addr string) bool {
-   x.LogInfo("Head", addr)
+   rosso.LogInfo("Head", addr)
    resp, e := http.Head(addr)
    return e == nil && resp.StatusCode == 200
 }

@@ -1,12 +1,12 @@
 package main
 
 import (
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
 )
 
 func depart() error {
-   var c x.Cmd
+   var c rosso.Cmd
    e := c.Run("git", "commit", "--verbose")
    if e != nil { return e }
    _, e = os.Stat("config.toml")

@@ -2,7 +2,7 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
    "strings"
    "time"
@@ -16,7 +16,7 @@ type board struct {
 }
 
 func newBoard() (board, error) {
-   var cmd x.Cmd
+   var cmd rosso.Cmd
    cmd.Run("git", "add", ".")
    arg := []string{"diff", "--cached", "--numstat"}
    _, e := os.Stat("config.toml")
@@ -63,9 +63,9 @@ func main() {
          "%-16v target: %-12v actual: %v", each.name, each.target, each.actual,
       )
       if each.result {
-         x.LogPass("Pass", message)
+         rosso.LogPass("Pass", message)
       } else {
-         x.LogFail("Fail", message)
+         rosso.LogFail("Fail", message)
       }
    }
 }

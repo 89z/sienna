@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
    "path"
 )
@@ -52,21 +52,21 @@ func main() {
       "v8.2.2677",
       "gvim_8.2.2677_x64.zip",
    )
-   inst := x.NewInstall("sienna/vim", zip)
+   inst := rosso.NewInstall("sienna/vim", zip)
    inst.SetCache()
-   _, e := x.Copy("https://github.com/" + zip, inst.Cache)
+   _, e := rosso.Copy("https://github.com/" + zip, inst.Cache)
    if os.IsExist(e) {
-      x.LogInfo("Exist", inst.Cache)
+      rosso.LogInfo("Exist", inst.Cache)
    } else if e != nil {
       panic(e)
    }
-   arc := x.Archive{2}
-   x.LogInfo("Zip", inst.Cache)
+   arc := rosso.Archive{2}
+   rosso.LogInfo("Zip", inst.Cache)
    arc.Zip(inst.Cache, inst.Dest)
    for _, each := range runtime {
-      inst = x.NewInstall(each.dir, each.base)
+      inst = rosso.NewInstall(each.dir, each.base)
       os.Remove(inst.Dest)
-      _, e = x.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
+      _, e = rosso.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
       if e != nil {
          panic(e)
       }

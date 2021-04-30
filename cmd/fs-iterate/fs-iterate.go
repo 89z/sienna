@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
    "path/filepath"
 )
@@ -18,8 +18,8 @@ func main() {
    }
    for _, each := range dirs {
       dir := filepath.Join(root, each.Name())
-      cmd := x.Cmd{dir}
-      x.LogInfo("Dir", dir)
+      cmd := rosso.Cmd{dir}
+      rosso.LogInfo("Dir", dir)
       err = cmd.Run(name, arg...)
       if err != nil {
          panic(err)

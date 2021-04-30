@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "io"
    "net/http"
    "os"
@@ -9,7 +9,7 @@ import (
 )
 
 func open(source string) (string, error) {
-   x.LogInfo("Get", source)
+   rosso.LogInfo("Get", source)
    get, e := http.Get(source)
    if e != nil { return "", e }
    body, e := io.ReadAll(get.Body)
