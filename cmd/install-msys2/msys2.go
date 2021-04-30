@@ -4,7 +4,7 @@ import (
    "bufio"
    "bytes"
    "fmt"
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
    "path"
    "strings"
@@ -104,22 +104,22 @@ func (db database) sync(name string) error {
          fmt.Printf("%q not valid\n", text)
          continue
       }
-      inst := x.NewInstall("sienna/msys2", desc.filename)
+      inst := rosso.NewInstall("sienna/msys2", desc.filename)
       inst.SetCache()
       dir := variant(desc.filename)
-      _, e = x.Copy(mirror + dir + desc.filename, inst.Cache)
+      _, e = rosso.Copy(mirror + dir + desc.filename, inst.Cache)
       if os.IsExist(e) {
-         x.LogInfo("Exist", desc.filename)
+         rosso.LogInfo("Exist", desc.filename)
       } else if e != nil {
          return e
       }
-      var arc x.Archive
+      var arc rosso.Archive
       switch path.Ext(desc.filename) {
       case ".xz":
-         x.LogInfo("Xz", desc.filename)
+         rosso.LogInfo("Xz", desc.filename)
          arc.Xz(inst.Cache, inst.Dest)
       case ".zst":
-         x.LogInfo("Zst", desc.filename)
+         rosso.LogInfo("Zst", desc.filename)
          e = arc.Zst(inst.Cache, inst.Dest)
          if e != nil { return e }
       }

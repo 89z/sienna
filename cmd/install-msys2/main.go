@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/x"
+   "github.com/89z/rosso"
    "os"
 )
 
@@ -17,15 +17,15 @@ install-msys2 sync git.txt`)
       "/mingw/x86_64/mingw64.db",
       "/msys/x86_64/msys.db",
    } {
-      inst := x.NewInstall("sienna/msys2", each)
+      inst := rosso.NewInstall("sienna/msys2", each)
       inst.SetCache()
-      _, err := x.Copy(mirror + each, inst.Cache)
+      _, err := rosso.Copy(mirror + each, inst.Cache)
       if os.IsExist(err) {
-         x.LogInfo("Exist", inst.Cache)
+         rosso.LogInfo("Exist", inst.Cache)
       } else if err != nil {
          panic(err)
       }
-      fs, err := x.TarGzMemory(inst.Cache)
+      fs, err := rosso.TarGzMemory(inst.Cache)
       if err != nil {
          panic(err)
       }

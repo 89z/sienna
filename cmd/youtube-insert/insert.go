@@ -16,39 +16,39 @@ import (
 
 func httpHead(addr string) bool {
    rosso.LogInfo("Head", addr)
-   resp, e := http.Head(addr)
-   return e == nil && resp.StatusCode == 200
+   resp, err := http.Head(addr)
+   return err == nil && resp.StatusCode == 200
 }
 
 func newTableRow(enc string) (tableRow, error) {
-   dec, e := url.Parse(enc)
-   if e != nil {
-      return tableRow{}, e
+   dec, err := url.Parse(enc)
+   if err != nil {
+      return tableRow{}, err
    }
    id := dec.Query().Get("v")
    // year
-   info, e := youtube.Info(id)
-   if e != nil {
-      return tableRow{}, e
+   video, err := youtube.NewVideo(id)
+   if err != nil {
+      return tableRow{}, err
    }
-   if info.Description.SimpleText == "" {
+   if video.Description() == "" {
       return tableRow{}, fmt.Errorf("Clapham Junction")
    }
-   year := info.PublishDate[:4]
+   year := video.Microformat.PlayerMicroformatRenderer.PublishDate[:4]
    for _, pattern := range []string{
       /* the order doesnt matter here, as we will find the lowest date of all
       matches */
       ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
    } {
       re := regexp.MustCompile(pattern)
-      find := re.FindStringSubmatch(info.Description.SimpleText)
+      find := re.FindStringSubmatch(video.Description())
       if len(find) < 2 { continue }
       if find[1] >= year { continue }
       year = find[1]
    }
    // song, artist
-   title := info.Title.SimpleText
-   line := regexp.MustCompile(".* · .*").FindString(info.Description.SimpleText)
+   title := video.Title()
+   line := regexp.MustCompile(".* · .*").FindString(video.Description())
    if line != "" {
       titles := strings.Split(line, " · ")
       artists := titles[1:]
@@ -83,24 +83,24 @@ func main() {
    }
    // decode
    umber := os.Getenv("UMBER")
-   file, e := os.Open(umber)
-   if e != nil {
-      panic(e)
+   file, err := os.Open(umber)
+   if err != nil {
+      panic(err)
    }
    var rows []tableRow
    json.NewDecoder(file).Decode(&rows)
    // append
    arg := os.Args[1]
-   row, e := newTableRow(arg)
-   if e != nil {
-      panic(e)
+   row, err := newTableRow(arg)
+   if err != nil {
+      panic(err)
    }
    fmt.Printf("%+v\n", row)
    rows = append([]tableRow{row}, rows...)
    // encode
-   file, e = os.Create(umber)
-   if e != nil {
-      panic(e)
+   file, err = os.Create(umber)
+   if err != nil {
+      panic(err)
    }
    defer file.Close()
    enc := json.NewEncoder(file)
