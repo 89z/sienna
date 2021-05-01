@@ -108,3 +108,5 @@ let &linebreak = 1
 let &number = 1
 " fix 'col' value at end of line
 let &virtualedit = 'onemore'
+" syntax for large markdown
+let g:markdown_minlines = 100
