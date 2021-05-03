@@ -18,9 +18,9 @@ https://musicbrainz.org/release-group/d03bb6b1-d7b4-38ea-974e-847cbb31dca4`)
    }
    arg := os.Args[1]
    switch {
-   case strings.HasPrefix(arg, "https://musicbrainz.org/"):
+   case strings.Contains(arg, "musicbrainz.org/"):
       viewMusicbrainz(arg)
-   case strings.HasPrefix(arg, "https://www.youtube.com/"):
+   case strings.Contains(arg, "youtube.com/"):
       viewYouTube(arg)
    }
 }
