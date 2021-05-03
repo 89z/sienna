@@ -32,7 +32,7 @@ func youtubeResult(query string) (string, error) {
 }
 
 func viewMusicbrainz(addr string) error {
-   album, err := musicbrainz.NewRelease(arg)
+   album, err := musicbrainz.NewRelease(addr)
    if err != nil { return err }
    var artists string
    for _, artist := range album.ArtistCredit { artists += artist.Name + " " }
@@ -40,29 +40,42 @@ func viewMusicbrainz(addr string) error {
       for _, track := range media.Tracks {
          id, err := youtubeResult(artists + track.Title)
          if err != nil { return err }
-         info, err := youtube.Info(id)
+         vid, err := youtube.NewVideo(id)
          if err != nil { return err }
-         info.Views()
+         err = sinceHours(vid.ViewCount(), vid.PublishDate())
+         if err != nil { return err }
          time.Sleep(100 * time.Millisecond)
       }
    }
    return nil
 }
 
-func viewYouTube(addr string) error {
-   addr, err := url.Parse(arg)
-   if err != nil { return err }
-   id := addr.Query().Get("v")
-   video, err := youtube.NewVideo(id)
-   if err != nil { return err }
-   date, err := video.PublishDate()
-   if err != nil {
-      panic(err)
+func numberFormat(d float64) string {
+   var e int
+   for d >= 1000 {
+      d /= 1000
+      e++
    }
-   view := time.Since(date).Hours() / 24 / 365
-   if view > 10_000_000 {
-      rosso.LogFail("Fail", view)
+   return fmt.Sprintf("%.3f", d) + []string{"", " k", " M", " G"}[e]
+}
+
+func sinceHours(view int, date string) error {
+   d, err := time.Parse(time.RFC3339[:10], date)
+   if err != nil { return err }
+   perYear := float64(view) * 24 * 365 / time.Since(d).Hours()
+   if perYear > 10_000_000 {
+      rosso.LogFail("Fail", numberFormat(perYear))
    } else {
-      rosso.LogPass("Pass", view)
+      rosso.LogPass("Pass", numberFormat(perYear))
    }
+   return nil
+}
+
+func viewYouTube(addr string) error {
+   p, err := url.Parse(addr)
+   if err != nil { return err }
+   id := p.Query().Get("v")
+   vid, err := youtube.NewVideo(id)
+   if err != nil { return err }
+   return sinceHours(vid.ViewCount(), vid.PublishDate())
 }
