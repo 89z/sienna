@@ -1,7 +1,7 @@
 github.com/89z/rosso v1.14.6 h1:rT4reJVi1WP8O05iOdc4geJCd6/QrW7x/0/K7L8ChhI=
 github.com/89z/rosso v1.14.6/go.mod h1:DEuYQ3pWVQ5VSFkvCBmKg9NQt+vVsA6lTF/kz7G69LQ=
-github.com/89z/youtube v1.3.7 h1:le1KgQbC3eqx87NTldcZsjz8B4TDOCfpquvMI0MLlBE=
-github.com/89z/youtube v1.3.7/go.mod h1:i59qCofBfdKZIldrFe/nHCQ24T0DEp20o/rBtivv9/I=
+github.com/89z/youtube v1.4.9 h1:i7G82r/q7jBNHay47liuO/cVenHwgAv9VngSoJCswWw=
+github.com/89z/youtube v1.4.9/go.mod h1:i59qCofBfdKZIldrFe/nHCQ24T0DEp20o/rBtivv9/I=
 github.com/golang/snappy v0.0.3 h1:fHPg5GQYlCeLIPB9BZqMVR5nR9A+IM5zcgeTdjMYmLA=
 github.com/golang/snappy v0.0.3/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEWrmP2Q=
 github.com/klauspost/compress v1.12.2 h1:2KCfW3I9M7nSc5wOqXAlW2v2U6v+w6cbjvbfp+OykW8=
