@@ -99,27 +99,33 @@ func (db database) sync(name string) error {
    buf := bufio.NewScanner(file)
    for buf.Scan() {
       text := buf.Text()
-      desc, ok := db.name[text]
-      if ! ok {
-         fmt.Printf("%q not valid\n", text)
-         continue
+      var filename string
+      if strings.Contains(text, ".pkg.tar.") {
+         filename = text
+      } else {
+         desc, ok := db.name[text]
+         if ! ok {
+            fmt.Printf("%q not valid\n", text)
+            continue
+         }
+         filename = desc.filename
       }
-      inst := rosso.NewInstall("sienna/msys2", desc.filename)
+      inst := rosso.NewInstall("sienna/msys2", filename)
       inst.SetCache()
-      dir := variant(desc.filename)
-      _, e = rosso.Copy(mirror + dir + desc.filename, inst.Cache)
+      dir := variant(filename)
+      _, e = rosso.Copy(mirror + dir + filename, inst.Cache)
       if os.IsExist(e) {
-         rosso.LogInfo("Exist", desc.filename)
+         rosso.LogInfo("Exist", filename)
       } else if e != nil {
          return e
       }
       var arc rosso.Archive
-      switch path.Ext(desc.filename) {
+      switch path.Ext(filename) {
       case ".xz":
-         rosso.LogInfo("Xz", desc.filename)
+         rosso.LogInfo("Xz", filename)
          arc.Xz(inst.Cache, inst.Dest)
       case ".zst":
-         rosso.LogInfo("Zst", desc.filename)
+         rosso.LogInfo("Zst", filename)
          e = arc.Zst(inst.Cache, inst.Dest)
          if e != nil { return e }
       }

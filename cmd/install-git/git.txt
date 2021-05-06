@@ -1,6 +1,6 @@
 brotli
 gcc-libs
-git
+git-2.30.2-1-x86_64.pkg.tar.zst
 heimdal-libs
 libcrypt
 libcurl

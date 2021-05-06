@@ -1,24 +1,12 @@
 package main
-import "fmt"
 
-func main() {
-   tertiary := map[string][]string{
-      "citron": {"green", "orange"},
-      "green": {"blue", "yellow"},
-      "orange": {"red", "yellow"},
-      "purple": {"red", "blue"},
-      "russet": {"orange", "purple"},
-      "slate": {"green", "purple"},
-   }
-   s := fmt.Sprint(tsort(tertiary, "slate"))
-   if s == "[blue red purple yellow green slate]" {
-      println(true)
-   } else if s == "[blue yellow green red purple slate]" {
-      println(true)
-   } else {
-      println(s)
-   }
-}
+import (
+   "bufio"
+   "bytes"
+   "fmt"
+   "os"
+   "os/exec"
+)
 
 func tsort(graph map[string][]string, end string) []string {
    var (
@@ -40,4 +28,30 @@ func tsort(graph map[string][]string, end string) []string {
       }
    }
    return l
+}
+
+func main() {
+   if len(os.Args) == 1 {
+      fmt.Println("topo-sort <directory> [function]")
+      os.Exit(1)
+   }
+   c := exec.Command("callgraph", "-format", "digraph", os.Args[1])
+   if len(os.Args) == 2 {
+      c.Stderr, c.Stdout = os.Stderr, os.Stdout
+      c.Run()
+      return
+   }
+   b := new(bytes.Buffer)
+   c.Stdout = b
+   c.Run()
+   s := bufio.NewScanner(b)
+   m := make(map[string][]string)
+   for s.Scan() {
+      var parent, child string
+      fmt.Sscan(s.Text(), &parent, &child)
+      m[child] = append(m[child], parent)
+   }
+   for n, s := range tsort(m, fmt.Sprintf("%q", os.Args[2])) {
+      fmt.Print(n+1, ". ", s, "\n")
+   }
 }
