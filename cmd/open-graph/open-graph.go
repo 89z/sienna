@@ -5,17 +5,17 @@ import (
    "io"
    "net/http"
    "os"
-   "regexp"
 )
 
 func open(source string) (string, error) {
    rosso.LogInfo("Get", source)
-   get, e := http.Get(source)
-   if e != nil { return "", e }
-   body, e := io.ReadAll(get.Body)
-   if e != nil { return "", e }
-   re := regexp.MustCompile(`="og:image" content="([^"]+)"`)
-   return string(re.FindSubmatch(body)[1]), nil
+   get, err := http.Get(source)
+   if err != nil { return "", err }
+   body, err := io.ReadAll(get.Body)
+   if err != nil { return "", err }
+   og, err := rosso.FindSubmatch(`="og:image" content="([^"]+)"`, body)
+   if err != nil { return "", err }
+   return string(og[1]), nil
 }
 
 func main() {
@@ -23,9 +23,10 @@ func main() {
       println("open-graph <URL>")
       os.Exit(1)
    }
-   image, e := open(os.Args[1])
-   if e != nil {
-      panic(e)
+   arg := os.Args[1]
+   image, err := open(arg)
+   if err != nil {
+      panic(err)
    }
    println(image)
 }

@@ -8,7 +8,6 @@ import (
    "net/http"
    "net/url"
    "os"
-   "regexp"
    "strconv"
    "strings"
    "time"
@@ -40,17 +39,19 @@ func newTableRow(enc string) (tableRow, error) {
       matches */
       ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
    } {
-      re := regexp.MustCompile(pattern)
-      find := re.FindStringSubmatch(video.Description())
-      if len(find) < 2 { continue }
-      if find[1] >= year { continue }
-      year = find[1]
+      find, err := rosso.FindStringSubmatch(pattern, video.Description())
+      if err != nil {
+         return tableRow{}, err
+      }
+      if find[1] < year {
+         year = find[1]
+      }
    }
    // song, artist
    title := video.Title()
-   line := regexp.MustCompile(".* · .*").FindString(video.Description())
-   if line != "" {
-      titles := strings.Split(line, " · ")
+   desc, err := rosso.FindString(".* · .*", video.Description())
+   if err == nil {
+      titles := strings.Split(desc, " · ")
       artists := titles[1:]
       title = strings.Join(artists, ", ") + " - " + titles[0]
    }

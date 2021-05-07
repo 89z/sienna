@@ -1,14 +1,13 @@
 package main
 
 import (
-   "bytes"
    "fmt"
    "github.com/89z/rosso"
    "github.com/89z/rosso/musicbrainz"
    "github.com/89z/youtube"
+   "io"
    "net/http"
    "net/url"
-   "regexp"
    "time"
 )
 
@@ -21,14 +20,12 @@ func youtubeResult(query string) (string, error) {
    rosso.LogInfo("GET", req.URL)
    res, err := new(http.Client).Do(req)
    if err != nil { return "", err }
-   var buf bytes.Buffer
-   buf.ReadFrom(res.Body)
-   str := buf.String()
-   find := regexp.MustCompile("/vi/([^/]*)/").FindStringSubmatch(str)
-   if len(find) < 2 {
-      return "", fmt.Errorf("%v", req.URL)
-   }
-   return find[1], nil
+   defer res.Body.Close()
+   body, err := io.ReadAll(res.Body)
+   if err != nil { return "", err }
+   find, err := rosso.FindSubmatch("/vi/([^/]*)/", body)
+   if err != nil { return "", err }
+   return string(find[1]), nil
 }
 
 func viewMusicbrainz(addr string) error {
