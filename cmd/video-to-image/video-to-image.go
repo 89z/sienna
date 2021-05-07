@@ -3,8 +3,8 @@ package main
 import (
    "flag"
    "fmt"
-   "github.com/89z/rosso"
    "os"
+   "os/exec"
 )
 
 func main() {
@@ -42,9 +42,7 @@ Flags:`)
       arg = append(arg, "-vf", "select='eq(pict_type, I)'")
    }
    arg = append(arg, "%d.jpg")
-   var cmd rosso.Cmd
-   err := cmd.Run("ffmpeg", arg...)
-   if err != nil {
-      panic(err)
-   }
+   cmd := exec.Command("ffmpeg", arg...)
+   cmd.Stdout = os.Stdout
+   cmd.Run()
 }
