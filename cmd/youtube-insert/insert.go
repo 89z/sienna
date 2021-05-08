@@ -3,18 +3,18 @@ package main
 import (
    "encoding/json"
    "fmt"
-   "github.com/89z/rosso"
    "github.com/89z/youtube"
    "net/http"
    "net/url"
    "os"
+   "regexp"
    "strconv"
    "strings"
    "time"
 )
 
 func httpHead(addr string) bool {
-   rosso.LogInfo("Head", addr)
+   fmt.Println("\x1b[7m HEAD \x1b[m", addr)
    resp, err := http.Head(addr)
    return err == nil && resp.StatusCode == 200
 }
@@ -39,19 +39,17 @@ func newTableRow(enc string) (tableRow, error) {
       matches */
       ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
    } {
-      find, err := rosso.FindStringSubmatch(pattern, video.Description())
-      if err != nil {
-         return tableRow{}, err
-      }
-      if find[1] < year {
-         year = find[1]
+      re := regexp.MustCompile(pattern).FindStringSubmatch(video.Description())
+      if re == nil { continue }
+      if re[1] < year {
+         year = re[1]
       }
    }
    // song, artist
    title := video.Title()
-   desc, err := rosso.FindString(".* · .*", video.Description())
-   if err == nil {
-      titles := strings.Split(desc, " · ")
+   re := regexp.MustCompile(".* · .*").FindString(video.Description())
+   if re != "" {
+      titles := strings.Split(re, " · ")
       artists := titles[1:]
       title = strings.Join(artists, ", ") + " - " + titles[0]
    }

@@ -1,8 +1,9 @@
 package main
 
 import (
-   "github.com/89z/rosso"
+   "fmt"
    "os"
+   "os/exec"
    "path/filepath"
 )
 
@@ -17,10 +18,12 @@ func main() {
       panic(err)
    }
    for _, each := range dirs {
-      dir := filepath.Join(root, each.Name())
-      cmd := rosso.Cmd{dir}
-      rosso.LogInfo("Dir", dir)
-      err = cmd.Run(name, arg...)
+      cmd := exec.Command(name, arg...)
+      cmd.Dir = filepath.Join(root, each.Name())
+      cmd.Stdout = os.Stdout
+      fmt.Println("\x1b[7m Dir \x1b[m", cmd.Dir)
+      fmt.Println("\x1b[7m Run \x1b[m", cmd)
+      err := cmd.Run()
       if err != nil {
          panic(err)
       }
