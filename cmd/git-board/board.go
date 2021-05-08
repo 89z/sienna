@@ -2,7 +2,6 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso"
    "os"
    "os/exec"
    "strings"
@@ -11,45 +10,51 @@ import (
 
 const minimum = 64
 
+const (
+   reset = "\x1b[m"
+   green = "\x1b[30;102m"
+   invert = "\x1b[7m"
+   red = "\x1b[30;101m"
+)
+
 type board struct {
    actual, target string
    totAdd, totCha, totDel int
 }
 
 func newBoard() (board, error) {
-   {
-      cmd := exec.Command("git", "add", ".")
-      fmt.Println("Run", cmd)
-      cmd.Run()
-   }
+   cmd := exec.Command("git", "add", ".")
+   fmt.Println(invert, "Run", reset, cmd)
+   cmd.Run()
    arg := []string{"diff", "--cached", "--numstat"}
    _, err := os.Stat("config.toml")
    if err == nil {
       arg = append(arg, ":!docs")
    }
-   var cmd rosso.Cmd
-   stat, err := cmd.Out("git", arg...)
+   cmd = exec.Command("git", arg...)
+   pipe, err := cmd.StdoutPipe()
    if err != nil {
       return board{}, err
    }
+   cmd.Start()
+   defer cmd.Wait()
    var b board
-   /*
-   7       5       cmd/fs-iterate/fs-iterate.go
-   20      15      cmd/git-board/board.go
-   9       11      cmd/youtube-insert/insert.go
-   */
-   for _, line := range strings.Split(stat, "\n") {
-      b.totCha++
-      var add, del int
-      fmt.Sscan(line, &add, &del)
-      b.totAdd += add
-      b.totDel += del
+   for {
+      var stat struct {
+         add, del int
+         path string
+      }
+      _, err := fmt.Fscanln(pipe, &stat.add, &stat.del, &stat.path)
+      if err != nil { break }
+      b.totCha += 1
+      b.totAdd += stat.add
+      b.totAdd += stat.del
    }
-   commit, err := cmd.Out("git", "log", "-1", "--format=%cI")
-   if err != nil {
-      return board{}, err
-   }
-   b.actual = commit[:10]
+   out := new(strings.Builder)
+   cmd = exec.Command("git", "log", "-1", "--format=%cI")
+   cmd.Stdout = out
+   cmd.Run()
+   b.actual = out.String()[:10]
    b.target = time.Now().AddDate(0, 0, -1).String()[:10]
    return b, nil
 }
@@ -73,9 +78,9 @@ func main() {
          "%-16v target: %-12v actual: %v", each.name, each.target, each.actual,
       )
       if each.result {
-         rosso.LogPass("Pass", message)
+         fmt.Println(green, "Pass", reset, message)
       } else {
-         rosso.LogFail("Fail", message)
+         fmt.Println(red, "Fail", reset, message)
       }
    }
 }

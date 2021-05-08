@@ -7,6 +7,11 @@ import (
    "path/filepath"
 )
 
+const (
+   invert = "\x1b[7m"
+   reset = "\x1b[m"
+)
+
 func main() {
    if len(os.Args) < 3 {
       println("fs-iterate <path> <command>")
@@ -21,8 +26,8 @@ func main() {
       cmd := exec.Command(name, arg...)
       cmd.Dir = filepath.Join(root, each.Name())
       cmd.Stdout = os.Stdout
-      fmt.Println("\x1b[7m Dir \x1b[m", cmd.Dir)
-      fmt.Println("\x1b[7m Run \x1b[m", cmd)
+      fmt.Println(invert, "Dir", reset, cmd.Dir)
+      fmt.Println(invert, "Run", reset, cmd)
       err := cmd.Run()
       if err != nil {
          panic(err)
