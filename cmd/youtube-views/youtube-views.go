@@ -2,13 +2,22 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso"
    "github.com/89z/rosso/musicbrainz"
    "github.com/89z/youtube"
    "io"
    "net/http"
    "net/url"
+   "os"
+   "regexp"
+   "strings"
    "time"
+)
+
+const (
+   reset = "\x1b[m"
+   green = "\x1b[30;102m"
+   invert = "\x1b[7m"
+   red = "\x1b[30;101m"
 )
 
 func youtubeResult(query string) (string, error) {
@@ -17,14 +26,17 @@ func youtubeResult(query string) (string, error) {
    val := req.URL.Query()
    val.Set("search_query", query)
    req.URL.RawQuery = val.Encode()
-   rosso.LogInfo("GET", req.URL)
+   fmt.Println(invert, "GET", reset, req.URL)
    res, err := new(http.Client).Do(req)
    if err != nil { return "", err }
    defer res.Body.Close()
    body, err := io.ReadAll(res.Body)
    if err != nil { return "", err }
-   find, err := rosso.FindSubmatch("/vi/([^/]*)/", body)
-   if err != nil { return "", err }
+   re := regexp.MustCompile("/vi/([^/]*)/")
+   find := re.FindSubmatch(body)
+   if find == nil {
+      return "", fmt.Errorf("FindSubmatch %v", re)
+   }
    return string(find[1]), nil
 }
 
@@ -61,9 +73,9 @@ func sinceHours(view int, date string) error {
    if err != nil { return err }
    perYear := float64(view) * 24 * 365 / time.Since(d).Hours()
    if perYear > 10_000_000 {
-      rosso.LogFail("Fail", numberFormat(perYear))
+      fmt.Println(red, "fail", reset, numberFormat(perYear))
    } else {
-      rosso.LogPass("Pass", numberFormat(perYear))
+      fmt.Println(green, "pass", reset, numberFormat(perYear))
    }
    return nil
 }
@@ -75,4 +87,24 @@ func viewYouTube(addr string) error {
    vid, err := youtube.NewVideo(id)
    if err != nil { return err }
    return sinceHours(vid.ViewCount(), vid.PublishDate())
+}
+
+func main() {
+   if len(os.Args) != 2 {
+      fmt.Println(`usage:
+youtube-views <URL>
+
+examples:
+https://www.youtube.com/watch?v=6e5cNaU1h1I
+https://musicbrainz.org/release/7a629d52-6a61-3ea1-a0a0-dd50bdef63b4
+https://musicbrainz.org/release-group/d03bb6b1-d7b4-38ea-974e-847cbb31dca4`)
+      os.Exit(1)
+   }
+   arg := os.Args[1]
+   switch {
+   case strings.Contains(arg, "musicbrainz.org/"):
+      viewMusicbrainz(arg)
+   case strings.Contains(arg, "youtube.com/"):
+      viewYouTube(arg)
+   }
 }

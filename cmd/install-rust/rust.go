@@ -11,15 +11,15 @@ const channel = "https://static.rust-lang.org/dist/channel-rust-stable.toml"
 func main() {
    inst := rosso.NewInstall("sienna/rust", channel)
    inst.SetCache()
-   _, e := rosso.Copy(channel, inst.Cache)
-   if os.IsExist(e) {
-      rosso.LogInfo("Exist", inst.Cache)
-   } else if e != nil {
-      panic(e)
+   _, err := rosso.Copy(channel, inst.Cache)
+   if os.IsExist(err) {
+      println("Exist", inst.Cache)
+   } else if err != nil {
+      panic(err)
    }
-   cache, e := os.Open(inst.Cache)
-   if e != nil {
-      panic(e)
+   cache, err := os.Open(inst.Cache)
+   if err != nil {
+      panic(err)
    }
    defer cache.Close()
    var dist struct {
@@ -32,14 +32,14 @@ func main() {
       addr := dist.Pkg[each].Target["x86_64-pc-windows-gnu"].XZ_URL
       inst = rosso.NewInstall("sienna/rust", addr)
       inst.SetCache()
-      _, e = rosso.Copy(addr, inst.Cache)
-      if os.IsExist(e) {
-         rosso.LogInfo("Exist", inst.Cache)
-      } else if e != nil {
-         panic(e)
+      _, err = rosso.Copy(addr, inst.Cache)
+      if os.IsExist(err) {
+         println("Exist", inst.Cache)
+      } else if err != nil {
+         panic(err)
       }
       tar := rosso.Archive{2}
-      rosso.LogInfo("Xz", inst.Cache)
+      println("Xz", inst.Cache)
       tar.Xz(inst.Cache, inst.Dest)
    }
 }

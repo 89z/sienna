@@ -1,10 +1,11 @@
 package main
 
 import (
+   "bufio"
+   "bytes"
    "fmt"
    "os"
    "os/exec"
-   "strings"
    "time"
 )
 
@@ -31,30 +32,23 @@ func newBoard() (board, error) {
    if err == nil {
       arg = append(arg, ":!docs")
    }
+   buf := new(bytes.Buffer)
    cmd = exec.Command("git", arg...)
-   pipe, err := cmd.StdoutPipe()
-   if err != nil {
-      return board{}, err
-   }
-   cmd.Start()
-   defer cmd.Wait()
-   var b board
-   for {
-      var stat struct {
-         add, del int
-         path string
-      }
-      _, err := fmt.Fscanln(pipe, &stat.add, &stat.del, &stat.path)
-      if err != nil { break }
-      b.totCha += 1
-      b.totAdd += stat.add
-      b.totAdd += stat.del
-   }
-   out := new(strings.Builder)
-   cmd = exec.Command("git", "log", "-1", "--format=%cI")
-   cmd.Stdout = out
+   cmd.Stdout = buf
    cmd.Run()
-   b.actual = out.String()[:10]
+   var b board
+   scan := bufio.NewScanner(buf)
+   for scan.Scan() {
+      var add, del int
+      fmt.Sscan(scan.Text(), &add, &del)
+      b.totCha += 1
+      b.totAdd += add
+      b.totDel += del
+   }
+   cmd = exec.Command("git", "log", "-1", "--format=%cI")
+   cmd.Stdout = buf
+   cmd.Run()
+   b.actual = buf.String()[:10]
    b.target = time.Now().AddDate(0, 0, -1).String()[:10]
    return b, nil
 }

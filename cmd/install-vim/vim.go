@@ -54,21 +54,21 @@ func main() {
    )
    inst := rosso.NewInstall("sienna/vim", zip)
    inst.SetCache()
-   _, e := rosso.Copy("https://github.com/" + zip, inst.Cache)
-   if os.IsExist(e) {
-      rosso.LogInfo("Exist", inst.Cache)
-   } else if e != nil {
-      panic(e)
+   _, err := rosso.Copy("https://github.com/" + zip, inst.Cache)
+   if os.IsExist(err) {
+      println("Exist", inst.Cache)
+   } else if err != nil {
+      panic(err)
    }
    arc := rosso.Archive{2}
-   rosso.LogInfo("Zip", inst.Cache)
+   println("Zip", inst.Cache)
    arc.Zip(inst.Cache, inst.Dest)
    for _, each := range runtime {
       inst = rosso.NewInstall(each.dir, each.base)
       os.Remove(inst.Dest)
-      _, e = rosso.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
-      if e != nil {
-         panic(e)
+      _, err = rosso.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
+      if err != nil {
+         panic(err)
       }
    }
 }

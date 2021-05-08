@@ -93,8 +93,8 @@ func baseName(s, chars string) string {
 }
 
 func (db database) sync(name string) error {
-   file, e := os.Open(name)
-   if e != nil { return e }
+   file, err := os.Open(name)
+   if err != nil { return err }
    defer file.Close()
    buf := bufio.NewScanner(file)
    for buf.Scan() {
@@ -113,11 +113,11 @@ func (db database) sync(name string) error {
       inst := rosso.NewInstall("sienna/msys2", filename)
       inst.SetCache()
       dir := variant(filename)
-      _, e = rosso.Copy(mirror + dir + filename, inst.Cache)
-      if os.IsExist(e) {
-         rosso.LogInfo("Exist", filename)
-      } else if e != nil {
-         return e
+      _, err = rosso.Copy(mirror + dir + filename, inst.Cache)
+      if os.IsExist(err) {
+         fmt.Println("Exist", filename)
+      } else if err != nil {
+         return err
       }
       var arc rosso.Archive
       switch path.Ext(filename) {
@@ -126,8 +126,8 @@ func (db database) sync(name string) error {
          arc.Xz(inst.Cache, inst.Dest)
       case ".zst":
          rosso.LogInfo("Zst", filename)
-         e = arc.Zst(inst.Cache, inst.Dest)
-         if e != nil { return e }
+         err = arc.Zst(inst.Cache, inst.Dest)
+         if err != nil { return err }
       }
    }
    return nil
@@ -140,7 +140,7 @@ type description struct {
 
 func main() {
    if len(os.Args) != 3 {
-      println(`install-msys2 query git
+      fmt.Println(`install-msys2 query git
 install-msys2 sync git.txt`)
       os.Exit(1)
    }

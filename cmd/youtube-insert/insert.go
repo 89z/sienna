@@ -13,8 +13,13 @@ import (
    "time"
 )
 
+const (
+   invert = "\x1b[7m"
+   reset = "\x1b[m"
+)
+
 func httpHead(addr string) bool {
-   fmt.Println("\x1b[7m HEAD \x1b[m", addr)
+   fmt.Println(invert, "HEAD", reset, addr)
    resp, err := http.Head(addr)
    return err == nil && resp.StatusCode == 200
 }

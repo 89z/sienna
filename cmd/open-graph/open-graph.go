@@ -8,8 +8,13 @@ import (
    "regexp"
 )
 
+const (
+   invert = "\x1b[7m"
+   reset = "\x1b[m"
+)
+
 func open(source string) (string, error) {
-   fmt.Println("\x1b[7m GET \x1b[m", source)
+   fmt.Println(invert, "GET", reset, source)
    get, err := http.Get(source)
    if err != nil { return "", err }
    body, err := io.ReadAll(get.Body)

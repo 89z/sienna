@@ -6,10 +6,15 @@ import (
    "os/exec"
 )
 
+const (
+   invert = "\x1b[7m"
+   reset = "\x1b[m"
+)
+
 func run(name string, arg ...string) error {
    cmd := exec.Command(name, arg...)
    cmd.Stderr, cmd.Stdout = os.Stderr, os.Stdout
-   fmt.Println("\x1b[7m Run \x1b[m", cmd)
+   fmt.Println(invert, "Run", reset, cmd)
    return cmd.Run()
 }
 
