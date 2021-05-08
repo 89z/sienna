@@ -1,26 +1,30 @@
 package main
 
 import (
-   "github.com/89z/rosso"
+   "fmt"
    "io"
    "net/http"
    "os"
+   "regexp"
 )
 
 func open(source string) (string, error) {
-   rosso.LogInfo("Get", source)
+   fmt.Println("\x1b[7m GET \x1b[m", source)
    get, err := http.Get(source)
    if err != nil { return "", err }
    body, err := io.ReadAll(get.Body)
    if err != nil { return "", err }
-   og, err := rosso.FindSubmatch(`="og:image" content="([^"]+)"`, body)
-   if err != nil { return "", err }
-   return string(og[1]), nil
+   re := regexp.MustCompile(`="og:image" content="([^"]+)"`)
+   image := re.FindSubmatch(body)
+   if image == nil {
+      return "", fmt.Errorf("FindSubmatch %v", re)
+   }
+   return string(image[1]), nil
 }
 
 func main() {
    if len(os.Args) != 2 {
-      println("open-graph <URL>")
+      fmt.Println("open-graph <URL>")
       os.Exit(1)
    }
    arg := os.Args[1]
@@ -28,5 +32,5 @@ func main() {
    if err != nil {
       panic(err)
    }
-   println(image)
+   fmt.Println(image)
 }
