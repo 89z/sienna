@@ -6,7 +6,7 @@ import (
    "fmt"
    "github.com/89z/rosso"
    "os"
-   "path"
+   "path/filepath"
    "strings"
 )
 
@@ -97,37 +97,42 @@ func (db database) sync(name string) error {
    if err != nil { return err }
    defer file.Close()
    buf := bufio.NewScanner(file)
+   // cache
+   cache, err := os.UserCacheDir()
+   if err != nil { return err }
+   cache = filepath.Join(cache, "sienna", "msys2")
    for buf.Scan() {
       text := buf.Text()
-      var filename string
+      var base string
       if strings.Contains(text, ".pkg.tar.") {
-         filename = text
+         base = text
       } else {
          desc, ok := db.name[text]
          if ! ok {
             fmt.Printf("%q not valid\n", text)
             continue
          }
-         filename = desc.filename
+         base = desc.filename
       }
-      inst := rosso.NewInstall("sienna/msys2", filename)
-      inst.SetCache()
-      dir := variant(filename)
-      _, err = rosso.Copy(mirror + dir + filename, inst.Cache)
+      // get
+      get := mirror + variant(base) + base
+      // create
+      create := filepath.Join(cache, base)
+      // copy
+      err := rosso.Copy(get, create)
       if os.IsExist(err) {
-         fmt.Println("Exist", filename)
+         fmt.Println("Exist", base)
       } else if err != nil {
          return err
       }
-      var arc rosso.Archive
-      switch path.Ext(filename) {
+      var tar rosso.Archive
+      switch filepath.Ext(base) {
       case ".xz":
-         rosso.LogInfo("Xz", filename)
-         arc.Xz(inst.Cache, inst.Dest)
+         fmt.Println("Xz", base)
+         tar.Xz(create, `C:\sienna\msys2`)
       case ".zst":
-         rosso.LogInfo("Zst", filename)
-         err = arc.Zst(inst.Cache, inst.Dest)
-         if err != nil { return err }
+         fmt.Println("Zst", base)
+         tar.Zst(create, `C:\sienna\msys2`)
       }
    }
    return nil
@@ -144,33 +149,37 @@ func main() {
 install-msys2 sync git.txt`)
       os.Exit(1)
    }
-   db := newDatabase()
-   for _, each := range []string{
+   data := newDatabase()
+   // cache
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      panic(err)
+   }
+   cache = filepath.Join(cache, "sienna", "msys2")
+   for _, db := range []string{
       "/mingw/ucrt64/ucrt64.db",
       "/mingw/x86_64/mingw64.db",
       "/msys/x86_64/msys.db",
    } {
-      inst := rosso.NewInstall("sienna/msys2", each)
-      inst.SetCache()
-      _, err := rosso.Copy(mirror + each, inst.Cache)
+      // create
+      create := filepath.Join(cache, db)
+      err := rosso.Copy(mirror + db, create)
       if os.IsExist(err) {
-         rosso.LogInfo("Exist", inst.Cache)
+         fmt.Println("Exist", db)
       } else if err != nil {
          panic(err)
       }
-      fs, err := rosso.TarGzMemory(inst.Cache)
+      fs, err := rosso.TarGzMemory(create)
       if err != nil {
          panic(err)
       }
-      for _, each := range fs {
-         db.scan(each.Data)
+      for _, file := range fs {
+         data.scan(file.Data)
       }
    }
    target := os.Args[2]
    switch os.Args[1] {
-   case "query":
-      db.query(target)
-   case "sync":
-      db.sync(target)
+   case "query": data.query(target)
+   case "sync": data.sync(target)
    }
 }

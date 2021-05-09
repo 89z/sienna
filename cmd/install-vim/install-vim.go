@@ -54,7 +54,7 @@ func main() {
    )
    inst := rosso.NewInstall("sienna/vim", zip)
    inst.SetCache()
-   _, err := rosso.Copy("https://github.com/" + zip, inst.Cache)
+   err := rosso.Copy("https://github.com/" + zip, inst.Cache)
    if os.IsExist(err) {
       println("Exist", inst.Cache)
    } else if err != nil {
@@ -66,7 +66,7 @@ func main() {
    for _, each := range runtime {
       inst = rosso.NewInstall(each.dir, each.base)
       os.Remove(inst.Dest)
-      _, err = rosso.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
+      err := rosso.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
       if err != nil {
          panic(err)
       }
