@@ -3,6 +3,7 @@ package main
 import (
    "fmt"
    "github.com/89z/rosso"
+   "net/http"
    "os"
    "path/filepath"
 )
@@ -24,35 +25,39 @@ var runtime = []struct{get, create string}{
 }
 
 func main() {
-   // get
-   get := fmt.Sprint(
-      "https://github.com/vim/vim-win32-installer/releases/download/",
-      version,
-   )
-   // cache
    cache, err := os.UserCacheDir()
    if err != nil {
       panic(err)
    }
    cache = filepath.Join(cache, "sienna", "vim")
-   // create
    create := filepath.Join(cache, version)
-   // copy
-   err = rosso.Copy(get, create)
-   if os.IsExist(err) {
+   _, err = os.Stat(create)
+   if err != nil {
+      get := fmt.Sprint(
+         "https://github.com/vim/vim-win32-installer/releases/download/",
+         version,
+      )
+      fmt.Println("Get", get)
+      r, err := http.Get(get)
+      if err != nil {
+         panic(err)
+      }
+      defer r.Body.Close()
+      f, err := os.Create(create)
+      if err != nil {
+         panic(err)
+      }
+      defer f.Close()
+      f.ReadFrom(r.Body)
+   } else {
       fmt.Println("Exist", create)
-   } else if err != nil {
-      panic(err)
    }
    arc := rosso.Archive{2}
    fmt.Println("Zip", create)
    arc.Zip(create, `C:\sienna\vim`)
    for _, rt := range runtime {
-      // get
       get := "https://raw.githubusercontent.com/" + rt.get + rt.create
-      // create
       create := filepath.Join(`C:\sienna\vim`, rt.create)
-      // copy
       os.Remove(create)
       err := rosso.Copy(get, create)
       if err != nil {

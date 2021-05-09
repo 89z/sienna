@@ -5,6 +5,7 @@ import (
    "bytes"
    "fmt"
    "github.com/89z/rosso"
+   "net/http"
    "os"
    "path/filepath"
    "strings"
@@ -113,13 +114,19 @@ func (db database) sync(name string) error {
          }
          base = desc.filename
       }
-      get := mirror + variant(base) + base
       create := filepath.Join(cache, base)
-      err := rosso.Copy(get, create)
-      if os.IsExist(err) {
+      _, err := os.Stat(create)
+      if err != nil {
+         get := mirror + variant(base) + base
+         r, err := http.Get(get)
+         if err != nil { return err }
+         defer r.Body.Close()
+         f, err := os.Create(create)
+         if err != nil { return err }
+         defer f.Close()
+         f.ReadFrom(r.Body)
+      } else {
          fmt.Println("Exist", base)
-      } else if err != nil {
-         return err
       }
       var tar rosso.Archive
       switch filepath.Ext(base) {

@@ -3,27 +3,35 @@ package main
 import (
    "github.com/89z/rosso"
    "github.com/pelletier/go-toml"
+   "net/http"
    "os"
    "path/filepath"
 )
 
 func main() {
-   // get
-   get := "https://static.rust-lang.org/dist/channel-rust-stable.toml"
-   // cache
    cache, err := os.UserCacheDir()
    if err != nil {
       panic(err)
    }
    cache = filepath.Join(cache, "sienna", "rust")
-   // create
    create := filepath.Join(cache, "channel-rust-stable.toml")
-   // copy
-   err = rosso.Copy(get, create)
-   if os.IsExist(err) {
+   _, err = os.Stat(create)
+   if err != nil {
+      get := "https://static.rust-lang.org/dist/channel-rust-stable.toml"
+      println("Get", get)
+      r, err := http.Get(get)
+      if err != nil {
+         panic(err)
+      }
+      defer r.Body.Close()
+      f, err := os.Create(create)
+      if err != nil {
+         panic(err)
+      }
+      defer f.Close()
+      f.ReadFrom(r.Body)
+   } else {
       println("Exist", create)
-   } else if err != nil {
-      panic(err)
    }
    file, err := os.Open(create)
    if err != nil {
@@ -37,16 +45,24 @@ func main() {
    }
    toml.NewDecoder(file).Decode(&dist)
    for _, pkg := range []string{"cargo", "rust-std", "rustc"} {
-      // get
       get := dist.Pkg[pkg].Target["x86_64-pc-windows-gnu"].XZ_URL
-      // create
       create := filepath.Join(cache, filepath.Base(get))
-      // copy
-      err := rosso.Copy(get, create)
-      if os.IsExist(err) {
+      _, err := os.Stat(create)
+      if err != nil {
+         println("Get", get)
+         r, err := http.Get(get)
+         if err != nil {
+            panic(err)
+         }
+         defer r.Body.Close()
+         f, err := os.Create(create)
+         if err != nil {
+            panic(err)
+         }
+         defer f.Close()
+         f.ReadFrom(r.Body)
+      } else {
          println("Exist", create)
-      } else if err != nil {
-         panic(err)
       }
       tar := rosso.Archive{2}
       println("Xz", create)
