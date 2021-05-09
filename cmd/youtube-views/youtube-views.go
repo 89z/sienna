@@ -73,9 +73,9 @@ func sinceHours(view int, date string) error {
    if err != nil { return err }
    perYear := float64(view) * 24 * 365 / time.Since(d).Hours()
    if perYear > 10_000_000 {
-      fmt.Println(red, "fail", reset, numberFormat(perYear))
+      fmt.Println(red, "Fail", reset, numberFormat(perYear))
    } else {
-      fmt.Println(green, "pass", reset, numberFormat(perYear))
+      fmt.Println(green, "Pass", reset, numberFormat(perYear))
    }
    return nil
 }

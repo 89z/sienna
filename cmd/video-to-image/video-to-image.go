@@ -43,6 +43,7 @@ Flags:`)
    }
    arg = append(arg, "%d.jpg")
    cmd := exec.Command("ffmpeg", arg...)
-   cmd.Stdout = os.Stdout
+   cmd.Stderr = os.Stderr
+   fmt.Println("Run", cmd)
    cmd.Run()
 }

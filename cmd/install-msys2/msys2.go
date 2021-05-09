@@ -97,7 +97,6 @@ func (db database) sync(name string) error {
    if err != nil { return err }
    defer file.Close()
    buf := bufio.NewScanner(file)
-   // cache
    cache, err := os.UserCacheDir()
    if err != nil { return err }
    cache = filepath.Join(cache, "sienna", "msys2")
@@ -114,11 +113,8 @@ func (db database) sync(name string) error {
          }
          base = desc.filename
       }
-      // get
       get := mirror + variant(base) + base
-      // create
       create := filepath.Join(cache, base)
-      // copy
       err := rosso.Copy(get, create)
       if os.IsExist(err) {
          fmt.Println("Exist", base)
@@ -141,45 +137,4 @@ func (db database) sync(name string) error {
 type description struct {
    filename string
    depends []string
-}
-
-func main() {
-   if len(os.Args) != 3 {
-      fmt.Println(`install-msys2 query git
-install-msys2 sync git.txt`)
-      os.Exit(1)
-   }
-   data := newDatabase()
-   // cache
-   cache, err := os.UserCacheDir()
-   if err != nil {
-      panic(err)
-   }
-   cache = filepath.Join(cache, "sienna", "msys2")
-   for _, db := range []string{
-      "/mingw/ucrt64/ucrt64.db",
-      "/mingw/x86_64/mingw64.db",
-      "/msys/x86_64/msys.db",
-   } {
-      // create
-      create := filepath.Join(cache, db)
-      err := rosso.Copy(mirror + db, create)
-      if os.IsExist(err) {
-         fmt.Println("Exist", db)
-      } else if err != nil {
-         panic(err)
-      }
-      fs, err := rosso.TarGzMemory(create)
-      if err != nil {
-         panic(err)
-      }
-      for _, file := range fs {
-         data.scan(file.Data)
-      }
-   }
-   target := os.Args[2]
-   switch os.Args[1] {
-   case "query": data.query(target)
-   case "sync": data.sync(target)
-   }
 }
