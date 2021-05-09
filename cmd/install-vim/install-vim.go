@@ -1,72 +1,60 @@
 package main
 
 import (
+   "fmt"
    "github.com/89z/rosso"
    "os"
-   "path"
+   "path/filepath"
 )
 
-var runtime = []struct{dir, base string}{
-   {
-      "sienna/vim/colors",
-      "NLKNguyen/papercolor-theme/e397d18a/colors/PaperColor.vim",
-   }, {
-      "sienna/vim/ftdetect",
-      "zah/nim.vim/master/ftdetect/nim.vim",
-   }, {
-      "sienna/vim/ftdetect",
-      "PProvost/vim-ps1/master/ftdetect/ps1.vim",
-   }, {
-      "sienna/vim/syntax",
-      "dart-lang/dart-vim-plugin/master/syntax/dart.vim",
-   }, {
-      "sienna/vim/syntax",
-      "google/vim-ft-go/master/syntax/go.vim",
-   }, {
-      "sienna/vim/syntax",
-      "vim/vim/a942f9ad/runtime/syntax/javascript.vim",
-   }, {
-      "sienna/vim/syntax",
-      "tpope/vim-markdown/564d7436/syntax/markdown.vim",
-   }, {
-      "sienna/vim/syntax",
-      "zah/nim.vim/master/syntax/nim.vim",
-   }, {
-      "sienna/vim/syntax",
-      "PProvost/vim-ps1/master/syntax/ps1.vim",
-   }, {
-      "sienna/vim/syntax",
-      "vim/vim/b9c8312e/runtime/syntax/python.vim",
-   }, {
-      "sienna/vim/syntax",
-      "cespare/vim-toml/master/syntax/toml.vim",
-   },
+const version = "v8.2.2677/gvim_8.2.2677_x64.zip"
+
+var runtime = []struct{get, create string}{
+   {"NLKNguyen/papercolor-theme/e397d18a/", "colors/PaperColor.vim",},
+   {"PProvost/vim-ps1/master/", "ftdetect/ps1.vim"},
+   {"PProvost/vim-ps1/master/", "syntax/ps1.vim"},
+   {"cespare/vim-toml/master/", "syntax/toml.vim"},
+   {"dart-lang/dart-vim-plugin/master/", "syntax/dart.vim"},
+   {"google/vim-ft-go/master/", "syntax/go.vim"},
+   {"tpope/vim-markdown/564d7436/", "syntax/markdown.vim"},
+   {"vim/vim/a942f9ad/runtime/", "syntax/javascript.vim"},
+   {"vim/vim/b9c8312e/runtime/", "syntax/python.vim"},
+   {"zah/nim.vim/master/", "ftdetect/nim.vim"},
+   {"zah/nim.vim/master/", "syntax/nim.vim"},
 }
 
 func main() {
-   zip := path.Join(
-      "vim",
-      "vim-win32-installer",
-      "releases",
-      "download",
-      "v8.2.2677",
-      "gvim_8.2.2677_x64.zip",
+   // get
+   get := fmt.Sprint(
+      "https://github.com/vim/vim-win32-installer/releases/download/",
+      version,
    )
-   inst := rosso.NewInstall("sienna/vim", zip)
-   inst.SetCache()
-   err := rosso.Copy("https://github.com/" + zip, inst.Cache)
+   // cache
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      panic(err)
+   }
+   cache = filepath.Join(cache, "sienna", "vim")
+   // create
+   create := filepath.Join(cache, version)
+   // copy
+   err = rosso.Copy(get, create)
    if os.IsExist(err) {
-      println("Exist", inst.Cache)
+      fmt.Println("Exist", create)
    } else if err != nil {
       panic(err)
    }
    arc := rosso.Archive{2}
-   println("Zip", inst.Cache)
-   arc.Zip(inst.Cache, inst.Dest)
-   for _, each := range runtime {
-      inst = rosso.NewInstall(each.dir, each.base)
-      os.Remove(inst.Dest)
-      err := rosso.Copy("https://raw.githubusercontent.com/" + each.base, inst.Dest)
+   fmt.Println("Zip", create)
+   arc.Zip(create, `C:\sienna\vim`)
+   for _, rt := range runtime {
+      // get
+      get := "https://raw.githubusercontent.com/" + rt.get + rt.create
+      // create
+      create := filepath.Join(`C:\sienna\vim`, rt.create)
+      // copy
+      os.Remove(create)
+      err := rosso.Copy(get, create)
       if err != nil {
          panic(err)
       }

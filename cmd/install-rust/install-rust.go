@@ -7,7 +7,6 @@ import (
    "path/filepath"
 )
 
-
 func main() {
    // get
    get := "https://static.rust-lang.org/dist/channel-rust-stable.toml"
