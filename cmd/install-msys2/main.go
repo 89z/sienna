@@ -2,7 +2,7 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso"
+   "github.com/89z/rosso/extract"
    "net/http"
    "os"
    "path/filepath"
@@ -42,7 +42,7 @@ install-msys2 sync git.txt`)
       } else {
          fmt.Println("Exist", db)
       }
-      fs, err := rosso.TarGzMemory(create)
+      fs, err := extract.TarGzMemory(create)
       if err != nil {
          panic(err)
       }

@@ -2,7 +2,7 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso"
+   "github.com/89z/rosso/extract"
    "net/http"
    "os"
    "path/filepath"
@@ -52,16 +52,22 @@ func main() {
    } else {
       fmt.Println("Exist", create)
    }
-   arc := rosso.Archive{2}
+   arc := extract.Archive{2}
    fmt.Println("Zip", create)
    arc.Zip(create, `C:\sienna\vim`)
    for _, rt := range runtime {
       get := "https://raw.githubusercontent.com/" + rt.get + rt.create
-      create := filepath.Join(`C:\sienna\vim`, rt.create)
-      os.Remove(create)
-      err := rosso.Copy(get, create)
+      fmt.Println("Get", get)
+      r, err := http.Get(get)
       if err != nil {
          panic(err)
       }
+      defer r.Body.Close()
+      f, err := os.Create(filepath.Join(`C:\sienna\vim`, rt.create))
+      if err != nil {
+         panic(err)
+      }
+      defer f.Close()
+      f.ReadFrom(r.Body)
    }
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/rosso"
+   "github.com/89z/rosso/extract"
    "github.com/pelletier/go-toml"
    "net/http"
    "os"
@@ -64,7 +64,7 @@ func main() {
       } else {
          println("Exist", create)
       }
-      tar := rosso.Archive{2}
+      tar := extract.Archive{2}
       println("Xz", create)
       tar.Xz(create, `C:\sienna\rust`)
    }
