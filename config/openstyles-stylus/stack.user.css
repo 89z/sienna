@@ -1,16 +1,28 @@
 /* ==userstyle==
-@version 1.0.0
+@name Stack Exchange
 @namespace Steven Penny
-@name stack exchange
+@version 1.0.0
 ==/userstyle== */
-@-moz-document domain("stackexchange.com"),
+@-moz-document
+domain("stackexchange.com"),
 domain("stackoverflow.com"),
 domain("superuser.com") {
+   body {
+      --ff-mono: Consolas;
+      --ff-sans: Arial;
+   }
    a[href^="/"]:visited,
    a[href^="http"]:visited {
       color: purple !important;
    }
-   .top-bar {
-      position: absolute !important;
+   .topbar-dialog .modal-content .message-text h4,
+   .topbar-dialog,
+   header {
+      font-family: var(--ff-sans) !important;
+   }
+   .full-diff .content,
+   .wmd-input,
+   code {
+      font-family: var(--ff-mono) !important;
    }
 }
