@@ -25,7 +25,7 @@ Synopsis:
 
 Flags:`)
       flag.PrintDefaults()
-      os.Exit(1)
+      return
    }
    arg := []string{"-hide_banner"}
    if start != "" {

@@ -83,7 +83,7 @@ type tableRow struct { Q, S string }
 func main() {
    if len(os.Args) != 2 {
       fmt.Println("youtube-insert <URL>")
-      os.Exit(1)
+      return
    }
    // decode
    umber := os.Getenv("UMBER")
