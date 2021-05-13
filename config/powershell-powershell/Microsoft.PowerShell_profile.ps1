@@ -30,7 +30,7 @@ $env:PATH = @(
    'C:\sienna\vim'
 ) -join ';'
 
-$env:RIPGREP_CONFIG_PATH = $env:USERPROFILE + '\ripgrep.txt'
+$env:RIPGREP_CONFIG_PATH = $env:USERPROFILE + '\_ripgrep'
 $env:UMBER = 'D:\Git\umber\umber.json'
 $env:WINTER = 'D:\Music\Backblaze\winter.db'
 
