@@ -1,6 +1,6 @@
 # this file goes in C:\Users\Steven\Documents\PowerShell
 # make sure to unblock file if downloading
-$env:EDITOR = 'gvim.exe'
+$env:EDITOR = 'gvim'
 
 $env:LESS = -join @(
    # Quit if entire file fits on first screen.
@@ -14,6 +14,7 @@ $env:LESS = -join @(
 )
 
 $env:PATH = @(
+   'C:\PowerShell'
    'C:\Users\Steven\go\bin'
    'C:\dart-sdk\bin'
    'C:\go\bin'
@@ -39,4 +40,5 @@ Set-PSReadLineKeyHandler Ctrl+UpArrow {
    [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
 }
 
+# color output
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
