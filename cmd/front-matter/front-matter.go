@@ -18,10 +18,8 @@ type frontMatter struct {
 }
 
 func unmarshal(file string, v interface{}) error {
-   index, e := os.ReadFile(file)
-   if e != nil {
-      return e
-   }
+   index, err := os.ReadFile(file)
+   if err != nil { return err }
    return toml.Unmarshal(
       bytes.SplitN(index, tomlSep[:], 3)[1], v,
    )
@@ -30,35 +28,33 @@ func unmarshal(file string, v interface{}) error {
 func main() {
    if len(os.Args) != 2 {
       println(`front-matter D:\Git`)
-      os.Exit(1)
+      return
    }
    root := os.Args[1]
    content := filepath.Join(root, "autumn", "content")
-   dir, e := os.ReadDir(content)
-   if e != nil {
-      panic(e)
+   dir, err := os.ReadDir(content)
+   if err != nil {
+      panic(err)
    }
    for _, each := range dir {
       indexPath := filepath.Join(
          content, each.Name(), "_index.md",
       )
       var front frontMatter
-      e = unmarshal(indexPath, &front)
-      if e != nil {
-         panic(e)
+      err = unmarshal(indexPath, &front)
+      if err != nil {
+         panic(err)
       }
-      if front.Build.List != "" {
-         continue
-      }
+      if front.Build.List != "" { continue }
       examplePath := filepath.Join(root, front.Filename)
       _, err := os.Stat(examplePath)
       if err != nil {
          println(indexPath)
          continue
       }
-      example, e := os.ReadFile(examplePath)
-      if e != nil {
-         panic(e)
+      example, err := os.ReadFile(examplePath)
+      if err != nil {
+         panic(err)
       }
       sub := []byte(front.Substr)
       if front.Substr == "" || ! bytes.Contains(example, sub) {

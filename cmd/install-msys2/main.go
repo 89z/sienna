@@ -12,7 +12,7 @@ func main() {
    if len(os.Args) != 3 {
       fmt.Println(`install-msys2 query git
 install-msys2 sync git.txt`)
-      os.Exit(1)
+      return
    }
    data := newDatabase()
    cache, err := os.UserCacheDir()

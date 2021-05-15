@@ -14,8 +14,8 @@ const (
 
 func main() {
    if len(os.Args) < 3 {
-      println("fs-iterate <path> <command>")
-      os.Exit(1)
+      fmt.Println("fs-iterate <path> <command>")
+      return
    }
    root, name, arg := os.Args[1], os.Args[2], os.Args[3:]
    dirs, err := os.ReadDir(root)

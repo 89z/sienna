@@ -10,14 +10,14 @@ import (
 )
 
 func encode(name string, top, right, bottom, left int) error {
-   in, e := os.Open(name)
-   if e != nil { return e }
+   in, err := os.Open(name)
+   if err != nil { return err }
    defer in.Close()
-   out, e := os.Create("crop-" + filepath.Base(name))
-   if e != nil { return e }
+   out, err := os.Create("crop-" + filepath.Base(name))
+   if err != nil { return err }
    defer out.Close()
-   decode, e := jpeg.Decode(in)
-   if e != nil { return e }
+   decode, err := jpeg.Decode(in)
+   if err != nil { return err }
    bound := decode.Bounds()
    rect := image.Rect(left, top, bound.Max.X - right, bound.Max.Y - bottom)
    fmt.Println(bound, rect)
@@ -34,10 +34,10 @@ func main() {
    if flag.NArg() != 1 {
       fmt.Println("crop-image [flags] <file>")
       flag.PrintDefaults()
-      os.Exit(1)
+      return
    }
-   e := encode(flag.Arg(0), top, right, bottom, left)
-   if e != nil {
-      panic(e)
+   err := encode(flag.Arg(0), top, right, bottom, left)
+   if err != nil {
+      panic(err)
    }
 }

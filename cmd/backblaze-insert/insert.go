@@ -42,7 +42,7 @@ func newTableRow(year, file string) tableRow {
 func main() {
    if len(os.Args) != 3 {
       println("backblaze-insert <year> <file>")
-      os.Exit(1)
+      return
    }
    row := newTableRow(os.Args[1], os.Args[2])
    umber := os.Getenv("UMBER")

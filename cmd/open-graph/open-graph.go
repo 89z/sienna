@@ -30,7 +30,7 @@ func open(source string) (string, error) {
 func main() {
    if len(os.Args) != 2 {
       fmt.Println("open-graph <URL>")
-      os.Exit(1)
+      return
    }
    arg := os.Args[1]
    image, err := open(arg)
