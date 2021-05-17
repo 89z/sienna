@@ -2,6 +2,7 @@ package main
 
 import (
    "encoding/json"
+   "flag"
    "fmt"
    "github.com/89z/youtube"
    "net/http"
@@ -81,28 +82,36 @@ func newTableRow(enc string) (tableRow, error) {
 type tableRow struct { Q, S string }
 
 func main() {
-   if len(os.Args) != 2 {
-      fmt.Println("youtube-insert <URL>")
+   var dry bool
+   flag.BoolVar(&dry, "d", false, "dry run")
+   flag.Parse()
+   if flag.NArg() != 1 {
+      fmt.Println("youtube-insert [flag] <URL>")
+      flag.PrintDefaults()
       return
    }
-   // decode
-   umber := os.Getenv("UMBER")
-   file, err := os.Open(umber)
-   if err != nil {
-      panic(err)
-   }
-   var rows []tableRow
-   json.NewDecoder(file).Decode(&rows)
-   // append
-   arg := os.Args[1]
-   row, err := newTableRow(arg)
+   row, err := newTableRow(flag.Arg(0))
    if err != nil {
       panic(err)
    }
    fmt.Printf("%+v\n", row)
+   if dry { return }
+   // write
+   umber := os.Getenv("UMBER")
+   // decode
+   var rows []tableRow
+   {
+      file, err := os.Open(umber)
+      if err != nil {
+         panic(err)
+      }
+      defer file.Close()
+      json.NewDecoder(file).Decode(&rows)
+   }
+   // append
    rows = append([]tableRow{row}, rows...)
    // encode
-   file, err = os.Create(umber)
+   file, err := os.Create(umber)
    if err != nil {
       panic(err)
    }

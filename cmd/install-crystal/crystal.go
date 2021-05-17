@@ -23,6 +23,17 @@ func getCreate(get, create string) error {
    return err
 }
 
+func netrc() (string, string, error) {
+   home, err := os.UserHomeDir()
+   if err != nil { return "", "", err }
+   file, err := os.Open(home + "/_netrc")
+   if err != nil { return "", "", err }
+   defer file.Close()
+   var login, pass string
+   fmt.Fscanf(file, "default login %v password %v", &login, &pass)
+   return login, pass, nil
+}
+
 func main() {
    // cache
    cache, err := os.UserCacheDir()
