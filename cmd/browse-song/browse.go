@@ -1,4 +1,4 @@
-//go:generate mkwinsyscall -output zsys.go sys.go
+//go:generate mkwinsyscall -output zbrowse.go browse.go
 //sys shellExecute(hwnd int, oper string, file string, param string, dir string, show int) (err error) = shell32.ShellExecuteW
 package main
 

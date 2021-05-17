@@ -33,10 +33,9 @@ func main() {
    create := filepath.Join(cache, version)
    _, err = os.Stat(create)
    if err != nil {
-      get := fmt.Sprint(
-         "https://github.com/vim/vim-win32-installer/releases/download/",
-         version,
-      )
+      get :=
+         "https://github.com/vim/vim-win32-installer/releases/download/" +
+         version
       fmt.Println("Get", get)
       r, err := http.Get(get)
       if err != nil {
