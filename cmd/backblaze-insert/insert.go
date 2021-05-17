@@ -47,18 +47,18 @@ func main() {
    row := newTableRow(os.Args[1], os.Args[2])
    umber := os.Getenv("UMBER")
    // save
-   file, e := os.Open(umber)
-   if e != nil {
-      panic(e)
+   file, err := os.Open(umber)
+   if err != nil {
+      panic(err)
    }
    var rows []tableRow
    json.NewDecoder(file).Decode(&rows)
    // append
    rows = append([]tableRow{row}, rows...)
    // encode
-   file, e = os.Create(umber)
-   if e != nil {
-      panic(e)
+   file, err = os.Create(umber)
+   if err != nil {
+      panic(err)
    }
    defer file.Close()
    enc := json.NewEncoder(file)
