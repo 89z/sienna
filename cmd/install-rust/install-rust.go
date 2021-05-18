@@ -1,7 +1,7 @@
 package main
 
 import (
-   "github.com/89z/rosso/extract"
+   "github.com/89z/sienna"
    "github.com/pelletier/go-toml"
    "net/http"
    "os"
@@ -64,7 +64,7 @@ func main() {
       } else {
          println("Exist", create)
       }
-      tar := extract.Archive{2}
+      tar := sienna.Archive{2}
       println("Xz", create)
       tar.Xz(create, `C:\sienna\rust`)
    }

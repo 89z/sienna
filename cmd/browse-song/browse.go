@@ -4,7 +4,6 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso/sys"
    "net/url"
    "os"
 )

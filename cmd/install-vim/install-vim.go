@@ -2,7 +2,7 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso/extract"
+   "github.com/89z/sienna"
    "net/http"
    "os"
    "path/filepath"
@@ -51,7 +51,7 @@ func main() {
    } else {
       fmt.Println("Exist", create)
    }
-   arc := extract.Archive{2}
+   arc := sienna.Archive{2}
    fmt.Println("Zip", create)
    arc.Zip(create, `C:\sienna\vim`)
    for _, rt := range runtime {

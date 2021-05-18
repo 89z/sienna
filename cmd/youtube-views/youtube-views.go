@@ -2,7 +2,7 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/rosso/musicbrainz"
+   "github.com/89z/musicbrainz"
    "github.com/89z/youtube"
    "io"
    "net/http"

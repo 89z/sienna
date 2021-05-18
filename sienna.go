@@ -20,6 +20,7 @@ func TarGzMemory(source string) (fstest.MapFS, error) {
    defer file.Close()
    gzRead, err := gzip.NewReader(file)
    if err != nil { return nil, err }
+   defer gzRead.Close()
    tarRead := tar.NewReader(gzRead)
    files := make(fstest.MapFS)
    for {
@@ -33,26 +34,31 @@ func TarGzMemory(source string) (fstest.MapFS, error) {
    return files, nil
 }
 
-type Archive struct { Strip int }
+type Archive struct {
+   Strip int
+}
 
 func (a Archive) Bz2(source, dest string) error {
-   open, err := os.Open(source)
+   file, err := os.Open(source)
    if err != nil { return err }
-   return a.tarCreate(bzip2.NewReader(open), dest)
+   defer file.Close()
+   return a.tarCreate(bzip2.NewReader(file), dest)
 }
 
 func (a Archive) Gz(source, dest string) error {
-   open, err := os.Open(source)
+   file, err := os.Open(source)
    if err != nil { return err }
-   gzRead, err := gzip.NewReader(open)
+   defer file.Close()
+   gzRead, err := gzip.NewReader(file)
    if err != nil { return err }
    return a.tarCreate(gzRead, dest)
 }
 
 func (a Archive) Xz(source, dest string) error {
-   open, err := os.Open(source)
+   file, err := os.Open(source)
    if err != nil { return err }
-   xzRead, err := xz.NewReader(open, 0)
+   defer file.Close()
+   xzRead, err := xz.NewReader(file, 0)
    if err != nil { return err }
    return a.tarCreate(xzRead, dest)
 }
@@ -60,6 +66,7 @@ func (a Archive) Xz(source, dest string) error {
 func (a Archive) Zip(source, dest string) error {
    read, err := zip.OpenReader(source)
    if err != nil { return err }
+   defer read.Close()
    for _, file := range read.File {
       if file.Mode().IsDir() { continue }
       name := a.strip(dest, file.Name)
@@ -78,9 +85,10 @@ func (a Archive) Zip(source, dest string) error {
 }
 
 func (a Archive) Zst(source, dest string) error {
-   open, err := os.Open(source)
+   file, err := os.Open(source)
    if err != nil { return err }
-   zstRead, err := zstd.NewReader(open)
+   defer file.Close()
+   zstRead, err := zstd.NewReader(file)
    if err != nil { return err }
    return a.tarCreate(zstRead, dest)
 }

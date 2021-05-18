@@ -4,7 +4,7 @@ import (
    "bufio"
    "bytes"
    "fmt"
-   "github.com/89z/rosso/extract"
+   "github.com/89z/sienna"
    "net/http"
    "os"
    "path/filepath"
@@ -128,7 +128,7 @@ func (db database) sync(name string) error {
       } else {
          fmt.Println("Exist", base)
       }
-      var tar extract.Archive
+      var tar sienna.Archive
       switch filepath.Ext(base) {
       case ".xz":
          fmt.Println("Xz", base)

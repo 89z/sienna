@@ -14,17 +14,16 @@ $env:LESS = -join @(
 )
 
 $env:PATH = @(
-   'C:\PowerShell'
    'C:\Users\Steven\go\bin'
    'C:\dart-sdk\bin'
    'C:\go\bin'
    'C:\ldc2\bin'
    'C:\nim\bin'
-   'C:\path'
    'C:\php'
    'C:\python'
    'C:\python\Scripts'
    'C:\rubyinstaller\bin'
+   'C:\sienna'
    'C:\sienna\msys2\mingw64\bin'
    'C:\sienna\msys2\usr\bin'
    'C:\sienna\rust\bin'
