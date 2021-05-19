@@ -29,16 +29,16 @@ func main() {
       months[n].To = from.String()[:10]
    }
    insure["months"] = months
-   in, e := template.ParseFiles("in.html")
-   if e != nil {
-      panic(e)
+   in, err := template.ParseFiles("in.html")
+   if err != nil {
+      panic(err)
    }
-   out, e := os.Create("out.html")
-   if e != nil {
-      panic(e)
+   out, err := os.Create("out.html")
+   if err != nil {
+      panic(err)
    }
-   e = in.Execute(out, insure)
-   if e != nil {
-      panic(e)
+   err = in.Execute(out, insure)
+   if err != nil {
+      panic(err)
    }
 }
