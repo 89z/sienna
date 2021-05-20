@@ -40,7 +40,7 @@ install-msys2 sync git.txt`)
          defer f.Close()
          f.ReadFrom(r.Body)
       } else {
-         fmt.Println("Exist", db)
+         fmt.Println(invert, "Exist", reset, db)
       }
       fs, err := sienna.TarGzMemory(create)
       if err != nil {

@@ -2,61 +2,58 @@ package main
 
 import (
    "encoding/json"
+   "fmt"
    "net/url"
    "os"
+   "path/filepath"
    "strconv"
-   "strings"
    "time"
 )
 
-func split(s string) (string, string) {
-   f := strings.LastIndexByte
-   d, e := f(s, os.PathSeparator), f(s, '.')
-   return s[d + 1:e], s[e + 1:]
+type tableRow struct {
+   Q string
+   S string
 }
 
-type tableRow struct { Q, S string }
-
-func newTableRow(year, file string) tableRow {
-   stem, ext := split(file)
+func newTableRow(year, audio, image string) tableRow {
    val := make(url.Values)
-   unix := time.Now().Unix()
-   // audio id
-   format := strconv.FormatInt(unix + 1, 36)
-   val.Set("a", format)
-   println(format + "." + ext)
-   // image id
-   format = strconv.FormatInt(unix, 36)
-   val.Set("b", format)
-   println(format + ".jpg")
-   // platform
-   val.Set("p", ext)
    // year
    val.Set("y", year)
+   // audio id
+   val.Set("a", strconv.FormatInt(time.Now().Unix(), 36))
+   // platform: audio extension
+   val.Set("p", filepath.Ext(audio)[1:])
+   // image stem
+   base := filepath.Base(image)
+   val.Set("b", base[:len(base)-4])
    // return
+   base = filepath.Base(audio)
    return tableRow{
-      val.Encode(), stem,
+      val.Encode(),
+      // audio stem
+      base[:len(base)-4],
    }
 }
 
 func main() {
-   if len(os.Args) != 3 {
-      println("backblaze-insert <year> <file>")
+   if len(os.Args) != 4 {
+      fmt.Println("backblaze-insert <year> <audio> <image>")
       return
    }
-   row := newTableRow(os.Args[1], os.Args[2])
+   row := newTableRow(os.Args[1], os.Args[2], os.Args[3])
+   fmt.Printf("%#v\n", row)
    umber := os.Getenv("UMBER")
-   // save
-   file, err := os.Open(umber)
-   if err != nil {
-      panic(err)
-   }
    var rows []tableRow
-   json.NewDecoder(file).Decode(&rows)
-   // append
+   {
+      file, err := os.Open(umber)
+      if err != nil {
+         panic(err)
+      }
+      defer file.Close()
+      json.NewDecoder(file).Decode(&rows)
+   }
    rows = append([]tableRow{row}, rows...)
-   // encode
-   file, err = os.Create(umber)
+   file, err := os.Create(umber)
    if err != nil {
       panic(err)
    }

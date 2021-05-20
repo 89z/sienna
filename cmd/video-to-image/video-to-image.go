@@ -7,6 +7,11 @@ import (
    "os/exec"
 )
 
+const (
+   invert = "\x1b[7m"
+   reset = "\x1b[m"
+)
+
 func main() {
    var (
       all bool
@@ -44,6 +49,6 @@ Flags:`)
    arg = append(arg, "%d.jpg")
    cmd := exec.Command("ffmpeg", arg...)
    cmd.Stderr = os.Stderr
-   fmt.Println("Run", cmd)
+   fmt.Println(invert, "Run", reset, cmd)
    cmd.Run()
 }

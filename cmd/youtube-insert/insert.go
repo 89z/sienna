@@ -94,7 +94,7 @@ func main() {
    if err != nil {
       panic(err)
    }
-   fmt.Printf("%+v\n", row)
+   fmt.Printf("%#v\n", row)
    if dry { return }
    // write
    umber := os.Getenv("UMBER")

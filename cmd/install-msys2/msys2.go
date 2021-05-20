@@ -11,7 +11,11 @@ import (
    "strings"
 )
 
-const mirror = "http://repo.msys2.org"
+const (
+   mirror = "http://repo.msys2.org"
+   invert = "\x1b[7m"
+   reset = "\x1b[m"
+)
 
 func variant(s string) string {
    switch {
@@ -126,15 +130,15 @@ func (db database) sync(name string) error {
          defer f.Close()
          f.ReadFrom(r.Body)
       } else {
-         fmt.Println("Exist", base)
+         fmt.Println(invert, "Exist", reset, base)
       }
       var tar sienna.Archive
       switch filepath.Ext(base) {
       case ".xz":
-         fmt.Println("Xz", base)
+         fmt.Println(invert, "Xz", reset, base)
          tar.Xz(create, `C:\sienna\msys2`)
       case ".zst":
-         fmt.Println("Zst", base)
+         fmt.Println(invert, "Zst", reset, base)
          tar.Zst(create, `C:\sienna\msys2`)
       }
    }
