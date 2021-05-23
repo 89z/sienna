@@ -65,7 +65,7 @@ func numberFormat(d float64) string {
       d /= 1000
       e++
    }
-   return fmt.Sprintf("%.3f", d) + []string{"", " k", " M", " G"}[e]
+   return fmt.Sprintf("%.3f", d) + []string{1: " k", " M", " G"}[e]
 }
 
 func sinceHours(view int, date string) error {
