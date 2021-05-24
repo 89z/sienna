@@ -5,6 +5,7 @@ import (
    "github.com/pelletier/go-toml"
    "io"
    "net/http"
+   "net/url"
    "os"
    "regexp"
    "time"
@@ -40,8 +41,13 @@ func newTableRow(addr string) (tableRow, error) {
    if title == nil {
       return tableRow{}, fmt.Errorf("FindSubmatch %v", re)
    }
+   parse, err := url.Parse(addr)
+   if err != nil {
+      return tableRow{}, err
+   }
+   parse.Fragment = ""
    return tableRow{
-      A: addr, Date: time.Now(), Title: string(title[1]),
+      A: parse.String(), Date: time.Now(), Title: string(title[1]),
    }, nil
 }
 
