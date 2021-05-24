@@ -15,6 +15,7 @@ $env:LESS = -join @(
 
 $env:PATH = @(
    'C:\Users\Steven\go\bin'
+   'C:\crystal\bin'
    'C:\dart-sdk\bin'
    'C:\go\bin'
    'C:\ldc2\bin'

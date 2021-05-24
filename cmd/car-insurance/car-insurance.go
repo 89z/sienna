@@ -37,8 +37,5 @@ func main() {
    if err != nil {
       panic(err)
    }
-   err = in.Execute(out, insure)
-   if err != nil {
-      panic(err)
-   }
+   in.Execute(out, insure)
 }

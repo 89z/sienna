@@ -17,14 +17,6 @@ type frontMatter struct {
    Substr string
 }
 
-func unmarshal(file string, v interface{}) error {
-   index, err := os.ReadFile(file)
-   if err != nil { return err }
-   return toml.Unmarshal(
-      bytes.SplitN(index, tomlSep[:], 3)[1], v,
-   )
-}
-
 func main() {
    if len(os.Args) != 2 {
       println(`front-matter D:\Git`)
@@ -37,18 +29,17 @@ func main() {
       panic(err)
    }
    for _, each := range dir {
-      indexPath := filepath.Join(
-         content, each.Name(), "_index.md",
-      )
-      var front frontMatter
-      err = unmarshal(indexPath, &front)
+      indexPath := filepath.Join(content, each.Name(), "_index.md")
+      index, err := os.ReadFile(indexPath)
       if err != nil {
          panic(err)
       }
+      index = bytes.SplitN(index, tomlSep[:], 3)[1]
+      var front frontMatter
+      toml.Unmarshal(index, &front)
       if front.Build.List != "" { continue }
       examplePath := filepath.Join(root, front.Filename)
-      _, err := os.Stat(examplePath)
-      if err != nil {
+      if _, err := os.Stat(examplePath); err != nil {
          println(indexPath)
          continue
       }

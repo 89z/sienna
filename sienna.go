@@ -71,15 +71,13 @@ func (a Archive) Zip(source, dest string) error {
       if file.Mode().IsDir() { continue }
       name := a.strip(dest, file.Name)
       if name == "" { continue }
-      err = os.MkdirAll(filepath.Dir(name), os.ModeDir)
-      if err != nil { return err }
+      os.MkdirAll(filepath.Dir(name), os.ModeDir)
       open, err := file.Open()
       if err != nil { return err }
       create, err := os.Create(name)
       if err != nil { return err }
       defer create.Close()
-      _, err = create.ReadFrom(open)
-      if err != nil { return err }
+      create.ReadFrom(open)
    }
    return nil
 }
@@ -108,23 +106,19 @@ func (a Archive) tarCreate(source io.Reader, dest string) error {
       if name == "" { continue }
       switch cur.Typeflag {
       case tar.TypeLink:
-         _, err = os.Stat(name)
+         _, err := os.Stat(name)
          if err == nil {
-            err = os.Remove(name)
-            if err != nil {
-               return err
-            }
+            os.Remove(name)
          }
-         err = os.Link(a.strip(dest, cur.Linkname), name)
-         if err != nil { return err }
+         if err := os.Link(a.strip(dest, cur.Linkname), name); err != nil {
+            return err
+         }
       case tar.TypeReg:
-         err = os.MkdirAll(filepath.Dir(name), os.ModeDir)
-         if err != nil { return err }
+         os.MkdirAll(filepath.Dir(name), os.ModeDir)
          create, err := os.Create(name)
          if err != nil { return err }
          defer create.Close()
-         _, err = create.ReadFrom(tarRead)
-         if err != nil { return err }
+         create.ReadFrom(tarRead)
       }
    }
    return nil
