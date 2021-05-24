@@ -23,16 +23,15 @@ func main() {
    if err != nil {
       panic(err)
    }
-   _, err = os.Stat("config.toml")
-   // if this not exist, return
-   if err != nil { return }
+   if _, err := os.Stat("config.toml"); err != nil {
+      // if this not exist, return
+      return
+   }
    os.RemoveAll("docs")
-   err = run("hugo")
-   if err != nil {
+   if err := run("hugo"); err != nil {
       panic(err)
    }
-   err = run("git", "add", ".")
-   if err != nil {
+   if err := run("git", "add", "."); err != nil {
       panic(err)
    }
    run("git", "commit", "--amend", "--no-edit")
