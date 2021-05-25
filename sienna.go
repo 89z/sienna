@@ -6,7 +6,7 @@ import (
    "compress/bzip2"
    "compress/gzip"
    "github.com/klauspost/compress/zstd"
-   "github.com/xi2/xz"
+   "github.com/89z/xz"
    "io"
    "os"
    "path/filepath"
@@ -51,6 +51,7 @@ func (a Archive) Gz(source, dest string) error {
    defer file.Close()
    gzRead, err := gzip.NewReader(file)
    if err != nil { return err }
+   defer gzRead.Close()
    return a.tarCreate(gzRead, dest)
 }
 
@@ -71,13 +72,15 @@ func (a Archive) Zip(source, dest string) error {
       if file.Mode().IsDir() { continue }
       name := a.strip(dest, file.Name)
       if name == "" { continue }
-      os.MkdirAll(filepath.Dir(name), os.ModeDir)
+      if err := os.MkdirAll(filepath.Dir(name), os.ModeDir); err != nil {
+         return err
+      }
       open, err := file.Open()
       if err != nil { return err }
       create, err := os.Create(name)
       if err != nil { return err }
       defer create.Close()
-      create.ReadFrom(open)
+      if _, err := create.ReadFrom(open); err != nil { return err }
    }
    return nil
 }
