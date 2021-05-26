@@ -2,6 +2,7 @@ package main
 
 import (
    "fmt"
+   "html"
    "io"
    "net/http"
    "os"
@@ -13,18 +14,26 @@ const (
    reset = "\x1b[m"
 )
 
-func open(source string) (string, error) {
-   fmt.Println(invert, "GET", reset, source)
+var patterns = []string{
+   `="og:image" content="([^"]+)"`, `="og:video" content="([^"]+)"`,
+}
+
+func open(source string) ([]string, error) {
+   fmt.Println(invert, "Get", reset, source)
    get, err := http.Get(source)
-   if err != nil { return "", err }
+   if err != nil { return nil, err }
    body, err := io.ReadAll(get.Body)
-   if err != nil { return "", err }
-   re := regexp.MustCompile(`="og:image" content="([^"]+)"`)
-   image := re.FindSubmatch(body)
-   if image == nil {
-      return "", fmt.Errorf("FindSubmatch %v", re)
+   if err != nil { return nil, err }
+   var results []string
+   for _, pattern := range patterns {
+      find := regexp.MustCompile(pattern).FindSubmatch(body)
+      if find != nil {
+         media := string(find[1])
+         media = html.UnescapeString(media)
+         results = append(results, media)
+      }
    }
-   return string(image[1]), nil
+   return results, nil
 }
 
 func main() {
@@ -33,9 +42,11 @@ func main() {
       return
    }
    arg := os.Args[1]
-   image, err := open(arg)
+   items, err := open(arg)
    if err != nil {
       panic(err)
    }
-   fmt.Println(image)
+   for _, item := range items {
+      fmt.Println(item)
+   }
 }
