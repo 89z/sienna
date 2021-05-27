@@ -44,22 +44,20 @@ func main() {
    fmt.Printf("%#v\n", row)
    umber := os.Getenv("UMBER")
    var rows []tableRow
-   {
-      file, err := os.Open(umber)
-      if err != nil {
-         panic(err)
-      }
-      defer file.Close()
-      json.NewDecoder(file).Decode(&rows)
-   }
-   rows = append([]tableRow{row}, rows...)
-   file, err := os.Create(umber)
+   file, err := os.Open(umber)
    if err != nil {
       panic(err)
    }
    defer file.Close()
-   enc := json.NewEncoder(file)
-   enc.SetEscapeHTML(false)
-   enc.SetIndent("", " ")
-   enc.Encode(rows)
+   json.NewDecoder(file).Decode(&rows)
+   rows = append([]tableRow{row}, rows...)
+   if file, err := os.Create(umber); err != nil {
+      panic(err)
+   } else {
+      defer file.Close()
+      enc := json.NewEncoder(file)
+      enc.SetEscapeHTML(false)
+      enc.SetIndent("", " ")
+      enc.Encode(rows)
+   }
 }
