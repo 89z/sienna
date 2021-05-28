@@ -18,14 +18,13 @@ const (
 )
 
 func variant(s string) string {
-   switch {
-   case strings.HasPrefix(s, "mingw-w64-ucrt-x86_64-"):
+   if strings.HasPrefix(s, "mingw-w64-ucrt-x86_64-") {
       return "/mingw/ucrt64/"
-   case strings.HasPrefix(s, "mingw-w64-x86_64-"):
-      return "/mingw/x86_64/"
-   default:
-      return "/msys/x86_64/"
    }
+   if strings.HasPrefix(s, "mingw-w64-x86_64-") {
+      return "/mingw/x86_64/"
+   }
+   return "/msys/x86_64/"
 }
 
 type database struct {
@@ -90,11 +89,10 @@ func (db database) scan(file []byte) error {
 }
 
 func baseName(s, chars string) string {
-   n := strings.IndexAny(s, chars)
-   switch n {
-   case -1: return s
-   default: return s[:n]
+   if n := strings.IndexAny(s, chars); n >= 0 {
+      return s[:n]
    }
+   return s
 }
 
 func (db database) sync(name string) error {

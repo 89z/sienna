@@ -15,7 +15,9 @@ const (
 )
 
 var patterns = []string{
-   `="og:image" content="([^"]+)"`, `="og:video" content="([^"]+)"`,
+   ` content="([^"]+)" property="og:image"`,
+   `="og:image" content="([^"]+)"`,
+   `="og:video" content="([^"]+)"`,
 }
 
 func open(source string) ([]string, error) {

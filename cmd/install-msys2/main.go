@@ -51,8 +51,9 @@ install-msys2 sync git.txt`)
       }
    }
    target := os.Args[2]
-   switch os.Args[1] {
-   case "query": data.query(target)
-   case "sync": data.sync(target)
+   if os.Args[1] == "sync" {
+      data.sync(target)
+      return
    }
+   data.query(target)
 }

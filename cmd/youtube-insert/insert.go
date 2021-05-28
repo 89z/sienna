@@ -39,7 +39,7 @@ func newTableRow(enc string) (tableRow, error) {
    if video.Description() == "" {
       return tableRow{}, fmt.Errorf("Clapham Junction")
    }
-   year := video.Microformat.PlayerMicroformatRenderer.PublishDate[:4]
+   year := video.PublishDate()[:4]
    for _, pattern := range []string{
       /* the order doesnt matter here, as we will find the lowest date of all
       matches */
@@ -67,12 +67,12 @@ func newTableRow(enc string) (tableRow, error) {
    val.Set("b", id)
    val.Set("p", "y")
    val.Set("y", year)
-   switch {
-   case httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg"):
-   case httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg"):
-      val.Set("c", "sd1")
-   default:
-      val.Set("c", "hqdefault")
+   if ! httpHead("http://i.ytimg.com/vi/" + id + "/sddefault.jpg") {
+      if httpHead("http://i.ytimg.com/vi/" + id + "/sd1.jpg") {
+         val.Set("c", "sd1")
+      } else {
+         val.Set("c", "hqdefault")
+      }
    }
    return tableRow{
       val.Encode(), title,
