@@ -3,7 +3,6 @@ package sienna
 import (
    "archive/tar"
    "archive/zip"
-   "compress/gzip"
    "github.com/klauspost/compress/zstd"
    "github.com/89z/xz"
    "io"
@@ -14,16 +13,6 @@ import (
 
 type Archive struct {
    Strip int
-}
-
-func (a Archive) Gz(source, dest string) error {
-   file, err := os.Open(source)
-   if err != nil { return err }
-   defer file.Close()
-   gzRead, err := gzip.NewReader(file)
-   if err != nil { return err }
-   defer gzRead.Close()
-   return a.tarCreate(gzRead, dest)
 }
 
 func (a Archive) Xz(source, dest string) error {
