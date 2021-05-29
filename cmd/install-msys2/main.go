@@ -2,7 +2,6 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/sienna"
    "net/http"
    "os"
    "path/filepath"
@@ -42,7 +41,7 @@ install-msys2 sync git.txt`)
       } else {
          fmt.Println(invert, "Exist", reset, db)
       }
-      fs, err := sienna.TarGzMemory(create)
+      fs, err := tarGzMemory(create)
       if err != nil {
          panic(err)
       }

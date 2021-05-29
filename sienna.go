@@ -3,7 +3,6 @@ package sienna
 import (
    "archive/tar"
    "archive/zip"
-   "compress/bzip2"
    "compress/gzip"
    "github.com/klauspost/compress/zstd"
    "github.com/89z/xz"
@@ -11,38 +10,10 @@ import (
    "os"
    "path/filepath"
    "strings"
-   "testing/fstest"
 )
-
-func TarGzMemory(source string) (fstest.MapFS, error) {
-   file, err := os.Open(source)
-   if err != nil { return nil, err }
-   defer file.Close()
-   gzRead, err := gzip.NewReader(file)
-   if err != nil { return nil, err }
-   defer gzRead.Close()
-   tarRead := tar.NewReader(gzRead)
-   files := make(fstest.MapFS)
-   for {
-      cur, err := tarRead.Next()
-      if err == io.EOF { break } else if err != nil { return nil, err }
-      if cur.Typeflag != tar.TypeReg { continue }
-      data, err := io.ReadAll(tarRead)
-      if err != nil { return nil, err }
-      files[cur.Name] = &fstest.MapFile{Data: data}
-   }
-   return files, nil
-}
 
 type Archive struct {
    Strip int
-}
-
-func (a Archive) Bz2(source, dest string) error {
-   file, err := os.Open(source)
-   if err != nil { return err }
-   defer file.Close()
-   return a.tarCreate(bzip2.NewReader(file), dest)
 }
 
 func (a Archive) Gz(source, dest string) error {
@@ -59,7 +30,7 @@ func (a Archive) Xz(source, dest string) error {
    file, err := os.Open(source)
    if err != nil { return err }
    defer file.Close()
-   xzRead, err := xz.NewReader(file, 0)
+   xzRead, err := xz.NewReader(file)
    if err != nil { return err }
    return a.tarCreate(xzRead, dest)
 }

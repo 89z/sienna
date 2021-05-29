@@ -18,26 +18,6 @@ const (
    red = "\x1b[30;101m"
 )
 
-func youtubeResult(query string) (string, error) {
-   req, err := http.NewRequest("GET", "http://youtube.com/results", nil)
-   if err != nil { return "", err }
-   val := req.URL.Query()
-   val.Set("search_query", query)
-   req.URL.RawQuery = val.Encode()
-   fmt.Println(invert, "GET", reset, req.URL)
-   res, err := new(http.Client).Do(req)
-   if err != nil { return "", err }
-   defer res.Body.Close()
-   body, err := io.ReadAll(res.Body)
-   if err != nil { return "", err }
-   re := regexp.MustCompile("/vi/([^/]+)/")
-   find := re.FindSubmatch(body)
-   if find == nil {
-      return "", fmt.Errorf("FindSubmatch %v", re)
-   }
-   return string(find[1]), nil
-}
-
 func numberFormat(d float64) string {
    var e int
    for d >= 1000 {
@@ -59,15 +39,6 @@ func sinceHours(view int, date string) error {
    return nil
 }
 
-func viewYouTube(addr string) error {
-   p, err := url.Parse(addr)
-   if err != nil { return err }
-   id := p.Query().Get("v")
-   vid, err := youtube.NewVideo(id)
-   if err != nil { return err }
-   return sinceHours(vid.ViewCount(), vid.PublishDate())
-}
-
 func viewMusicbrainz(r musicbrainz.Release) error {
    var artists string
    for _, artist := range r.ArtistCredit {
@@ -86,4 +57,33 @@ func viewMusicbrainz(r musicbrainz.Release) error {
       }
    }
    return nil
+}
+
+func viewYouTube(addr string) error {
+   p, err := url.Parse(addr)
+   if err != nil { return err }
+   id := p.Query().Get("v")
+   vid, err := youtube.NewVideo(id)
+   if err != nil { return err }
+   return sinceHours(vid.ViewCount(), vid.PublishDate())
+}
+
+func youtubeResult(query string) (string, error) {
+   req, err := http.NewRequest("GET", "http://youtube.com/results", nil)
+   if err != nil { return "", err }
+   val := req.URL.Query()
+   val.Set("search_query", query)
+   req.URL.RawQuery = val.Encode()
+   fmt.Println(invert, "GET", reset, req.URL)
+   res, err := new(http.Client).Do(req)
+   if err != nil { return "", err }
+   defer res.Body.Close()
+   body, err := io.ReadAll(res.Body)
+   if err != nil { return "", err }
+   re := regexp.MustCompile("/vi/([^/]+)/")
+   find := re.FindSubmatch(body)
+   if find == nil {
+      return "", fmt.Errorf("FindSubmatch %v", re)
+   }
+   return string(find[1]), nil
 }

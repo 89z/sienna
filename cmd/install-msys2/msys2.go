@@ -1,14 +1,18 @@
 package main
 
 import (
+   "archive/tar"
    "bufio"
    "bytes"
+   "compress/gzip"
    "fmt"
    "github.com/89z/sienna"
+   "io"
    "net/http"
    "os"
    "path/filepath"
    "strings"
+   "testing/fstest"
 )
 
 const (
@@ -16,6 +20,26 @@ const (
    invert = "\x1b[7m"
    reset = "\x1b[m"
 )
+
+func tarGzMemory(source string) (fstest.MapFS, error) {
+   file, err := os.Open(source)
+   if err != nil { return nil, err }
+   defer file.Close()
+   gzRead, err := gzip.NewReader(file)
+   if err != nil { return nil, err }
+   defer gzRead.Close()
+   tarRead := tar.NewReader(gzRead)
+   files := make(fstest.MapFS)
+   for {
+      cur, err := tarRead.Next()
+      if err == io.EOF { break } else if err != nil { return nil, err }
+      if cur.Typeflag != tar.TypeReg { continue }
+      data, err := io.ReadAll(tarRead)
+      if err != nil { return nil, err }
+      files[cur.Name] = &fstest.MapFile{Data: data}
+   }
+   return files, nil
+}
 
 func variant(s string) string {
    if strings.HasPrefix(s, "mingw-w64-ucrt-x86_64-") {

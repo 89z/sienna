@@ -1,7 +1,7 @@
 github.com/89z/musicbrainz v1.16.5 h1:ynWNe4VmkBRK3eukN4QDIGN/MqCRu2eUD8zzDnvYyg8=
 github.com/89z/musicbrainz v1.16.5/go.mod h1:TjZeGUqn7uQv+ijr4v4QkJT7TPMI0uMvH6uj1z6PBKM=
-github.com/89z/xz v1.0.1 h1:/Nx2mP0JhTH7+QX0X0I8o0TlgNAs2m2LMf6u9J6TNv0=
-github.com/89z/xz v1.0.1/go.mod h1:icfKf6tlg3DTqW9BTckIdohSgsVdGh7/hOiOUqGF6gw=
+github.com/89z/xz v1.1.6 h1:QIDWCUntRPfZxLubYMKq7hRn7YR201lbSY2rqx8NpG4=
+github.com/89z/xz v1.1.6/go.mod h1:5maaegS9DRn/sKQ6UtQGvaLR6RETPz06m6Jl7EuoZfI=
 github.com/89z/youtube v1.9.2 h1:qO+EfoTzYRg5gqU81+qgm6+5AthZ0uspi00HZCQt4Lc=
 github.com/89z/youtube v1.9.2/go.mod h1:DSgbxfK31cr5+WtS5Yd9ymIPgRRDuqAVWwDTPfs+fDU=
 github.com/golang/snappy v0.0.3 h1:fHPg5GQYlCeLIPB9BZqMVR5nR9A+IM5zcgeTdjMYmLA=
@@ -12,8 +12,6 @@ github.com/pelletier/go-toml v1.9.1 h1:a6qW1EVNZWH9WGI6CsYdD8WAylkoXBS5yv0XHlh17
 github.com/pelletier/go-toml v1.9.1/go.mod h1:u1nR/EPcESfeI/szUZKdtJ0xRNbUoANCkoOuaOx1Y+c=
 github.com/robertkrimen/otto v0.0.0-20200922221731-ef014fd054ac h1:kYPjbEN6YPYWWHI6ky1J813KzIq/8+Wg4TO4xU7A/KU=
 github.com/robertkrimen/otto v0.0.0-20200922221731-ef014fd054ac/go.mod h1:xvqspoSXJTIpemEonrMDFq6XzwHYYgToXWj5eRX1OtY=
-github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 h1:nIPpBwaJSVYIxUFsDv3M8ofmx9yWTog9BfvIu0q41lo=
-github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8/go.mod h1:HUYIGzjTL3rfEspMxjDjgmT5uz5wzYJKVo23qUhYTos=
 golang.org/x/sys v0.0.0-20210514084401-e8d321eab015 h1:hZR0X1kPW+nwyJ9xRxqZk1vx5RUObAPBdKVvXPDUH/E=
 golang.org/x/sys v0.0.0-20210514084401-e8d321eab015/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 gopkg.in/sourcemap.v1 v1.0.5 h1:inv58fC9f9J3TK2Y2R1NPntXEn3/wjWHkonhIUODNTI=
