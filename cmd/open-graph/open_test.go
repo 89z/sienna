@@ -15,10 +15,10 @@ func TestOpen(t *testing.T) {
    for _, test := range tests {
       items, err := open(test.in)
       if err != nil {
-         t.Error(err)
+         t.Fatal(err)
       }
       if items[0] != test.out {
-         t.Error(items)
+         t.Fatal(items)
       }
    }
 }
