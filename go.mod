@@ -3,7 +3,7 @@ module github.com/89z/sienna
 go 1.16
 
 require (
-	github.com/89z/musicbrainz v1.16.8
+	github.com/89z/musicbrainz v1.17.0
 	github.com/89z/xz v1.1.6
 	github.com/89z/youtube v1.9.2
 	github.com/klauspost/compress v1.12.2
