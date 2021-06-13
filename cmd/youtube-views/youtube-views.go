@@ -2,8 +2,8 @@ package main
 
 import (
    "fmt"
-   "github.com/89z/musicbrainz"
-   "github.com/89z/youtube"
+   "github.com/89z/mech/musicbrainz"
+   "github.com/89z/mech/youtube"
    "io"
    "net/http"
    "net/url"
@@ -42,25 +42,6 @@ func sinceHours(view int, date string) error {
    return nil
 }
 
-func viewMusicbrainz(r musicbrainz.Release) error {
-   var artists string
-   for _, artist := range r.ArtistCredit {
-      artists += artist.Name + " "
-   }
-   for _, media := range r.Media {
-      for _, track := range media.Tracks {
-         id, err := youtubeResult(artists + track.Title)
-         if err != nil { return err }
-         vid, err := youtube.NewVideo(id)
-         if err != nil { return err }
-         if err := sinceHours(vid.ViewCount(), vid.PublishDate()); err != nil {
-            return err
-         }
-         time.Sleep(100 * time.Millisecond)
-      }
-   }
-   return nil
-}
 
 func viewYouTube(addr string) error {
    p, err := url.Parse(addr)
@@ -127,7 +108,27 @@ https://musicbrainz.org/release-group/d03bb6b1-d7b4-38ea-974e-847cbb31dca4`)
       panic(err)
    }
    g.Sort()
-   if err := viewMusicbrainz(g.Releases[0]); err != nil {
+   if err := viewMusicbrainz(&g.Releases[0]); err != nil {
       panic(err)
    }
+}
+
+func viewMusicbrainz(r *musicbrainz.Release) error {
+   var artists string
+   for _, artist := range r.ArtistCredit {
+      artists += artist.Name + " "
+   }
+   for _, media := range r.Media {
+      for _, track := range media.Tracks {
+         id, err := youtubeResult(artists + track.Title)
+         if err != nil { return err }
+         vid, err := youtube.NewVideo(id)
+         if err != nil { return err }
+         if err := sinceHours(vid.ViewCount(), vid.PublishDate()); err != nil {
+            return err
+         }
+         time.Sleep(100 * time.Millisecond)
+      }
+   }
+   return nil
 }

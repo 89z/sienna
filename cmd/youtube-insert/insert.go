@@ -4,7 +4,7 @@ import (
    "encoding/json"
    "flag"
    "fmt"
-   "github.com/89z/youtube"
+   "github.com/89z/mech/youtube"
    "net/http"
    "net/url"
    "os"
