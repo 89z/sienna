@@ -4,12 +4,9 @@ import (
    "fmt"
    "github.com/89z/mech/musicbrainz"
    "github.com/89z/mech/youtube"
-   "io"
-   "net/http"
    "net/url"
    "os"
    "path"
-   "regexp"
    "strings"
    "time"
 )
@@ -52,29 +49,6 @@ func viewYouTube(addr string) error {
    return sinceHours(vid.ViewCount(), vid.PublishDate())
 }
 
-func youtubeResult(query string) (string, error) {
-   req, err := http.NewRequest("GET", "https://www.youtube.com/results", nil)
-   if err != nil { return "", err }
-   val := req.URL.Query()
-   val.Set("search_query", query)
-   req.URL.RawQuery = val.Encode()
-   fmt.Println(invert, "GET", reset, req.URL)
-   res, err := new(http.Transport).RoundTrip(req)
-   if err != nil { return "", err }
-   defer res.Body.Close()
-   if res.StatusCode != http.StatusOK {
-      return "", fmt.Errorf("Status %v", res.Status)
-   }
-   body, err := io.ReadAll(res.Body)
-   if err != nil { return "", err }
-   re := regexp.MustCompile("/vi/([^/]+)/")
-   find := re.FindSubmatch(body)
-   if find == nil {
-      return "", fmt.Errorf("FindSubmatch %v", re)
-   }
-   return string(find[1]), nil
-}
-
 func main() {
    if len(os.Args) != 2 {
       fmt.Println(`youtube-views <URL>
@@ -108,22 +82,33 @@ https://musicbrainz.org/release-group/d03bb6b1-d7b4-38ea-974e-847cbb31dca4`)
       panic(err)
    }
    g.Sort()
-   if err := viewMusicbrainz(&g.Releases[0]); err != nil {
+   if err := viewMusicbrainz(g.Releases[0]); err != nil {
       panic(err)
    }
 }
 
-func viewMusicbrainz(r *musicbrainz.Release) error {
+func viewMusicbrainz(r musicbrainz.Release) error {
    var artists string
    for _, artist := range r.ArtistCredit {
       artists += artist.Name + " "
    }
    for _, media := range r.Media {
       for _, track := range media.Tracks {
-         id, err := youtubeResult(artists + track.Title)
-         if err != nil { return err }
+         search, err := youtube.NewSearch(artists + track.Title)
+         if err != nil {
+            return err
+         }
+         var id string
+         for _, vid := range search.VideoRenderers() {
+            if vid.VideoID != "" {
+               id = vid.VideoID
+               break
+            }
+         }
          vid, err := youtube.NewVideo(id)
-         if err != nil { return err }
+         if err != nil {
+            return err
+         }
          if err := sinceHours(vid.ViewCount(), vid.PublishDate()); err != nil {
             return err
          }

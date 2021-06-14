@@ -3,7 +3,7 @@ module github.com/89z/sienna
 go 1.16
 
 require (
-	github.com/89z/mech v1.10.9
+	github.com/89z/mech v1.11.2
 	github.com/89z/xz v1.1.6
 	github.com/klauspost/compress v1.12.2
 	github.com/pelletier/go-toml v1.9.1
