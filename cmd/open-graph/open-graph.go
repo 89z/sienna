@@ -2,11 +2,9 @@ package main
 
 import (
    "fmt"
-   "html"
-   "io"
+   "github.com/89z/mech"
    "net/http"
    "os"
-   "regexp"
 )
 
 const (
@@ -14,28 +12,25 @@ const (
    reset = "\x1b[m"
 )
 
-var patterns = []string{
-   ` content="([^"]+)" property="og:image"`,
-   `="og:image" content="([^"]+)"`,
-   `="og:video" content="([^"]+)"`,
-}
-
 func open(source string) ([]string, error) {
    fmt.Println(invert, "Get", reset, source)
-   get, err := http.Get(source)
-   if err != nil { return nil, err }
-   body, err := io.ReadAll(get.Body)
-   if err != nil { return nil, err }
-   var results []string
-   for _, pattern := range patterns {
-      find := regexp.MustCompile(pattern).FindSubmatch(body)
-      if find != nil {
-         media := string(find[1])
-         media = html.UnescapeString(media)
-         results = append(results, media)
-      }
+   res, err := http.Get(source)
+   if err != nil {
+      return nil, err
    }
-   return results, nil
+   defer res.Body.Close()
+   doc, err := mech.NewNode(res.Body)
+   if err != nil {
+      return nil, err
+   }
+   var nodes []string
+   for _, node := range doc.ByAttrAll("property", "og:image") {
+      nodes = append(nodes, node.Attr("content"))
+   }
+   for _, node := range doc.ByAttrAll("property", "og:video") {
+      nodes = append(nodes, node.Attr("content"))
+   }
+   return nodes, nil
 }
 
 func main() {

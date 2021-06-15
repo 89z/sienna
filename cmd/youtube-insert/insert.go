@@ -37,7 +37,7 @@ func newTableRow(enc string) (tableRow, error) {
       return tableRow{}, err
    }
    if video.Description() == "" {
-      return tableRow{}, fmt.Errorf("Clapham Junction")
+      return tableRow{}, fmt.Errorf("clapham Junction")
    }
    year := video.PublishDate()[:4]
    for _, pattern := range []string{

@@ -2,12 +2,11 @@ package main
 
 import (
    "fmt"
+   "github.com/89z/mech"
    "github.com/pelletier/go-toml"
-   "io"
    "net/http"
    "net/url"
    "os"
-   "regexp"
    "time"
 )
 
@@ -26,28 +25,26 @@ type tableRow struct {
 }
 
 func newTableRow(addr string) (tableRow, error) {
+   // A
+   parse, err := url.Parse(addr)
+   if err != nil {
+      return tableRow{}, err
+   }
+   parse.Fragment = ""
+   // Title
    fmt.Println(invert, "Get", reset, addr)
    res, err := http.Get(addr)
    if err != nil {
       return tableRow{}, err
    }
    defer res.Body.Close()
-   body, err := io.ReadAll(res.Body)
+   doc, err := mech.NewNode(res.Body)
    if err != nil {
       return tableRow{}, err
    }
-   re := regexp.MustCompile("<h1>([^<]+)</h1>")
-   title := re.FindSubmatch(body)
-   if title == nil {
-      return tableRow{}, fmt.Errorf("FindSubmatch %v", re)
-   }
-   parse, err := url.Parse(addr)
-   if err != nil {
-      return tableRow{}, err
-   }
-   parse.Fragment = ""
+   // return
    return tableRow{
-      A: parse.String(), Date: time.Now(), Title: string(title[1]),
+      A: parse.String(), Date: time.Now(), Title: doc.ByTag("h1").Text(),
    }, nil
 }
 
