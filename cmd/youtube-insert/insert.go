@@ -22,7 +22,7 @@ const (
 func httpHead(addr string) bool {
    fmt.Println(invert, "HEAD", reset, addr)
    resp, err := http.Head(addr)
-   return err == nil && resp.StatusCode == 200
+   return err == nil && resp.StatusCode == http.StatusOK
 }
 
 func newTableRow(enc string) (tableRow, error) {

@@ -19,16 +19,18 @@ func open(source string) ([]string, error) {
       return nil, err
    }
    defer res.Body.Close()
-   doc, err := mech.NewNode(res.Body)
+   doc, err := mech.Parse(res.Body)
    if err != nil {
       return nil, err
    }
    var nodes []string
-   for _, node := range doc.ByAttrAll("property", "og:image") {
-      nodes = append(nodes, node.Attr("content"))
+   img := doc.ByAttr("property", "og:image")
+   for img.Scan() {
+      nodes = append(nodes, img.Attr("content"))
    }
-   for _, node := range doc.ByAttrAll("property", "og:video") {
-      nodes = append(nodes, node.Attr("content"))
+   vid := doc.ByAttr("property", "og:video")
+   for vid.Scan() {
+      nodes = append(nodes, vid.Attr("content"))
    }
    return nodes, nil
 }

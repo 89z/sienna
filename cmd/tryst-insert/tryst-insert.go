@@ -38,13 +38,16 @@ func newTableRow(addr string) (tableRow, error) {
       return tableRow{}, err
    }
    defer res.Body.Close()
-   doc, err := mech.NewNode(res.Body)
+   doc, err := mech.Parse(res.Body)
    if err != nil {
       return tableRow{}, err
    }
-   // return
+   doc = doc.ByAttr("class", "dts-section-page-heading-title")
+   doc.Scan()
+   doc = doc.ByTag("h1")
+   doc.Scan()
    return tableRow{
-      A: parse.String(), Date: time.Now(), Title: doc.ByTag("h1").Text(),
+      A: parse.String(), Date: time.Now(), Title: doc.Text(),
    }, nil
 }
 

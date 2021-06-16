@@ -1,5 +1,5 @@
-github.com/89z/mech v1.11.6 h1:zG5Ia51GBR5oVDg1Wt+EDrBRNhWE15f8Mes/PgM+scU=
-github.com/89z/mech v1.11.6/go.mod h1:VceJzW07nnc2nzjAX6X852rGZiLnILbSxzQkPPqm3mE=
+github.com/89z/mech v1.12.2 h1:BMXJaZg+x9Ints9/9xx9e+XIo/9b4mIpCGdmyGcJRgE=
+github.com/89z/mech v1.12.2/go.mod h1:VceJzW07nnc2nzjAX6X852rGZiLnILbSxzQkPPqm3mE=
 github.com/89z/xz v1.1.6 h1:QIDWCUntRPfZxLubYMKq7hRn7YR201lbSY2rqx8NpG4=
 github.com/89z/xz v1.1.6/go.mod h1:5maaegS9DRn/sKQ6UtQGvaLR6RETPz06m6Jl7EuoZfI=
 github.com/golang/snappy v0.0.3 h1:fHPg5GQYlCeLIPB9BZqMVR5nR9A+IM5zcgeTdjMYmLA=
