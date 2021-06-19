@@ -32,7 +32,7 @@ func newTableRow(enc string) (tableRow, error) {
    }
    id := dec.Query().Get("v")
    // year
-   video, err := youtube.NewVideo(id)
+   video, err := youtube.NewPlayer(id)
    if err != nil {
       return tableRow{}, err
    }

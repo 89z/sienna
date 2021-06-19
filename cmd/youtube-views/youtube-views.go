@@ -29,7 +29,9 @@ func numberFormat(d float64) string {
 
 func sinceHours(view int, date string) error {
    d, err := time.Parse(time.RFC3339[:10], date)
-   if err != nil { return err }
+   if err != nil {
+      return fmt.Errorf("sinceHours %v", err)
+   }
    perYear := float64(view) * 24 * 365 / time.Since(d).Hours()
    if perYear > 10_000_000 {
       fmt.Println(red, "Fail", reset, numberFormat(perYear))
@@ -42,10 +44,14 @@ func sinceHours(view int, date string) error {
 
 func viewYouTube(addr string) error {
    p, err := url.Parse(addr)
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    id := p.Query().Get("v")
-   vid, err := youtube.NewVideo(id)
-   if err != nil { return err }
+   vid, err := youtube.NewPlayer(id)
+   if err != nil {
+      return err
+   }
    return sinceHours(vid.ViewCount(), vid.PublishDate())
 }
 
@@ -105,7 +111,7 @@ func viewMusicbrainz(r musicbrainz.Release) error {
                break
             }
          }
-         vid, err := youtube.NewVideo(id)
+         vid, err := youtube.NewPlayer(id)
          if err != nil {
             return err
          }
