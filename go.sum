@@ -1,5 +1,5 @@
-github.com/89z/mech v1.13.0 h1:W56xypUohbe+WiMtb3wLCH2VgavU3zPt17/ENTFGjpY=
-github.com/89z/mech v1.13.0/go.mod h1:VceJzW07nnc2nzjAX6X852rGZiLnILbSxzQkPPqm3mE=
+github.com/89z/mech v1.13.2 h1:aqUO+APoPtGPrCSHVZidhJJe1C7VvfLKLcBt4/NjLvs=
+github.com/89z/mech v1.13.2/go.mod h1:GFcIOiNculm8+EkkonCYFSyucZLx1/GWNxBFXRsvXN8=
 github.com/89z/xz v1.1.6 h1:QIDWCUntRPfZxLubYMKq7hRn7YR201lbSY2rqx8NpG4=
 github.com/89z/xz v1.1.6/go.mod h1:5maaegS9DRn/sKQ6UtQGvaLR6RETPz06m6Jl7EuoZfI=
 github.com/golang/snappy v0.0.3 h1:fHPg5GQYlCeLIPB9BZqMVR5nR9A+IM5zcgeTdjMYmLA=
@@ -8,8 +8,6 @@ github.com/klauspost/compress v1.12.2 h1:2KCfW3I9M7nSc5wOqXAlW2v2U6v+w6cbjvbfp+O
 github.com/klauspost/compress v1.12.2/go.mod h1:8dP1Hq4DHOhN9w426knH3Rhby4rFm6D8eO+e+Dq5Gzg=
 github.com/pelletier/go-toml v1.9.1 h1:a6qW1EVNZWH9WGI6CsYdD8WAylkoXBS5yv0XHlh17Tc=
 github.com/pelletier/go-toml v1.9.1/go.mod h1:u1nR/EPcESfeI/szUZKdtJ0xRNbUoANCkoOuaOx1Y+c=
-github.com/robertkrimen/otto v0.0.0-20200922221731-ef014fd054ac h1:kYPjbEN6YPYWWHI6ky1J813KzIq/8+Wg4TO4xU7A/KU=
-github.com/robertkrimen/otto v0.0.0-20200922221731-ef014fd054ac/go.mod h1:xvqspoSXJTIpemEonrMDFq6XzwHYYgToXWj5eRX1OtY=
 golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a/go.mod h1:P+XmwS30IXTQdn5tA2iutPOUgjI07+tq3H3K9MVA1s8=
 golang.org/x/net v0.0.0-20210226172049-e18ecbb05110/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
 golang.org/x/net v0.0.0-20210610132358-84b48f89b13b h1:k+E048sYJHyVnsr1GDrRZWQ32D2C7lWs9JRc0bel53A=
@@ -21,5 +19,3 @@ golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9sn
 golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/text v0.3.6/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
-gopkg.in/sourcemap.v1 v1.0.5 h1:inv58fC9f9J3TK2Y2R1NPntXEn3/wjWHkonhIUODNTI=
-gopkg.in/sourcemap.v1 v1.0.5/go.mod h1:2RlvNNSMglmRrcvhfuzp4hQHwOtjxlbjX7UPY/GXb78=
