@@ -23,19 +23,31 @@ const (
 
 func tarGzMemory(source string) (fstest.MapFS, error) {
    file, err := os.Open(source)
-   if err != nil { return nil, err }
+   if err != nil {
+      return nil, err
+   }
    defer file.Close()
    gzRead, err := gzip.NewReader(file)
-   if err != nil { return nil, err }
+   if err != nil {
+      return nil, err
+   }
    defer gzRead.Close()
    tarRead := tar.NewReader(gzRead)
    files := make(fstest.MapFS)
    for {
       cur, err := tarRead.Next()
-      if err == io.EOF { break } else if err != nil { return nil, err }
-      if cur.Typeflag != tar.TypeReg { continue }
+      if err == io.EOF {
+         break
+      } else if err != nil {
+         return nil, err
+      }
+      if cur.Typeflag != tar.TypeReg {
+         continue
+      }
       data, err := io.ReadAll(tarRead)
-      if err != nil { return nil, err }
+      if err != nil {
+         return nil, err
+      }
       files[cur.Name] = &fstest.MapFile{Data: data}
    }
    return files, nil
@@ -170,4 +182,55 @@ func (db database) sync(name string) error {
 type description struct {
    filename string
    depends []string
+}
+
+
+func main() {
+   if len(os.Args) != 3 {
+      fmt.Println(`install-msys2 query git
+install-msys2 sync git.txt`)
+      return
+   }
+   data := newDatabase()
+   cache, err := os.UserCacheDir()
+   if err != nil {
+      panic(err)
+   }
+   cache = filepath.Join(cache, "sienna", "msys2")
+   for _, db := range []string{
+      "/mingw/ucrt64/ucrt64.db",
+      "/mingw/x86_64/mingw64.db",
+      "/msys/x86_64/msys.db",
+   } {
+      create := filepath.Join(cache, db)
+      _, err := os.Stat(create)
+      if err != nil {
+         r, err := http.Get(mirror + db)
+         if err != nil {
+            panic(err)
+         }
+         defer r.Body.Close()
+         f, err := os.Create(create)
+         if err != nil {
+            panic(err)
+         }
+         defer f.Close()
+         f.ReadFrom(r.Body)
+      } else {
+         fmt.Println(invert, "Exist", reset, db)
+      }
+      fs, err := tarGzMemory(create)
+      if err != nil {
+         panic(err)
+      }
+      for _, file := range fs {
+         data.scan(file.Data)
+      }
+   }
+   target := os.Args[2]
+   if os.Args[1] == "sync" {
+      data.sync(target)
+      return
+   }
+   data.query(target)
 }
