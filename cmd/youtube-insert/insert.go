@@ -32,32 +32,33 @@ func newTableRow(enc string) (tableRow, error) {
    }
    id := dec.Query().Get("v")
    // year
-   video, err := youtube.NewPlayer(id)
+   video, err := youtube.NewWeb(id)
    if err != nil {
       return tableRow{}, err
    }
-   if video.Description() == "" {
+   if video.ShortDescription == "" {
       return tableRow{}, fmt.Errorf("clapham Junction")
    }
-   year := video.PublishDate()[:4]
-   for _, pattern := range []string{
+   year := video.PublishDate[:4]
+   for _, pat := range []string{
       /* the order doesnt matter here, as we will find the lowest date of all
       matches */
       ` (\d{4})`, `(\d{4}) `, `Released on: (\d{4})`, `℗ (\d{4})`,
    } {
-      re := regexp.MustCompile(pattern).FindStringSubmatch(video.Description())
-      if re == nil { continue }
+      re := regexp.MustCompile(pat).FindStringSubmatch(video.ShortDescription)
+      if re == nil {
+         continue
+      }
       if re[1] < year {
          year = re[1]
       }
    }
    // song, artist
-   title := video.Title()
-   re := regexp.MustCompile(".* · .*").FindString(video.Description())
+   re := regexp.MustCompile(".* · .*").FindString(video.ShortDescription)
    if re != "" {
       titles := strings.Split(re, " · ")
       artists := titles[1:]
-      title = strings.Join(artists, ", ") + " - " + titles[0]
+      video.Title = strings.Join(artists, ", ") + " - " + titles[0]
    }
    // time
    now := strconv.FormatInt(time.Now().Unix(), 36)
@@ -75,11 +76,14 @@ func newTableRow(enc string) (tableRow, error) {
       }
    }
    return tableRow{
-      val.Encode(), title,
+      val.Encode(), video.Title,
    }, nil
 }
 
-type tableRow struct { Q, S string }
+type tableRow struct {
+   Q string
+   S string
+}
 
 func main() {
    var dry bool
