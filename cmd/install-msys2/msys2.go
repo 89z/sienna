@@ -31,7 +31,6 @@ func tarGzMemory(source string) (fstest.MapFS, error) {
    if err != nil {
       return nil, err
    }
-   defer gzRead.Close()
    tarRead := tar.NewReader(gzRead)
    files := make(fstest.MapFS)
    for {
@@ -133,11 +132,15 @@ func baseName(s, chars string) string {
 
 func (db database) sync(name string) error {
    file, err := os.Open(name)
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    defer file.Close()
    buf := bufio.NewScanner(file)
    cache, err := os.UserCacheDir()
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    cache = filepath.Join(cache, "sienna", "msys2")
    for buf.Scan() {
       text := buf.Text()
@@ -157,10 +160,14 @@ func (db database) sync(name string) error {
       if err != nil {
          get := mirror + variant(base) + base
          r, err := http.Get(get)
-         if err != nil { return err }
+         if err != nil {
+            return err
+         }
          defer r.Body.Close()
          f, err := os.Create(create)
-         if err != nil { return err }
+         if err != nil {
+            return err
+         }
          defer f.Close()
          f.ReadFrom(r.Body)
       } else {
