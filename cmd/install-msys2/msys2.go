@@ -71,7 +71,7 @@ type database struct {
 
 func newDatabase() database {
    return database{
-      map[string]description{}, map[string]string{},
+      make(map[string]description), make(map[string]string),
    }
 }
 

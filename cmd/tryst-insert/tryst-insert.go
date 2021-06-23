@@ -24,29 +24,29 @@ type tableRow struct {
    Title string
 }
 
-func newTableRow(addr string) (tableRow, error) {
+func newTableRow(addr string) (*tableRow, error) {
    // A
    parse, err := url.Parse(addr)
    if err != nil {
-      return tableRow{}, err
+      return nil, err
    }
    parse.Fragment = ""
    // Title
    fmt.Println(invert, "Get", reset, addr)
    res, err := http.Get(addr)
    if err != nil {
-      return tableRow{}, err
+      return nil, err
    }
    defer res.Body.Close()
    doc, err := mech.Parse(res.Body)
    if err != nil {
-      return tableRow{}, err
+      return nil, err
    }
    doc = doc.ByAttr("class", "dts-section-page-heading-title")
    doc.Scan()
    doc = doc.ByTag("h1")
    doc.Scan()
-   return tableRow{
+   return &tableRow{
       A: parse.String(), Date: time.Now(), Title: doc.Text(),
    }, nil
 }

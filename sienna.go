@@ -72,7 +72,9 @@ func (a Archive) Zst(source, dest string) error {
 
 func (a Archive) strip(left, right string) string {
    split := strings.SplitN(right, "/", a.Strip + 1)
-   if len(split) <= a.Strip { return "" }
+   if len(split) <= a.Strip {
+      return ""
+   }
    return filepath.Join(left, split[a.Strip])
 }
 

@@ -93,19 +93,19 @@ https://musicbrainz.org/release-group/d03bb6b1-d7b4-38ea-974e-847cbb31dca4`)
    }
 }
 
-func viewMusicbrainz(r musicbrainz.Release) error {
+func viewMusicbrainz(r *musicbrainz.Release) error {
    var artists string
    for _, artist := range r.ArtistCredit {
       artists += artist.Name + " "
    }
    for _, media := range r.Media {
       for _, track := range media.Tracks {
-         search, err := youtube.NewSearch(artists + track.Title)
+         s, err := youtube.QueryRequest(artists + track.Title).NewSearch()
          if err != nil {
             return err
          }
          var id string
-         for _, vid := range search.VideoRenderers() {
+         for _, vid := range s.VideoRenderers() {
             if vid.VideoID != "" {
                id = vid.VideoID
                break

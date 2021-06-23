@@ -25,19 +25,19 @@ func httpHead(addr string) bool {
    return err == nil && resp.StatusCode == http.StatusOK
 }
 
-func newTableRow(enc string) (tableRow, error) {
+func newTableRow(enc string) (*tableRow, error) {
    dec, err := url.Parse(enc)
    if err != nil {
-      return tableRow{}, err
+      return nil, err
    }
    id := dec.Query().Get("v")
    // year
    video, err := youtube.NewWeb(id)
    if err != nil {
-      return tableRow{}, err
+      return nil, err
    }
    if video.ShortDescription == "" {
-      return tableRow{}, fmt.Errorf("clapham Junction")
+      return nil, fmt.Errorf("clapham Junction")
    }
    year := video.PublishDate[:4]
    for _, pat := range []string{
@@ -75,7 +75,7 @@ func newTableRow(enc string) (tableRow, error) {
          val.Set("c", "hqdefault")
       }
    }
-   return tableRow{
+   return &tableRow{
       val.Encode(), video.Title,
    }, nil
 }
@@ -99,29 +99,29 @@ func main() {
       panic(err)
    }
    fmt.Printf("%#v\n", row)
-   if dry { return }
+   if dry {
+      return
+   }
    // write
    umber := os.Getenv("UMBER")
    // decode
-   var rows []tableRow
-   {
-      file, err := os.Open(umber)
-      if err != nil {
-         panic(err)
-      }
-      defer file.Close()
-      json.NewDecoder(file).Decode(&rows)
-   }
-   // append
-   rows = append([]tableRow{row}, rows...)
-   // encode
-   file, err := os.Create(umber)
+   var rows []*tableRow
+   file, err := os.Open(umber)
    if err != nil {
       panic(err)
    }
    defer file.Close()
-   enc := json.NewEncoder(file)
-   enc.SetEscapeHTML(false)
-   enc.SetIndent("", " ")
-   enc.Encode(rows)
+   json.NewDecoder(file).Decode(&rows)
+   // append
+   rows = append([]*tableRow{row}, rows...)
+   // encode
+   if file, err := os.Create(umber); err != nil {
+      panic(err)
+   } else {
+      defer file.Close()
+      enc := json.NewEncoder(file)
+      enc.SetEscapeHTML(false)
+      enc.SetIndent("", " ")
+      enc.Encode(rows)
+   }
 }
