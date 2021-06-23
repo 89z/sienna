@@ -17,41 +17,57 @@ type Archive struct {
 
 func (a Archive) Xz(source, dest string) error {
    file, err := os.Open(source)
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    defer file.Close()
-   xzRead, err := xz.NewReader(file)
-   if err != nil { return err }
-   return a.tarCreate(xzRead, dest)
+   rXz, err := xz.NewReader(file)
+   if err != nil {
+      return err
+   }
+   return a.tarCreate(rXz, dest)
 }
 
 func (a Archive) Zip(source, dest string) error {
-   read, err := zip.OpenReader(source)
-   if err != nil { return err }
-   defer read.Close()
-   for _, file := range read.File {
-      if file.Mode().IsDir() { continue }
-      name := a.strip(dest, file.Name)
-      if name == "" { continue }
-      if err := os.MkdirAll(filepath.Dir(name), os.ModeDir); err != nil {
+   rZip, err := zip.OpenReader(source)
+   if err != nil {
+      return err
+   }
+   defer rZip.Close()
+   for _, entry := range rZip.File {
+      if entry.Mode().IsDir() {
+         continue
+      }
+      name := a.strip(dest, entry.Name)
+      if name == "" {
+         continue
+      }
+      os.MkdirAll(filepath.Dir(name), os.ModeDir)
+      open, err := entry.Open()
+      if err != nil {
          return err
       }
-      open, err := file.Open()
-      if err != nil { return err }
-      create, err := os.Create(name)
-      if err != nil { return err }
-      defer create.Close()
-      if _, err := create.ReadFrom(open); err != nil { return err }
+      file, err := os.Create(name)
+      if err != nil {
+         return err
+      }
+      defer file.Close()
+      file.ReadFrom(open)
    }
    return nil
 }
 
 func (a Archive) Zst(source, dest string) error {
    file, err := os.Open(source)
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    defer file.Close()
-   zstRead, err := zstd.NewReader(file)
-   if err != nil { return err }
-   return a.tarCreate(zstRead, dest)
+   rZst, err := zstd.NewReader(file)
+   if err != nil {
+      return err
+   }
+   return a.tarCreate(rZst, dest)
 }
 
 func (a Archive) strip(left, right string) string {
@@ -61,27 +77,33 @@ func (a Archive) strip(left, right string) string {
 }
 
 func (a Archive) tarCreate(source io.Reader, dest string) error {
-   tarRead := tar.NewReader(source)
+   rTar := tar.NewReader(source)
    for {
-      cur, err := tarRead.Next()
-      if err == io.EOF { break } else if err != nil { return err }
+      cur, err := rTar.Next()
+      if err == io.EOF {
+         break
+      } else if err != nil {
+         return err
+      }
       name := a.strip(dest, cur.Name)
-      if name == "" { continue }
+      if name == "" {
+         continue
+      }
       switch cur.Typeflag {
       case tar.TypeLink:
          _, err := os.Stat(name)
          if err == nil {
             os.Remove(name)
          }
-         if err := os.Link(a.strip(dest, cur.Linkname), name); err != nil {
-            return err
-         }
+         os.Link(a.strip(dest, cur.Linkname), name)
       case tar.TypeReg:
          os.MkdirAll(filepath.Dir(name), os.ModeDir)
          create, err := os.Create(name)
-         if err != nil { return err }
+         if err != nil {
+            return err
+         }
          defer create.Close()
-         create.ReadFrom(tarRead)
+         create.ReadFrom(rTar)
       }
    }
    return nil
