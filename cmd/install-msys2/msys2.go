@@ -81,7 +81,9 @@ func (db database) query(target string) {
       do := todo[0]
       for _, dep := range db.name[do].depends {
          provide, ok := db.provides[dep]
-         if ok { dep = provide }
+         if ok {
+            dep = provide
+         }
          if ! done[dep] {
             todo = append(todo, dep)
             done[dep] = true
@@ -108,13 +110,17 @@ func (db database) scan(file []byte) error {
       case "%PROVIDES%":
          for buf.Scan() {
             line := buf.Text()
-            if line == "" { break }
+            if line == "" {
+               break
+            }
             db.provides[baseName(line, ">=")] = name
          }
       case "%DEPENDS%":
          for buf.Scan() {
             line := buf.Text()
-            if line == "" { break }
+            if line == "" {
+               break
+            }
             desc.depends = append(desc.depends, baseName(line, ">="))
          }
       }

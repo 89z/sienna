@@ -21,15 +21,19 @@ func getCreate(get, create string) error {
    }
    println(invert, "Get", reset, get)
    res, err := http.Get(get)
-   if err != nil { return err }
-   defer res.Body.Close()
-   file, err := os.Create(create)
-   if err != nil { return err }
-   defer file.Close()
-   {
-      _, err := file.ReadFrom(res.Body)
+   if err != nil {
       return err
    }
+   defer res.Body.Close()
+   file, err := os.Create(create)
+   if err != nil {
+      return err
+   }
+   defer file.Close()
+   if _, err := file.ReadFrom(res.Body); err != nil {
+      return err
+   }
+   return nil
 }
 
 
@@ -51,7 +55,9 @@ func main() {
    defer file.Close()
    var dist struct {
       Pkg map[string]struct {
-         Target map[string]struct { XZ_URL string }
+         Target map[string]struct {
+            XZ_URL string
+         }
       }
    }
    toml.NewDecoder(file).Decode(&dist)

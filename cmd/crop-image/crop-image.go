@@ -11,13 +11,19 @@ import (
 
 func encode(name string, top, right, bottom, left int) error {
    in, err := os.Open(name)
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    defer in.Close()
    out, err := os.Create("crop-" + filepath.Base(name))
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    defer out.Close()
    decode, err := jpeg.Decode(in)
-   if err != nil { return err }
+   if err != nil {
+      return err
+   }
    bound := decode.Bounds()
    rect := image.Rect(left, top, bound.Max.X - right, bound.Max.Y - bottom)
    fmt.Println(bound, rect)

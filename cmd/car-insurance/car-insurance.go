@@ -22,7 +22,9 @@ var insure = map[string]interface{}{
 
 func main() {
    from := time.Now()
-   var months [12]struct { From, To string }
+   var months [12]struct {
+      From, To string
+   }
    for n := range months {
       months[n].From = from.String()[:10]
       from = from.AddDate(0, 1, 0)

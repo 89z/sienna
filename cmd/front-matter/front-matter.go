@@ -37,7 +37,9 @@ func main() {
       index = bytes.SplitN(index, tomlSep[:], 3)[1]
       var front frontMatter
       toml.Unmarshal(index, &front)
-      if front.Build.List != "" { continue }
+      if front.Build.List != "" {
+         continue
+      }
       examplePath := filepath.Join(root, front.Filename)
       if _, err := os.Stat(examplePath); err != nil {
          println(indexPath)
