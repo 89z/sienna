@@ -15,8 +15,9 @@ import (
    "testing/fstest"
 )
 
+const mirror = "http://repo.msys2.org"
+
 const (
-   mirror = "http://repo.msys2.org"
    invert = "\x1b[7m"
    reset = "\x1b[m"
 )
@@ -164,8 +165,7 @@ func (db database) sync(name string) error {
       create := filepath.Join(cache, base)
       _, err := os.Stat(create)
       if err != nil {
-         get := mirror + variant(base) + base
-         r, err := http.Get(get)
+         r, err := http.Get(mirror + variant(base) + base)
          if err != nil {
             return err
          }

@@ -6,15 +6,8 @@ import (
    "path/filepath"
 )
 
-const (
-   invert = "\x1b[7m"
-   reset = "\x1b[m"
-)
-
 func main() {
-   src := "https://curl.haxx.se/ca/cacert.pem"
-   println(invert, "Get", reset, src)
-   res, err := http.Get(src)
+   res, err := http.Get("https://curl.haxx.se/ca/cacert.pem")
    if err != nil {
       panic(err)
    }

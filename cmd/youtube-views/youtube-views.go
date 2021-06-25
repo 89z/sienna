@@ -14,7 +14,6 @@ import (
 const (
    reset = "\x1b[m"
    green = "\x1b[30;102m"
-   invert = "\x1b[7m"
    red = "\x1b[30;101m"
 )
 
@@ -100,12 +99,12 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
    }
    for _, media := range r.Media {
       for _, track := range media.Tracks {
-         s, err := youtube.QueryRequest(artists + track.Title).NewSearch()
+         r, err := youtube.NewSearch(artists + track.Title).Post()
          if err != nil {
             return err
          }
          var id string
-         for _, vid := range s.VideoRenderers() {
+         for _, vid := range r.VideoRenderers() {
             if vid.VideoID != "" {
                id = vid.VideoID
                break

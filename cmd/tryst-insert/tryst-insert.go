@@ -4,15 +4,9 @@ import (
    "fmt"
    "github.com/89z/mech"
    "github.com/pelletier/go-toml"
-   "net/http"
    "net/url"
    "os"
    "time"
-)
-
-const (
-   invert = "\x1b[7m"
-   reset = "\x1b[m"
 )
 
 type tableRow struct {
@@ -32,8 +26,7 @@ func newTableRow(addr string) (*tableRow, error) {
    }
    parse.Fragment = ""
    // Title
-   fmt.Println(invert, "Get", reset, addr)
-   res, err := http.Get(addr)
+   res, err := mech.Get(addr)
    if err != nil {
       return nil, err
    }

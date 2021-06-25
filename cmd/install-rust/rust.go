@@ -19,7 +19,6 @@ func getCreate(get, create string) error {
       println(invert, "Exist", reset, create)
       return nil
    }
-   println(invert, "Get", reset, get)
    res, err := http.Get(get)
    if err != nil {
       return err

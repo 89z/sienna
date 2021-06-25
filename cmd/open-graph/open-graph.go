@@ -3,18 +3,11 @@ package main
 import (
    "fmt"
    "github.com/89z/mech"
-   "net/http"
    "os"
 )
 
-const (
-   invert = "\x1b[7m"
-   reset = "\x1b[m"
-)
-
 func open(source string) ([]string, error) {
-   fmt.Println(invert, "Get", reset, source)
-   res, err := http.Get(source)
+   res, err := mech.Get(source)
    if err != nil {
       return nil, err
    }

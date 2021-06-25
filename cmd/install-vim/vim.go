@@ -34,7 +34,6 @@ func getCreate(get, create string) error {
       println(invert, "Exist", reset, create)
       return nil
    }
-   println(invert, "Get", reset, get)
    res, err := http.Get(get)
    if err != nil {
       return err
@@ -69,7 +68,6 @@ func main() {
    arc.Zip(create, `C:\sienna\vim`)
    for _, rt := range runtime {
       get := "https://raw.githubusercontent.com/" + rt.get + rt.create
-      fmt.Println("Get", get)
       r, err := http.Get(get)
       if err != nil {
          panic(err)
