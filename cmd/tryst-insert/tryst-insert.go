@@ -4,6 +4,7 @@ import (
    "fmt"
    "github.com/89z/mech"
    "github.com/pelletier/go-toml"
+   "net/http"
    "net/url"
    "os"
    "time"
@@ -26,7 +27,7 @@ func newTableRow(addr string) (*tableRow, error) {
    }
    parse.Fragment = ""
    // Title
-   res, err := mech.Get(addr)
+   res, err := http.Get(addr)
    if err != nil {
       return nil, err
    }

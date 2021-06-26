@@ -3,11 +3,12 @@ package main
 import (
    "fmt"
    "github.com/89z/mech"
+   "net/http"
    "os"
 )
 
 func open(source string) ([]string, error) {
-   res, err := mech.Get(source)
+   res, err := http.Get(source)
    if err != nil {
       return nil, err
    }
