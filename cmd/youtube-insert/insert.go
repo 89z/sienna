@@ -43,7 +43,10 @@ func main() {
       panic(err)
    }
    row, err := newTableRow(addr.Query().Get("v"))
-   fmt.Printf("%#v\n", row)
+   enc := json.NewEncoder(os.Stdout)
+   enc.SetEscapeHTML(false)
+   enc.SetIndent("", " ")
+   enc.Encode(row)
    if dry {
       return
    }
