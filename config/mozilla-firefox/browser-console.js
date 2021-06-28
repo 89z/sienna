@@ -1,4 +1,5 @@
 'use strict';
+Services.prefs.getChildList('').forEach(p => Services.prefs.clearUserPref(p));
 
 function setBool(key, val) {
    if (Services.prefs.getPrefType(key) == Services.prefs.PREF_INVALID) {
@@ -22,9 +23,10 @@ function setInt(key, val) {
    }
 }
 
-Services.prefs.resetUserPrefs();
 // always ask me where to save files
 setInt('browser.download.folderList', 0);
+// disable sponsored results
+setBool('browser.newtabpage.activity-stream.showSponsoredTopSites', false);
 // disable new tab page
 setBool('browser.newtabpage.enabled', false);
 // do not provide search suggestions
@@ -64,5 +66,5 @@ setBool('privacy.trackingprotection.pbmode.enabled', false);
 setBool('security.csp.enable', false);
 // remember passwords
 setBool('signon.rememberSignons', false);
-// disable crapbar in new tab, until clicked
+// disable tab animation. NOT INVALID
 setInt('ui.prefersReducedMotion', 1);

@@ -47,7 +47,7 @@ func viewYouTube(addr string) error {
       return err
    }
    id := p.Query().Get("v")
-   vid, err := youtube.NewWeb(id)
+   vid, err := youtube.NewMWeb(id)
    if err != nil {
       return err
    }
@@ -104,13 +104,13 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
             return err
          }
          var id string
-         for _, vid := range r.VideoRenderers() {
+         for _, vid := range r.Videos() {
             if vid.VideoID != "" {
                id = vid.VideoID
                break
             }
          }
-         vid, err := youtube.NewWeb(id)
+         vid, err := youtube.NewMWeb(id)
          if err != nil {
             return err
          }
