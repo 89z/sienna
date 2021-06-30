@@ -4,8 +4,6 @@ import (
    "encoding/json"
    "flag"
    "fmt"
-   "github.com/89z/mech/youtube"
-   "math/big"
    "net/url"
    "os"
 )
@@ -14,15 +12,6 @@ const (
    invert = "\x1b[7m"
    reset = "\x1b[m"
 )
-
-func mod(x, y int64) int64 {
-   bx, by := big.NewInt(x), big.NewInt(y)
-   return new(big.Int).Mod(bx, by).Int64()
-}
-
-func score(i youtube.Image) int64 {
-   return mod(480 - i.Height, 720) + i.Frame + i.Format
-}
 
 type tableRow struct {
    Q string
