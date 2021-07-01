@@ -3,7 +3,6 @@ package main
 import (
    "fmt"
    "github.com/89z/mech/youtube"
-   "math"
    "net/http"
    "net/url"
    "path"
@@ -14,46 +13,21 @@ import (
    "time"
 )
 
-type iFunc func(a, b youtube.Image) bool
-
-var iFuncs = []iFunc{
-   func(a, b youtube.Image) bool {
-      return math.Copysign(1, a.Height-720) < math.Copysign(1, b.Height-720)
-   },
-   func(a, b youtube.Image) bool {
-      return math.Abs(a.Height-720) < math.Abs(b.Height-720)
-   },
-   func(a, b youtube.Image) bool {
-      return a.Frame < b.Frame
-   },
-   func(a, b youtube.Image) bool {
-      return a.Format < b.Format
-   },
-}
-
 func newTableRow(id string) (*tableRow, error) {
    val := make(url.Values)
    val.Set("p", "y")
    val.Set("b", id)
    // image
-   sort.SliceStable(youtube.Images, func(a, b int) bool {
-      ia, ib := youtube.Images[a], youtube.Images[b]
-      for _, fn := range iFuncs {
-         if fn(ia, ib) {
-            return true
-         }
-         if fn(ib, ia) {
-            break
-         }
-      }
-      return false
+   youtube.SortImages()
+   search := sort.Search(len(youtube.Images), func(i int) bool {
+      return youtube.Images[i].Height < 720
    })
-   for n, img := range youtube.Images {
+   for i, img := range youtube.Images[search:] {
       addr := img.Address(id)
       fmt.Println(invert, "Head", reset, addr)
       res, err := http.Head(addr)
       if err == nil && res.StatusCode == http.StatusOK {
-         if n > 0 {
+         if i > 0 {
             val.Set("c", path.Base(addr))
          }
          break
