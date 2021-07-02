@@ -20,7 +20,7 @@ Check nebulance site and/or ask nebulance forum about private movie tracker.
 Public:
 
 - <https://1377x.to>
-- <https://rarbgdata.org/torrents>
+- <https://rarbg.to/torrents>
 
 ## VPN
 

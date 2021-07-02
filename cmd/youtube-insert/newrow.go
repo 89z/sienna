@@ -7,7 +7,6 @@ import (
    "net/url"
    "path"
    "regexp"
-   "sort"
    "strconv"
    "strings"
    "time"
@@ -18,16 +17,16 @@ func newTableRow(id string) (*tableRow, error) {
    val.Set("p", "y")
    val.Set("b", id)
    // image
-   youtube.SortImages()
-   search := sort.Search(len(youtube.Images), func(i int) bool {
-      return youtube.Images[i].Height < 720
+   imgs := youtube.AdaptiveImages.Filter(func(i youtube.Image) bool {
+      return i.Height < 720
    })
-   for i, img := range youtube.Images[search:] {
+   imgs.Sort()
+   for idx, img := range imgs {
       addr := img.Address(id)
       fmt.Println(invert, "Head", reset, addr)
       res, err := http.Head(addr)
       if err == nil && res.StatusCode == http.StatusOK {
-         if i > 0 {
+         if idx > 0 {
             val.Set("c", path.Base(addr))
          }
          break
