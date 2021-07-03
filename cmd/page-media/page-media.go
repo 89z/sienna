@@ -47,7 +47,7 @@ func open(source string) ([]string, error) {
 
 func main() {
    if len(os.Args) != 2 {
-      fmt.Println("open-graph <URL>")
+      fmt.Println("page-media <URL>")
       return
    }
    arg := os.Args[1]

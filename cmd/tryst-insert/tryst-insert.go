@@ -3,7 +3,7 @@ package main
 import (
    "fmt"
    "github.com/89z/mech"
-   "github.com/pelletier/go-toml"
+   "github.com/pelletier/go-toml/v2"
    "net/http"
    "net/url"
    "os"

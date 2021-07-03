@@ -2,7 +2,8 @@ package main
 
 import (
    "bytes"
-   "github.com/pelletier/go-toml"
+   "fmt"
+   "github.com/pelletier/go-toml/v2"
    "os"
    "path/filepath"
 )
@@ -36,7 +37,10 @@ func main() {
       }
       index = bytes.SplitN(index, tomlSep[:], 3)[1]
       var front frontMatter
-      toml.Unmarshal(index, &front)
+      if err := toml.Unmarshal(index, &front); err != nil {
+         fmt.Printf("%s %v\n", index, err)
+         return
+      }
       if front.Build.List != "" {
          continue
       }

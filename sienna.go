@@ -4,7 +4,7 @@ import (
    "archive/tar"
    "archive/zip"
    "github.com/klauspost/compress/zstd"
-   "github.com/89z/xz"
+   "github.com/xi2/xz"
    "io"
    "os"
    "path/filepath"
@@ -21,7 +21,7 @@ func (a Archive) Xz(source, dest string) error {
       return err
    }
    defer file.Close()
-   rXz, err := xz.NewReader(file)
+   rXz, err := xz.NewReader(file, 0)
    if err != nil {
       return err
    }

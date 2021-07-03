@@ -2,7 +2,7 @@ package main
 
 import (
    "github.com/89z/sienna"
-   "github.com/pelletier/go-toml"
+   "github.com/pelletier/go-toml/v2"
    "net/http"
    "os"
    "path/filepath"
