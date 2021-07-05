@@ -47,11 +47,11 @@ func viewYouTube(addr string) error {
       return err
    }
    id := p.Query().Get("v")
-   vid, err := youtube.NewMWeb(id)
+   play, err := youtube.PlayerMweb(id)
    if err != nil {
       return err
    }
-   return sinceHours(vid.ViewCount, vid.PublishDate)
+   return sinceHours(play.ViewCount, play.PublishDate)
 }
 
 func main() {
@@ -99,7 +99,7 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
    }
    for _, media := range r.Media {
       for _, track := range media.Tracks {
-         r, err := youtube.NewSearch(artists + track.Title).Post()
+         r, err := youtube.SearchMweb(artists + track.Title)
          if err != nil {
             return err
          }
@@ -110,11 +110,11 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
                break
             }
          }
-         vid, err := youtube.NewMWeb(id)
+         play, err := youtube.PlayerMweb(id)
          if err != nil {
             return err
          }
-         if err := sinceHours(vid.ViewCount, vid.PublishDate); err != nil {
+         if err := sinceHours(play.ViewCount, play.PublishDate); err != nil {
             return err
          }
          time.Sleep(100 * time.Millisecond)

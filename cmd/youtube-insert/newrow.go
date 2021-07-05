@@ -33,7 +33,7 @@ func newTableRow(id string) (*tableRow, error) {
       }
    }
    // year
-   video, err := youtube.NewMWeb(id)
+   video, err := youtube.PlayerMweb(id)
    if err != nil {
       return nil, err
    }
