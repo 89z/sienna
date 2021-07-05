@@ -32,6 +32,9 @@ func main() {
       panic(err)
    }
    row, err := newTableRow(addr.Query().Get("v"))
+   if err != nil {
+      panic(err)
+   }
    enc := json.NewEncoder(os.Stdout)
    enc.SetEscapeHTML(false)
    enc.SetIndent("", " ")
