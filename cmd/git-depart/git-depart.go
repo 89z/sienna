@@ -27,7 +27,6 @@ func main() {
       // if this not exist, return
       return
    }
-   os.RemoveAll("docs")
    if err := run("hugo"); err != nil {
       panic(err)
    }
