@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-   res, err := http.Get("https://curl.haxx.se/ca/cacert.pem")
+   addr := "https://curl.haxx.se/ca/cacert.pem"
+   println("Get", addr)
+   res, err := http.Get(addr)
    if err != nil {
       panic(err)
    }
