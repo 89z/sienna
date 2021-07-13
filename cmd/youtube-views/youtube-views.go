@@ -47,7 +47,7 @@ func viewYouTube(addr string) error {
       return err
    }
    id := p.Query().Get("v")
-   play, err := youtube.Mweb.Player(id)
+   play, err := youtube.IPlayer(id)
    if err != nil {
       return err
    }
@@ -99,7 +99,7 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
    }
    for _, media := range r.Media {
       for _, track := range media.Tracks {
-         r, err := youtube.NewSearch(artists + track.Title)
+         r, err := youtube.ISearch(artists + track.Title)
          if err != nil {
             return err
          }
@@ -110,7 +110,7 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
                break
             }
          }
-         play, err := youtube.Mweb.Player(id)
+         play, err := youtube.IPlayer(id)
          if err != nil {
             return err
          }
