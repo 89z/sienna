@@ -26,32 +26,32 @@ func numberFormat(d float64) string {
    return fmt.Sprintf("%.3f", d) + []string{1: " k", " M", " G"}[e]
 }
 
-func sinceHours(view int, date string) error {
-   d, err := time.Parse(time.RFC3339[:10], date)
+func sinceHours(p *youtube.Player) error {
+   d, err := time.Parse(time.RFC3339[:10], p.PublishDate)
    if err != nil {
       return fmt.Errorf("sinceHours %v", err)
    }
-   perYear := float64(view) * 24 * 365 / time.Since(d).Hours()
+   perYear := float64(p.ViewCount) * 24 * 365 / time.Since(d).Hours()
    if perYear > 10_000_000 {
-      fmt.Println(red, "Fail", reset, numberFormat(perYear))
+      fmt.Print(red, " FAIL ")
    } else {
-      fmt.Println(green, "Pass", reset, numberFormat(perYear))
+      fmt.Print(green, " PASS ")
    }
+   fmt.Println(reset, numberFormat(perYear), p.VideoID)
    return nil
 }
 
-
-func viewYouTube(addr string) error {
-   p, err := url.Parse(addr)
+func viewYouTube(sURL string) error {
+   pURL, err := url.Parse(sURL)
    if err != nil {
       return err
    }
-   id := p.Query().Get("v")
+   id := pURL.Query().Get("v")
    play, err := youtube.IPlayer(id)
    if err != nil {
       return err
    }
-   return sinceHours(play.ViewCount, play.PublishDate)
+   return sinceHours(play)
 }
 
 func main() {
@@ -114,7 +114,7 @@ func viewMusicbrainz(r *musicbrainz.Release) error {
          if err != nil {
             return err
          }
-         if err := sinceHours(play.ViewCount, play.PublishDate); err != nil {
+         if err := sinceHours(play); err != nil {
             return err
          }
          time.Sleep(100 * time.Millisecond)

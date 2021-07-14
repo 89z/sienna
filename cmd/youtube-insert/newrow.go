@@ -17,7 +17,7 @@ func newTableRow(id string) (*tableRow, error) {
    val.Set("p", "y")
    val.Set("b", id)
    // image
-   imgs := youtube.AdaptiveImages.Filter(func(i youtube.Image) bool {
+   imgs := youtube.Images.Filter(func(i youtube.Image) bool {
       return i.Height < 720
    })
    imgs.Sort()
